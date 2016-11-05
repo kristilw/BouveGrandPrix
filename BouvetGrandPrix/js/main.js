@@ -194,9 +194,37 @@ function BeizerCurveQuadratic(p1, p2, p3, t) {
     };
 }
 
-function BeizerCurveQudraticDistance(p1, p2, p3, t0, t1) {
-    return {
-        'x': ((1 - t * t) * p1.x + 2 * (1 - t) * t * p2.x + p3.x * t * t),
-        'y': ((1 - t * t) * p1.y + 2 * (1 - t) * t * p2.y + p3.y * t * t)
-    };
+
+var timeStep = 0.02;
+function BeizerCurveQudraticDistance(p1, p2, p3) {
+    return BeizerCurveQudraticDistance_between(p1, p2, p3, 0, 1);
+}
+
+function BeizerCurveQudraticDistance_to(p1, p2, p3, tTo) {
+    return BeizerCurveQudraticDistance_between(p1, p2, p3, 0, tTo);
+}
+
+function BeizerCurveQudraticDistance_between(pA, pB, pC, tFrom, tTo) {
+    var sumDistance = 0;
+
+    var p1 = BeizerCurveQuadratic(pA, pB, pC, tFrom);
+    for (var t = tFrom + timeStep; t < tTo; t += timeStep) {
+        
+        var p2 = BeizerCurveQuadratic(pA, pB, pC, t);
+        sumDistance += CoordinatesToLength_m(p1, p2);
+        p1 = p2;
+    }
+    var p2 = BeizerCurveQuadratic(pA, pB, pC, tTo);
+    sumDistance += CoordinatesToLength_m(p1, p2);
+    return sumDistance;
+}
+
+var earthCircumference_m = 40000;
+function CoordinatesToLength_m(p1, p2) {
+    var deltaLat = p1.lat - p2.lat;
+    var deltaLon = p1.lon - p2.lon;
+    
+    var deltaLat_m = deltaLat * earthCircumference_m * Math.cos(Math.PI / 180 * p1.lat);
+    var detlaLon_m = deltaLon * earthCircumference_m;
+    return Math.sqrt(Math.pow(deltaLat_m, 2) + Math.pow(detlaLon_m, 2));
 }
