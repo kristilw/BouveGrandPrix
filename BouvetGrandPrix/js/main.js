@@ -10,6 +10,8 @@ var carPostionY = 0;
 
 var setUpComplete = false;
 
+var carMarker = null;
+
 var keysPressed = new Map();
 var keyEventToId = new Map();
 keyEventToId.set(87, "w_key");
@@ -80,15 +82,28 @@ window.onload = function () {
         maxZoom: 18
     }).addTo(map);
 
-    var marker = L.marker([59.935, 10.7585]).addTo(map);
+    //var marker = L.marker([]).addTo(map);
 
-    var p1_ = { 'x': 0, 'y': 0 };
-    var p2_ = { 'x': 1, 'y': 10 };
-    var p3_ = { 'x': 2, 'y': 20 };
-    var p = BeizerCurveQuadratic(p1_, p2_, p3_, 0.5);
+    var img_scale = 0.2;
+    var img = new Image();
+    img.onload = function () {
+        var width = img.width * img_scale;
+        var height = img.height * img_scale;
 
-    console.log("x: " + p.x);
-    console.log("y: " + p.y);
+        var img_r = rotateImg(img, Math.PI*0.3);
+        img_r.onload = function () {
+            carMarker = L.icon({
+                iconUrl: img_r.src,
+                iconSize: [width, height], // size of the icon
+                iconAnchor: [width / 2, height / 2], // point of the icon which will correspond to marker's location
+                popupAnchor: [width / 2, -height / 2] // point from which the popup should open relative to the iconAnchor
+            });
+
+            L.marker([59.935, 10.7585], { icon: carMarker }).addTo(map);
+        }
+    };
+    img.src = '../img/car_w_1.png';
+
 
 
     $.ajax({
@@ -99,7 +114,7 @@ window.onload = function () {
         success: readCSVfile
     });
 
-    setUpComplete = true;
+    
 }
 
 function rotateImg(image, angle) {
@@ -107,25 +122,20 @@ function rotateImg(image, angle) {
     canvas.width = image.width*2;
     canvas.height = image.height*2;
 
-    var p = document.createElement("p");
-    p.innerText = "W: ";
-    p.appendChild(canvas);
-    document.body.appendChild(p);
-
     var context = canvas.getContext("2d");
-    context.drawImage(image, image.width/2, image.height/2);
     context.translate(canvas.width / 2, canvas.height / 2);
     context.rotate(angle);
     context.translate(-canvas.width / 2, -canvas.height / 2);
+    context.drawImage(image, image.width / 2, image.height / 2);
 
     var newImage = new Image();
     newImage.src = canvas.toDataURL("image/png");
+
     return newImage;
 }
 
 
 function readCSVfile(csv) {
-    console.log(csv);
     road = $.csv.toObjects(csv);
     console.log(road);
     printRoadToMap(road);
@@ -171,6 +181,7 @@ function printRoadToMap(road) {
             console.log("err: " + roadPoint_A.type)
         }
     }
+    setUpComplete = true;
 }
 
 var besizerCounter = 0;
