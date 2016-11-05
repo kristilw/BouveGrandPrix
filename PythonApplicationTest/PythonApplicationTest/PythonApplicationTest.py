@@ -59,7 +59,7 @@ Coordinates = eval('['+Coordinates+']');
 CoordinatesLon_m = [];
 CoordinatesLat_m = [];
 
-numberOfCoordinates = math.ceil(len(Coordinates)/3-0.5)
+numberOfCoordinates = int(math.ceil(len(Coordinates)/3-0.5));
 coordinatetsToMeters = 10000000/90;
 
 for i in range(0, numberOfCoordinates):
@@ -298,11 +298,13 @@ for i in range(0, new_s):
 	newLonComDeg.insert(i,newLonCom[i] / math.cos(newLatComDeg[i]*math.pi/180) / coordinatetsToMeters);
 
 import csv
-writer=csv.writer(open('road.csv','w'))
+writer=csv.writer(open('road.csv','wb'))
 i=0
 length_list = len(newLatCom);
 
+
+writer.writerow(['lat','lon','name','type']);
 while i!=length_list :
-    data=[newLatComDeg[i],newLonComDeg[i],i];
-    i=i+1
+    data=[newLatComDeg[i],newLonComDeg[i],i,beizerCurveData[i]];
     writer.writerow(data);
+    i=i+1;
