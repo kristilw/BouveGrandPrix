@@ -5,12 +5,14 @@ var frameTime = 33.33;
 
 var speed = 0;
 
+var carMarker = null;
 var carPostionX = 0;
 var carPostionY = 0;
 
+var road = null;
 var setUpComplete = false;
 
-var carMarker = null;
+
 
 var keysPressed = new Map();
 var keyEventToId = new Map();
@@ -70,6 +72,8 @@ function handleAcceleration(){
 //Time-event
 setInterval(function () {
     if (setUpComplete === true) {
+        MoveCar(road[0], 0);
+
         //handleAcceleration();
     }
 }, frameTime);
@@ -92,14 +96,14 @@ window.onload = function () {
 
         var img_r = rotateImg(img, Math.PI*0.3);
         img_r.onload = function () {
-            carMarker = L.icon({
+            var carMarkerIcon = L.icon({
                 iconUrl: img_r.src,
                 iconSize: [width, height], // size of the icon
                 iconAnchor: [width / 2, height / 2], // point of the icon which will correspond to marker's location
                 popupAnchor: [width / 2, -height / 2] // point from which the popup should open relative to the iconAnchor
             });
 
-            L.marker([59.935, 10.7585], { icon: carMarker }).addTo(map);
+            carMarker = L.marker([59.935, 10.7585], { icon: carMarkerIcon }).addTo(map);
         }
     };
     img.src = '../img/car_w_1.png';
@@ -182,6 +186,10 @@ function printRoadToMap(road) {
         }
     }
     setUpComplete = true;
+}
+
+function MoveCar(p, angle) {
+    carMarker.setLatLng(new L.LatLng(p.lat, p.lon));
 }
 
 var besizerCounter = 0;
