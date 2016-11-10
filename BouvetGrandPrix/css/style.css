@@ -24,5 +24,10 @@
 }
 
 #map { height: 1000px;
+       width: 1200px;
        z-index: 1;
+}
+
+.leaflet-tile {
+    outline: 1px solid transparent;
 }
