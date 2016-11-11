@@ -1,9 +1,12 @@
 /// <reference path="../typings/leaflet/leaflet.d.ts" />
 
 import { Component } from '@angular/core';
+import { RouterModule  } from '@angular/router';
+import { WelcomeComponent } from "./welcome/welcome.component"
 
 import { Map } from 'leaflet';
 import { LatLng } from 'leaflet';
+
 
 
 @Component({

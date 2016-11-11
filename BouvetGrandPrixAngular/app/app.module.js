@@ -11,14 +11,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
+var router_1 = require('@angular/router');
+var welcome_component_1 = require("./welcome/welcome.component");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent]
+            imports: [
+                platform_browser_1.BrowserModule,
+                router_1.RouterModule.forRoot([
+                    {
+                        path: 'welcome-screen/:id',
+                        component: welcome_component_1.WelcomeComponent
+                    },
+                    {
+                        path: '**',
+                        component: welcome_component_1.WelcomeComponent
+                    }
+                ])
+            ],
+            declarations: [
+                app_component_1.AppComponent,
+                welcome_component_1.WelcomeComponent
+            ],
+            bootstrap: [
+                app_component_1.AppComponent
+            ],
+            exports: [router_1.RouterModule]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
