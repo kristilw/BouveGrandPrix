@@ -30,13 +30,19 @@
     "systemjs": "0.19.39",
     "zone.js": "^0.6.25",
     "bootstrap": "^3.3.6",
-    "leaflet": "^1.0.1"
+    "leaflet": "^1.0.1",
+    "jquery": "3.1.1"
   },
   "devDependencies": {
+    "@types/bootstrap": "^3.3.32",
     "@types/core-js": "^0.9.34",
+    "@types/jquery": "^2.0.34",
     "@types/node": "^6.0.45",
     "concurrently": "^3.0.0",
     "lite-server": "^2.2.2",
     "typescript": "^2.0.3"
-  }
+  },
+  "exclude": [
+    "typings"
+  ]
 }

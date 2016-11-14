@@ -1,1 +1,43 @@
-﻿
+﻿.white_text{
+    color:white;
+}
+
+.grey_text{
+    color:#e4e4e4
+}
+
+.bouvet_orange_text{
+    color:#d45a1f;
+}
+
+.bouvet_orange_border{
+    border-color:#d45a1f;
+}
+
+.bouvet_button{
+    background-color:transparent;
+    color:white;
+    padding: 5px 25px 5px 25px;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+/* unvisited link */
+a:link {
+    text-decoration: none;      
+}
+
+/* visited link */
+a:visited {
+    text-decoration: none;      
+}
+
+/* mouse over link */
+a:hover {
+    text-decoration: none;      
+}
+
+/* selected link */
+a:active {
+    text-decoration: none;      
+}

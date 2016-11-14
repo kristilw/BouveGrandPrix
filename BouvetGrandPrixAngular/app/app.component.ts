@@ -2,7 +2,6 @@
 
 import { Component } from '@angular/core';
 import { RouterModule  } from '@angular/router';
-import { WelcomeComponent } from "./welcome/welcome.component"
 
 import { Map } from 'leaflet';
 import { LatLng } from 'leaflet';
@@ -12,7 +11,10 @@ import { LatLng } from 'leaflet';
 @Component({
     selector: 'my-app',
     templateUrl: 'app/app.component.html',
-    styleUrls: ['app/styles/app.component.css']
+    styleUrls: [
+        'app/styles/app.component.css',
+        'app/styles/shared.css'
+    ]
 })
 
 export class AppComponent {

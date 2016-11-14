@@ -13,6 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
 var router_1 = require('@angular/router');
 var welcome_component_1 = require("./welcome/welcome.component");
+var about_component_1 = require("./about/about.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -22,8 +23,12 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 router_1.RouterModule.forRoot([
                     {
-                        path: 'welcome-screen/:id',
+                        path: 'welcome/:id',
                         component: welcome_component_1.WelcomeComponent
+                    },
+                    {
+                        path: 'about',
+                        component: about_component_1.AboutComponent
                     },
                     {
                         path: '**',
@@ -33,7 +38,8 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                welcome_component_1.WelcomeComponent
+                welcome_component_1.WelcomeComponent,
+                about_component_1.AboutComponent
             ],
             bootstrap: [
                 app_component_1.AppComponent

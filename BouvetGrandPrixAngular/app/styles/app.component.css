@@ -39,8 +39,11 @@
     background-color:rgba(20, 19, 19, 0.55);
 }
 
+#about_bouvet_house_link{
+    color:white;
+}
+
 #router_outlet_div{
-    pointer-events: none;
     position: absolute;
     height:100vh;
     width:100%;
@@ -116,14 +119,6 @@
 
     height:54px;
     width:100%;
-}
-
-.bouvet_orange_text{
-    color:#d45a1f;
-}
-
-.bouvet_orange_border{
-    border-color:#d45a1f;
 }
 
 

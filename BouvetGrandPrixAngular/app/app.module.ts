@@ -4,14 +4,19 @@ import { AppComponent } from './app.component';
 
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from "./welcome/welcome.component"
+import { AboutComponent } from "./about/about.component"
 
 @NgModule({
     imports: [
         BrowserModule,
         RouterModule.forRoot([
             {
-                path: 'welcome-screen/:id',
+                path: 'welcome/:id',
                 component: WelcomeComponent
+            },
+            {
+                path: 'about',
+                component: AboutComponent
             },
             {
                 path: '**',
@@ -21,7 +26,8 @@ import { WelcomeComponent } from "./welcome/welcome.component"
     ],
     declarations: [
         AppComponent,
-        WelcomeComponent
+        WelcomeComponent,
+        AboutComponent
     ],
     bootstrap: [
         AppComponent
