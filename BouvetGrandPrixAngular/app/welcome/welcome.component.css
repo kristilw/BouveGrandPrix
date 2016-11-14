@@ -5,3 +5,31 @@
     margin-top: 15px;
     font-size: 12px;
 }
+
+#welcome_carousel{
+    height:300px;
+}
+
+#item_1{
+    height:300px;
+}
+
+#item_2{
+    height:300px;
+}
+
+#table_first_place{
+    width:100%;
+    background-color:rgba(32, 32, 32, 0.48);
+    border: solid 1px;
+    border-color:#d45a1f;
+}
+
+#welcome_first_postion{
+    padding:10px 0px 10px 10px;
+}
+
+
+#welcome_first_name{
+    padding: 10px 10px 10px 10px;
+}

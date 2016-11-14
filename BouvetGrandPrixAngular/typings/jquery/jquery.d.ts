@@ -620,7 +620,6 @@ interface JQueryEasingFunction {
 }
 
 interface JQueryEasingFunctions {
-    [ name: string ]: JQueryEasingFunction;
     linear: JQueryEasingFunction;
     swing: JQueryEasingFunction;
 }
@@ -2869,8 +2868,6 @@ interface JQuery {
      * version deprecated: 1.7, removed: 1.9
      */
     selector: string;
-    [index: string]: any;
-    [index: number]: HTMLElement;
 
     /**
      * Add elements to the set of matched elements.
@@ -3243,7 +3240,5 @@ interface JQuery {
     queue(queueName: string, callback: Function): JQuery;
 }
 declare module "jquery" {
-    export = $;
 }
 declare var jQuery: JQueryStatic;
-declare var $: JQueryStatic;

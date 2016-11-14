@@ -1,4 +1,5 @@
 /// <reference path="../../typings/bootstrap/bootstrap.d.ts" />
+/// <reference path="../../typings/jquery/jquery.d.ts" />
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,18 +10,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+//import { Component} from '@angular/core';
 var core_1 = require('@angular/core');
-//import { ViewChild, ViewChildren, Component, QueryList,  } from 'angular2/core'
 var WelcomeComponent = (function () {
-    function WelcomeComponent() {
+    //@ViewChild('welcome_carousel') input; 
+    //@ViewChild('welcome_carousel') carousel: ElementRef; 
+    function WelcomeComponent(elementRef) {
+        this.elementRef = elementRef;
     }
     WelcomeComponent.prototype.ngAfterViewInit = function () {
-        this.input.nativeElement.carousel();
+        $("#welcome_carousel").carousel();
+        //this.carousel.nativeElement.carousel();
+        //console.log(this.input.nativeElement.value);
+        //this.input.nativeElement.carousel();
     };
-    __decorate([
-        core_1.ViewChild('welcome_carousel'), 
-        __metadata('design:type', core_1.ElementRef)
-    ], WelcomeComponent.prototype, "input", void 0);
     WelcomeComponent = __decorate([
         core_1.Component({
             selector: 'welcome-screen',
@@ -30,7 +33,7 @@ var WelcomeComponent = (function () {
                 'app/styles/shared.css'
             ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [core_1.ElementRef])
     ], WelcomeComponent);
     return WelcomeComponent;
 }());
