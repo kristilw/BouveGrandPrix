@@ -6,18 +6,24 @@ import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from "./welcome/welcome.component"
 import { AboutComponent } from "./about/about.component"
 import { ChoseCarComponent } from "./choseCar/choseCar.component"
+import { GameComponent } from "./game/game.component"
+import { CountdownComponent } from "./game/countdown/countdown.component"
 
 @NgModule({
     imports: [
         BrowserModule,
         RouterModule.forRoot([
             {
-                path: 'welcome/:id',
+                path: 'welcome',
                 component: WelcomeComponent
             },
             {
                 path: 'choseCar',
                 component: ChoseCarComponent
+            },
+            {
+                path: 'game/:id',
+                component: GameComponent
             },
             {
                 path: 'about',
@@ -33,7 +39,9 @@ import { ChoseCarComponent } from "./choseCar/choseCar.component"
         AppComponent,
         WelcomeComponent,
         AboutComponent,
-        ChoseCarComponent
+        ChoseCarComponent,
+        GameComponent,
+        CountdownComponent
     ],
     bootstrap: [
         AppComponent
