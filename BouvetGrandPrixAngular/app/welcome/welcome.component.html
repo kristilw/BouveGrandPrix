@@ -1,7 +1,11 @@
 ﻿
-<div style="margin: auto; text-align: center; margin-top:230px">
+<div style="margin: 0px 0px 0px 0px; text-align: center; margin-top:230px">
     <div class="carousel slide" id="welcome_carousel" data-interval="10000">
         <div class="carousel-inner" id="carousel_background">
+            <ol class="carousel-indicators">
+                <li data-target="#welcome_carousel" data-slide-to="0" id="carousel_indicator_1" class="active"></li>
+                <li data-target="#welcome_carousel" data-slide-to="1" id="carousel_indicator_2"></li>
+            </ol>
 
             <div class="item active" id="item_1">
                 <h1 style="margin-bottom:15px" class="bouvet_orange_text">
@@ -13,7 +17,7 @@
                     Er du raskest, vinner du - noe fint :) <br />
                 </p>
 
-                <button class="button bouvet_orange_border" id="start_engine_button">
+                <button class="button bouvet_orange_border" id="start_engine_button" routerLink="/choseCar">
                     START MOTOREN
                 </button>
             </div>
@@ -30,12 +34,14 @@
                                     <td class="bouvet_background_orange grey_text" id="welcome_first_postion"><b><i>1.</i></b> </td>
                                     <td class="grey_text" id="welcome_first_name">Knut Harald Gundersen</td>
                                     <td class="grey_text" id="welcome_first_firm">Bouvet</td>
-                                    <td class="grey_text" id="welcome_first_time">00.24.12</td>
+                                    <td class="grey_text" id="welcome_first_time">
+                                        <span class="glyphicon glyphicon-time bouvet_orange_text" id="welcome_first_time_glyph"></span> 00.24.12
+                                    </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
-                    
+
                     <br />
 
                     <p class="grey_text">
@@ -44,16 +50,19 @@
                     </p>
                 </div>
 
-                <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_2">
+                <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_2" routerLink="/choseCar">
                     START MOTOREN
                 </button>
             </div>
         </div>
 
-        <a href="#welcome_carousel" class="carousel-control left"
+        <!--
+            <a href="#welcome_carousel" class="carousel-control left"
            data-slide="prev"><span class="icon-prev"></span></a>
         <a href="#welcome_carousel" class="carousel-control right"
            data-slide="next"><span class="icon-next"></span></a>
+        -->
+        
     </div>
 </div>
 

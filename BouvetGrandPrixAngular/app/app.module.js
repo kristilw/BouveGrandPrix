@@ -14,6 +14,7 @@ var app_component_1 = require('./app.component');
 var router_1 = require('@angular/router');
 var welcome_component_1 = require("./welcome/welcome.component");
 var about_component_1 = require("./about/about.component");
+var choseCar_component_1 = require("./choseCar/choseCar.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,6 +26,10 @@ var AppModule = (function () {
                     {
                         path: 'welcome/:id',
                         component: welcome_component_1.WelcomeComponent
+                    },
+                    {
+                        path: 'choseCar',
+                        component: choseCar_component_1.ChoseCarComponent
                     },
                     {
                         path: 'about',
@@ -39,7 +44,8 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 welcome_component_1.WelcomeComponent,
-                about_component_1.AboutComponent
+                about_component_1.AboutComponent,
+                choseCar_component_1.ChoseCarComponent
             ],
             bootstrap: [
                 app_component_1.AppComponent

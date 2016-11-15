@@ -7,15 +7,15 @@
 }
 
 #welcome_carousel{
-    height:300px;
+    height:320px;
 }
 
 #item_1{
-    height:300px;
+    height:320px;
 }
 
 #item_2{
-    height:300px;
+    height:320px;
 }
 
 #table_first_place{
@@ -32,4 +32,50 @@
 
 #welcome_first_name{
     padding: 10px 10px 10px 10px;
+}
+
+#welcome_first_time_glyph{
+    border-left: solid 1px;
+    border-color:#d45a1f;
+    padding-left:40px;
+}
+
+#carousel_indicator_1{
+
+}
+
+#carousel_indicator_2{
+    
+}
+
+.carousel-indicators { 
+    position: absolute; 
+    top: 280px; 
+    left: 50%; 
+    width: 60%; 
+    padding-left: 0; 
+    margin-left: -30%; 
+    text-align: center; 
+    list-style: none; 
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 10px;
+    border-radius: 0px;
+    text-indent: 0;
+    cursor: pointer;
+    border: solid 1px;
+    border-color:#d45a1f; 
+}
+.carousel-indicators .active {
+    width: 18px;
+    height: 18px;
+    margin: 10px;
+    border-radius: 0px;
+    background-color: transparent;
+    background-color:#d45a1f; 
+    border-color:white; 
 }

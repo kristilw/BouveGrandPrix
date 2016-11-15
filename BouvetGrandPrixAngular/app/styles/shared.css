@@ -10,6 +10,10 @@
     color:#d45a1f;
 }
 
+.no_margin{
+    margin:0px 0px 0px 0px !important;
+}
+
 .bouvet_background_orange{
     background-color:#d45a1f;
 }
