@@ -11,9 +11,20 @@
             </countdown-game>
         </div>
 
-        <div id="controls_div">
+        <div id="controls_div" *ngIf="showCountDownTimer">
             <img id="w_key" src="app/img/w_key_t.png" />
             <img id="s_key" src="app/img/s_key_t.png" />
+        </div>
+
+        <div *ngIf="setUpComplete">
+
+        </div>
+
+        <div id="speedometer">
+            <div id="speedometer_background_div">
+                <img id="speedometer_background" src="app/img/Speedometer_stor.png" />
+            </div>
+            <img id="speedometer_needle"/>
         </div>
     </div>
 </div>

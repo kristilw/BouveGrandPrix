@@ -1,5 +1,5 @@
 ﻿#start_engine_button{
-    background-color:transparent;
+    background-color:rgba(24, 24, 24, 0.60);
     color:white;
     padding: 5px 25px 5px 25px;
     margin-top: 15px;
@@ -7,37 +7,57 @@
 }
 
 #welcome_carousel{
-    height:320px;
+    height:420px;
 }
 
 #item_1{
-    height:320px;
+    height:420px;
 }
 
 #item_2{
-    height:320px;
+    height:420px;
 }
 
 #table_first_place{
     width:100%;
-    background-color:rgba(32, 32, 32, 0.48);
+    background-color:rgba(0, 0, 0, 0.70);
     border: solid 1px;
     border-color:#d45a1f;
+    margin-bottom:15px;
 }
 
-#welcome_first_postion{
+#table_second_place{
+    width:100%;
+    background-color:rgba(0, 0, 0, 0.70);
+    margin-bottom:15px;
+}
+
+#table_third_place{
+    width:100%;
+    background-color:rgba(0, 0, 0, 0.70);
+    margin-bottom:15px;
+}
+
+.welcome_table_postion{
     padding:10px 0px 10px 10px;
+    width:35px;
 }
 
 
-#welcome_first_name{
-    padding: 10px 10px 10px 10px;
+.welcome_table_name{
+    padding: 10px 10px 10px 20px;
+    width: 40%;
 }
 
-#welcome_first_time_glyph{
+.welcome_table_firm{
+    width: 20%;
+}
+
+.welcome_table_first_time_glyph{
     border-left: solid 1px;
     border-color:#d45a1f;
     padding-left:40px;
+    padding-right:10px;
 }
 
 #carousel_indicator_1{
@@ -48,9 +68,24 @@
     
 }
 
+#bouvet_log_welcome_screen{
+    height:19vh;
+    padding-bottom:15px;
+    margin-left:-15px;
+}
+
+.flags_welcome_screen{
+    height:6vh;
+    padding-bottom:10px;
+}
+
+#welcome_screen_bestTimes{
+    margin: 0 0 0 0;
+}
+
 .carousel-indicators { 
     position: absolute; 
-    top: 280px; 
+    top: 390px; 
     left: 50%; 
     width: 60%; 
     padding-left: 0; 

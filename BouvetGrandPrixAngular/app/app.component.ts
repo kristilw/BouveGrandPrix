@@ -20,8 +20,8 @@ import { LatLng } from 'leaflet';
 export class AppComponent {
     ngOnInit() {
         var map_ = L.map('map', {
-            center: L.latLng(59.935, 10.7585),
-            zoom: 14,
+            center: L.latLng(59.931, 10.720),
+            zoom: 13,
             zoomControl: false
         });
 

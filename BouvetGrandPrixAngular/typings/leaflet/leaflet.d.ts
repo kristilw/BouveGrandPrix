@@ -483,6 +483,8 @@ declare namespace L {
         zoomReverse?: boolean;
         detectRetina?: boolean;
         crossOrigin?: boolean;
+        zoomAnimation?: boolean;
+        zoomAnimationThreshold?: number;
         [name: string]: any;
     }
 

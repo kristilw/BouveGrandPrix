@@ -18,7 +18,7 @@ declare var jQuery: any;
 export class CountdownComponent {
     @Output() startGame: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    countDownTimer: string = "go?";
+    countDownTimer: string = "start";
 
     countDownToZero(): void {
         $("#count_down_text").toggleClass("count_down_text_hoverEffect");

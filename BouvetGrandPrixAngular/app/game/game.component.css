@@ -29,5 +29,26 @@
     z-index:11;
 }
 
+#speedometer{
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    height:250px;
+}
+
+#speedometer_background_div{
+    position:absolute;
+    width:100%;
+    top:30px;
+}
+#speedometer_background{
+    width:200px;
+    z-index:50;
+}
+
+#speedometer_needle{
+    z-index:100;
+}
+
 
 
