@@ -159,3 +159,14 @@
 .leaflet-tile {
     outline: 1px solid transparent;
 }
+
+#navbar_bottom_game_logo_div{
+    width: 100%;
+    text-align: right;
+}
+
+#navbar_bottom_game_logo{
+    padding-right:25px;
+    padding-bottom:15px;
+    height:60px;
+}

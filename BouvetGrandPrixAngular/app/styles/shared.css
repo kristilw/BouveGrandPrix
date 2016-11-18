@@ -7,7 +7,7 @@
 }
 
 .bouvet_orange_text{
-    color:#d45a1f;
+    color:#f37021;
 }
 
 .no_margin{
@@ -15,11 +15,12 @@
 }
 
 .bouvet_background_orange{
-    background-color:#d45a1f;
+    background-color:#f37021;
 }
 
 .bouvet_orange_border{
-    border-color:#d45a1f;
+    border: 1px solid;
+    border-color:#f37021;
 }
 
 .bouvet_button{

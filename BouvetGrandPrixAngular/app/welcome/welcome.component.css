@@ -22,7 +22,7 @@
     width:100%;
     background-color:rgba(0, 0, 0, 0.70);
     border: solid 1px;
-    border-color:#d45a1f;
+    border-color:#f37021;;
     margin-bottom:15px;
 }
 
@@ -55,7 +55,7 @@
 
 .welcome_table_first_time_glyph{
     border-left: solid 1px;
-    border-color:#d45a1f;
+    border-color:#f37021;;
     padding-left:40px;
     padding-right:10px;
 }
@@ -103,7 +103,7 @@
     text-indent: 0;
     cursor: pointer;
     border: solid 1px;
-    border-color:#d45a1f; 
+    border-color:#f37021;; 
 }
 .carousel-indicators .active {
     width: 18px;
@@ -111,6 +111,6 @@
     margin: 10px;
     border-radius: 0px;
     background-color: transparent;
-    background-color:#d45a1f; 
+    background-color:#f37021;; 
     border-color:white; 
 }
