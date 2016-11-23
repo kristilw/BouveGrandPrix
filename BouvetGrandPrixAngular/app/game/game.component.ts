@@ -488,10 +488,9 @@ export class GameComponent {
     }
 
     ngOnDestroy() {
-        // prevent memory leak by unsubscribing
         this.subscription.unsubscribe();
+        this.setUpComplete = false;
     }
-
 
     
 }

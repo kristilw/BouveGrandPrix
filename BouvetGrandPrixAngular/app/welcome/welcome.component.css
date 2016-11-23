@@ -7,15 +7,15 @@
 }
 
 #welcome_carousel{
-    height:420px;
+    height:80vh;
 }
 
 #item_1{
-    height:420px;
+    height:80vh;
 }
 
 #item_2{
-    height:420px;
+    height:80vh;
 }
 
 #table_first_place{
@@ -85,7 +85,7 @@
 
 .carousel-indicators { 
     position: absolute; 
-    top: 390px; 
+    top: 50vh; 
     left: 50%; 
     width: 60%; 
     padding-left: 0; 

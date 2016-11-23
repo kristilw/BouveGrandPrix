@@ -2,6 +2,9 @@
 const del = require('del');
 const typescript = require('gulp-typescript');
 const tscConfig = require('./tsconfig.json');
+const concat = require('gulp-concat');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
 
 // clean the contents of the distribution directory
 gulp.task('clean', function () {
@@ -14,7 +17,12 @@ gulp.task('compile', ['clean'], function () {
       .src('app/**/*.ts')
       //.pipe(sourcemaps.init())
       .pipe(typescript(tscConfig.compilerOptions))
-      //.pipe(sourcemaps.write('.'))
+//      .pipe(concat('scripts.js'))
+//      .pipe(gulp.dest('dist/app'))
+//      .pipe(rename('scripts.min.js'))
+      .pipe(uglify())
+        
+        //.pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('dist/app'));
 });
 
@@ -39,6 +47,7 @@ gulp.task('copy:libs', ['clean'], function () {
         'node_modules/angular2/bundles/angular2-polyfills.js',
         'node_modules/systemjs/dist/system.src.js',
         'node_modules/rxjs/**/*.js',
+        'node_modules/rxjs/**/*.js.map',
         'node_modules/angular2/bundles/angular2.dev.js',
         'node_modules/angular2/bundles/router.dev.js',
         'node_modules/angular2/bundles/router.dev.js',
