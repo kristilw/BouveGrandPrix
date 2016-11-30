@@ -6,9 +6,17 @@
 
     <div id="other_div_game">
         <div *ngIf="showCountDownTimer">
-            <countdown-game (startGame)="startGameFromCountdown($event)">
+            <countdown-game (startGameCountdown)="startGameFromCountdown($event)">
 
             </countdown-game>
+        </div>
+
+        <!-- *ngIf="showGoal" -->
+        <div  *ngIf="showGoal">
+            <goal [completionTime]="completionTime">
+
+            </goal>
+
         </div>
 
         <div id="controls_div" *ngIf="showCountDownTimer">

@@ -16,7 +16,7 @@ declare var jQuery: any;
 })
 
 export class CountdownComponent {
-    @Output() startGame: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() startGameCountdown: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     countDownTimer: string = "start";
 
@@ -36,7 +36,7 @@ export class CountdownComponent {
                     }
                 } else {
                     this.countDownTimer = "" + i + ".0";
-                    this.startGame.emit(true);
+                    this.startGameCountdown.emit(true);
                 }
                 
             }, 1000 * (3-i+0.5));

@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 //import { Component} from '@angular/core';
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var WelcomeComponent = (function () {
     //@ViewChild('welcome_carousel') input; 
     //@ViewChild('welcome_carousel') carousel: ElementRef; 
@@ -24,18 +24,18 @@ var WelcomeComponent = (function () {
         //console.log(this.input.nativeElement.value);
         //this.input.nativeElement.carousel();
     };
-    WelcomeComponent = __decorate([
-        core_1.Component({
-            selector: 'welcome-screen',
-            templateUrl: 'app/welcome/welcome.component.html',
-            styleUrls: [
-                'app/welcome/welcome.component.css',
-                'app/styles/shared.css'
-            ]
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef])
-    ], WelcomeComponent);
     return WelcomeComponent;
 }());
+WelcomeComponent = __decorate([
+    core_1.Component({
+        selector: 'welcome-screen',
+        templateUrl: 'app/welcome/welcome.component.html',
+        styleUrls: [
+            'app/welcome/welcome.component.css',
+            'app/styles/shared.css'
+        ]
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef])
+], WelcomeComponent);
 exports.WelcomeComponent = WelcomeComponent;
 //# sourceMappingURL=welcome.component.js.map

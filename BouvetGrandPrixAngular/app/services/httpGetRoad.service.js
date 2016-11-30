@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-var Rx_1 = require('rxjs/Rx');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var Rx_1 = require("rxjs/Rx");
 // Import RxJs required methods
-require('rxjs/add/operator/map');
-require('rxjs/add/operator/catch');
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/catch");
 var RoadService = (function () {
     // Resolve HTTP using the constructor
     function RoadService(http) {
@@ -27,11 +27,11 @@ var RoadService = (function () {
             .map(function (res) { return res.json(); })
             .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error'); });
     };
-    RoadService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], RoadService);
     return RoadService;
 }());
+RoadService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], RoadService);
 exports.RoadService = RoadService;
 //# sourceMappingURL=httpGetRoad.service.js.map

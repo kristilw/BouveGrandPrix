@@ -1,11 +1,4 @@
-﻿#start_engine_button{
-    background-color:rgba(24, 24, 24, 0.60);
-    color:white;
-    padding: 5px 25px 5px 25px;
-    margin-top: 15px;
-    font-size: 12px;
-}
-
+﻿
 #welcome_carousel{
     height:80vh;
 }

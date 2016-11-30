@@ -2,7 +2,11 @@
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { GoalComponent } from "./goal/goal.component";
 import { CountdownComponent } from "./countdown/countdown.component";
+
+
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Map } from 'leaflet';
@@ -41,6 +45,8 @@ export class GameComponent {
     car_speed: number = 0;
     car_maxAcceleration: number = 6;
 
+    gameLoopInterval: any = null;
+
     speedometer_needle_img: any = null;
     speedometer_needle_img_loaded: boolean = false;
     speedometer_needle_img_path: string = 'img/needle';
@@ -54,6 +60,7 @@ export class GameComponent {
     ) { }
 
     showCountDownTimer: boolean = false;
+    showGoal: boolean = false;
 
     ngOnInit() {
         //console.log(this.route.params.value.id);
@@ -143,7 +150,7 @@ export class GameComponent {
         this.keyEventToId.set(83, "s_key");
 
         this.readCSVfile(this.gameLogic.initRoad());
-        setInterval(() => { this.gameLoop(); }, this.frameTime_milli);
+        this.gameLoopInterval = setInterval(() => { this.gameLoop(); }, this.frameTime_milli);
     }
 
 
@@ -204,6 +211,8 @@ export class GameComponent {
     updatePan: boolean = true;
 
     unixTimeOld: number = 0;
+    completionTime: number = null;
+
 
     gameLoop(): void {
         if (this.setUpComplete) {
@@ -233,14 +242,23 @@ export class GameComponent {
 
 
             var timeLeft = actualFrameTime_milli;
+            var oTimeLeft = timeLeft;
             var carNewPosition = null;
             var carNewAngle = null;
 
             var safetyCounter = 0;
 
             //console.log("speed: " + this.car_speed);
+            //
 
-            while (this.beizerCounter < this.road.length && timeLeft > 0 && Math.abs(this.car_speed) > 0 && safetyCounter < 100) {
+            while (timeLeft > 0 && Math.abs(this.car_speed) > 0 && safetyCounter < 100) {
+                if (this.beizerCounter > this.road.length - 3) {
+                    this.showGoal = true;
+                    console.log("Goal!");
+                    this.completionTime = (this.gameTime + (oTimeLeft - timeLeft)) / 1000;
+                    this.setUpComplete = false;
+                    break;
+                }
 
                 safetyCounter += 1;
 
@@ -477,7 +495,17 @@ export class GameComponent {
         }
     }
 
-    startGameFromCountdown(startGame: boolean): void {
+    startGameFromCountdown(game: boolean): void {
+        console.log("Start from countdown");
+        this.startGame(game);
+    }
+
+    restartGameFromGoal(game: boolean): void {
+        console.log("Start from goal");
+        this.startGame(game);
+    }
+
+    startGame(startGame: boolean): void {
         console.log("from game: " + startGame);
         this.showCountDownTimer = false;
         this.setUpComplete = true;
@@ -488,11 +516,12 @@ export class GameComponent {
     }
 
     ngOnDestroy() {
+        console.log("DONE");
         this.subscription.unsubscribe();
         this.setUpComplete = false;
+        clearInterval(this.gameLoopInterval);
+        console.log("DONE");
     }
-
-    
 }
 
 export class GameLogic_helperClass {

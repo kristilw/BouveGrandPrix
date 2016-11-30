@@ -10,8 +10,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var GameComponent = (function () {
     function GameComponent(route, router) {
         this.route = route;
@@ -27,12 +27,14 @@ var GameComponent = (function () {
         this.car_img_id = 0;
         this.car_speed = 0;
         this.car_maxAcceleration = 6;
+        this.gameLoopInterval = null;
         this.speedometer_needle_img = null;
         this.speedometer_needle_img_loaded = false;
         this.speedometer_needle_img_path = 'img/needle';
         this.speedometer_needle_img_scale = 0.1;
         this.gameLogic = new GameLogic_helperClass();
         this.showCountDownTimer = false;
+        this.showGoal = false;
         //document.onkeyup = onKeyUp;
         this.keysPressed = new Map();
         this.keyEventToId = new Map();
@@ -42,6 +44,7 @@ var GameComponent = (function () {
         this.lastPan = 0;
         this.updatePan = true;
         this.unixTimeOld = 0;
+        this.completionTime = null;
     }
     GameComponent.prototype.ngOnInit = function () {
         //console.log(this.route.params.value.id);
@@ -109,7 +112,7 @@ var GameComponent = (function () {
         this.keyEventToId.set(87, "w_key");
         this.keyEventToId.set(83, "s_key");
         this.readCSVfile(this.gameLogic.initRoad());
-        setInterval(function () { _this.gameLoop(); }, this.frameTime_milli);
+        this.gameLoopInterval = setInterval(function () { _this.gameLoop(); }, this.frameTime_milli);
     };
     GameComponent.prototype.onkeyDown = function (keyCode) {
         var keyStatus = this.keysPressed.get(keyCode);
@@ -171,11 +174,20 @@ var GameComponent = (function () {
             }
             this.MoveCar(p, this.gameTime / 1000);*/
             var timeLeft = actualFrameTime_milli;
+            var oTimeLeft = timeLeft;
             var carNewPosition = null;
             var carNewAngle = null;
             var safetyCounter = 0;
             //console.log("speed: " + this.car_speed);
-            while (this.beizerCounter < this.road.length && timeLeft > 0 && Math.abs(this.car_speed) > 0 && safetyCounter < 100) {
+            //
+            while (timeLeft > 0 && Math.abs(this.car_speed) > 0 && safetyCounter < 100) {
+                if (this.beizerCounter > this.road.length - 3) {
+                    this.showGoal = true;
+                    console.log("Goal!");
+                    this.completionTime = (this.gameTime + (oTimeLeft - timeLeft)) / 1000;
+                    this.setUpComplete = false;
+                    break;
+                }
                 safetyCounter += 1;
                 var pCurrent = this.road[this.beizerCounter];
                 var pNext = this.road[this.beizerCounter + 1];
@@ -356,7 +368,7 @@ var GameComponent = (function () {
         setTimeout(function () {
             _this.map_game.panTo([59.93502, 10.75857]);
         }, 1500);
-        var _loop_1 = function(i) {
+        var _loop_1 = function (i) {
             setTimeout(function () {
                 //map_game.setZoom(i + 13, '');
                 _this.map_game.flyTo([59.93502, 10.75857], (i + 13), { animate: true });
@@ -370,7 +382,15 @@ var GameComponent = (function () {
             _loop_1(i);
         }
     };
-    GameComponent.prototype.startGameFromCountdown = function (startGame) {
+    GameComponent.prototype.startGameFromCountdown = function (game) {
+        console.log("Start from countdown");
+        this.startGame(game);
+    };
+    GameComponent.prototype.restartGameFromGoal = function (game) {
+        console.log("Start from goal");
+        this.startGame(game);
+    };
+    GameComponent.prototype.startGame = function (startGame) {
         console.log("from game: " + startGame);
         this.showCountDownTimer = false;
         this.setUpComplete = true;
@@ -379,23 +399,27 @@ var GameComponent = (function () {
         console.log(id);
     };
     GameComponent.prototype.ngOnDestroy = function () {
-        // prevent memory leak by unsubscribing
+        console.log("DONE");
         this.subscription.unsubscribe();
+        this.setUpComplete = false;
+        clearInterval(this.gameLoopInterval);
+        console.log("DONE");
     };
-    GameComponent = __decorate([
-        core_1.Component({
-            selector: 'game-screen',
-            templateUrl: 'app/game/game.component.html',
-            styleUrls: [
-                'app/game/game.component.css',
-                'app/styles/shared.css',
-                'node_modules/leaflet/dist/leaflet.css'
-            ]
-        }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router])
-    ], GameComponent);
     return GameComponent;
 }());
+GameComponent = __decorate([
+    core_1.Component({
+        selector: 'game-screen',
+        templateUrl: 'app/game/game.component.html',
+        styleUrls: [
+            'app/game/game.component.css',
+            'app/styles/shared.css',
+            'node_modules/leaflet/dist/leaflet.css'
+        ]
+    }),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        router_1.Router])
+], GameComponent);
 exports.GameComponent = GameComponent;
 var GameLogic_helperClass = (function () {
     function GameLogic_helperClass() {
