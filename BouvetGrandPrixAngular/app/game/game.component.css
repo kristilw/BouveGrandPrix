@@ -12,6 +12,19 @@
     text-align:center;
 }
 
+#car_div{
+    position:absolute;
+    top:50vh;
+    left:50%;
+}
+
+#car_img{
+    width:30px;
+    height:40px;
+    margin-top:-20px;
+    margin-left:-15px;
+}
+
 #w_key{
     height:50px;
 }

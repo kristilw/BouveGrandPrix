@@ -17,16 +17,15 @@ var GameComponent = (function () {
         this.route = route;
         this.router = router;
         this.setUpComplete = false;
-        this.frameTime_milli = 25;
+        this.frameTime_milli = 30;
         this.car_img_scale = 0.10;
-        this.car_img = null;
-        this.car_img_path = 'img/car';
-        this.car_marker = null;
-        this.car_resistance_square = 0.002;
-        this.car_resistance_linear = 0.02;
+        this.car_img_original = null;
+        this.car_img_elem = null;
+        this.car_resistance_square = 0.005;
+        this.car_resistance_linear = 0.05;
         this.car_img_id = 0;
         this.car_speed = 0;
-        this.car_maxAcceleration = 6;
+        this.car_maxAcceleration = 4;
         this.gameLoopInterval = null;
         this.speedometer_needle_img = null;
         this.speedometer_needle_img_loaded = false;
@@ -65,25 +64,18 @@ var GameComponent = (function () {
             zoomAnimationThreshold: 20
         }).addTo(this.map_game);
         this.zoomToStartArea();
-        this.car_img = new Image();
-        this.car_img.onload = (function () {
-            var width = _this.car_img.width * _this.car_img_scale;
-            var height = _this.car_img.height * _this.car_img_scale;
-            var img_r = _this.rotateImg(_this.car_img, Math.PI * 1.27 - Math.PI / 2, _this.car_img_path);
+        this.car_img_elem = $("#car_img");
+        this.car_img_original = new Image();
+        this.car_img_original.onload = (function () {
+            var img_r = _this.rotateImg(_this.car_img_original, Math.PI * 1.27 - Math.PI / 2);
             img_r.onload = (function () {
-                var carMarkerIcon = L.icon({
-                    iconUrl: img_r.src,
-                    iconSize: [width, height],
-                    iconAnchor: [width / 2, height / 2],
-                    popupAnchor: [width / 2, -height / 2] // point from which the popup should open relative to the iconAnchor
-                });
-                _this.car_marker = L.marker([59.93502, 10.75857], { icon: carMarkerIcon }).addTo(_this.map_game);
+                _this.car_img_elem.attr("src", img_r.src);
             });
         });
         this.subscription = this.route.params.subscribe(function (param) {
             var userId = param['id'];
             _this.car_img_id = userId;
-            _this.car_img.src = '../app/img/biler/bil_utenlykter_' + _this.car_img_id + '.png';
+            _this.car_img_original.src = '../app/img/biler_small/bil_utenlykter_' + _this.car_img_id + '.png';
             console.log(userId);
         });
         this.speedometer_needle_img = new Image();
@@ -134,7 +126,7 @@ var GameComponent = (function () {
             }
         }
     };
-    GameComponent.prototype.handleAcceleration = function () {
+    GameComponent.prototype.handleAcceleration = function (actualFrameTime_milli) {
         var _this = this;
         this.keysPressed.forEach(function (item, key, mapObj) {
             if (item === true) {
@@ -142,15 +134,15 @@ var GameComponent = (function () {
                 //console.log("keyPressed: " + keyPressed);
                 var car_speed_delta = 0;
                 if (keyPressed === "w_key") {
-                    car_speed_delta = _this.car_maxAcceleration * _this.frameTime_milli / 1000;
+                    car_speed_delta = _this.car_maxAcceleration * actualFrameTime_milli / 1000;
                 }
                 else if (keyPressed === "s_key") {
-                    car_speed_delta = -_this.car_maxAcceleration * _this.frameTime_milli / 1000 * 3;
+                    car_speed_delta = -_this.car_maxAcceleration * actualFrameTime_milli / 1000 * 3;
                 }
                 _this.car_speed += car_speed_delta;
             }
         });
-        this.car_speed -= (this.car_speed * this.car_speed * this.car_resistance_square + this.car_speed * this.car_resistance_linear) * this.frameTime_milli / 1000;
+        this.car_speed -= (this.car_speed * this.car_speed * this.car_resistance_square + this.car_speed * this.car_resistance_linear) * actualFrameTime_milli / 1000;
         this.car_speed = Math.max(0, this.car_speed);
     };
     GameComponent.prototype.gameLoop = function () {
@@ -240,14 +232,15 @@ var GameComponent = (function () {
                     console.log("pNextNext.type: " + pNextNext.type);
                 }
             }
-            this.handleAcceleration();
+            this.handleAcceleration(actualFrameTime_milli);
             if (carNewPosition !== null) {
                 this.MoveCar(carNewPosition, carNewAngle);
                 if (this.updatePan === true) {
                     //console.log("pan");
-                    this.map_game.panTo(carNewPosition, {
+                    /*this.map_game.panTo(carNewPosition, {
                         animate: false
-                    });
+                    });*/
+                    this.map_game.setView(carNewPosition);
                 }
             }
         }
@@ -255,7 +248,7 @@ var GameComponent = (function () {
             console.log("setup is not complete");
         }
     };
-    GameComponent.prototype.rotateImg = function (image, angle, img_path) {
+    GameComponent.prototype.rotateImg = function (image, angle) {
         var canvas = document.createElement("canvas");
         var image_length = Math.sqrt(Math.pow(image.width, 2) + Math.pow(image.height, 2));
         var image_big = image.width > image.height ? image.width : image.height;
@@ -269,13 +262,13 @@ var GameComponent = (function () {
         context.translate(-canvas.width / 2, -canvas.height / 2);
         context.drawImage(image, canvas.width / 2 - image.width / 2, canvas.height / 2 - image.height / 2);
         var newImage = new Image();
-        newImage.src = canvas.toDataURL(img_path);
+        newImage.src = canvas.toDataURL("image/png");
         return newImage;
     };
     GameComponent.prototype.updateSpeedometer = function (speed) {
         if (this.speedometer_needle_img_loaded) {
             var angle = speed - Math.PI / 2;
-            var img_r = this.rotateImg(this.speedometer_needle_img, angle, this.speedometer_needle_img_path);
+            var img_r = this.rotateImg(this.speedometer_needle_img, angle);
             var speedometer_needle_img_tag = null;
             speedometer_needle_img_tag = $("#speedometer_needle");
             console.log(speedometer_needle_img_tag);
@@ -300,24 +293,12 @@ var GameComponent = (function () {
     };
     GameComponent.prototype.MoveCar = function (p, angle) {
         var _this = this;
-        if (this.car_img !== null && this.map_game !== null && this.car_marker != null) {
-            this.car_marker.setLatLng([p.lat, p.lon]);
-            var newCarMarker = null;
-            var width = this.car_img.width * this.car_img_scale;
-            var height = this.car_img.height * this.car_img_scale;
+        if (this.car_img_original !== null) {
             angle = angle - Math.PI / 2 + 0.035;
             angle = (((angle + 3 * Math.PI) % (2 * Math.PI)) - Math.PI);
-            var img_r = this.rotateImg(this.car_img, angle, this.car_img_path);
+            var img_r = this.rotateImg(this.car_img_original, angle);
             img_r.onload = (function () {
-                var carMarkerIcon = L.icon({
-                    iconUrl: img_r.src,
-                    iconSize: [width, height],
-                    iconAnchor: [width / 2, height / 2],
-                    popupAnchor: [width / 2, -height / 2] // point from which the popup should open relative to the iconAnchor
-                });
-                newCarMarker = L.marker(_this.car_marker.getLatLng(), { icon: carMarkerIcon }).addTo(_this.map_game);
-                _this.map_game.removeLayer(_this.car_marker);
-                _this.car_marker = newCarMarker;
+                _this.car_img_elem.attr("src", img_r.src);
             });
         }
         else {
