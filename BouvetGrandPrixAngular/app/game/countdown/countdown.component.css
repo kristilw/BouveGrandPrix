@@ -12,6 +12,11 @@
     padding:50px 70px 50px 70px;
 }
 
+#flags_countdown{
+    height:5vh;
+    margin-top:-85px;
+}
+
 
 .count_down_text_hoverEffect:hover{
     border: 1px solid #ffffff !important;

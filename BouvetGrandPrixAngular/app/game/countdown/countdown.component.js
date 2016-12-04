@@ -13,7 +13,7 @@ var core_1 = require("@angular/core");
 var CountdownComponent = (function () {
     function CountdownComponent() {
         this.startGameCountdown = new core_1.EventEmitter();
-        this.countDownTimer = "start";
+        this.countDownTimer = "KJØR!";
     }
     CountdownComponent.prototype.countDownToZero = function () {
         var _this = this;

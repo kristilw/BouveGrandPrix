@@ -56,18 +56,32 @@
     height:250px;
 }
 
-#speedometer_background_div{
+#speedometer_div{
     position:absolute;
     width:100%;
     top:30px;
 }
+
+#speedometer_background_div{
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius: 75px;
+    left:50%;
+    margin-left:-75px;
+    z-index:-10;
+}
+
 #speedometer_background{
-    width:200px;
+    width:120px;
+    margin-top:3px;
     z-index:50;
 }
 
 #speedometer_needle{
-    z-index:100;
+    z-index:800;
+    height:105px;
+    margin-top:30px;
 }
 
 

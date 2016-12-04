@@ -97,7 +97,7 @@ export class GameComponent {
             this.speedometer_needle_img_loaded = true;
             this.updateSpeedometer(0);
         });
-        this.speedometer_needle_img.src = '../app/img/Speedometernål_stor.png';
+        this.speedometer_needle_img.src = '../app/img/Speedometernål_liten.png';
 
         /*$.ajax({
             url: "app/game/roads/road.csv",
@@ -166,13 +166,14 @@ export class GameComponent {
                     car_speed_delta = this.car_maxAcceleration * actualFrameTime_milli / 1000;
                      
                 } else if (keyPressed === "s_key") {
-                    car_speed_delta = -this.car_maxAcceleration * actualFrameTime_milli / 1000 * 3;
+                    car_speed_delta = -this.car_maxAcceleration * actualFrameTime_milli / 1000 * 1.5;
                 }
                 this.car_speed += car_speed_delta;
             }
         });
         this.car_speed -= (this.car_speed * this.car_speed * this.car_resistance_square + this.car_speed * this.car_resistance_linear) * actualFrameTime_milli / 1000;
         this.car_speed = Math.max(0, this.car_speed);
+        this.updateSpeedometer(this.car_speed);
     }
 
     gameTime: number = 0;
@@ -318,7 +319,7 @@ export class GameComponent {
         }
     }
 
-    rotateImg(image: any, angle: number): any {
+    rotateCar(image: any, angle: number): any {
         var canvas = document.createElement("canvas");
         var image_length = Math.sqrt(Math.pow(image.width, 2) + Math.pow(image.height, 2));
 
@@ -342,22 +343,36 @@ export class GameComponent {
         return newImage;
     }
 
+    rotateSpeedometer(image: any, angle: number): any {
+        var canvas = document.createElement("canvas");
+
+        canvas.width = 190;
+        canvas.height = 100;
+
+        var needleCenter = 73;
+
+        var context = canvas.getContext("2d");
+        context.translate(canvas.width / 2, needleCenter);
+        context.rotate(angle);
+        context.translate(-canvas.width / 2, -needleCenter);
+        context.drawImage(image, canvas.width / 2 - image.width / 2, canvas.height / 2 - image.height / 2);
+
+        var newImage = new Image();
+        newImage.src = canvas.toDataURL("image/png");
+
+        return newImage;
+    }
+
     updateSpeedometer(speed: number): void {
         if (this.speedometer_needle_img_loaded) {
-            let angle: number = speed - Math.PI/2;
+            let angle: number = Math.PI/180*(speed/21*120 - 62);
 
-            var img_r = this.rotateImg(this.speedometer_needle_img, angle);
+            var img_r = this.rotateSpeedometer(this.speedometer_needle_img, angle);
 
             var speedometer_needle_img_tag: any = null;
             speedometer_needle_img_tag = $("#speedometer_needle");
-
-            console.log(speedometer_needle_img_tag);
-
-            speedometer_needle_img_tag.onload = (() => {
-                console.log("needle updated");
-            });
-
-            speedometer_needle_img_tag.src = '../app/img/Speedometernål_stor.png';
+        
+            speedometer_needle_img_tag.attr("src", img_r.src);
         }
     }
 
@@ -383,7 +398,7 @@ export class GameComponent {
             angle = angle - Math.PI / 2 + 0.035;
             angle = (((angle + 3 * Math.PI) % (2 * Math.PI)) - Math.PI);
 
-            var img_r = this.rotateImg(this.car_img_original, angle);
+            var img_r = this.rotateCar(this.car_img_original, angle);
             img_r.onload = (() => {
                 this.car_img_elem.attr("src", img_r.src);
             });
@@ -464,7 +479,7 @@ export class GameComponent {
 
         this.car_img_original = new Image();
         this.car_img_original.onload = (() => {
-            var img_r = this.rotateImg(this.car_img_original, Math.PI * 1.27 - Math.PI / 2);
+            var img_r = this.rotateCar(this.car_img_original, Math.PI * 1.27 - Math.PI / 2);
             img_r.onload = (() => {
                 this.car_img_elem.attr("src", img_r.src);
             });
@@ -491,6 +506,7 @@ export class GameComponent {
         this.map_game.panTo([59.93502, 10.75857],{ animate: true });
         this.MoveCar(Math.PI * 1.27);
         this.showCountDownTimer = true;
+        this.updateSpeedometer(0);
     }
 
     startGame(startGame: boolean): void {
