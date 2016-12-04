@@ -121,6 +121,9 @@
     width:100%;
 }
 
+#navbar_bottom_top{
+    pointer-events:none;
+}
 
 #navbar_bottom_first_box{
     text-align: center;

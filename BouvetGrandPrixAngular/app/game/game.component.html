@@ -29,7 +29,7 @@
         </div>
 
         <div id="car_div">
-            <img id="car_img" src="app/img/w_key_t.png" />
+            <img id="car_img" *ngIf="zoomedToStartArea"/>
         </div>
 
         <div id="speedometer">
@@ -37,6 +37,13 @@
                 <img id="speedometer_background" src="app/img/Speedometer_stor.png" />
             </div>
             <img id="speedometer_needle"/>
+        </div>
+
+        <div id="restart_div">
+            <button class="button bouvet_button background_dark bouvet_orange_border" (click)="restartGameFromButton()">
+                <span class="glyphicon glyphicon-repeat bouvet_orange_text">  </span>
+                <span class="white_text"> OMSTART </span>
+            </button>
         </div>
     </div>
 </div>

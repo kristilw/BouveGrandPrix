@@ -51,6 +51,8 @@ export class GameComponent {
     speedometer_needle_img_path: string = 'img/needle';
     speedometer_needle_img_scale: number = 0.1;
 
+    zoomedToStartArea: boolean = false;
+
     gameLogic: GameLogic_helperClass = new GameLogic_helperClass();
 
     constructor(
@@ -90,34 +92,12 @@ export class GameComponent {
 
         this.zoomToStartArea();
 
-        this.car_img_elem = $("#car_img");
-        
-
-        this.car_img_original = new Image();
-        this.car_img_original.onload = (() => {
-            var img_r = this.rotateImg(this.car_img_original, Math.PI * 1.27 - Math.PI / 2);
-            img_r.onload = (() => {
-                this.car_img_elem.attr("src", img_r.src);
-            });
-        });
-
-        this.subscription = this.route.params.subscribe(
-            (param: any) => {
-                let userId = param['id'];
-                this.car_img_id = userId;
-                this.car_img_original.src = '../app/img/biler_small/bil_utenlykter_' + this.car_img_id + '.png';
-                console.log(userId);
-            });
-
         this.speedometer_needle_img = new Image();
         this.speedometer_needle_img.onload = (() => {
             this.speedometer_needle_img_loaded = true;
             this.updateSpeedometer(0);
         });
         this.speedometer_needle_img.src = '../app/img/Speedometernål_stor.png';
-
-        //this.car_img.src = '../app/img/car_w_1.png';
-        
 
         /*$.ajax({
             url: "app/game/roads/road.csv",
@@ -322,7 +302,7 @@ export class GameComponent {
 
             if (carNewPosition !== null) {
 
-                this.MoveCar(carNewPosition, carNewAngle);
+                this.MoveCar(carNewAngle);
 
                 if (this.updatePan === true) {
                     //console.log("pan");
@@ -398,7 +378,7 @@ export class GameComponent {
         this.printRoadToMap(this.road);
     }
 
-    MoveCar(p: any, angle: number): void {
+    MoveCar(angle: number): void {
         if (this.car_img_original !== null) {
             angle = angle - Math.PI / 2 + 0.035;
             angle = (((angle + 3 * Math.PI) % (2 * Math.PI)) - Math.PI);
@@ -468,9 +448,35 @@ export class GameComponent {
                 //this.map_game.zoomIn();
                 if (i === 6) {
                     this.showCountDownTimer = true;
+                    this.zoomedToStartArea = true;
+                    
+
+                    setTimeout(() => {
+                        this.loadImageOfCar();
+                    }, 100);
                 }
             }, 1500 * (i + 1));
         }
+    }
+
+    loadImageOfCar(): void {
+        this.car_img_elem = $("#car_img");
+
+        this.car_img_original = new Image();
+        this.car_img_original.onload = (() => {
+            var img_r = this.rotateImg(this.car_img_original, Math.PI * 1.27 - Math.PI / 2);
+            img_r.onload = (() => {
+                this.car_img_elem.attr("src", img_r.src);
+            });
+        });
+
+        this.subscription = this.route.params.subscribe(
+            (param: any) => {
+                let userId = param['id'];
+                this.car_img_id = userId;
+                this.car_img_original.src = '../app/img/biler_small/bil_utenlykter_' + this.car_img_id + '.png';
+                console.log(userId);
+            });
     }
 
     startGameFromCountdown(game: boolean): void {
@@ -478,15 +484,24 @@ export class GameComponent {
         this.startGame(game);
     }
 
-    restartGameFromGoal(game: boolean): void {
-        console.log("Start from goal");
-        this.startGame(game);
+    restartGameFromButton(): void {
+        console.log("Start from button");
+        this.setUpComplete = false;
+
+        this.map_game.panTo([59.93502, 10.75857],{ animate: true });
+        this.MoveCar(Math.PI * 1.27);
+        this.showCountDownTimer = true;
     }
 
     startGame(startGame: boolean): void {
         console.log("from game: " + startGame);
         this.showCountDownTimer = false;
         this.setUpComplete = true;
+
+        this.car_speed = 0;
+        this.gameTime = 0;
+        this.beizerCounter = 0;
+        this.beizerTime = 0;
     }
 
     printId(id: number): void {

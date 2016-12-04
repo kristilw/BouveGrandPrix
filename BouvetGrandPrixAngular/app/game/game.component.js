@@ -31,6 +31,7 @@ var GameComponent = (function () {
         this.speedometer_needle_img_loaded = false;
         this.speedometer_needle_img_path = 'img/needle';
         this.speedometer_needle_img_scale = 0.1;
+        this.zoomedToStartArea = false;
         this.gameLogic = new GameLogic_helperClass();
         this.showCountDownTimer = false;
         this.showGoal = false;
@@ -64,27 +65,12 @@ var GameComponent = (function () {
             zoomAnimationThreshold: 20
         }).addTo(this.map_game);
         this.zoomToStartArea();
-        this.car_img_elem = $("#car_img");
-        this.car_img_original = new Image();
-        this.car_img_original.onload = (function () {
-            var img_r = _this.rotateImg(_this.car_img_original, Math.PI * 1.27 - Math.PI / 2);
-            img_r.onload = (function () {
-                _this.car_img_elem.attr("src", img_r.src);
-            });
-        });
-        this.subscription = this.route.params.subscribe(function (param) {
-            var userId = param['id'];
-            _this.car_img_id = userId;
-            _this.car_img_original.src = '../app/img/biler_small/bil_utenlykter_' + _this.car_img_id + '.png';
-            console.log(userId);
-        });
         this.speedometer_needle_img = new Image();
         this.speedometer_needle_img.onload = (function () {
             _this.speedometer_needle_img_loaded = true;
             _this.updateSpeedometer(0);
         });
         this.speedometer_needle_img.src = '../app/img/Speedometernål_stor.png';
-        //this.car_img.src = '../app/img/car_w_1.png';
         /*$.ajax({
             url: "app/game/roads/road.csv",
             dataType: "text",  // jQuery will infer this, but you can set explicitly
@@ -234,7 +220,7 @@ var GameComponent = (function () {
             }
             this.handleAcceleration(actualFrameTime_milli);
             if (carNewPosition !== null) {
-                this.MoveCar(carNewPosition, carNewAngle);
+                this.MoveCar(carNewAngle);
                 if (this.updatePan === true) {
                     //console.log("pan");
                     /*this.map_game.panTo(carNewPosition, {
@@ -291,7 +277,7 @@ var GameComponent = (function () {
         }
         this.printRoadToMap(this.road);
     };
-    GameComponent.prototype.MoveCar = function (p, angle) {
+    GameComponent.prototype.MoveCar = function (angle) {
         var _this = this;
         if (this.car_img_original !== null) {
             angle = angle - Math.PI / 2 + 0.035;
@@ -356,6 +342,10 @@ var GameComponent = (function () {
                 //this.map_game.zoomIn();
                 if (i === 6) {
                     _this.showCountDownTimer = true;
+                    _this.zoomedToStartArea = true;
+                    setTimeout(function () {
+                        _this.loadImageOfCar();
+                    }, 100);
                 }
             }, 1500 * (i + 1));
         };
@@ -363,18 +353,42 @@ var GameComponent = (function () {
             _loop_1(i);
         }
     };
+    GameComponent.prototype.loadImageOfCar = function () {
+        var _this = this;
+        this.car_img_elem = $("#car_img");
+        this.car_img_original = new Image();
+        this.car_img_original.onload = (function () {
+            var img_r = _this.rotateImg(_this.car_img_original, Math.PI * 1.27 - Math.PI / 2);
+            img_r.onload = (function () {
+                _this.car_img_elem.attr("src", img_r.src);
+            });
+        });
+        this.subscription = this.route.params.subscribe(function (param) {
+            var userId = param['id'];
+            _this.car_img_id = userId;
+            _this.car_img_original.src = '../app/img/biler_small/bil_utenlykter_' + _this.car_img_id + '.png';
+            console.log(userId);
+        });
+    };
     GameComponent.prototype.startGameFromCountdown = function (game) {
         console.log("Start from countdown");
         this.startGame(game);
     };
-    GameComponent.prototype.restartGameFromGoal = function (game) {
-        console.log("Start from goal");
-        this.startGame(game);
+    GameComponent.prototype.restartGameFromButton = function () {
+        console.log("Start from button");
+        this.setUpComplete = false;
+        this.map_game.panTo([59.93502, 10.75857], { animate: true });
+        this.MoveCar(Math.PI * 1.27);
+        this.showCountDownTimer = true;
     };
     GameComponent.prototype.startGame = function (startGame) {
         console.log("from game: " + startGame);
         this.showCountDownTimer = false;
         this.setUpComplete = true;
+        this.car_speed = 0;
+        this.gameTime = 0;
+        this.beizerCounter = 0;
+        this.beizerTime = 0;
     };
     GameComponent.prototype.printId = function (id) {
         console.log(id);
