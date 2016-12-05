@@ -26,6 +26,7 @@ var GameComponent = (function () {
         this.car_img_id = 0;
         this.car_speed = 0;
         this.car_maxAcceleration = 4;
+        this.car_grip = 50;
         this.gameLoopInterval = null;
         this.speedometer_needle_img = null;
         this.speedometer_needle_img_loaded = false;
@@ -35,6 +36,7 @@ var GameComponent = (function () {
         this.gameLogic = new GameLogic_helperClass();
         this.showCountDownTimer = false;
         this.showGoal = false;
+        this.showWoops = false;
         //document.onkeyup = onKeyUp;
         this.keysPressed = new Map();
         this.keyEventToId = new Map();
@@ -96,9 +98,8 @@ var GameComponent = (function () {
         var keyStatus = this.keysPressed.get(keyCode);
         if (keyStatus === undefined || keyStatus === false) {
             this.keysPressed.set(keyCode, true);
-            console.log("keyCode down: " + keyCode);
+            //console.log("keyCode down: " + keyCode);
             if (this.keyEventToId.get(keyCode) !== undefined) {
-                document.getElementById(this.keyEventToId.get(keyCode)).style.opacity = "1";
             }
         }
     };
@@ -106,9 +107,8 @@ var GameComponent = (function () {
         var keyStatus = this.keysPressed.get(keyCode);
         if (keyStatus === undefined || keyStatus === true) {
             this.keysPressed.set(keyCode, false);
-            console.log("keyCode up: " + keyCode);
+            //console.log("keyCode up: " + keyCode);
             if (this.keyEventToId.get(keyCode) !== undefined) {
-                document.getElementById(this.keyEventToId.get(keyCode)).style.opacity = "0.5";
             }
         }
     };
@@ -132,6 +132,22 @@ var GameComponent = (function () {
         this.car_speed = Math.max(0, this.car_speed);
         this.updateSpeedometer(this.car_speed);
     };
+    //   based on v^2 / r <= F_grip
+    GameComponent.prototype.GetSpeedLimit = function (p1, p2, p3, t) {
+        var turnRadius = this.gameLogic.GetCurrentTurnRadius(p1, p2, p3, t);
+        var speedLimit = Math.sqrt(turnRadius * this.car_grip);
+        return speedLimit;
+    };
+    GameComponent.prototype.EnforcingSpeedLimit = function () {
+        var _this = this;
+        this.car_speed = 0;
+        this.beizerTime = 0;
+        this.gameTime += 3;
+        this.showWoops = true;
+        setTimeout(function () {
+            _this.showWoops = false;
+        }, 1000);
+    };
     GameComponent.prototype.gameLoop = function () {
         if (this.setUpComplete) {
             var unixTimeNew = new Date().getTime();
@@ -146,19 +162,12 @@ var GameComponent = (function () {
                 this.updatePan = true;
             }
             this.gameTime += actualFrameTime_milli;
-            console.log("dt: " + actualFrameTime_milli + " gt: " + this.gameTime);
-            /*var p = {
-                'lat': 59.935,
-                'lon': 10.7585
-            }
-            this.MoveCar(p, this.gameTime / 1000);*/
+            //console.log("dt: " + actualFrameTime_milli +" gt: " + this.gameTime)
             var timeLeft = actualFrameTime_milli;
             var oTimeLeft = timeLeft;
             var carNewPosition = null;
             var carNewAngle = null;
             var safetyCounter = 0;
-            //console.log("speed: " + this.car_speed);
-            //
             while (timeLeft > 0 && Math.abs(this.car_speed) > 0 && safetyCounter < 100) {
                 if (this.beizerCounter > this.road.length - 3) {
                     this.showGoal = true;
@@ -172,7 +181,6 @@ var GameComponent = (function () {
                 var pNext = this.road[this.beizerCounter + 1];
                 var pNextNext = this.road[this.beizerCounter + 2];
                 if ((pCurrent.type === 'p0' || pCurrent.type === 'b2') && (pNext.type === 'p0' || pNext.type === 'b0')) {
-                    //console.log("line detected");
                     var lengthToTravel = this.car_speed * timeLeft * 0.001;
                     var distanceInBeizerTime = this.gameLogic.LineTime(pCurrent, pNext, lengthToTravel);
                     if (this.beizerTime + distanceInBeizerTime > 1) {
@@ -186,23 +194,42 @@ var GameComponent = (function () {
                         this.beizerTime += distanceInBeizerTime;
                         carNewPosition = this.gameLogic.GetPostionByLineAndTime(pCurrent, pNext, this.beizerTime);
                         carNewAngle = this.gameLogic.GetAngleLine(pCurrent, pNext);
-                        //console.log(this.beizerTime);
                         break;
                     }
                 }
                 else if (pCurrent.type === 'b0' && pNext.type === 'b1' && pNextNext.type === 'b2') {
-                    //console.log("curve detected");
                     var lengthToTravel = this.car_speed * timeLeft * 0.001;
                     var lengthOfTurn = this.gameLogic.BeizerCurveQudraticDistance_between(pCurrent, pNext, pNextNext, this.beizerTime, 1);
                     var lengthOfTotalTurn = this.gameLogic.BeizerCurveQudraticDistance_between(pCurrent, pNext, pNextNext, 0, 1);
                     var timeLeftOfTurn = lengthOfTurn / this.car_speed * 1000;
                     if (lengthOfTurn < lengthToTravel) {
+                        if (this.beizerTime < 0.5) {
+                            var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, 0.5);
+                            if (this.car_speed > speedLimit) {
+                                console.log(this.car_speed + " " + speedLimit);
+                                this.EnforcingSpeedLimit();
+                            }
+                        }
                         this.beizerCounter += 2;
                         this.beizerTime = 0;
                         timeLeft -= timeLeftOfTurn;
                     }
                     else {
                         var firstGuessBeizerTime = this.beizerTime + lengthToTravel / lengthOfTotalTurn;
+                        if (this.beizerTime < 0.5 && firstGuessBeizerTime > 0.5) {
+                            var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, 0.5);
+                            if (this.car_speed > speedLimit) {
+                                console.log(this.car_speed + " " + speedLimit);
+                                this.EnforcingSpeedLimit();
+                            }
+                        }
+                        else {
+                            var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, firstGuessBeizerTime);
+                            if (this.car_speed > speedLimit) {
+                                console.log(this.car_speed + " " + speedLimit);
+                                this.EnforcingSpeedLimit();
+                            }
+                        }
                         this.beizerTime = firstGuessBeizerTime;
                         timeLeft = 0;
                         carNewPosition = this.gameLogic.BeizerCurveQuadratic(pCurrent, pNext, pNextNext, this.beizerTime);
@@ -392,6 +419,7 @@ var GameComponent = (function () {
         this.MoveCar(Math.PI * 1.27);
         this.showCountDownTimer = true;
         this.updateSpeedometer(0);
+        this.showGoal = false;
     };
     GameComponent.prototype.startGame = function (startGame) {
         console.log("from game: " + startGame);
@@ -433,6 +461,21 @@ var GameLogic_helperClass = (function () {
         this.timeStep = 0.02;
         this.earthCircumference_m = 40000;
     }
+    GameLogic_helperClass.prototype.GetCurrentTurnRadius = function (p1, p2, p3, t) {
+        var totalLength = this.BeizerCurveQudraticDistance(p1, p2, p3);
+        var dLength = 0.1;
+        var tb = Math.max(0, t - (dLength / 2) / totalLength);
+        var tf = Math.min(1, t + (dLength / 2) / totalLength);
+        var angle_1 = this.GetAngleBeizerCurve(p1, p2, p3, tb);
+        var angle_2 = this.GetAngleBeizerCurve(p1, p2, p3, tf);
+        var deltaAngle = Math.abs(angle_2 - angle_1);
+        if (deltaAngle < 0.0001) {
+            return 1000000;
+        }
+        else {
+            return dLength / deltaAngle;
+        }
+    };
     GameLogic_helperClass.prototype.BeizerCurveQuadratic = function (p1, p2, p3, t) {
         return {
             'lat': (Math.pow((1 - t), 2) * p1.lat + 2 * (1 - t) * t * p2.lat + p3.lat * Math.pow(t, 2)),

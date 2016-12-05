@@ -18,6 +18,21 @@
     left:50%;
 }
 
+#woops_div{
+    position:absolute;
+    top:50vh;
+    left:50%;
+    z-index:40;
+}
+
+#woops_img{
+    width:60px;
+    height:60px;
+
+    margin-left:-30px;
+    margin-top:-30px;
+}
+
 #car_img{
     width:30px;
     height:40px;
