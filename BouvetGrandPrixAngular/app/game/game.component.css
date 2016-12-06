@@ -33,6 +33,17 @@
     margin-top:-30px;
 }
 
+#time_text{
+    position:absolute;
+    top:70px;
+    left:50%;
+    z-index:51;
+
+    width:50px;
+    margin-left:-25px;
+    text-align:center;
+}
+
 #car_img{
     width:30px;
     height:40px;

@@ -41,6 +41,7 @@ var GameComponent = (function () {
         this.keysPressed = new Map();
         this.keyEventToId = new Map();
         this.gameTime = 0;
+        this.gameTime_text = "00:00:00";
         this.beizerCounter = 0;
         this.beizerTime = 0;
         this.lastPan = 0;
@@ -142,7 +143,7 @@ var GameComponent = (function () {
         var _this = this;
         this.car_speed = 0;
         this.beizerTime = 0;
-        this.gameTime += 3;
+        this.gameTime += 3000;
         this.showWoops = true;
         setTimeout(function () {
             _this.showWoops = false;
@@ -162,6 +163,7 @@ var GameComponent = (function () {
                 this.updatePan = true;
             }
             this.gameTime += actualFrameTime_milli;
+            this.gameTime_text = this.gameLogic.TimeToString(this.gameTime / 1000);
             //console.log("dt: " + actualFrameTime_milli +" gt: " + this.gameTime)
             var timeLeft = actualFrameTime_milli;
             var oTimeLeft = timeLeft;
@@ -420,6 +422,8 @@ var GameComponent = (function () {
         this.showCountDownTimer = true;
         this.updateSpeedometer(0);
         this.showGoal = false;
+        this.gameTime = 0;
+        this.gameTime_text = this.gameLogic.TimeToString(this.gameTime / 1000);
     };
     GameComponent.prototype.startGame = function (startGame) {
         console.log("from game: " + startGame);
@@ -427,8 +431,10 @@ var GameComponent = (function () {
         this.setUpComplete = true;
         this.car_speed = 0;
         this.gameTime = 0;
+        this.gameTime_text = this.gameLogic.TimeToString(this.gameTime / 1000);
         this.beizerCounter = 0;
         this.beizerTime = 0;
+        this.unixTimeOld = 0;
     };
     GameComponent.prototype.printId = function (id) {
         console.log(id);
@@ -461,6 +467,21 @@ var GameLogic_helperClass = (function () {
         this.timeStep = 0.02;
         this.earthCircumference_m = 40000;
     }
+    GameLogic_helperClass.prototype.TimeToString = function (time) {
+        if (time === null || time < 0) {
+            return "404, time not found";
+        }
+        var milliseconds_string = (Math.floor((time * 100 % 100))).toString();
+        if (milliseconds_string.length === 1)
+            milliseconds_string = "0" + milliseconds_string;
+        var seconds_string = (Math.floor((time % 60))).toString();
+        if (seconds_string.length === 1)
+            seconds_string = "0" + seconds_string;
+        var minute_string = (Math.floor((time / 60))).toString();
+        if (minute_string.length === 1)
+            minute_string = "0" + minute_string;
+        return minute_string + "." + seconds_string + "." + milliseconds_string;
+    };
     GameLogic_helperClass.prototype.GetCurrentTurnRadius = function (p1, p2, p3, t) {
         var totalLength = this.BeizerCurveQudraticDistance(p1, p2, p3);
         var dLength = 0.1;

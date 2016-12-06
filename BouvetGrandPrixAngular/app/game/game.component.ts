@@ -188,7 +188,7 @@ export class GameComponent {
     private EnforcingSpeedLimit(): void {
         this.car_speed = 0;
         this.beizerTime = 0;
-        this.gameTime += 3;
+        this.gameTime += 3000;
 
         this.showWoops = true;
 
@@ -198,6 +198,7 @@ export class GameComponent {
     }
 
     gameTime: number = 0;
+    gameTime_text: string = "00:00:00";
     beizerCounter: number = 0;
     beizerTime: number = 0;
 
@@ -206,7 +207,6 @@ export class GameComponent {
 
     unixTimeOld: number = 0;
     completionTime: number = null;
-
 
     gameLoop(): void {
         if (this.setUpComplete) {
@@ -225,6 +225,8 @@ export class GameComponent {
             }
 
             this.gameTime += actualFrameTime_milli;
+            this.gameTime_text = this.gameLogic.TimeToString(this.gameTime/1000);
+
             //console.log("dt: " + actualFrameTime_milli +" gt: " + this.gameTime)
 
             var timeLeft = actualFrameTime_milli;
@@ -538,6 +540,8 @@ export class GameComponent {
         this.showCountDownTimer = true;
         this.updateSpeedometer(0);
         this.showGoal = false;
+        this.gameTime = 0;
+        this.gameTime_text = this.gameLogic.TimeToString(this.gameTime/1000);
     }
 
     startGame(startGame: boolean): void {
@@ -547,8 +551,10 @@ export class GameComponent {
 
         this.car_speed = 0;
         this.gameTime = 0;
+        this.gameTime_text = this.gameLogic.TimeToString(this.gameTime/1000);
         this.beizerCounter = 0;
         this.beizerTime = 0;
+        this.unixTimeOld = 0;
     }
 
     printId(id: number): void {
@@ -565,6 +571,21 @@ export class GameComponent {
 }
 
 export class GameLogic_helperClass {
+    public TimeToString(time: number): string {
+        if (time === null || time < 0) {
+            return "404, time not found";
+        }
+        let milliseconds_string = (Math.floor((time * 100 % 100))).toString();
+        if (milliseconds_string.length === 1) milliseconds_string = "0" + milliseconds_string;
+
+        let seconds_string = (Math.floor((time % 60))).toString();
+        if (seconds_string.length === 1) seconds_string = "0" + seconds_string;
+
+        let minute_string = (Math.floor((time / 60))).toString();
+        if (minute_string.length === 1) minute_string = "0" + minute_string;
+
+        return minute_string + "." + seconds_string + "." + milliseconds_string;
+    }
 
     public GetCurrentTurnRadius(p1: any, p2: any, p3: any, t: number): number {
         var totalLength = this.BeizerCurveQudraticDistance(p1, p2, p3);
