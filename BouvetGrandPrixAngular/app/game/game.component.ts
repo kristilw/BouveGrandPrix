@@ -36,14 +36,14 @@ export class GameComponent {
     car_img_original: any = null;
     car_img_elem: any = null;
 
-    car_resistance_square: number = 0.005;
-    car_resistance_linear: number = 0.05;
+    car_resistance_square: number = 0.0015;
+    car_resistance_linear: number = 0.1;
 
     car_img_id: number= 0;
 
     car_speed: number = 0;
-    car_maxAcceleration: number = 4;
-    car_grip: number = 50;
+    car_maxAcceleration: number = 12;
+    car_grip: number = 150;
 
     gameLoopInterval: any = null;
 
@@ -66,30 +66,19 @@ export class GameComponent {
     showWoops: boolean = false;
 
     ngOnInit() {
-        //console.log(this.route.params.value.id);
-
-        
-
         this.map_game = L.map('map_game', {
-            //center: L.latLng(59.93502, 10.75857),
-            //zoom: 15,
             center: L.latLng(59.91902, 10.74857),
-            zoom: 13,
             zoomControl: false,
+            fadeAnimation: true,
             zoomAnimation: true,
-            zoomAnimationThreshold: 20
+            zoomAnimationThreshold: 20,
+            zoom: 13,
+            maxZoom:20
         });
 
         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia3Jpc3RpbHciLCJhIjoiY2l1dmw3aWttMDAwcjJ1cXc3bmZrMnExdCJ9.cxPXQumqqwNRhfWsj0Clvg', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-            minZoom: 2, maxZoom: 20,
-            zoomAnimation: true,
-            zoomAnimationThreshold: 20
-
-            // zoomTune: [13, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15, 15]
-
-            //minZoom: 4, maxZoom: 10,
-            //zoomTune: [4, 4, 4, 8, 8, 8, 8]
+            maxZoom:20
         }).addTo(this.map_game);
 
         this.zoomToStartArea();
@@ -127,8 +116,6 @@ export class GameComponent {
         this.gameLoopInterval = setInterval(() => { this.gameLoop(); }, this.frameTime_milli);
     }
 
-
-    
     //document.onkeyup = onKeyUp;
 
     keysPressed: any = new Map();
@@ -176,6 +163,7 @@ export class GameComponent {
         this.car_speed -= (this.car_speed * this.car_speed * this.car_resistance_square + this.car_speed * this.car_resistance_linear) * actualFrameTime_milli / 1000;
         this.car_speed = Math.max(0, this.car_speed);
         this.updateSpeedometer(this.car_speed);
+        //console.log(this.car_speed*3.6);
     }
 
     //   based on v^2 / r <= F_grip
@@ -187,7 +175,6 @@ export class GameComponent {
 
     private EnforcingSpeedLimit(): void {
         this.car_speed = 0;
-        this.beizerTime = 0;
         this.gameTime += 3000;
 
         this.showWoops = true;
@@ -207,6 +194,7 @@ export class GameComponent {
 
     unixTimeOld: number = 0;
     completionTime: number = null;
+    tempPolyline: any = null;
 
     gameLoop(): void {
         if (this.setUpComplete) {
@@ -256,6 +244,9 @@ export class GameComponent {
 
                     if (this.beizerTime + distanceInBeizerTime > 1) {
                         this.beizerCounter += 1;
+
+                        this.removePiceFromRoad(this.beizerCounter);
+
                         distanceInBeizerTime = 1 - this.beizerTime;
                         this.beizerTime = 0;
                         timeLeft -= distanceInBeizerTime;
@@ -290,6 +281,8 @@ export class GameComponent {
                         }
 
                         this.beizerCounter += 2;
+                        this.removePiceFromRoad(this.beizerCounter);
+
                         this.beizerTime = 0;
                         timeLeft -= timeLeftOfTurn;
                     } else {
@@ -334,20 +327,27 @@ export class GameComponent {
             this.handleAcceleration(actualFrameTime_milli);
 
             if (carNewPosition !== null) {
-
                 this.MoveCar(carNewAngle);
+                this.removeTempPolyline();
+                this.tempPolyline = this.printRoadSection(this.beizerCounter, this.beizerTime);
 
                 if (this.updatePan === true) {
-                    //console.log("pan");
-                    /*this.map_game.panTo(carNewPosition, {
-                        animate: false
-                    });*/
-                    this.map_game.setView(carNewPosition);
+                    var dN = this.car_speed * Math.cos(carNewAngle-Math.PI/2) * 125 / 1000;
+                    var dE = this.car_speed * Math.sin(carNewAngle-Math.PI/2) * 125 / 1000;
+                    var predictedCarPosition = this.gameLogic.CalcNewCoordinatesByReferenceAndDistance_c(carNewPosition,dN,dE);
+                    this.map_game.setView(predictedCarPosition);
                 }
                 
             }
         } else {
-            console.log("setup is not complete");
+            this.removeTempPolyline();
+            console.log("setup is not complete :" + this.showCountDownTimer);
+        }
+    }
+
+    removeTempPolyline(): void {
+        if (this.tempPolyline !== null) {
+            this.map_game.removeLayer(this.tempPolyline);
         }
     }
 
@@ -397,7 +397,7 @@ export class GameComponent {
 
     updateSpeedometer(speed: number): void {
         if (this.speedometer_needle_img_loaded) {
-            let angle: number = Math.PI/180*(speed/21*120 - 62);
+            let angle: number = Math.PI/180*(speed/58*120 - 62);
 
             var img_r = this.rotateSpeedometer(this.speedometer_needle_img, angle);
 
@@ -439,46 +439,76 @@ export class GameComponent {
         }
     }
 
+    roadSections: any = new Map();
     printRoadToMap(road: any): void {
         console.log("..print road to map: ");
         let roadSections_length = road.length;
         for (var i = 0; i < roadSections_length - 3; i++) {
-            let roadPoint_A = road[i];
-            let roadPoint_B = road[i + 1];
-            let roadPoint_C = road[i + 2];
-
-            if ((roadPoint_A.type === 'p0' || roadPoint_A.type === 'b2') && (roadPoint_B.type === 'p0' || roadPoint_B.type === 'b0')) {
-                var pointA = L.latLng(roadPoint_A.lat, roadPoint_A.lon);
-                var pointB = L.latLng(roadPoint_B.lat, roadPoint_B.lon);
-                var pointList = [pointA, pointB];
-
-                var firstpolyline = L.polyline(pointList, {
-                    color: 'orange',
-                    weight: 3,
-                    opacity: 1,
-                    smoothFactor: 1
-
-                });
-                firstpolyline.addTo(this.map_game);
-            } else if (roadPoint_A.type === 'b0') {
-                let pointList = [];
-                for (var t = 0; t <= 1; t += 0.2) {
-                    var p1 = this.gameLogic.BeizerCurveQuadratic(roadPoint_A, roadPoint_B, roadPoint_C, t);
-                    pointList.push(L.latLng(p1.lat, p1.lon));
-                }
-                var firstpolyline = L.polyline(pointList, {
-                    color: 'orange',
-                    weight: 3,
-                    opacity: 1,
-                    smoothFactor: 1
-
-                });
-                firstpolyline.addTo(this.map_game);
-
-                i += 1;
-            } else {
-                console.log("err! A: " + roadPoint_A.type + ", B: " + roadPoint_B.type + ", C: " + roadPoint_C.type)
+            let polyline = this.printRoadSection(i, 0);
+            if (polyline !== null) {
+                this.roadSections.set(i, polyline);
             }
+        }
+    }
+
+    rePrintRoadToMap(): void {
+        this.roadSections.forEach((item, key, mapObj) => {
+            item.addTo(this.map_game);
+        });
+    }
+
+    printRoadSection(beizerCounter: number, beizerTime: number): any {
+        let roadPoint_A = this.road[beizerCounter];
+        let roadPoint_B = this.road[beizerCounter + 1];
+        let roadPoint_C = this.road[beizerCounter + 2];
+
+        if ((roadPoint_A.type === 'p0' || roadPoint_A.type === 'b2') && (roadPoint_B.type === 'p0' || roadPoint_B.type === 'b0')) {
+            var p = this.gameLogic.GetPostionByLineAndTime(roadPoint_A, roadPoint_B, beizerTime);
+
+            var pointA = L.latLng(p.lat, p.lon);
+            var pointB = L.latLng(roadPoint_B.lat, roadPoint_B.lon);
+            var pointList = [pointA, pointB];
+
+            var polyline = L.polyline(pointList, {
+                color: 'orange',
+                weight: 3,
+                opacity: 0.5,
+                smoothFactor: 1
+
+            });
+            polyline.addTo(this.map_game);
+            return polyline;
+        } else if (roadPoint_A.type === 'b0') {
+            let pointList = [];
+            var p1 = this.gameLogic.BeizerCurveQuadratic(roadPoint_A, roadPoint_B, roadPoint_C, beizerTime);
+            pointList.push(L.latLng(p1.lat, p1.lon));
+
+            let startTime = Math.ceil(beizerTime / 0.2 + 0.0001) * 0.2;
+
+            for (var t = startTime; t <= 1; t += 0.2) {
+                var p1 = this.gameLogic.BeizerCurveQuadratic(roadPoint_A, roadPoint_B, roadPoint_C, t);
+                pointList.push(L.latLng(p1.lat, p1.lon));
+            }
+
+            var polyline = L.polyline(pointList, {
+                color: 'orange',
+                weight: 3,
+                opacity: 0.5,
+                smoothFactor: 1
+
+            });
+            polyline.addTo(this.map_game);
+            return polyline;
+        } else {
+            //console.log("err! A: " + roadPoint_A.type + ", B: " + roadPoint_B.type + ", C: " + roadPoint_C.type)
+        }
+        return null;
+    }
+
+    removePiceFromRoad(removePice: number): void {
+        let roadPice = this.roadSections.get(removePice);
+        if (roadPice !== null) {
+            this.map_game.removeLayer(roadPice);
         }
     }
 
@@ -488,22 +518,29 @@ export class GameComponent {
         }, 1500);
 
 
-        for (let i = 1; i < 7; i++) {
+        for (let i = 1; i <= 6; i++) {
             setTimeout(() => {
-                //map_game.setZoom(i + 13, '');
                 this.map_game.flyTo([59.93502, 10.75857], (i + 13), { animate: true });
-                //this.map_game.zoomIn();
+                console.log("zoom: "+i);
                 if (i === 6) {
                     this.showCountDownTimer = true;
                     this.zoomedToStartArea = true;
-                    
+                    this.setUpComplete = false;
 
                     setTimeout(() => {
+                        console.log("load car..");
                         this.loadImageOfCar();
                     }, 100);
                 }
-            }, 1500 * (i + 1));
+            }, 500 * (i + 1));
         }
+
+        /*setTimeout(() => {
+            this.map_game.flyTo([59.93502, 10.75857], 17, {
+                animate: true,
+                duration: 5 // in seconds
+            });
+        }, 1500);*/
     }
 
     loadImageOfCar(): void {
@@ -541,7 +578,9 @@ export class GameComponent {
         this.updateSpeedometer(0);
         this.showGoal = false;
         this.gameTime = 0;
-        this.gameTime_text = this.gameLogic.TimeToString(this.gameTime/1000);
+        this.gameTime_text = this.gameLogic.TimeToString(this.gameTime / 1000);
+
+        this.rePrintRoadToMap();
     }
 
     startGame(startGame: boolean): void {
@@ -566,7 +605,6 @@ export class GameComponent {
         this.subscription.unsubscribe();
         this.setUpComplete = false;
         clearInterval(this.gameLoopInterval);
-        console.log("DONE");
     }
 }
 
@@ -677,7 +715,7 @@ export class GameLogic_helperClass {
         return angle;
     }
 
-    earthCircumference_m: number = 40000;
+    earthCircumference_m: number = 40000000;
 
     public CoordinatesToMeter(p:any):any {
         var lat_m = p.lat * this.earthCircumference_m;
@@ -693,9 +731,15 @@ export class GameLogic_helperClass {
         var deltaLat = p1.lat - p2.lat;
         var deltaLon = p1.lon - p2.lon;
 
-        var deltaLat_m = deltaLat * this.earthCircumference_m;
-        var detlaLon_m = deltaLon * this.earthCircumference_m * Math.cos(Math.PI / 180 * p1.lat);
+        var deltaLat_m = deltaLat * (this.earthCircumference_m/360);
+        var detlaLon_m = deltaLon * (this.earthCircumference_m/360) * Math.cos(Math.PI / 180 * p1.lat);
         return Math.sqrt(Math.pow(deltaLat_m, 2) + Math.pow(detlaLon_m, 2));
+    }
+
+    public CalcNewCoordinatesByReferenceAndDistance_c(p1: any, dN_m: number, dE_m: number): any {
+        p1.lat += dN_m * (360 / this.earthCircumference_m);
+        p1.lon += dE_m * (360 / this.earthCircumference_m) / Math.cos(Math.PI / 180 * p1.lat);
+        return p1;
     }
 
     public GetAngle(ab_x:number, ab_y:number, bc_x:number, bc_y:number):number {

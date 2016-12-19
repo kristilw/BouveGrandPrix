@@ -21,12 +21,12 @@ var GameComponent = (function () {
         this.car_img_scale = 0.10;
         this.car_img_original = null;
         this.car_img_elem = null;
-        this.car_resistance_square = 0.005;
-        this.car_resistance_linear = 0.05;
+        this.car_resistance_square = 0.0015;
+        this.car_resistance_linear = 0.1;
         this.car_img_id = 0;
         this.car_speed = 0;
-        this.car_maxAcceleration = 4;
-        this.car_grip = 50;
+        this.car_maxAcceleration = 12;
+        this.car_grip = 150;
         this.gameLoopInterval = null;
         this.speedometer_needle_img = null;
         this.speedometer_needle_img_loaded = false;
@@ -48,24 +48,23 @@ var GameComponent = (function () {
         this.updatePan = true;
         this.unixTimeOld = 0;
         this.completionTime = null;
+        this.tempPolyline = null;
+        this.roadSections = new Map();
     }
     GameComponent.prototype.ngOnInit = function () {
-        //console.log(this.route.params.value.id);
         var _this = this;
         this.map_game = L.map('map_game', {
-            //center: L.latLng(59.93502, 10.75857),
-            //zoom: 15,
             center: L.latLng(59.91902, 10.74857),
-            zoom: 13,
             zoomControl: false,
+            fadeAnimation: true,
             zoomAnimation: true,
-            zoomAnimationThreshold: 20
+            zoomAnimationThreshold: 20,
+            zoom: 13,
+            maxZoom: 20
         });
         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia3Jpc3RpbHciLCJhIjoiY2l1dmw3aWttMDAwcjJ1cXc3bmZrMnExdCJ9.cxPXQumqqwNRhfWsj0Clvg', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-            minZoom: 2, maxZoom: 20,
-            zoomAnimation: true,
-            zoomAnimationThreshold: 20
+            maxZoom: 20
         }).addTo(this.map_game);
         this.zoomToStartArea();
         this.speedometer_needle_img = new Image();
@@ -132,6 +131,7 @@ var GameComponent = (function () {
         this.car_speed -= (this.car_speed * this.car_speed * this.car_resistance_square + this.car_speed * this.car_resistance_linear) * actualFrameTime_milli / 1000;
         this.car_speed = Math.max(0, this.car_speed);
         this.updateSpeedometer(this.car_speed);
+        //console.log(this.car_speed*3.6);
     };
     //   based on v^2 / r <= F_grip
     GameComponent.prototype.GetSpeedLimit = function (p1, p2, p3, t) {
@@ -142,7 +142,6 @@ var GameComponent = (function () {
     GameComponent.prototype.EnforcingSpeedLimit = function () {
         var _this = this;
         this.car_speed = 0;
-        this.beizerTime = 0;
         this.gameTime += 3000;
         this.showWoops = true;
         setTimeout(function () {
@@ -187,6 +186,7 @@ var GameComponent = (function () {
                     var distanceInBeizerTime = this.gameLogic.LineTime(pCurrent, pNext, lengthToTravel);
                     if (this.beizerTime + distanceInBeizerTime > 1) {
                         this.beizerCounter += 1;
+                        this.removePiceFromRoad(this.beizerCounter);
                         distanceInBeizerTime = 1 - this.beizerTime;
                         this.beizerTime = 0;
                         timeLeft -= distanceInBeizerTime;
@@ -213,6 +213,7 @@ var GameComponent = (function () {
                             }
                         }
                         this.beizerCounter += 2;
+                        this.removePiceFromRoad(this.beizerCounter);
                         this.beizerTime = 0;
                         timeLeft -= timeLeftOfTurn;
                     }
@@ -251,17 +252,24 @@ var GameComponent = (function () {
             this.handleAcceleration(actualFrameTime_milli);
             if (carNewPosition !== null) {
                 this.MoveCar(carNewAngle);
+                this.removeTempPolyline();
+                this.tempPolyline = this.printRoadSection(this.beizerCounter, this.beizerTime);
                 if (this.updatePan === true) {
-                    //console.log("pan");
-                    /*this.map_game.panTo(carNewPosition, {
-                        animate: false
-                    });*/
-                    this.map_game.setView(carNewPosition);
+                    var dN = this.car_speed * Math.cos(carNewAngle - Math.PI / 2) * 125 / 1000;
+                    var dE = this.car_speed * Math.sin(carNewAngle - Math.PI / 2) * 125 / 1000;
+                    var predictedCarPosition = this.gameLogic.CalcNewCoordinatesByReferenceAndDistance_c(carNewPosition, dN, dE);
+                    this.map_game.setView(predictedCarPosition);
                 }
             }
         }
         else {
-            console.log("setup is not complete");
+            this.removeTempPolyline();
+            console.log("setup is not complete :" + this.showCountDownTimer);
+        }
+    };
+    GameComponent.prototype.removeTempPolyline = function () {
+        if (this.tempPolyline !== null) {
+            this.map_game.removeLayer(this.tempPolyline);
         }
     };
     GameComponent.prototype.rotateCar = function (image, angle) {
@@ -297,7 +305,7 @@ var GameComponent = (function () {
     };
     GameComponent.prototype.updateSpeedometer = function (speed) {
         if (this.speedometer_needle_img_loaded) {
-            var angle = Math.PI / 180 * (speed / 21 * 120 - 62);
+            var angle = Math.PI / 180 * (speed / 58 * 120 - 62);
             var img_r = this.rotateSpeedometer(this.speedometer_needle_img, angle);
             var speedometer_needle_img_tag = null;
             speedometer_needle_img_tag = $("#speedometer_needle");
@@ -335,39 +343,62 @@ var GameComponent = (function () {
         console.log("..print road to map: ");
         var roadSections_length = road.length;
         for (var i = 0; i < roadSections_length - 3; i++) {
-            var roadPoint_A = road[i];
-            var roadPoint_B = road[i + 1];
-            var roadPoint_C = road[i + 2];
-            if ((roadPoint_A.type === 'p0' || roadPoint_A.type === 'b2') && (roadPoint_B.type === 'p0' || roadPoint_B.type === 'b0')) {
-                var pointA = L.latLng(roadPoint_A.lat, roadPoint_A.lon);
-                var pointB = L.latLng(roadPoint_B.lat, roadPoint_B.lon);
-                var pointList = [pointA, pointB];
-                var firstpolyline = L.polyline(pointList, {
-                    color: 'orange',
-                    weight: 3,
-                    opacity: 1,
-                    smoothFactor: 1
-                });
-                firstpolyline.addTo(this.map_game);
+            var polyline = this.printRoadSection(i, 0);
+            if (polyline !== null) {
+                this.roadSections.set(i, polyline);
             }
-            else if (roadPoint_A.type === 'b0') {
-                var pointList_1 = [];
-                for (var t = 0; t <= 1; t += 0.2) {
-                    var p1 = this.gameLogic.BeizerCurveQuadratic(roadPoint_A, roadPoint_B, roadPoint_C, t);
-                    pointList_1.push(L.latLng(p1.lat, p1.lon));
-                }
-                var firstpolyline = L.polyline(pointList_1, {
-                    color: 'orange',
-                    weight: 3,
-                    opacity: 1,
-                    smoothFactor: 1
-                });
-                firstpolyline.addTo(this.map_game);
-                i += 1;
+        }
+    };
+    GameComponent.prototype.rePrintRoadToMap = function () {
+        var _this = this;
+        this.roadSections.forEach(function (item, key, mapObj) {
+            item.addTo(_this.map_game);
+        });
+    };
+    GameComponent.prototype.printRoadSection = function (beizerCounter, beizerTime) {
+        var roadPoint_A = this.road[beizerCounter];
+        var roadPoint_B = this.road[beizerCounter + 1];
+        var roadPoint_C = this.road[beizerCounter + 2];
+        if ((roadPoint_A.type === 'p0' || roadPoint_A.type === 'b2') && (roadPoint_B.type === 'p0' || roadPoint_B.type === 'b0')) {
+            var p = this.gameLogic.GetPostionByLineAndTime(roadPoint_A, roadPoint_B, beizerTime);
+            var pointA = L.latLng(p.lat, p.lon);
+            var pointB = L.latLng(roadPoint_B.lat, roadPoint_B.lon);
+            var pointList = [pointA, pointB];
+            var polyline = L.polyline(pointList, {
+                color: 'orange',
+                weight: 3,
+                opacity: 0.5,
+                smoothFactor: 1
+            });
+            polyline.addTo(this.map_game);
+            return polyline;
+        }
+        else if (roadPoint_A.type === 'b0') {
+            var pointList_1 = [];
+            var p1 = this.gameLogic.BeizerCurveQuadratic(roadPoint_A, roadPoint_B, roadPoint_C, beizerTime);
+            pointList_1.push(L.latLng(p1.lat, p1.lon));
+            var startTime = Math.ceil(beizerTime / 0.2 + 0.0001) * 0.2;
+            for (var t = startTime; t <= 1; t += 0.2) {
+                var p1 = this.gameLogic.BeizerCurveQuadratic(roadPoint_A, roadPoint_B, roadPoint_C, t);
+                pointList_1.push(L.latLng(p1.lat, p1.lon));
             }
-            else {
-                console.log("err! A: " + roadPoint_A.type + ", B: " + roadPoint_B.type + ", C: " + roadPoint_C.type);
-            }
+            var polyline = L.polyline(pointList_1, {
+                color: 'orange',
+                weight: 3,
+                opacity: 0.5,
+                smoothFactor: 1
+            });
+            polyline.addTo(this.map_game);
+            return polyline;
+        }
+        else {
+        }
+        return null;
+    };
+    GameComponent.prototype.removePiceFromRoad = function (removePice) {
+        var roadPice = this.roadSections.get(removePice);
+        if (roadPice !== null) {
+            this.map_game.removeLayer(roadPice);
         }
     };
     GameComponent.prototype.zoomToStartArea = function () {
@@ -377,21 +408,28 @@ var GameComponent = (function () {
         }, 1500);
         var _loop_1 = function (i) {
             setTimeout(function () {
-                //map_game.setZoom(i + 13, '');
                 _this.map_game.flyTo([59.93502, 10.75857], (i + 13), { animate: true });
-                //this.map_game.zoomIn();
+                console.log("zoom: " + i);
                 if (i === 6) {
                     _this.showCountDownTimer = true;
                     _this.zoomedToStartArea = true;
+                    _this.setUpComplete = false;
                     setTimeout(function () {
+                        console.log("load car..");
                         _this.loadImageOfCar();
                     }, 100);
                 }
-            }, 1500 * (i + 1));
+            }, 500 * (i + 1));
         };
-        for (var i = 1; i < 7; i++) {
+        for (var i = 1; i <= 6; i++) {
             _loop_1(i);
         }
+        /*setTimeout(() => {
+            this.map_game.flyTo([59.93502, 10.75857], 17, {
+                animate: true,
+                duration: 5 // in seconds
+            });
+        }, 1500);*/
     };
     GameComponent.prototype.loadImageOfCar = function () {
         var _this = this;
@@ -424,6 +462,7 @@ var GameComponent = (function () {
         this.showGoal = false;
         this.gameTime = 0;
         this.gameTime_text = this.gameLogic.TimeToString(this.gameTime / 1000);
+        this.rePrintRoadToMap();
     };
     GameComponent.prototype.startGame = function (startGame) {
         console.log("from game: " + startGame);
@@ -444,7 +483,6 @@ var GameComponent = (function () {
         this.subscription.unsubscribe();
         this.setUpComplete = false;
         clearInterval(this.gameLoopInterval);
-        console.log("DONE");
     };
     return GameComponent;
 }());
@@ -465,7 +503,7 @@ exports.GameComponent = GameComponent;
 var GameLogic_helperClass = (function () {
     function GameLogic_helperClass() {
         this.timeStep = 0.02;
-        this.earthCircumference_m = 40000;
+        this.earthCircumference_m = 40000000;
     }
     GameLogic_helperClass.prototype.TimeToString = function (time) {
         if (time === null || time < 0) {
@@ -560,9 +598,14 @@ var GameLogic_helperClass = (function () {
     GameLogic_helperClass.prototype.GetDistanceBetweenCoordinates_m = function (p1, p2) {
         var deltaLat = p1.lat - p2.lat;
         var deltaLon = p1.lon - p2.lon;
-        var deltaLat_m = deltaLat * this.earthCircumference_m;
-        var detlaLon_m = deltaLon * this.earthCircumference_m * Math.cos(Math.PI / 180 * p1.lat);
+        var deltaLat_m = deltaLat * (this.earthCircumference_m / 360);
+        var detlaLon_m = deltaLon * (this.earthCircumference_m / 360) * Math.cos(Math.PI / 180 * p1.lat);
         return Math.sqrt(Math.pow(deltaLat_m, 2) + Math.pow(detlaLon_m, 2));
+    };
+    GameLogic_helperClass.prototype.CalcNewCoordinatesByReferenceAndDistance_c = function (p1, dN_m, dE_m) {
+        p1.lat += dN_m * (360 / this.earthCircumference_m);
+        p1.lon += dE_m * (360 / this.earthCircumference_m) / Math.cos(Math.PI / 180 * p1.lat);
+        return p1;
     };
     GameLogic_helperClass.prototype.GetAngle = function (ab_x, ab_y, bc_x, bc_y) {
         var ans = (Math.atan2(ab_y, ab_x) - Math.atan2(bc_y, bc_x));
