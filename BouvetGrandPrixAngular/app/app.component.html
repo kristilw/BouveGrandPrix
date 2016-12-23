@@ -7,29 +7,62 @@
         </div>
 
         <div id="router_outlet_div">
-            <router-outlet></router-outlet>
+            <router-outlet id="router_outlet"></router-outlet>
         </div>
     </div>
 
 
     <!-- Navbar top -->
     <nav class="navbar navbar-default navbar-fixed-top" id="navbar_top_body">
-        <div class="navbar-header bouvet_orange_text transparent" id="bouvet_logo">
-            <p> bouvet </p>
-        </div>
+        <div class="container-fluid">
+            <div class="nav navbar-header" id="navbar_top_links">
+                <span class="glyphicon glyphicon-menu-hamburger bouvet_orange_border icon_border"
+                      data-target="#menu_modal" data-toggle="modal"></span>
+            </div>
 
-        <div class="navbar-right" id="navbar_top_links">
-            <div>
-                <p>
-                    <a routerLink="/about" id="about_bouvet_house_link">OM BOUVET-HUSET</a> &nbsp; &nbsp; 
-                    <span class="bouvet_orange_text"> | </span> &nbsp; &nbsp;
-                    TOPPLISTE &nbsp; &nbsp;
-
-                    <span class="glyphicon glyphicon-menu-hamburger bouvet_orange_border icon_border"></span>
-                </p>
+            <div class="nav navbar-nav navbar-right" id="bouvet_logo_div">
+                <p class="bouvet_orange_text transparent" id="bouvet_logo"> bouvet </p>
             </div>
         </div>
     </nav>
+
+
+    <div class="modal fade" id="menu_modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" id="meny_modal_body">
+                    <div class="row">
+                        <img class="flags" src="app/img/Flagg_medstreker.png" />
+                    </div>
+
+                    <div class="row">
+                        <h3 class="white_text modal_text" data-dismiss="modal"> TOPPLISTE </h3>
+                    </div>
+
+                    <div class="row">
+                        <h3 class="white_text modal_text" data-dismiss="modal"> OM BOUVET-HUSET </h3>
+                    </div>
+
+                    <div class="row">
+                        <h3 class="white_text modal_text" data-dismiss="modal"> PREMIE </h3>
+                    </div>
+
+                    <div class="row">
+                        <a href="http://www.bouvet.no" class="white_text modal_text" data-dismiss="modal">
+                            <h3> GÅ TIL BOUVET.NO </h3>
+                        </a>
+                    </div>
+
+                    <div class="row">
+                        <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_2" 
+                                routerLink="/choseCar" data-dismiss="modal">
+                            SPILL GRAND PRIX
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Navbar bottom -->
     <nav class="navbar navbar-default navbar-fixed-bottom" id="navbar_bottom_body">

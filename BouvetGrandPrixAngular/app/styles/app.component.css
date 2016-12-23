@@ -1,6 +1,18 @@
 ﻿body {
 }
 
+.modal-content{
+    background-color:rgba(0, 0, 0, 0.4);
+    border: 0px solid #343434;
+    text-align:center;
+    width:100%;
+    height:80vh;
+}
+
+.modal_text:hover{
+    color:#d45a1f;
+}
+
 #div_arrows{
     position: absolute;
     top: 450px;
@@ -56,8 +68,9 @@
 }
 
 #navbar_top_body{
-    padding-top:15px;
-    padding-left:15px;
+    padding-top:20px;
+    padding-left:20px;
+    padding-right:20px;
     background-color:transparent;
 }
 
@@ -68,13 +81,15 @@
 
 #navbar_top_links{
     color:white;
-    padding-right:30px;
 }
 
-#navbar_top_links_extra{
-    border: 1px solid;
-    padding: 4px 4px 4px 4px;
-    border-color: #d45a1f;
+.container-fluid{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.navbar-nav.navbar-right:last-child {
+    margin-right: 0;
 }
 
 .icon_border{
@@ -87,6 +102,12 @@
     background-color:transparent;
     font-size:24px;
     font-weight: bold;
+    padding-bottom:0;
+    margin-bottom:0;
+}
+
+#bouvet_logo_div{
+    
 }
 
 .no_padding{

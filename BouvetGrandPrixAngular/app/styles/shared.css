@@ -40,6 +40,11 @@
     background-color:rgba(0, 0, 0, 0.70);
 }
 
+.flags{
+    height:6vh;
+    padding-bottom:10px;
+}
+
 /* unvisited link */
 a:link {
     text-decoration: none;      

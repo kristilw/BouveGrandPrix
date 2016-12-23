@@ -1,4 +1,5 @@
 /// <reference path="../typings/leaflet/leaflet.d.ts" />
+/// <reference path="../typings/jquery/jquery.d.ts" />
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -23,6 +24,16 @@ var AppComponent = (function () {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery � <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18
         }).addTo(map_);
+        $('#menu_modal').on('show.bs.modal', function () {
+            console.log("show");
+            var elem = document.getElementById("router_outlet_div"); //$('#router_outlet');
+            elem.style.opacity = "0.25";
+        });
+        $('#menu_modal').on('hide.bs.modal', function () {
+            console.log("hide");
+            var elem = document.getElementById("router_outlet_div"); //$('#router_outlet');
+            elem.style.opacity = "1";
+        });
     };
     return AppComponent;
 }());
