@@ -36,7 +36,7 @@ export class AppComponent {
             console.log("show");
 
             var elem: any = document.getElementById("router_outlet_div");//$('#router_outlet');
-            elem.style.opacity = "0.25";
+            elem.style.opacity = "0";
         })
 
         $('#menu_modal').on('hide.bs.modal', function () {

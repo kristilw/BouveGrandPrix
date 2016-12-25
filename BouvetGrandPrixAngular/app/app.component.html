@@ -21,7 +21,9 @@
             </div>
 
             <div class="nav navbar-nav navbar-right" id="bouvet_logo_div">
-                <p class="bouvet_orange_text transparent" id="bouvet_logo"> bouvet </p>
+                <a href="http://www.bouvet.no">
+                    <p class="bouvet_orange_text transparent" id="bouvet_logo"> bouvet </p>
+                </a>
             </div>
         </div>
     </nav>
@@ -40,7 +42,7 @@
                     </div>
 
                     <div class="row">
-                        <h3 class="white_text modal_text" data-dismiss="modal"> OM BOUVET-HUSET </h3>
+                        <h3 class="white_text modal_text" data-dismiss="modal" routerLink="/about"> OM BOUVET-HUSET </h3>
                     </div>
 
                     <div class="row">
@@ -54,7 +56,7 @@
                     </div>
 
                     <div class="row">
-                        <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_2" 
+                        <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_modal" 
                                 routerLink="/choseCar" data-dismiss="modal">
                             SPILL GRAND PRIX
                         </button>
@@ -70,7 +72,7 @@
 
             <div class="row" id="navbar_bottom_top">
                 <div id="navbar_bottom_game_logo_div">
-                    <img id="navbar_bottom_game_logo" src="app/img/BouvetGrandPrix_Stor.png" />
+                    <img id="navbar_bottom_game_logo" src="app/img/BouvetGrandPrix_Stor.png" routerLink="" class="btn"/>
                 </div>
 
                 <div id="navbar_bottom_social">

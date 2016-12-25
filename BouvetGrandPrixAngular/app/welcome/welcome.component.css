@@ -1,14 +1,22 @@
-﻿
+﻿#welcome_div{
+  margin: 0px 0px 0px 0px;
+  text-align: center;
+
+  position: relative;
+  top: 50vh;
+  transform: perspective(1px) translateY(-50%);
+}
+
 #welcome_carousel{
-    height:80vh;
+
 }
 
 #item_1{
-    height:80vh;
+    height:500px;
 }
 
 #item_2{
-    height:80vh;
+    height:500px;
 }
 
 #table_first_place{
@@ -62,7 +70,7 @@
 }
 
 #bouvet_log_welcome_screen{
-    height:19vh;
+    height:25vh;
     padding-bottom:15px;
     margin-left:-15px;
 }
