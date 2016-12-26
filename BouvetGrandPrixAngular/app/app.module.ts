@@ -11,6 +11,7 @@ import { GameComponent } from "./game/game.component";
 import { CountdownComponent } from "./game/countdown/countdown.component";
 import { GoalComponent } from "./game/goal/goal.component";
 import { ToplistComponent } from "./toplist/toplist.component";
+import { TimePipe } from "./pipe/time.pipe";
 
 @NgModule({
     imports: [
@@ -50,7 +51,8 @@ import { ToplistComponent } from "./toplist/toplist.component";
         GameComponent,
         GoalComponent,
         CountdownComponent,
-        ToplistComponent
+        ToplistComponent,
+        TimePipe
     ],
     bootstrap: [
         AppComponent

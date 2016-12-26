@@ -19,6 +19,7 @@ var game_component_1 = require("./game/game.component");
 var countdown_component_1 = require("./game/countdown/countdown.component");
 var goal_component_1 = require("./game/goal/goal.component");
 var toplist_component_1 = require("./toplist/toplist.component");
+var time_pipe_1 = require("./pipe/time.pipe");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -63,7 +64,8 @@ AppModule = __decorate([
             game_component_1.GameComponent,
             goal_component_1.GoalComponent,
             countdown_component_1.CountdownComponent,
-            toplist_component_1.ToplistComponent
+            toplist_component_1.ToplistComponent,
+            time_pipe_1.TimePipe
         ],
         bootstrap: [
             app_component_1.AppComponent

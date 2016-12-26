@@ -15,12 +15,12 @@ var ToplistComponent = (function () {
         this.toplist.push({
             "name": "Nissen",
             "company": "Bouvet",
-            "time": 42000,
+            "time": 42031,
         });
         this.toplist.push({
             "name": "Rudolf",
             "company": "Hafslund",
-            "time": 73000,
+            "time": 73456,
         });
         this.toplist.push({
             "name": "Snehvit",
