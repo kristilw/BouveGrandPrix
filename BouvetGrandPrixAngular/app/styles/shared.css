@@ -64,3 +64,39 @@ a:hover {
 a:active {
     text-decoration: none;      
 }
+
+.toplist_table_postion{
+    padding:10px 0px 10px 10px;
+    width:35px;
+}
+
+
+.toplist_table_name{
+    padding: 10px 10px 10px 20px;
+    width: 40%;
+}
+
+.toplist_table_firm{
+    width: 20%;
+}
+
+.toplist_table_best_time_glyph{
+    border-left: solid 1px;
+    border-color:#f37021;;
+    padding-left:40px;
+    padding-right:10px;
+}
+
+.table_first_place{
+    width:100%;
+    background-color:rgba(0, 0, 0, 0.70);
+    border: solid 1px;
+    border-color:#f37021;;
+    margin-bottom:15px;
+}
+
+.table_record{
+    width:100%;
+    background-color:rgba(0, 0, 0, 0.70);
+    margin-bottom:15px;
+}

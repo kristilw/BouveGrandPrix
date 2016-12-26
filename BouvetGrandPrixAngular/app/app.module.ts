@@ -10,6 +10,7 @@ import { ChoseCarComponent } from "./choseCar/choseCar.component";
 import { GameComponent } from "./game/game.component";
 import { CountdownComponent } from "./game/countdown/countdown.component";
 import { GoalComponent } from "./game/goal/goal.component";
+import { ToplistComponent } from "./toplist/toplist.component";
 
 @NgModule({
     imports: [
@@ -32,6 +33,10 @@ import { GoalComponent } from "./game/goal/goal.component";
                 component: AboutComponent
             },
             {
+                path: 'toplist',
+                component: ToplistComponent
+            },
+            {
                 path: '**',
                 component: WelcomeComponent
             }
@@ -44,7 +49,8 @@ import { GoalComponent } from "./game/goal/goal.component";
         ChoseCarComponent,
         GameComponent,
         GoalComponent,
-        CountdownComponent
+        CountdownComponent,
+        ToplistComponent
     ],
     bootstrap: [
         AppComponent

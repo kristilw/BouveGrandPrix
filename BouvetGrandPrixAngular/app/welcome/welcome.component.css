@@ -19,48 +19,6 @@
     height:500px;
 }
 
-#table_first_place{
-    width:100%;
-    background-color:rgba(0, 0, 0, 0.70);
-    border: solid 1px;
-    border-color:#f37021;;
-    margin-bottom:15px;
-}
-
-#table_second_place{
-    width:100%;
-    background-color:rgba(0, 0, 0, 0.70);
-    margin-bottom:15px;
-}
-
-#table_third_place{
-    width:100%;
-    background-color:rgba(0, 0, 0, 0.70);
-    margin-bottom:15px;
-}
-
-.welcome_table_postion{
-    padding:10px 0px 10px 10px;
-    width:35px;
-}
-
-
-.welcome_table_name{
-    padding: 10px 10px 10px 20px;
-    width: 40%;
-}
-
-.welcome_table_firm{
-    width: 20%;
-}
-
-.welcome_table_first_time_glyph{
-    border-left: solid 1px;
-    border-color:#f37021;;
-    padding-left:40px;
-    padding-right:10px;
-}
-
 #carousel_indicator_1{
 
 }

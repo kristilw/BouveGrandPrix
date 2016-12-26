@@ -18,6 +18,7 @@ var choseCar_component_1 = require("./choseCar/choseCar.component");
 var game_component_1 = require("./game/game.component");
 var countdown_component_1 = require("./game/countdown/countdown.component");
 var goal_component_1 = require("./game/goal/goal.component");
+var toplist_component_1 = require("./toplist/toplist.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -45,6 +46,10 @@ AppModule = __decorate([
                     component: about_component_1.AboutComponent
                 },
                 {
+                    path: 'toplist',
+                    component: toplist_component_1.ToplistComponent
+                },
+                {
                     path: '**',
                     component: welcome_component_1.WelcomeComponent
                 }
@@ -57,7 +62,8 @@ AppModule = __decorate([
             choseCar_component_1.ChoseCarComponent,
             game_component_1.GameComponent,
             goal_component_1.GoalComponent,
-            countdown_component_1.CountdownComponent
+            countdown_component_1.CountdownComponent,
+            toplist_component_1.ToplistComponent
         ],
         bootstrap: [
             app_component_1.AppComponent
