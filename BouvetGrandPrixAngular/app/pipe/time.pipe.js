@@ -16,7 +16,6 @@ var TimePipe = (function () {
         if (value === null || value < 0) {
             return "404, time not found";
         }
-        console.log(args[0]);
         if (args[0] === 'm') {
             value /= 1000;
         }

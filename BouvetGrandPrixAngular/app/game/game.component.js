@@ -41,7 +41,6 @@ var GameComponent = (function () {
         this.keysPressed = new Map();
         this.keyEventToId = new Map();
         this.gameTime = 0;
-        this.gameTime_text = "00:00:00";
         this.beizerCounter = 0;
         this.beizerTime = 0;
         this.lastPan = 0;
@@ -162,7 +161,6 @@ var GameComponent = (function () {
                 this.updatePan = true;
             }
             this.gameTime += actualFrameTime_milli;
-            this.gameTime_text = this.gameLogic.TimeToString(this.gameTime / 1000);
             //console.log("dt: " + actualFrameTime_milli +" gt: " + this.gameTime)
             var timeLeft = actualFrameTime_milli;
             var oTimeLeft = timeLeft;
@@ -173,7 +171,7 @@ var GameComponent = (function () {
                 if (this.beizerCounter > this.road.length - 3) {
                     this.showGoal = true;
                     console.log("Goal!");
-                    this.completionTime = (this.gameTime + (oTimeLeft - timeLeft)) / 1000;
+                    this.completionTime = (this.gameTime + (oTimeLeft - timeLeft));
                     this.setUpComplete = false;
                     break;
                 }
@@ -461,7 +459,6 @@ var GameComponent = (function () {
         this.updateSpeedometer(0);
         this.showGoal = false;
         this.gameTime = 0;
-        this.gameTime_text = this.gameLogic.TimeToString(this.gameTime / 1000);
         this.rePrintRoadToMap();
     };
     GameComponent.prototype.startGame = function (startGame) {
@@ -470,7 +467,6 @@ var GameComponent = (function () {
         this.setUpComplete = true;
         this.car_speed = 0;
         this.gameTime = 0;
-        this.gameTime_text = this.gameLogic.TimeToString(this.gameTime / 1000);
         this.beizerCounter = 0;
         this.beizerTime = 0;
         this.unixTimeOld = 0;

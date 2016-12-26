@@ -10,7 +10,6 @@ export class TimePipe implements PipeTransform {
             return "404, time not found";
         }
 
-        console.log(args[0])
         if (args[0] === 'm') { //from milliseconds
             value /= 1000;
         }

@@ -185,7 +185,6 @@ export class GameComponent {
     }
 
     gameTime: number = 0;
-    gameTime_text: string = "00:00:00";
     beizerCounter: number = 0;
     beizerTime: number = 0;
 
@@ -213,7 +212,6 @@ export class GameComponent {
             }
 
             this.gameTime += actualFrameTime_milli;
-            this.gameTime_text = this.gameLogic.TimeToString(this.gameTime/1000);
 
             //console.log("dt: " + actualFrameTime_milli +" gt: " + this.gameTime)
 
@@ -227,7 +225,7 @@ export class GameComponent {
                 if (this.beizerCounter > this.road.length - 3) {
                     this.showGoal = true;
                     console.log("Goal!");
-                    this.completionTime = (this.gameTime + (oTimeLeft - timeLeft)) / 1000;
+                    this.completionTime = (this.gameTime + (oTimeLeft - timeLeft));
                     this.setUpComplete = false;
                     break;
                 }
@@ -578,7 +576,6 @@ export class GameComponent {
         this.updateSpeedometer(0);
         this.showGoal = false;
         this.gameTime = 0;
-        this.gameTime_text = this.gameLogic.TimeToString(this.gameTime / 1000);
 
         this.rePrintRoadToMap();
     }
@@ -590,7 +587,6 @@ export class GameComponent {
 
         this.car_speed = 0;
         this.gameTime = 0;
-        this.gameTime_text = this.gameLogic.TimeToString(this.gameTime/1000);
         this.beizerCounter = 0;
         this.beizerTime = 0;
         this.unixTimeOld = 0;
