@@ -6,6 +6,10 @@
     color:#e4e4e4
 }
 
+.underline_text{
+    text-decoration: underline;
+}
+
 .bouvet_orange_text{
     color:#f37021;
 }
@@ -104,4 +108,39 @@ a:active {
     width:100%;
     background-color:rgba(0, 0, 0, 0.70);
     margin-bottom:15px;
+}
+
+@font-face {
+    font-family:'OpenSansRegular'; /*a name to be used later*/
+    src: url('app/fonts/OpenSansRegular.ttf') format('truetype'); /*URL to font*/
+}
+
+@font-face {
+    font-family:'DAGGERSQUARE'; /*a name to be used later*/
+    src: url('app/fonts/DAGGERSQUARE.otf') format('opentype'); /*URL to font*/
+}
+
+p{
+    font-family: 'OpenSansRegular';
+}
+
+button{
+    font-family: 'OpenSansRegular';
+    letter-spacing: 1px;
+}
+
+h1{
+    font-family: 'DAGGERSQUARE';
+}
+
+h2{
+    font-family: 'DAGGERSQUARE';
+}
+
+.daggerSquare{
+    font-family: 'DAGGERSQUARE';
+}
+
+.text_letters_space_l{
+    letter-spacing: 3px;
 }

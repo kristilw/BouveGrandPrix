@@ -36,7 +36,7 @@
             <img src="app/img/Woops_liten.png" id="woops_img"/>
         </div>
 
-        <div id="speedometer">
+        <div id="speedometer" *ngIf="setUpComplete">
             <div id="speedometer_div">
                 <div class="background_dark bouvet_orange_border" id="speedometer_background_div">
 
@@ -47,7 +47,7 @@
             <p id="time_text" class="white_text">{{gameTime | recordTime:'m'}}</p>
         </div>
 
-        <div id="restart_div">
+        <div id="restart_div" *ngIf="zoomedToStartArea">
             <button class="button bouvet_button background_dark bouvet_orange_border" (click)="restartGameFromButton()">
                 <span class="glyphicon glyphicon-repeat bouvet_orange_text">  </span>
                 <span class="white_text"> OMSTART </span>
