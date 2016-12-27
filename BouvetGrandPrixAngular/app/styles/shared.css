@@ -14,6 +14,10 @@
     margin:0px 0px 0px 0px !important;
 }
 
+.no_padding{
+    padding:0px 0px 0px 0px !important;
+}
+
 .bouvet_background_orange{
     background-color:#f37021;
 }
@@ -66,8 +70,9 @@ a:active {
 }
 
 .toplist_table_postion{
-    padding:10px 0px 10px 10px;
+    padding:10px 0px 10px 0px;
     width:35px;
+    text-align:center;
 }
 
 
@@ -82,7 +87,7 @@ a:active {
 
 .toplist_table_best_time_glyph{
     border-left: solid 1px;
-    border-color:#f37021;;
+    border-color:#f37021;
     padding-left:40px;
     padding-right:10px;
 }
@@ -91,7 +96,7 @@ a:active {
     width:100%;
     background-color:rgba(0, 0, 0, 0.70);
     border: solid 1px;
-    border-color:#f37021;;
+    border-color:#f37021;
     margin-bottom:15px;
 }
 

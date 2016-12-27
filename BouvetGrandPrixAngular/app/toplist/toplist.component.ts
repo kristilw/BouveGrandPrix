@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, ElementRef } from '@angular/core';
 
 @Component({
     selector: 'about-screen',
@@ -12,59 +12,51 @@
 export class ToplistComponent {
     toplist: Object[] = [];
 
-    constructor() {
-        this.toplist.push({
-            "name": "Nissen",
-            "company": "Bouvet",
-            "time": 42031,
-        })
+    constructor(public element: ElementRef) {
 
-        this.toplist.push({
-            "name": "Rudolf",
-            "company": "Hafslund",
-            "time": 73456,
-        })
+        for (let i = 0; i < 30; i++) {
+            this.toplist.push({
+                "name": "Nissen",
+                "company": "Bouvet",
+                "time": i*111,
+            })
 
-        this.toplist.push({
-            "name": "Snehvit",
-            "company": "Bouvet",
-            "time": 75000,
-        })
+            this.toplist.push({
+                "name": "Rudolf",
+                "company": "haflsund",
+                "time": i * 111+30,
+            })
 
-        this.toplist.push({
-            "name": "Nissen",
-            "company": "Bouvet",
-            "time": 42000,
-        })
+            this.toplist.push({
+                "name": "Erna Solberg",
+                "company": "Bouvet",
+                "time": i * 111+50,
+            })
+        }
 
-        this.toplist.push({
-            "name": "Rudolf",
-            "company": "Hafslund",
-            "time": 73000,
-        })
+    }
 
-        this.toplist.push({
-            "name": "Snehvit",
-            "company": "Bouvet",
-            "time": 75000,
-        })
+    scrollAnimation(element: any, direction: number): void {
+        let travelDistance = window.innerHeight*0.5;
+        let speed = 6*travelDistance/30;
 
-        this.toplist.push({
-            "name": "Nissen",
-            "company": "Bouvet",
-            "time": 42000,
-        })
+        for (let i = 0; i < 30; i++) {
+            setTimeout(() => {
+                element.scrollTop += direction * speed * ((i / 30) - (i / 30) * (i / 30));
+            }, i * 20);
+        }
 
-        this.toplist.push({
-            "name": "Rudolf",
-            "company": "Hafslund",
-            "time": 73000,
-        })
+    }
 
-        this.toplist.push({
-            "name": "Snehvit",
-            "company": "Bouvet",
-            "time": 75000,
-        })
+    scrollUp(event: any): void {
+        if (event.isTrusted) {
+            this.scrollAnimation(this.element.nativeElement.querySelector("[id='toplist_scroll']"), -1);
+        }
+    }
+
+    scrollDown(event: any): void {
+        if (event.isTrusted) {
+            this.scrollAnimation(this.element.nativeElement.querySelector("[id='toplist_scroll']"),1);
+        }
     }
 }

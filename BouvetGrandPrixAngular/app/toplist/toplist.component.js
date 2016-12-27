@@ -10,54 +10,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var ToplistComponent = (function () {
-    function ToplistComponent() {
+    function ToplistComponent(element) {
+        this.element = element;
         this.toplist = [];
-        this.toplist.push({
-            "name": "Nissen",
-            "company": "Bouvet",
-            "time": 42031,
-        });
-        this.toplist.push({
-            "name": "Rudolf",
-            "company": "Hafslund",
-            "time": 73456,
-        });
-        this.toplist.push({
-            "name": "Snehvit",
-            "company": "Bouvet",
-            "time": 75000,
-        });
-        this.toplist.push({
-            "name": "Nissen",
-            "company": "Bouvet",
-            "time": 42000,
-        });
-        this.toplist.push({
-            "name": "Rudolf",
-            "company": "Hafslund",
-            "time": 73000,
-        });
-        this.toplist.push({
-            "name": "Snehvit",
-            "company": "Bouvet",
-            "time": 75000,
-        });
-        this.toplist.push({
-            "name": "Nissen",
-            "company": "Bouvet",
-            "time": 42000,
-        });
-        this.toplist.push({
-            "name": "Rudolf",
-            "company": "Hafslund",
-            "time": 73000,
-        });
-        this.toplist.push({
-            "name": "Snehvit",
-            "company": "Bouvet",
-            "time": 75000,
-        });
+        for (var i = 0; i < 30; i++) {
+            this.toplist.push({
+                "name": "Nissen",
+                "company": "Bouvet",
+                "time": i * 111,
+            });
+            this.toplist.push({
+                "name": "Rudolf",
+                "company": "haflsund",
+                "time": i * 111 + 30,
+            });
+            this.toplist.push({
+                "name": "Erna Solberg",
+                "company": "Bouvet",
+                "time": i * 111 + 50,
+            });
+        }
     }
+    ToplistComponent.prototype.scrollAnimation = function (element, direction) {
+        var travelDistance = window.innerHeight * 0.5;
+        var speed = 6 * travelDistance / 30;
+        var _loop_1 = function (i) {
+            setTimeout(function () {
+                element.scrollTop += direction * speed * ((i / 30) - (i / 30) * (i / 30));
+            }, i * 20);
+        };
+        for (var i = 0; i < 30; i++) {
+            _loop_1(i);
+        }
+    };
+    ToplistComponent.prototype.scrollUp = function (event) {
+        if (event.isTrusted) {
+            this.scrollAnimation(this.element.nativeElement.querySelector("[id='toplist_scroll']"), -1);
+        }
+    };
+    ToplistComponent.prototype.scrollDown = function (event) {
+        if (event.isTrusted) {
+            this.scrollAnimation(this.element.nativeElement.querySelector("[id='toplist_scroll']"), 1);
+        }
+    };
     return ToplistComponent;
 }());
 ToplistComponent = __decorate([
@@ -69,7 +64,7 @@ ToplistComponent = __decorate([
             'app/styles/shared.css'
         ]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [core_1.ElementRef])
 ], ToplistComponent);
 exports.ToplistComponent = ToplistComponent;
 //# sourceMappingURL=toplist.component.js.map
