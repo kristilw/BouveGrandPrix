@@ -1,5 +1,8 @@
 ﻿import { Component, ElementRef } from '@angular/core';
 
+import { ToplistService } from '../services/toplist.service';
+import { Record } from '../services/record';
+
 @Component({
     selector: 'about-screen',
     templateUrl: 'app/toplist/toplist.component.html',
@@ -10,30 +13,18 @@
 })
 
 export class ToplistComponent {
-    toplist: Object[] = [];
+    toplist: Record[];
 
-    constructor(public element: ElementRef) {
+    constructor(public element: ElementRef, private toplistService: ToplistService) {
+        
+    }
 
-        for (let i = 0; i < 30; i++) {
-            this.toplist.push({
-                "name": "Nissen",
-                "company": "Bouvet",
-                "time": i*111,
-            })
+    ngOnInit() {
+        this.getToplist();
+    }
 
-            this.toplist.push({
-                "name": "Rudolf",
-                "company": "haflsund",
-                "time": i * 111+30,
-            })
-
-            this.toplist.push({
-                "name": "Erna Solberg",
-                "company": "Bouvet",
-                "time": i * 111+50,
-            })
-        }
-
+    getToplist(): void {
+        this.toplistService.getToplistSlow().then(toplist => this.toplist = toplist);
     }
 
     scrollAnimation(element: any, direction: number): void {

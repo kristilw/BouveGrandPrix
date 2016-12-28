@@ -19,6 +19,9 @@ var TimePipe = (function () {
         if (args[0] === 'm') {
             value /= 1000;
         }
+        if (value > 100000) {
+            return "-";
+        }
         var milliseconds_string = (Math.floor((value * 100 % 100))).toString();
         if (milliseconds_string.length === 1)
             milliseconds_string = "0" + milliseconds_string;

@@ -1,0 +1,15 @@
+ - lage riktige knapper i spill
+ - center "time" i toppliste
+ - Feil social-ikoner
+ 
+ 
+ Imporivements:
+  -Overskrift tekster er i for små størresler
+  -"Zoom in" animation
+  -restart knapp er ikke plassert riktig sted (kan ikke klikke på knapper nederst pga "usynelig bakgrun" fra navbar)
+
+ 
+ Bugs:
+  -Custom tekst laster ikke alltid inn
+  -Første og site del av vei blir ikke vist i spillet
+  

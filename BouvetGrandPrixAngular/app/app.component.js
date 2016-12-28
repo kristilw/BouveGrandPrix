@@ -11,8 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var toplist_service_1 = require("./services/toplist.service");
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(toplistService) {
+        this.toplistService = toplistService;
     }
     AppComponent.prototype.ngOnInit = function () {
         var map_ = L.map('map', {
@@ -34,6 +36,11 @@ var AppComponent = (function () {
             var elem = document.getElementById("router_outlet_div"); //$('#router_outlet');
             elem.style.opacity = "1";
         });
+        this.getToplist();
+    };
+    AppComponent.prototype.getToplist = function () {
+        var _this = this;
+        this.toplistService.getToplistSlow().then(function (toplist) { return _this.toplist = toplist; });
     };
     return AppComponent;
 }());
@@ -44,9 +51,10 @@ AppComponent = __decorate([
         styleUrls: [
             'app/styles/app.component.css',
             'app/styles/shared.css'
-        ]
+        ],
+        providers: [toplist_service_1.ToplistService]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [toplist_service_1.ToplistService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

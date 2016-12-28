@@ -4,14 +4,14 @@
     </div>
 
     <div class="row no_padding no_margin">
-        <h2 class="bouvet_orange_text" id="toplist_text"> TOPPLISTE </h2>
+        <h2 class="bouvet_orange_text " id="toplist_text"> TOPPLISTE </h2>
     </div>
 
 
     <div class="row no_padding no_margin">
         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-lg-offset-3 col-md-offset-2 col-sm-offset-1 col-xs-offset-0" id="toplist_scroll">
 
-            <table class="table_record" *ngFor="let record of toplist; let idx = index" [class]="idx > 0 ? 'table_record' : 'table_first_place'">
+            <table class="table_record" *ngFor="let record of toplist; let idx = index" [class]="idx > 0 ? 'table_record' : 'table_first_place'" [class.hidden]="record.time>100000">
                 <tr>
                     <td class="bouvet_background_orange grey_text toplist_table_postion daggerSquare"><b><i>{{idx+1}}</i></b> </td>
                     <td class="grey_text toplist_table_name">{{record.name}}</td>

@@ -2,7 +2,9 @@
 /// <reference path="../typings/jquery/jquery.d.ts" />
 
 import { Component } from '@angular/core';
-import { RouterModule  } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { ToplistService } from './services/toplist.service';
+import { Record } from './services/record';
 
 import { Map } from 'leaflet';
 import { LatLng } from 'leaflet';
@@ -16,10 +18,17 @@ declare var jQuery: any;
     styleUrls: [
         'app/styles/app.component.css',
         'app/styles/shared.css'
-    ]
+    ],
+    providers: [ToplistService]
 })
 
 export class AppComponent {
+    toplist: Record[];
+
+    constructor(private toplistService: ToplistService) {
+    }
+
+
     ngOnInit() {
         var map_ = L.map('map', {
             center: L.latLng(59.931, 10.720),
@@ -31,6 +40,7 @@ export class AppComponent {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18
         }).addTo(map_);
+
 
         $('#menu_modal').on('show.bs.modal', function () {
             console.log("show");
@@ -45,6 +55,12 @@ export class AppComponent {
             var elem: any = document.getElementById("router_outlet_div");//$('#router_outlet');
             elem.style.opacity = "1";
         })
+
+        this.getToplist();
     }
 
+
+    getToplist(): void {
+        this.toplistService.getToplistSlow().then(toplist => this.toplist = toplist);
+    }
 }
