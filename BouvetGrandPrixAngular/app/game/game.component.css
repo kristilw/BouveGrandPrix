@@ -4,12 +4,18 @@
 }
 
 #controls_div{
-    bottom:120px;
+    bottom:75px;
     width:100%;
     text-align:center;
     position: absolute;
     z-index:12;
     text-align:center;
+}
+
+
+
+.leaflet-container {
+    background-color:rgb(50, 50, 50) !important;
 }
 
 #car_div{
@@ -58,12 +64,45 @@
     left:16px;
 }
 
+#w_key_div{
+    position:relative;
+    top:0px;
+    left:0px;   
+}
+
 #w_key{
-    height:50px;
+    padding:0 0 10px 3px;
+}
+
+#s_key_div{
+    position:relative;
+    top:0px;
+    left:0px;
 }
 
 #s_key{
-    height:50px;
+    margin-top:3px;
+    padding:5px 0 0 3px;
+}
+
+.arrow_keys{
+    border-radius:3px;
+    background-color:rgba(0, 0, 0, 0.40) !important;
+
+    height:38px;
+    width:38px;
+    
+    text-align:center;
+    pointer-events:none;
+}
+
+.arrow_keys_pressed{ /* Same as bouvet_button:hover in shared css */
+    background-color:#f37021 !important;
+    border-color:#808080 !important;
+}
+
+#helper_text{
+    margin-top:20px;
 }
 
 #other_div_game{

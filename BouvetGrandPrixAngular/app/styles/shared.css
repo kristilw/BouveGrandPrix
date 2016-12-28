@@ -48,6 +48,10 @@
     background-color:rgba(0, 0, 0, 0.70);
 }
 
+.background_grey{
+    background-color:rgba(0, 0, 0, 0.30);
+}
+
 .flags{
     height:6vh;
     padding-bottom:10px;

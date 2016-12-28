@@ -88,8 +88,10 @@ var GameComponent = (function () {
             event = window.event ? window.event : e;
             _this.onKeyUp(event.keyCode);
         });
-        this.keyEventToId.set(87, "w_key");
-        this.keyEventToId.set(83, "s_key");
+        //this.keyEventToId.set(87, "w_key");
+        //this.keyEventToId.set(83, "s_key");
+        this.keyEventToId.set(38, "w_key");
+        this.keyEventToId.set(40, "s_key");
         this.readCSVfile(this.gameLogic.initRoad());
         this.gameLoopInterval = setInterval(function () { _this.gameLoop(); }, this.frameTime_milli);
     };
@@ -98,7 +100,9 @@ var GameComponent = (function () {
         if (keyStatus === undefined || keyStatus === false) {
             this.keysPressed.set(keyCode, true);
             //console.log("keyCode down: " + keyCode);
-            if (this.keyEventToId.get(keyCode) !== undefined) {
+            if (this.keyEventToId.get(keyCode) !== undefined && this.showCountDownTimer) {
+                //document.getElementById(this.keyEventToId.get(keyCode)).style.opacity = "1";
+                document.getElementById(this.keyEventToId.get(keyCode)).classList.toggle("arrow_keys_pressed", true);
             }
         }
     };
@@ -107,7 +111,9 @@ var GameComponent = (function () {
         if (keyStatus === undefined || keyStatus === true) {
             this.keysPressed.set(keyCode, false);
             //console.log("keyCode up: " + keyCode);
-            if (this.keyEventToId.get(keyCode) !== undefined) {
+            if (this.keyEventToId.get(keyCode) !== undefined && this.showCountDownTimer) {
+                //document.getElementById(this.keyEventToId.get(keyCode)).style.opacity = "0.5";
+                document.getElementById(this.keyEventToId.get(keyCode)).classList.toggle("arrow_keys_pressed", false);
             }
         }
     };
@@ -400,34 +406,43 @@ var GameComponent = (function () {
         }
     };
     GameComponent.prototype.zoomToStartArea = function () {
-        var _this = this;
-        setTimeout(function () {
-            _this.map_game.panTo([59.93502, 10.75857]);
+        /*setTimeout(() => {
+            this.map_game.panTo([59.93502, 10.75857]);
         }, 1500);
-        var _loop_1 = function (i) {
-            setTimeout(function () {
-                _this.map_game.flyTo([59.93502, 10.75857], (i + 13), { animate: true });
-                console.log("zoom: " + i);
+
+
+        /*for (let i = 1; i <= 6; i++) {
+            setTimeout(() => {
+                this.map_game.flyTo([59.93502, 10.75857], (i + 13), { animate: true });
+                console.log("zoom: "+i);
                 if (i === 6) {
-                    _this.showCountDownTimer = true;
-                    _this.zoomedToStartArea = true;
-                    _this.setUpComplete = false;
-                    setTimeout(function () {
+                    this.showCountDownTimer = true;
+                    this.zoomedToStartArea = true;
+                    this.setUpComplete = false;
+
+                    setTimeout(() => {
                         console.log("load car..");
-                        _this.loadImageOfCar();
+                        this.loadImageOfCar();
                     }, 100);
                 }
             }, 500 * (i + 1));
-        };
-        for (var i = 1; i <= 6; i++) {
-            _loop_1(i);
-        }
-        /*setTimeout(() => {
-            this.map_game.flyTo([59.93502, 10.75857], 17, {
+        }*/
+        var _this = this;
+        setTimeout(function () {
+            _this.map_game.flyTo([59.93502, 10.75857], 18, {
                 animate: true,
-                duration: 5 // in seconds
+                duration: 7 // in seconds
             });
-        }, 1500);*/
+        }, 2500);
+        setTimeout(function () {
+            _this.showCountDownTimer = true;
+            _this.zoomedToStartArea = true;
+            _this.setUpComplete = false;
+            setTimeout(function () {
+                console.log("load car..");
+                _this.loadImageOfCar();
+            }, 100);
+        }, 9500);
     };
     GameComponent.prototype.loadImageOfCar = function () {
         var _this = this;

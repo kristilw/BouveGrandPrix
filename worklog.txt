@@ -1,12 +1,15 @@
- - lage riktige knapper i spill
+ - fikse input skjema for rekord
  - center "time" i toppliste
  - Feil social-ikoner
+ - fikse "ikoner" på kart
  
  
  Imporivements:
   -Overskrift tekster er i for små størresler
-  -"Zoom in" animation
   -restart knapp er ikke plassert riktig sted (kan ikke klikke på knapper nederst pga "usynelig bakgrun" fra navbar)
+  -"vinger" på speedometer
+  -citation til kart er bak navbar
+  -kryss ikon til modul knapp 
 
  
  Bugs:
