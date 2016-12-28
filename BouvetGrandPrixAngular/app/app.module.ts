@@ -34,7 +34,7 @@ import { TimePipe } from "./pipe/time.pipe";
                 component: AboutComponent
             },
             {
-                path: 'toplist',
+                path: 'toplist/:id',
                 component: ToplistComponent
             },
             {

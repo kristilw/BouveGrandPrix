@@ -16,6 +16,7 @@ var GameComponent = (function () {
     function GameComponent(route, router) {
         this.route = route;
         this.router = router;
+        this.subscription = null;
         this.setUpComplete = false;
         this.frameTime_milli = 30;
         this.car_img_scale = 0.10;
@@ -431,9 +432,9 @@ var GameComponent = (function () {
         setTimeout(function () {
             _this.map_game.flyTo([59.93502, 10.75857], 18, {
                 animate: true,
-                duration: 7 // in seconds
+                duration: 6 // in seconds
             });
-        }, 2500);
+        }, 1500);
         setTimeout(function () {
             _this.showCountDownTimer = true;
             _this.zoomedToStartArea = true;
@@ -442,7 +443,7 @@ var GameComponent = (function () {
                 console.log("load car..");
                 _this.loadImageOfCar();
             }, 100);
-        }, 9500);
+        }, 7500);
     };
     GameComponent.prototype.loadImageOfCar = function () {
         var _this = this;
@@ -486,12 +487,23 @@ var GameComponent = (function () {
         this.beizerTime = 0;
         this.unixTimeOld = 0;
     };
+    GameComponent.prototype.saveRecord = function () {
+        // registrer tid 
+        var position = 49;
+        var navigateTo = "toplist/" + position.toString();
+        this.router.navigateByUrl(navigateTo);
+    };
+    GameComponent.prototype.goToAboutPage = function () {
+        this.router.navigateByUrl("about");
+    };
     GameComponent.prototype.printId = function (id) {
         console.log(id);
     };
     GameComponent.prototype.ngOnDestroy = function () {
         console.log("DONE");
-        this.subscription.unsubscribe();
+        if (this.subscription !== null) {
+            this.subscription.unsubscribe();
+        }
         this.setUpComplete = false;
         clearInterval(this.gameLoopInterval);
     };

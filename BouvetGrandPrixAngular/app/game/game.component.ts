@@ -25,7 +25,7 @@ declare var jQuery: any;
 })
 
 export class GameComponent {
-    private subscription: any;
+    private subscription: any = null;
     map_game: any;
     road: any;
     road_s: string;
@@ -541,9 +541,9 @@ export class GameComponent {
         setTimeout(() => {
             this.map_game.flyTo([59.93502, 10.75857], 18, {
                 animate: true,
-                duration: 7 // in seconds
+                duration: 6 // in seconds
             });
-        }, 2500);
+        }, 1500);
 
         setTimeout(() => {
             this.showCountDownTimer = true;
@@ -554,7 +554,7 @@ export class GameComponent {
                 console.log("load car..");
                 this.loadImageOfCar();
             }, 100);
-        }, 9500);
+        }, 7500);
     }
 
     loadImageOfCar(): void {
@@ -608,13 +608,27 @@ export class GameComponent {
         this.unixTimeOld = 0;
     }
 
+    saveRecord(): void {
+        // registrer tid 
+
+        let position = 49;
+        let navigateTo = "toplist/" + position.toString();
+        this.router.navigateByUrl(navigateTo);
+    }
+
+    goToAboutPage(): void {
+        this.router.navigateByUrl("about");
+    }
+
     printId(id: number): void {
         console.log(id)
     }
 
     ngOnDestroy() {
         console.log("DONE");
-        this.subscription.unsubscribe();
+        if (this.subscription !== null) {
+            this.subscription.unsubscribe();
+        }
         this.setUpComplete = false;
         clearInterval(this.gameLoopInterval);
     }

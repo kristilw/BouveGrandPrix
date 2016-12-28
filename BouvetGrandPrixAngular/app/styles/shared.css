@@ -3,7 +3,7 @@
 }
 
 .grey_text{
-    color:#e4e4e4
+    color:#d0d0d0;
 }
 
 .underline_text{
@@ -112,6 +112,7 @@ a:active {
     width:100%;
     background-color:rgba(0, 0, 0, 0.70);
     margin-bottom:15px;
+    height: 40px;
 }
 
 @font-face {
@@ -133,6 +134,10 @@ button{
     letter-spacing: 1px;
 }
 
+.letter_spacing{
+    letter-spacing: 1px;
+}
+
 h1{
     font-family: 'DAGGERSQUARE';
 }
@@ -147,4 +152,8 @@ h2{
 
 .text_letters_space_l{
     letter-spacing: 3px;
+}
+
+button:focus{
+    outline: none;
 }

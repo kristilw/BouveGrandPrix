@@ -1,5 +1,5 @@
 ﻿
-import { Component, Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'goal',
@@ -12,4 +12,16 @@ import { Component, Input} from '@angular/core';
 
 export class GoalComponent {
     @Input() public completionTime: number;
+
+    @Output() saveRecord_eventEmitter: EventEmitter<void> = new EventEmitter<void>();
+    @Output() goToAboutPage_eventEmitter: EventEmitter<void> = new EventEmitter<void>();
+
+
+    registerRecord(): void {
+        this.saveRecord_eventEmitter.emit();
+    }
+
+    goToAboutPage(): void {
+        this.goToAboutPage_eventEmitter.emit();
+    }
 }

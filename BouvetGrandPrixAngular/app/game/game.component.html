@@ -11,13 +11,7 @@
             </countdown-game>
         </div>
 
-        <!-- *ngIf="showGoal"-->
-        <div *ngIf="showGoal">
-            <goal [completionTime]="completionTime">
-
-            </goal>
-
-        </div>
+        
 
         <div id="controls_div" *ngIf="showCountDownTimer">
             <!--
@@ -68,6 +62,13 @@
                 <span class="glyphicon glyphicon-repeat bouvet_orange_text">  </span>
                 <span class="white_text"> OMSTART </span>
             </button>
+        </div>
+
+        <!-- *ngIf="showGoal"-->
+        <div *ngIf="showGoal">
+            <goal [completionTime]="completionTime" (saveRecord_eventEmitter)="saveRecord()" (goToAboutPage_eventEmitter)="goToAboutPage()">
+
+            </goal>
         </div>
     </div>
 </div>

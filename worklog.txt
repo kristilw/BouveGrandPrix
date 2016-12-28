@@ -1,18 +1,18 @@
- - fikse input skjema for rekord
- - center "time" i toppliste
+ - return til spill etter å ha lagret rekord (vise return knappe ved id>1 ? )
  - Feil social-ikoner
  - fikse "ikoner" på kart
+ -citation til kart er bak navbar
  
  
  Imporivements:
+  - center "time" i toppliste
   -Overskrift tekster er i for små størresler
   -restart knapp er ikke plassert riktig sted (kan ikke klikke på knapper nederst pga "usynelig bakgrun" fra navbar)
   -"vinger" på speedometer
-  -citation til kart er bak navbar
   -kryss ikon til modul knapp 
 
  
  Bugs:
   -Custom tekst laster ikke alltid inn
-  -Første og site del av vei blir ikke vist i spillet
+  -Første del av vei blir ikke vist riktig
   

@@ -11,13 +11,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var GoalComponent = (function () {
     function GoalComponent() {
+        this.saveRecord_eventEmitter = new core_1.EventEmitter();
+        this.goToAboutPage_eventEmitter = new core_1.EventEmitter();
     }
+    GoalComponent.prototype.registerRecord = function () {
+        this.saveRecord_eventEmitter.emit();
+    };
+    GoalComponent.prototype.goToAboutPage = function () {
+        this.goToAboutPage_eventEmitter.emit();
+    };
     return GoalComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", Number)
 ], GoalComponent.prototype, "completionTime", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], GoalComponent.prototype, "saveRecord_eventEmitter", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], GoalComponent.prototype, "goToAboutPage_eventEmitter", void 0);
 GoalComponent = __decorate([
     core_1.Component({
         selector: 'goal',

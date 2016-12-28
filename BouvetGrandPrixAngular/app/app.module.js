@@ -47,7 +47,7 @@ AppModule = __decorate([
                     component: about_component_1.AboutComponent
                 },
                 {
-                    path: 'toplist',
+                    path: 'toplist/:id',
                     component: toplist_component_1.ToplistComponent
                 },
                 {
