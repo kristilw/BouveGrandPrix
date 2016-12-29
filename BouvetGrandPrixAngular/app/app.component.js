@@ -28,7 +28,6 @@ var AppComponent = (function () {
             maxZoom: 18
         }).addTo(map_);
         L.control.attribution({ position: 'topright' }).addTo(map_);
-        ;
         $('#menu_modal').on('show.bs.modal', function () {
             console.log("show");
             var elem = document.getElementById("router_outlet_div"); //$('#router_outlet');

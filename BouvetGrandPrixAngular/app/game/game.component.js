@@ -439,6 +439,18 @@ var GameComponent = (function () {
             _this.showCountDownTimer = true;
             _this.zoomedToStartArea = true;
             _this.setUpComplete = false;
+            var bouvetHuset_Icon = L.icon({
+                iconUrl: '../app/img/map/BouvetHuset_Huset.png',
+                iconSize: [220, 207],
+                iconAnchor: [110, 103],
+            });
+            var goal_Icon = L.icon({
+                iconUrl: '../app/img/map/BouvetHuset_Målstreken.png',
+                iconSize: [65, 77],
+                iconAnchor: [32, 37],
+            });
+            L.marker([59.930338, 10.711191], { icon: bouvetHuset_Icon }).addTo(_this.map_game);
+            L.marker([59.930811, 10.711663], { icon: goal_Icon }).addTo(_this.map_game);
             setTimeout(function () {
                 console.log("load car..");
                 _this.loadImageOfCar();

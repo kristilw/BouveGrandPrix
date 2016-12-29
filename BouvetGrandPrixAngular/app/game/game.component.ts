@@ -550,6 +550,23 @@ export class GameComponent {
             this.zoomedToStartArea = true;
             this.setUpComplete = false;
 
+            var bouvetHuset_Icon = L.icon({
+                iconUrl: '../app/img/map/BouvetHuset_Huset.png',
+
+                iconSize: [220, 207], // size of the icon
+                iconAnchor: [110, 103], // point of the icon which will correspond to marker's location
+            });
+
+            var goal_Icon = L.icon({
+                iconUrl: '../app/img/map/BouvetHuset_Målstreken.png',
+
+                iconSize: [65, 77], // size of the icon
+                iconAnchor: [32, 37], // point of the icon which will correspond to marker's location
+            });
+
+            L.marker([59.930338, 10.711191], { icon: bouvetHuset_Icon }).addTo(this.map_game);
+            L.marker([59.930811, 10.711663], { icon: goal_Icon }).addTo(this.map_game);
+
             setTimeout(() => {
                 console.log("load car..");
                 this.loadImageOfCar();

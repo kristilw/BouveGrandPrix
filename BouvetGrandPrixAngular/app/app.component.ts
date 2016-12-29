@@ -42,7 +42,7 @@ export class AppComponent {
             maxZoom: 18
         }).addTo(map_);
 
-        L.control.attribution({ position: 'topright' }).addTo(map_);;
+        L.control.attribution({ position: 'topright' }).addTo(map_);
 
         $('#menu_modal').on('show.bs.modal', function () {
             console.log("show");
