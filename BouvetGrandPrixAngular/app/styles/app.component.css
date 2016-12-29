@@ -45,7 +45,7 @@
 
 #map { 
     position: absolute;
-    height:100vh;
+    height: calc(100vh - 51px);
     width:100%;
     z-index: 1;
 }
