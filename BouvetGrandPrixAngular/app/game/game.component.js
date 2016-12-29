@@ -436,26 +436,30 @@ var GameComponent = (function () {
             });
         }, 1500);
         setTimeout(function () {
-            _this.showCountDownTimer = true;
-            _this.zoomedToStartArea = true;
-            _this.setUpComplete = false;
-            var bouvetHuset_Icon = L.icon({
-                iconUrl: '../app/img/map/BouvetHuset_Huset.png',
-                iconSize: [220, 207],
-                iconAnchor: [110, 103],
-            });
-            var goal_Icon = L.icon({
-                iconUrl: '../app/img/map/BouvetHuset_Målstreken.png',
-                iconSize: [65, 77],
-                iconAnchor: [32, 37],
-            });
-            L.marker([59.930338, 10.711191], { icon: bouvetHuset_Icon }).addTo(_this.map_game);
-            L.marker([59.930811, 10.711663], { icon: goal_Icon }).addTo(_this.map_game);
-            setTimeout(function () {
-                console.log("load car..");
-                _this.loadImageOfCar();
-            }, 100);
+            _this.finishedZoomAnimation();
         }, 7500);
+    };
+    GameComponent.prototype.finishedZoomAnimation = function () {
+        var _this = this;
+        this.showCountDownTimer = true;
+        this.zoomedToStartArea = true;
+        this.setUpComplete = false;
+        var bouvetHuset_Icon = L.icon({
+            iconUrl: '../app/img/map/BouvetHuset_Huset.png',
+            iconSize: [220, 207],
+            iconAnchor: [110, 103],
+        });
+        var goal_Icon = L.icon({
+            iconUrl: '../app/img/map/BouvetHuset_Målstreken.png',
+            iconSize: [65, 77],
+            iconAnchor: [32, 37],
+        });
+        L.marker([59.930338, 10.711191], { icon: bouvetHuset_Icon }).addTo(this.map_game);
+        L.marker([59.930811, 10.711663], { icon: goal_Icon }).addTo(this.map_game);
+        setTimeout(function () {
+            console.log("load car..");
+            _this.loadImageOfCar();
+        }, 100);
     };
     GameComponent.prototype.loadImageOfCar = function () {
         var _this = this;
@@ -498,6 +502,8 @@ var GameComponent = (function () {
         this.beizerCounter = 0;
         this.beizerTime = 0;
         this.unixTimeOld = 0;
+        this.removePiceFromRoad(0);
+        this.tempPolyline = this.printRoadSection(this.beizerCounter, this.beizerTime);
     };
     GameComponent.prototype.saveRecord = function () {
         // registrer tid 

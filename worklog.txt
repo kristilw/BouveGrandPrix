@@ -1,7 +1,6 @@
  STEP 1/2
  
  Features:
- - fikse "ikoner" på kart
  - fikse bane på kart
  - størrelse av biler i "velg bil" skjerm
 
