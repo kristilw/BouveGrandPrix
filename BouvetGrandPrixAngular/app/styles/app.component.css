@@ -127,9 +127,11 @@
 
 #navbar_bottom_body{
     border: 0px solid; 
+    pointer-events:none;
 }
 
 #navbar_bottom{
+    pointer-events:none;
     background-color:transparent;
 }
 
@@ -139,6 +141,8 @@
     width: 100%;
     text-align: right;
     padding-right:25px;
+
+    pointer-events:none;
 }
 
 

@@ -108,6 +108,10 @@ a:active {
     margin-bottom:15px;
 }
 
+.navbar_bottom_game_logo_div{
+    pointer-events:none;
+}
+
 .table_record{
     width:100%;
     background-color:rgba(0, 0, 0, 0.70);

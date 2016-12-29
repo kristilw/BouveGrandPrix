@@ -1,8 +1,10 @@
 ﻿#toplist_div{
     position:relative;
-    top:50px;
     text-align:center;
     width:100%;
+
+    top:50px;
+    bottom:60px;
 }
 
 #toplist_text{
@@ -10,8 +12,9 @@
 }
 
 #toplist_scroll{
+    height: calc(93vh - 230px);
     overflow-y:scroll;
-    height:65vh;
+    padding-right:10px;
 }
 
 ::-webkit-scrollbar {
