@@ -3,10 +3,10 @@
  Features:
  - fikse "ikoner" på kart
  - fikse bane på kart
+ - størrelse av biler i "velg bil" skjerm
 
  
  Imporivements:
-  - restart knapp er ikke plassert riktig sted
   - Overskrift tekster er i for små størresler
   - center "time" i toppliste
   - "vinger" på speedometer
