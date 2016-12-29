@@ -16,7 +16,7 @@
     <nav class="navbar navbar-default navbar-fixed-top" id="navbar_top_body">
         <div class="container-fluid">
             <div class="nav navbar-header" id="navbar_top_links">
-                <span class="glyphicon glyphicon-menu-hamburger bouvet_orange_border icon_border"
+                <span class="glyphicon glyphicon-menu-hamburger bouvet_orange_border social_icon" id="menu_btn"
                       data-target="#menu_modal" data-toggle="modal"></span>
             </div>
 
@@ -40,7 +40,7 @@
                     <div class="row">
                         <h3 class="white_text modal_text" data-dismiss="modal" routerLink="/toplist/1"> TOPPLISTE </h3>
                     </div>
-                    
+
                     <div class="row">
                         <h3 class="white_text modal_text" data-dismiss="modal" routerLink="/about"> OM BOUVET-HUSET </h3>
                     </div>
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="row">
-                        <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_modal" 
+                        <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_modal"
                                 routerLink="/choseCar" data-dismiss="modal">
                             SPILL GRAND PRIX
                         </button>
@@ -72,15 +72,27 @@
 
             <div class="row" id="navbar_bottom_top">
                 <div id="navbar_bottom_game_logo_div">
-                    <img id="navbar_bottom_game_logo" src="app/img/BouvetGrandPrix_Stor.png" routerLink="" class="btn"/>
+                    <img id="navbar_bottom_game_logo" src="app/img/BouvetGrandPrix_Stor.png" routerLink="" class="btn" />
                 </div>
 
                 <div id="navbar_bottom_social">
                     <p>
-                        <span class="glyphicon glyphicon-user bouvet_orange_border icon_border" id="twitter_icon"></span><span class="glyphicon glyphicon-user bouvet_orange_border icon_border" id="facebook_icon"></span>
-                        
-                        &nbsp; &nbsp;
-                        <span class="glyphicon glyphicon-volume-off bouvet_orange_border icon_border" id="speaker_icon"></span>
+                        <a href="http://www.bouvet.no">
+                            <span class="glyphicon bouvet_orange_border social_icon" id="twitter_icon">
+                                <img src="app/img/Twitter.png" class="social_img"/>
+                            </span>
+                        </a>
+
+                        <a href="http://www.bouvet.no">
+                            <span class="glyphicon bouvet_orange_border social_icon" id="facebook_icon">
+                                <img src="app/img/Facebook_ikon.png" class="social_img" id="facebook_icon_img" />
+                            </span>
+                        </a>
+
+                        &nbsp;
+                        <span class="glyphicon bouvet_orange_border social_icon" id="speaker_icon">
+                            <img src="app/img/Lyd_ikon1.png" class="social_img" />
+                        </span>
                         <!--span class="glyphicon glyphicon-volume-up" id="speaker_icon"> </span -->
                     </p>
                 </div>

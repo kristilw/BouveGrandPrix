@@ -12,7 +12,7 @@
 }
 
 #toplist_scroll{
-    height: calc(93vh - 230px);
+    height: calc(93vh - 215px);
     overflow-y:scroll;
     padding-right:10px;
 }

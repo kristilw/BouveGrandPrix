@@ -1,8 +1,6 @@
  STEP 1/2
  
  Features:
- - citation til kart er bak navbar
- - Feil social-ikoner
  - fikse "ikoner" på kart
  - fikse bane på kart
 
