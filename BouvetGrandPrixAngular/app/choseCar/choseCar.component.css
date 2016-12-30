@@ -1,4 +1,9 @@
-﻿.car_image{
+﻿#choseCar_div{
+    text-align: center;
+    margin-top:50px;
+}
+
+.car_image{
     padding: 20px 20px 20px 20px;
     width: 100%;
 }
@@ -23,7 +28,14 @@
 }
 
 .car_seleciton_div{
-    width:100%;
+    width:100px;
+    height:120px;
+
+    display: inline-block;
+}
+
+.car_seleciton_div_parent{
+    text-align:center;
 }
 
 .car_seleciton_div:hover .visible
@@ -43,5 +55,11 @@
 
 
 #car_seleciton{
-    padding-top:30px;
+    padding-top:25px;
+    height: calc(93vh - 71px - 75px - 50px);
+    overflow-y:auto;
+}
+
+#div_with_extra_margin_for_desktop{
+    margin:calc(130px);
 }

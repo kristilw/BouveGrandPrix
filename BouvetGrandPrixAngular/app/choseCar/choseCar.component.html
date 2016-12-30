@@ -1,4 +1,8 @@
-﻿<div style="margin: auto; text-align: center; margin-top:230px">
+﻿<div id="choseCar_div">
+    <div id="div_with_extra_margin_for_desktop" class="hidden-xs">
+
+    </div>
+
     <div class="row no_margin">
         <div>
             <img id="flags_chose_car_screen" src="app/img/Flagg_medstreker.png" />
@@ -8,53 +12,23 @@
     <div class="row no_margin">
         <h2 class="bouvet_orange_text"> VELG BIL </h2>
     </div>
-    
 
     <div class="row no_margin" id="car_seleciton">
         <div class="col-lg-6 col-lg-offset-3
                     col-md-8 col-md-offset-2
                     col-sm-10 col-sm-offset-1">
-            <div class="col-sm-2">
+
+            <div class="col-sm-2 col-xs-6 car_seleciton_div_parent" *ngFor="let car of cars">
                 <div class="car_seleciton_div">
-                    <img class="car_image visible" id="car_image_1" src="app/img/biler/bil_utenlykter_1.png" />
-                    <div> <h5 class="white_text hidden drive_text bouvet_orange_border daggerSquare" routerLink="/game/1"> <u> KJØR! </u></h5> </div>
+                    <img class="car_image visible" src="{{car.imgSrc}}" />
+                    <div>
+                        <h5 class="white_text hidden drive_text bouvet_orange_border daggerSquare" routerLink="{{car.routerLink}}">
+                            <u> KJØR! </u>
+                        </h5>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-sm-2">
-                <div class="car_seleciton_div">
-                    <img class="car_image visible" id="car_image_2" src="app/img/biler/bil_utenlykter_2.png" />
-                    <div> <h5 class="white_text hidden drive_text bouvet_orange_border daggerSquare" routerLink="/game/2"> <u> KJØR! </u></h5> </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="car_seleciton_div">
-                    <img class="car_image visible" id="car_image_3" src="app/img/biler/bil_utenlykter_3.png" />
-                    <div> <h5 class="white_text hidden drive_text bouvet_orange_border daggerSquare" routerLink="/game/3"> <u> KJØR! </u></h5> </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="car_seleciton_div">
-                    <img class="car_image visible" id="car_image_4" src="app/img/biler/bil_utenlykter_4.png" />
-                    <div> <h5 class="white_text hidden drive_text bouvet_orange_border daggerSquare" routerLink="/game/4"> <u> KJØR! </u></h5> </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="car_seleciton_div">
-                    <img class="car_image visible" id="car_image_5" src="app/img/biler/bil_utenlykter_5.png" />
-                    <div> <h5 class="white_text hidden drive_text bouvet_orange_border daggerSquare" routerLink="/game/5"> <u> KJØR! </u></h5> </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="car_seleciton_div">
-                    <img class="car_image visible" id="car_image_6" src="app/img/biler/bil_utenlykter_6.png" />
-                    <div> <h5 class="white_text hidden drive_text bouvet_orange_border daggerSquare" routerLink="/game/6"> <u> KJØR! </u></h5> </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
