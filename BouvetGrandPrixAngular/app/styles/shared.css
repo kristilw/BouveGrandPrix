@@ -129,6 +129,11 @@ a:active {
     src: url('app/fonts/DAGGERSQUARE.otf') format('opentype'); /*URL to font*/
 }
 
+@font-face {
+    font-family:'DAGGERSQUARE_OBLIQUE'; /*a name to be used later*/
+    src: url('app/fonts/DAGGERSQUARE OBLIQUE.otf') format('opentype'); /*URL to font*/
+}
+
 p{
     font-family: 'OpenSansRegular';
 }
@@ -143,15 +148,15 @@ button{
 }
 
 h1{
-    font-family: 'DAGGERSQUARE';
+    font-family: 'DAGGERSQUARE_OBLIQUE';
 }
 
 h2{
-    font-family: 'DAGGERSQUARE';
+    font-family: 'DAGGERSQUARE_OBLIQUE';
 }
 
 .daggerSquare{
-    font-family: 'DAGGERSQUARE';
+    font-family: 'DAGGERSQUARE_OBLIQUE';
 }
 
 .text_letters_space_l{
