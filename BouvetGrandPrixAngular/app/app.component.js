@@ -32,11 +32,17 @@ var AppComponent = (function () {
             console.log("show");
             var elem = document.getElementById("router_outlet_div"); //$('#router_outlet');
             elem.style.opacity = "0";
+            var modal_btn = document.getElementById("menu_btn");
+            modal_btn.classList.toggle("glyphicon-remove", true);
+            modal_btn.classList.toggle("glyphicon-menu-hamburger", false);
         });
         $('#menu_modal').on('hide.bs.modal', function () {
             console.log("hide");
             var elem = document.getElementById("router_outlet_div"); //$('#router_outlet');
             elem.style.opacity = "1";
+            var modal_btn = document.getElementById("menu_btn");
+            modal_btn.classList.toggle("glyphicon-remove", false);
+            modal_btn.classList.toggle("glyphicon-menu-hamburger", true);
         });
         this.getToplist();
     };
