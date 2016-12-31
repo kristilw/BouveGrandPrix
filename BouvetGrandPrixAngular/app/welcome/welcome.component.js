@@ -13,16 +13,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //import { Component} from '@angular/core';
 var core_1 = require("@angular/core");
 var WelcomeComponent = (function () {
-    //@ViewChild('welcome_carousel') input; 
-    //@ViewChild('welcome_carousel') carousel: ElementRef; 
     function WelcomeComponent(elementRef) {
         this.elementRef = elementRef;
+        //@ViewChild('welcome_carousel') input; 
+        //@ViewChild('welcome_carousel') carousel: ElementRef; 
+        this.carouselSelector = 0;
     }
     WelcomeComponent.prototype.ngAfterViewInit = function () {
         $("#welcome_carousel").carousel();
-        //this.carousel.nativeElement.carousel();
-        //console.log(this.input.nativeElement.value);
-        //this.input.nativeElement.carousel();
+        var elem1 = $("#carousel_indicator_btn_active_0");
+        var elem2 = $("#carousel_indicator_btn_active_1");
+        elem1.css("display", "block");
+        elem2.css("display", "none");
+        $("#welcome_carousel").on('slide.bs.carousel', function () {
+            var elem1 = $("#carousel_indicator_btn_active_0");
+            var elem2 = $("#carousel_indicator_btn_active_1");
+            if (this.carouselSelector === 1) {
+                this.carouselSelector = 0;
+                elem1.css("display", "block");
+                elem2.css("display", "none");
+            }
+            else {
+                this.carouselSelector = 1;
+                elem1.css("display", "none");
+                elem2.css("display", "block");
+            }
+        });
     };
     return WelcomeComponent;
 }());

@@ -21,14 +21,37 @@ export class WelcomeComponent {
     //@ViewChild('welcome_carousel') input; 
     //@ViewChild('welcome_carousel') carousel: ElementRef; 
 
+    carouselSelector: number = 0;
+
     constructor(private elementRef: ElementRef) {
     }
 
     ngAfterViewInit() {
         $("#welcome_carousel").carousel();
-        //this.carousel.nativeElement.carousel();
-        //console.log(this.input.nativeElement.value);
-        //this.input.nativeElement.carousel();
+
+        let elem1: any = $("#carousel_indicator_btn_active_0");
+        let elem2: any = $("#carousel_indicator_btn_active_1");
+
+        elem1.css("display", "block");
+        elem2.css("display", "none");
+
+        $("#welcome_carousel").on('slide.bs.carousel', function () {
+            let elem1: any = $("#carousel_indicator_btn_active_0");
+            let elem2: any = $("#carousel_indicator_btn_active_1");
+
+            if (this.carouselSelector === 1) {
+                this.carouselSelector = 0;
+                
+                elem1.css("display", "block");
+                elem2.css("display", "none");
+            } else {
+                this.carouselSelector = 1;
+
+                elem1.css("display", "none");
+                elem2.css("display", "block");
+            }
+
+        });
     }
     
 }
