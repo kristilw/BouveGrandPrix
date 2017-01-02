@@ -3,18 +3,14 @@
  Features:
  - fikse bane på kart
  
-
- 
  Imporivements:
   - Overskrift tekster er i for små størresler
   - center "time" i toppliste
-  - "vinger" på speedometer
-  - kryss ikon til modul knapp
-  -"welcome 2" har litt stor mellomrom
-
+  - "vinger" på speedometer + bouvet grand prix ikon
  
  Bugs:
   -Custom tekst laster ikke alltid inn
+  -Noen gang klikker spillet når man "kræsjer"
   
   STEP 3
     - lage server med funksjoner for å hente/sette rekorder

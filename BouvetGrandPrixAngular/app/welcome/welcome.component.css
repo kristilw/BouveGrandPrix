@@ -7,7 +7,7 @@
 }
 
 #welcome_div_space{
-    height: calc(50vh - 200px);
+    height: calc(45vh - 150px);
 }
 
 #welcome_carousel{
@@ -38,38 +38,6 @@
 
 #welcome_screen_bestTimes{
     margin: 0 0 0 0;
-}
-
-.carousel-indicators { 
-    position: absolute; 
-    top: calc(310px + 7vh); 
-    left: 50%; 
-    width: 60%; 
-    padding-left: 0; 
-    margin-left: -30%; 
-    text-align: center; 
-    list-style: none; 
-}
-
-.carousel-indicators li {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    margin: 10px;
-    border-radius: 0px;
-    text-indent: 0;
-    cursor: pointer;
-    border: solid 1px;
-    border-color:#f37021;
-}
-.carousel-indicators .active {
-    width: 18px;
-    height: 18px;
-    margin: 10px;
-    border-radius: 0px;
-    background-color: transparent;
-    background-color:#f37021;
-    border-color:white; 
 }
 
 #carousel_indicator_div{

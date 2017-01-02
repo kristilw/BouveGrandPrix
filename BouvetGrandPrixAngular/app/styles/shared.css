@@ -135,11 +135,11 @@ a:active {
 }
 
 p{
-    font-family: 'OpenSansRegular';
+    font-family: 'OpenSansRegular', sans-serif;
 }
 
 button{
-    font-family: 'OpenSansRegular';
+    font-family: 'OpenSansRegular', sans-serif;
     letter-spacing: 1px;
 }
 
@@ -148,15 +148,15 @@ button{
 }
 
 h1{
-    font-family: 'DAGGERSQUARE_OBLIQUE';
+    font-family: 'DAGGERSQUARE_OBLIQUE', sans-serif;
 }
 
 h2{
-    font-family: 'DAGGERSQUARE_OBLIQUE';
+    font-family: 'DAGGERSQUARE_OBLIQUE', sans-serif;
 }
 
 .daggerSquare{
-    font-family: 'DAGGERSQUARE_OBLIQUE';
+    font-family: 'DAGGERSQUARE_OBLIQUE', sans-serif;
 }
 
 .text_letters_space_l{
