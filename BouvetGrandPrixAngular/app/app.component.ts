@@ -16,8 +16,7 @@ declare var jQuery: any;
     selector: 'my-app',
     templateUrl: 'app/app.component.html',
     styleUrls: [
-        'app/styles/app.component.css',
-        'app/styles/shared.css'
+        'app/app.component.css',
     ],
     providers: [ToplistService]
 })

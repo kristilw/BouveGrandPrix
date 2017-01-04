@@ -10,7 +10,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
     templateUrl: 'app/toplist/toplist.component.html',
     styleUrls: [
         'app/toplist/toplist.component.css',
-        'app/styles/shared.css'
     ]
 })
 

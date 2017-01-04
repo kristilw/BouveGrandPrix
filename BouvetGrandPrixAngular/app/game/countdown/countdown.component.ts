@@ -11,7 +11,6 @@ declare var jQuery: any;
     templateUrl: 'app/game/countdown/countdown.component.html',
     styleUrls: [
         'app/game/countdown/countdown.component.css',
-        'app/styles/shared.css'
     ]
 })
 

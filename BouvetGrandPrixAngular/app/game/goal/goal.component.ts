@@ -6,7 +6,6 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
     templateUrl: 'app/game/goal/goal.component.html',
     styleUrls: [
         'app/game/goal/goal.component.css',
-        'app/styles/shared.css'
     ]
 })
 

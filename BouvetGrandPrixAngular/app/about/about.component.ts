@@ -5,7 +5,6 @@
     templateUrl: 'app/about/about.component.html',
     styleUrls: [
         'app/about/about.component.css',
-        'app/styles/shared.css'
     ]
 })
 

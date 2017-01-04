@@ -19,7 +19,6 @@ declare var jQuery: any;
     templateUrl: 'app/game/game.component.html',
     styleUrls: [
         'app/game/game.component.css',
-        'app/styles/shared.css',
         'node_modules/leaflet/dist/leaflet.css'
     ]
 })

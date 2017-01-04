@@ -1,0 +1,57 @@
+<div id="toplist_div">
+    <div class="row no_padding no_margin">
+        <img class="flags" src="app/img/Flagg_medstreker.png" />
+    </div>
+
+    <div class="row no_padding no_margin">
+        <h2 class="bouvet_orange_text " id="toplist_text"> TOPPLISTE </h2>
+    </div>
+
+
+    <div class="row no_padding no_margin">
+        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-lg-offset-3 col-md-offset-2 col-sm-offset-1 col-xs-offset-0" >
+            <div id="toplist_scroll">
+                <table class="table_record" *ngFor="let record of toplist; let idx = index; let last = last"
+                       [class]="idx == focusOnRecord ? 'table_first_place' : 'table_record'"
+                       [class.hidden]="record.time>100000"
+                       (ready)="toplistFinishedLoading(last)">
+                    <tr>
+                        <td class="bouvet_background_orange grey_text toplist_table_postion daggerSquare"><b><i>{{idx+1}}</i></b> </td>
+                        <td class="grey_text toplist_table_name">{{record.name}}</td>
+                        <td class="grey_text toplist_table_firm hidden-xs">{{record.company}}</td>
+                        <td class="grey_text">
+                            <span class="glyphicon glyphicon-time bouvet_orange_text toplist_table_best_time_glyph"></span> {{record.time | recordTime:'m'}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-xs-6">
+                    <button class="button bouvet_button bouvet_orange_border background_dark letter_spacing" routerLink="/choseCar">
+                        SPILL GRANDPRIX
+                    </button>
+                </div>
+
+                <div class="col-sm-6 col-xs-6">
+                    <button class="button bouvet_button bouvet_orange_border background_dark letter_spacing" routerLink="/about">
+                        OM BOUVET-HUSET
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 no_padding hidden-xs">
+            <div id="toplist_btn_div">
+                <div class="toplist_singleBtn_div">
+                    <button class="btn bouvet_button bouvet_orange_border toplist_btn" (click)="scrollUp($event)" id="toplist_btn_up"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                </div>
+                
+                <div class="toplist_singleBtn_div">
+                    <button class="btn bouvet_button bouvet_orange_border toplist_btn" (click)="scrollDown($event)" id="toplist_btn_down"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div id="goal_div" class="row no_margin">
+    <div class="col-lg-6 col-lg-offset-3
+                col-md-8 col-md-offset-2
+                col-sm-10 col-sm-offset-1
+                col-xs-12 col-xs-offset-0">
+
+        <div>
+            <img id="flags_goal_screen" src="app/img/Flagg_medstreker.png" />
+        </div>
+
+        <div>
+            <h2 class="bouvet_orange_text"> <b>
+                                                {{completionTime | recordTime:'m'}}
+                </b>
+            </h2>
+            <p class="grey_text"> Fyll ut informasjon for å se hvor du havnet på resultatlisten.</p>
+
+            <div class="col-sm-12 col-xs-12" id="toplist_scroll">
+                <table class="table_first_place">
+                    <tr>
+                        <td> <p id="input_name_description" class="white_text letter_spacing goal_text_description"> {{"fornavn*" | uppercase }} </p></td>
+                        <td> <input id="input_name" type="text" placeholder="Jørgen" class="goal_text_input grey_text letter_spacing"/> </td>
+                    </tr>
+                </table>
+
+                <table class="table_first_place">
+                    <tr>
+                        <td> <p id="input_surname_description" class="white_text letter_spacing goal_text_description"> {{"etternavn*" | uppercase }} </p></td>
+                        <td> <input id="input_surname" type="text" placeholder="Stiansen" class="goal_text_input grey_text letter_spacing"/> </td>
+                    </tr>
+                </table>
+
+                <table class="table_first_place">
+                    <tr>
+                        <td> <p id="input_company_description" class="white_text letter_spacing goal_text_description"> {{"company" | uppercase }} </p></td>
+                        <td> <input id="input_company" type="text" placeholder="(Valgfritt)" class="goal_text_input grey_text letter_spacing"/> </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-xs-6" id="go_to_front_page_button_div">
+                    <button class="button bouvet_button bouvet_orange_border background_dark" (click)="registerRecord()">
+                        REGISTRER TIDEN
+                    </button>
+                </div>
+
+                <div class="col-sm-6 col-xs-6" id="play_grand_prix_button_div">
+                    <button class="button bouvet_button bouvet_orange_border background_dark" (click)="goToAboutPage()">
+                        OM BOUVET-HUSET
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

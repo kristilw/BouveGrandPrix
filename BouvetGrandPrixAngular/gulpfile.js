@@ -32,7 +32,7 @@ gulp.task('copy:assets', ['clean'], function () {
     return gulp.src([
         'app/**/*',
         'index.html',
-        'styles.css',
+        'shared_styles.css',
         'node_modules/bootstrap/dist/css/bootstrap.css',
         'node_modules/leaflet/dist/leaflet.css',
         'node_modules/bootstrap/dist/fonts/*',

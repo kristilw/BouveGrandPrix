@@ -1,2 +1,3 @@
-﻿BouvetGrandPrixAngular/dist/*
+﻿BouvetGrandPrixAngular/app/**/*.js.map
+BouvetGrandPrixAngular/app/**/*.js
 BouvetGrandPrixAngular/node_modules/*

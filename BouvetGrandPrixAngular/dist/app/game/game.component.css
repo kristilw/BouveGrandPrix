@@ -1,0 +1,153 @@
+#map_game{
+    z-index:1;
+    height: 100vh;
+}
+
+#controls_div{
+    bottom:75px;
+    width:100%;
+    text-align:center;
+    position: absolute;
+    z-index:12;
+    text-align:center;
+}
+
+
+
+.leaflet-container {
+    background-color:rgb(50, 50, 50) !important;
+}
+
+#car_div{
+    position:absolute;
+    top:50vh;
+    left:50%;
+}
+
+#woops_div{
+    position:absolute;
+    top:50vh;
+    left:50%;
+    z-index:40;
+}
+
+#woops_img{
+    width:60px;
+    height:60px;
+
+    margin-left:-30px;
+    margin-top:-30px;
+}
+
+#time_text{
+    position:absolute;
+    top:70px;
+    left:50%;
+    z-index:51;
+
+    width:50px;
+    margin-left:-25px;
+    text-align:center;
+}
+
+#car_img{
+    width:30px;
+    height:40px;
+    margin-top:-20px;
+    margin-left:-15px;
+    border: 0px solid white;
+}
+
+#restart_div{
+    position:absolute;
+    bottom:67px;
+    left:16px;
+}
+
+#w_key_div{
+    position:relative;
+    top:0px;
+    left:0px;   
+}
+
+#w_key{
+    padding:0 0 10px 3px;
+}
+
+#s_key_div{
+    position:relative;
+    top:0px;
+    left:0px;
+}
+
+#s_key{
+    margin-top:3px;
+    padding:5px 0 0 3px;
+}
+
+.arrow_keys{
+    border-radius:3px;
+    background-color:rgba(0, 0, 0, 0.40) !important;
+
+    height:38px;
+    width:38px;
+    
+    text-align:center;
+    pointer-events:none;
+}
+
+.arrow_keys_pressed{ /* Same as bouvet_button:hover in shared css */
+    background-color:#f37021 !important;
+    border-color:#808080 !important;
+}
+
+#helper_text{
+    margin-top:20px;
+}
+
+#other_div_game{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100vh;
+    z-index:11;
+}
+
+#speedometer{
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    height:250px;
+}
+
+#speedometer_div{
+    position:absolute;
+    width:100%;
+    top:30px;
+}
+
+#speedometer_background_div{
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius: 75px;
+    left:50%;
+    margin-left:-75px;
+    z-index:-10;
+}
+
+#speedometer_background{
+    width:120px;
+    margin-top:3px;
+    z-index:50;
+}
+
+#speedometer_needle{
+    z-index:800;
+    height:105px;
+    margin-top:30px;
+}
+
+
+

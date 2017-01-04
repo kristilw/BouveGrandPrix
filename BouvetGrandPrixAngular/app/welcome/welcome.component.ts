@@ -13,7 +13,6 @@ declare var jQuery: any;
     templateUrl: 'app/welcome/welcome.component.html',
     styleUrls: [
         'app/welcome/welcome.component.css',
-        'app/styles/shared.css'
     ]
 })
 

@@ -1,0 +1,115 @@
+<div id="welcome_div">
+    <div id="welcome_div_space">
+
+    </div>
+
+
+    <div class="carousel slide" id="welcome_carousel" data-interval="10000">
+        <div id="carousel_indicator_div">
+            <div>
+                <button class="btn carousel_indicator_btn" data-target="#welcome_carousel" data-slide-to="0">
+                    <span class="carousel_indicator_btn_active" id="carousel_indicator_btn_active_0"></span>
+                </button>
+            </div>
+
+            <div>
+                <button class="btn carousel_indicator_btn" data-target="#welcome_carousel" data-slide-to="1">
+                    <span class="carousel_indicator_btn_active" id="carousel_indicator_btn_active_1"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="carousel-inner" id="carousel_background">
+            <!-- ol class="carousel-indicators">
+                <li data-target="#welcome_carousel" data-slide-to="0" id="carousel_indicator_1" class="active"></li>
+                <li data-target="#welcome_carousel" data-slide-to="1" id="carousel_indicator_2"></li>
+            </ol> -->
+
+            <div class="item active" id="item_1">
+                <div>
+                    <img class="flags" src="app/img/Flagg_medstreker.png" />
+                </div>
+                <div>
+                    <img id="bouvet_log_welcome_screen" src="app/img/BouvetGrandPrix_Stor.png" />
+                </div>
+
+                <p style="color:white">
+                    2. Januar 2017 flytter vi til Sørkedalsveien 8 på Majorstuen. <br />
+                    Nå kan du prøvekjøre veien, uten fartsgrense! <br />
+                    Er du raskest, vinner du - <span class="underline_text">noe fint</span> :) <br />
+                </p>
+
+                <button class="button bouvet_orange_border bouvet_button" id="start_engine_button" routerLink="/choseCar">
+                    START MOTOREN
+                </button>
+            </div>
+
+            <div class="item" id="item_2">
+                <div class="row">
+                    <div>
+                        <img class="flags" src="app/img/Flagg_medstreker.png" />
+                    </div>
+
+                    <h2 class="bouvet_orange_text" id="welcome_screen_bestTimes"> BESTE TID</h2>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-10 col-lg-offset-3 col-md-offset-2 col-sm-offset-1 col-xs-offset-1">
+                            <table class="table_first_place">
+                                <tr>
+                                    <td class="bouvet_background_orange grey_text toplist_table_postion"><b><i>1.</i></b> </td>
+                                    <td class="grey_text toplist_table_name">Knut Harald Gundersen</td>
+                                    <td class="grey_text toplist_table_firm hidden-xs">Bouvet</td>
+                                    <td class="grey_text" id="welcome_first_time">
+                                        <span class="glyphicon glyphicon-time bouvet_orange_text toplist_table_best_time_glyph"></span> 00.24.12
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table class="table_record">
+                                <tr>
+                                    <td class="bouvet_background_orange grey_text toplist_table_postion"><b><i>2.</i></b> </td>
+                                    <td class="grey_text toplist_table_name">Trine Lise Trettnes </td>
+                                    <td class="grey_text toplist_table_firm hidden-xs">Hafslund</td>
+                                    <td class="grey_text" id="welcome_second_time">
+                                        <span class="glyphicon glyphicon-time bouvet_orange_text toplist_table_best_time_glyph"></span> 00.24.12
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table class="table_record">
+                                <tr>
+                                    <td class="bouvet_background_orange grey_text toplist_table_postion"><b><i>3.</i></b> </td>
+                                    <td class="grey_text toplist_table_name">Morten Stedvik</td>
+                                    <td class="grey_text toplist_table_firm hidden-xs">Bouvet</td>
+                                    <td class="grey_text" id="welcome_third_time">
+                                        <span class="glyphicon glyphicon-time bouvet_orange_text toplist_table_best_time_glyph"></span> 00.24.12
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <p class="grey_text">
+                        Det var jammen raskt, men klarer du å finne <br />
+                        frem til det nye Bouvet-huset enda raskere?
+                    </p>
+                </div>
+
+                <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_2" routerLink="/choseCar">
+                    START MOTOREN
+                </button>
+            </div>
+        </div>
+
+        <!--
+            <a href="#welcome_carousel" class="carousel-control left"
+           data-slide="prev"><span class="icon-prev"></span></a>
+        <a href="#welcome_carousel" class="carousel-control right"
+           data-slide="next"><span class="icon-next"></span></a>
+        -->
+        
+    </div>
+</div>
+
