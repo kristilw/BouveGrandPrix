@@ -131,7 +131,7 @@ a:active {
 
 @font-face {
     font-family:'DAGGERSQUARE_OBLIQUE'; /*a name to be used later*/
-    src: url('app/fonts/DAGGERSQUARE OBLIQUE.otf') format('opentype'); /*URL to font*/
+    src: url('app/fonts/DAGGERSQUARE_OBLIQUE.otf') format('opentype'); /*URL to font*/
 }
 
 p{
