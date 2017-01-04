@@ -1,11 +1,1 @@
-"use strict";
-var Record = (function () {
-    function Record(time, name, company) {
-        this.time = time;
-        this.name = name;
-        this.company = company;
-    }
-    return Record;
-}());
-exports.Record = Record;
-//# sourceMappingURL=record.js.map
+"use strict";var Record=function(){function t(t,e,r){this.time=t,this.name=e,this.company=r}return t}();exports.Record=Record;

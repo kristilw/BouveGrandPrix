@@ -12,16 +12,15 @@
     text-align:center;
 }
 
-
-
-.leaflet-container {
-    background-color:rgb(50, 50, 50) !important;
-}
-
 #car_div{
     position:absolute;
     top:50vh;
     left:50%;
+    z-index:-1;
+}
+
+#goal_div{
+    z-index:3;
 }
 
 #woops_div{

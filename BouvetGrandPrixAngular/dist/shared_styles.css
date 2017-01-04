@@ -164,5 +164,9 @@ h2{
 }
 
 button:focus{
-    outline: none;
+    outline: none !important;
+}
+
+.leaflet-container {
+    background-color:rgb(50, 50, 50) !important;
 }
