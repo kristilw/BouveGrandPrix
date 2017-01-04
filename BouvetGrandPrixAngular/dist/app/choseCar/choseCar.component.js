@@ -30,7 +30,6 @@ ChoseCarComponent = __decorate([
         templateUrl: 'app/choseCar/choseCar.component.html',
         styleUrls: [
             'app/choseCar/choseCar.component.css',
-            'app/styles/shared.css'
         ]
     }),
     __metadata("design:paramtypes", [])

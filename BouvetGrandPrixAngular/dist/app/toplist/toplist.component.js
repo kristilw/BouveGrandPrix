@@ -101,7 +101,6 @@ ToplistComponent = __decorate([
         templateUrl: 'app/toplist/toplist.component.html',
         styleUrls: [
             'app/toplist/toplist.component.css',
-            'app/styles/shared.css'
         ]
     }),
     __metadata("design:paramtypes", [core_1.ElementRef,

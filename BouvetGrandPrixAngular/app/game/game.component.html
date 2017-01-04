@@ -64,9 +64,9 @@
             </button>
         </div>
 
-        <!-- *ngIf="showGoal"-->
+        <!-- -->
         <div *ngIf="showGoal">
-            <goal [completionTime]="completionTime" (saveRecord_eventEmitter)="saveRecord()" (goToAboutPage_eventEmitter)="goToAboutPage()">
+            <goal [completionTime]="completionTime" (saveRecord_eventEmitter)="saveRecord()" (goToAboutPage_eventEmitter)="goToAboutPage()" id="goal_div">
 
             </goal>
         </div>

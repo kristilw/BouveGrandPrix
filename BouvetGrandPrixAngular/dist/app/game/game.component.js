@@ -533,7 +533,6 @@ GameComponent = __decorate([
         templateUrl: 'app/game/game.component.html',
         styleUrls: [
             'app/game/game.component.css',
-            'app/styles/shared.css',
             'node_modules/leaflet/dist/leaflet.css'
         ]
     }),

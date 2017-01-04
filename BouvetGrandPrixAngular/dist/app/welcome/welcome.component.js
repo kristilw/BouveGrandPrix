@@ -48,7 +48,6 @@ WelcomeComponent = __decorate([
         templateUrl: 'app/welcome/welcome.component.html',
         styleUrls: [
             'app/welcome/welcome.component.css',
-            'app/styles/shared.css'
         ]
     }),
     __metadata("design:paramtypes", [core_1.ElementRef])

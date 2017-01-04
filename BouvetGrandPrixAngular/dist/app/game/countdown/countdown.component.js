@@ -55,7 +55,6 @@ CountdownComponent = __decorate([
         templateUrl: 'app/game/countdown/countdown.component.html',
         styleUrls: [
             'app/game/countdown/countdown.component.css',
-            'app/styles/shared.css'
         ]
     }),
     __metadata("design:paramtypes", [])

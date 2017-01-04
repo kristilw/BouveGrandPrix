@@ -1,1 +1,0 @@
-{"version":3,"file":"getRoad.component.js","sourceRoot":"","sources":["getRoad.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA0B,eAAe,CAAC,CAAA;AAO1C;IAAA;IAcA,CAAC;IAZG,kCAAO,GAAP;QACI,MAAM,CAAC,ghBAS4C,CAAA;IACvD,CAAC;IAlBL;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,cAAc;YACxB,QAAQ,EAAE,EAAE;SACf,CAAC;;wBAAA;IAgBF,uBAAC;AAAD,CAAC,AAdD,IAcC;AAdY,wBAAgB,mBAc5B,CAAA"}

@@ -20,7 +20,6 @@ AboutComponent = __decorate([
         templateUrl: 'app/about/about.component.html',
         styleUrls: [
             'app/about/about.component.css',
-            'app/styles/shared.css'
         ]
     }),
     __metadata("design:paramtypes", [])

@@ -40,7 +40,6 @@ GoalComponent = __decorate([
         templateUrl: 'app/game/goal/goal.component.html',
         styleUrls: [
             'app/game/goal/goal.component.css',
-            'app/styles/shared.css'
         ]
     }),
     __metadata("design:paramtypes", [])
