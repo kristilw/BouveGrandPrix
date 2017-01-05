@@ -70,6 +70,11 @@ export class AppComponent {
 
 
     getToplist(): void {
-        this.toplistService.getToplistSlow().then(toplist => this.toplist = toplist);
+        this.toplistService.getToplist()
+            .subscribe(
+            toplist => this.toplist = toplist, //Bind to view
+            err => {
+                console.log(err);
+            });
     }
 }

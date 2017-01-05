@@ -29,22 +29,22 @@ export class ToplistComponent {
     ) { }
 
     ngOnInit() {
-        this.getToplist();
-
         this.routeParamSubscription = this.route.params.subscribe(
             (param: any) => {
                 let id = param['id'];
                 this.focusOnRecord = id.toString() - 1;
+                this.getToplist();
                 this.navigateToFocus();
             });
     }
 
-    toplistFinishedLoading(ans: boolean): void {
-        console.log(ans);
-    }
-
     getToplist(): void {
-        this.toplistService.getToplist().then(toplist => this.toplist = toplist).then(() => this.navigateToFocus());
+        this.toplistService.getToplist()
+            .subscribe(
+            toplist => this.toplist = toplist, //Bind to view
+            err => {
+                console.log(err);
+            });
     }
 
     navigateToFocus(): void {

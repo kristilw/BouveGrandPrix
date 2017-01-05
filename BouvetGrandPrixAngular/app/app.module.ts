@@ -12,9 +12,11 @@ import { CountdownComponent } from "./game/countdown/countdown.component";
 import { GoalComponent } from "./game/goal/goal.component";
 import { ToplistComponent } from "./toplist/toplist.component";
 import { TimePipe } from "./pipe/time.pipe";
+import { HttpModule } from '@angular/http';
 
 @NgModule({
     imports: [
+        HttpModule,
         BrowserModule,
         RouterModule.forRoot([
             {
