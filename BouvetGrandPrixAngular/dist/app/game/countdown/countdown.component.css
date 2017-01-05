@@ -1,0 +1,23 @@
+#count_down_div{
+    position:absolute;
+    top:25vh;
+    width:100%;
+}
+
+#count_down_text{
+    font-size:40px;
+    height:100px;
+    border: 1px solid #d45a1f;
+    padding:50px 70px 50px 70px;
+}
+
+#flags_countdown{
+    height:5vh;
+    margin-top:-85px;
+}
+
+
+.count_down_text_hoverEffect:hover{
+    border: 1px solid #ffffff !important;
+    cursor:pointer !important;
+}

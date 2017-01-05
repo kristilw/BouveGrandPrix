@@ -1,0 +1,172 @@
+﻿.white_text{
+    color:white;
+}
+
+.grey_text{
+    color:#d0d0d0;
+}
+
+.underline_text{
+    text-decoration: underline;
+}
+
+.bouvet_orange_text{
+    color:#f37021;
+}
+
+.no_margin{
+    margin:0px 0px 0px 0px !important;
+}
+
+.no_padding{
+    padding:0px 0px 0px 0px !important;
+}
+
+.bouvet_background_orange{
+    background-color:#f37021;
+}
+
+.bouvet_orange_border{
+    border: 1px solid;
+    border-color:#f37021;
+}
+
+.bouvet_button{
+    background-color:transparent;
+    color:white;
+    padding: 5px 25px 5px 25px;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.bouvet_button:hover{
+    background-color:#f37021;
+    border-color:#808080;
+}
+
+.background_dark{
+    background-color:rgba(0, 0, 0, 0.70);
+}
+
+.background_grey{
+    background-color:rgba(0, 0, 0, 0.30);
+}
+
+.flags{
+    height:6vh;
+    padding-bottom:10px;
+}
+
+/* unvisited link */
+a:link {
+    text-decoration: none;      
+}
+
+/* visited link */
+a:visited {
+    text-decoration: none;      
+}
+
+/* mouse over link */
+a:hover {
+    text-decoration: none;      
+}
+
+/* selected link */
+a:active {
+    text-decoration: none;      
+}
+
+.toplist_table_postion{
+    padding:10px 0px 10px 0px;
+    width:35px;
+    text-align:center;
+}
+
+
+.toplist_table_name{
+    padding: 10px 10px 10px 20px;
+    width: 40%;
+}
+
+.toplist_table_firm{
+    width: 20%;
+}
+
+.toplist_table_best_time_glyph{
+    border-left: solid 1px;
+    border-color:#f37021;
+    padding-left:40px;
+    padding-right:10px;
+}
+
+.table_first_place{
+    width:100%;
+    background-color:rgba(0, 0, 0, 0.70);
+    border: solid 1px;
+    border-color:#f37021;
+    margin-bottom:15px;
+}
+
+.navbar_bottom_game_logo_div{
+    pointer-events:none;
+}
+
+.table_record{
+    width:100%;
+    background-color:rgba(0, 0, 0, 0.70);
+    margin-bottom:15px;
+    height: 40px;
+}
+
+@font-face {
+    font-family:'OpenSansRegular'; /*a name to be used later*/
+    src: url('app/fonts/OpenSansRegular.ttf') format('truetype'); /*URL to font*/
+}
+
+@font-face {
+    font-family:'DAGGERSQUARE'; /*a name to be used later*/
+    src: url('app/fonts/DAGGERSQUARE.otf') format('opentype'); /*URL to font*/
+}
+
+@font-face {
+    font-family:'DAGGERSQUARE_OBLIQUE'; /*a name to be used later*/
+    src: url('app/fonts/DAGGERSQUARE_OBLIQUE.otf') format('opentype'); /*URL to font*/
+}
+
+p{
+    font-family: 'OpenSansRegular', sans-serif;
+}
+
+button{
+    font-family: 'OpenSansRegular', sans-serif;
+    letter-spacing: 1px;
+}
+
+.letter_spacing{
+    letter-spacing: 1px;
+}
+
+h1{
+    font-family: 'DAGGERSQUARE_OBLIQUE', sans-serif;
+}
+
+h2{
+    font-family: 'DAGGERSQUARE_OBLIQUE', sans-serif;
+}
+
+.daggerSquare{
+    font-family: 'DAGGERSQUARE_OBLIQUE', sans-serif;
+}
+
+.text_letters_space_l{
+    letter-spacing: 3px;
+}
+
+button:focus{
+    outline: none !important;
+}
+
+.leaflet-container {
+    background-color:rgb(50, 50, 50) !important;
+}

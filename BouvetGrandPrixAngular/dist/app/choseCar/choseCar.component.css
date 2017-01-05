@@ -1,0 +1,65 @@
+#choseCar_div{
+    text-align: center;
+    margin-top:50px;
+}
+
+.car_image{
+    padding: 20px 20px 20px 20px;
+    width: 100%;
+}
+
+.car_image_asdf:hover { 
+    border: 1px solid #f37021;
+}
+
+#flags_chose_car_screen{
+    height:6vh;
+}
+
+.drive_text{
+    width: 100%;
+    border: 1px solid;
+    line-height: 110px;
+    cursor:pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.car_seleciton_div{
+    width:100px;
+    height:120px;
+
+    display: inline-block;
+}
+
+.car_seleciton_div_parent{
+    text-align:center;
+}
+
+.car_seleciton_div:hover .visible
+{
+    display: none;
+}
+
+.car_seleciton_div:hover .hidden {
+    display: block !important;
+}
+
+.hidden, .visible {
+    margin: 0px 0px 0px 0px;
+    width:100%;
+    height:120px;
+}
+
+
+#car_seleciton{
+    padding-top:25px;
+    height: calc(93vh - 71px - 75px - 50px);
+    overflow-y:auto;
+}
+
+#div_with_extra_margin_for_desktop{
+    margin:calc(130px);
+}

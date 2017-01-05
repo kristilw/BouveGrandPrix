@@ -9,8 +9,9 @@
   - "vinger" på speedometer + bouvet grand prix ikon
  
  Bugs:
-  -Custom tekst laster ikke alltid inn
+  -Custom tekst laster ikke alltid inn (KANSKJE FIKSET)
   -Noen gang klikker spillet når man "kræsjer"
+  -Static server kan ikke navigeres via URL! 
   
   STEP 3
     - lage server med funksjoner for å hente/sette rekorder

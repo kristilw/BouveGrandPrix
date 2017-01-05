@@ -1,0 +1,1 @@
+"use strict";var Record=function(){function t(t,e,r){this.time=t,this.name=e,this.company=r}return t}();exports.Record=Record;

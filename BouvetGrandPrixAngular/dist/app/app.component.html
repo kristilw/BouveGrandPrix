@@ -1,0 +1,120 @@
+<div class="container" id="main_container">
+    <div class="row">
+        <div id="map_overlay">
+        </div>
+
+        <div id="map">
+        </div>
+
+        <div id="router_outlet_div">
+            <router-outlet id="router_outlet"></router-outlet>
+        </div>
+    </div>
+
+
+    <!-- Navbar top -->
+    <nav class="navbar navbar-default navbar-fixed-top" id="navbar_top_body">
+        <div class="container-fluid">
+            <div class="nav navbar-header" id="navbar_top_links">
+                <span class="glyphicon glyphicon-menu-hamburger bouvet_orange_border social_icon" id="menu_btn"
+                      data-target="#menu_modal" data-toggle="modal"></span>
+            </div>
+
+            <div class="nav navbar-nav navbar-right" id="bouvet_logo_div">
+                <a href="http://www.bouvet.no">
+                    <p class="bouvet_orange_text transparent" id="bouvet_logo"> bouvet </p>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="modal fade" id="menu_modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content text_letters_space_l">
+                <div class="modal-body" id="meny_modal_body">
+                    <div class="row">
+                        <img class="flags" src="app/img/Flagg_medstreker.png" />
+                    </div>
+
+                    <div class="row">
+                        <h3 class="white_text modal_text" data-dismiss="modal" routerLink="/toplist/1"> TOPPLISTE </h3>
+                    </div>
+
+                    <div class="row">
+                        <h3 class="white_text modal_text" data-dismiss="modal" routerLink="/about"> OM BOUVET-HUSET </h3>
+                    </div>
+
+                    <div class="row">
+                        <h3 class="white_text modal_text" data-dismiss="modal"> PREMIE </h3>
+                    </div>
+
+                    <div class="row">
+                        <a href="http://www.bouvet.no" class="white_text modal_text" data-dismiss="modal">
+                            <h3> GÅ TIL BOUVET.NO </h3>
+                        </a>
+                    </div>
+
+                    <div class="row">
+                        <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_modal"
+                                routerLink="/choseCar" data-dismiss="modal">
+                            SPILL GRAND PRIX
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar bottom -->
+    <nav class="navbar navbar-default navbar-fixed-bottom hidden-xs" id="navbar_bottom_body">
+        <div class="container full_screen_width_no_side_padding" id="navbar_bottom">
+
+            <div class="row" id="navbar_bottom_top">
+                <div id="navbar_bottom_game_logo_div">
+                    <img id="navbar_bottom_game_logo" src="app/img/BouvetGrandPrix_Stor.png" routerLink="" class="btn" />
+                </div>
+
+                <div id="navbar_bottom_social">
+                    <p>
+                        <a href="http://www.bouvet.no">
+                            <span class="glyphicon bouvet_orange_border social_icon" id="twitter_icon">
+                                <img src="app/img/Twitter.png" class="social_img"/>
+                            </span>
+                        </a>
+
+                        <a href="http://www.bouvet.no">
+                            <span class="glyphicon bouvet_orange_border social_icon" id="facebook_icon">
+                                <img src="app/img/Facebook_ikon.png" class="social_img" id="facebook_icon_img" />
+                            </span>
+                        </a>
+
+                        &nbsp;
+                        <span class="glyphicon bouvet_orange_border social_icon" id="speaker_icon">
+                            <img src="app/img/Lyd_ikon1.png" class="social_img" />
+                        </span>
+                        <!--span class="glyphicon glyphicon-volume-up" id="speaker_icon"> </span -->
+                    </p>
+                </div>
+            </div>
+
+            <div class="row hidden-xs" id="navbar_bottom_bottom">
+                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 no_padding">
+                    <div class="navbar_bottom_box" id="navbar_bottom_first_box">
+                        <p id="navbar_bottom_first_box_text"> <span class="glyphicon glyphicon-time bouvet_orange_text"></span>  TIDER </p>
+                    </div>
+                </div>
+
+
+                <div *ngFor="let record of toplist; let idx = index" class="col-lg-1 col-md-2 col-sm-3 col-xs-4 no_padding"
+                     [class]="idx > 10 ? 'hidden': (idx > 4 ? 'col-lg-1 no_padding hidden-md hidden-sm' : ( idx > 2 ? 'col-lg-1 col-md-2 hidden-sm no_padding':'col-lg-1 col-md-2 col-sm-3 col-xs-4 no_padding'))">
+                    <div class="navbar_bottom_box">
+                        <p class="bouvet_orange_text navbar_bottom_box_placement_text no_padding">{{idx+1}}.</p>
+                        <p class="navbar_bottom_box_time_text no_padding">{{record.time | recordTime:'m'}}</p>
+                        <p class="navbar_bottom_box_name_text no_padding">{{record.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

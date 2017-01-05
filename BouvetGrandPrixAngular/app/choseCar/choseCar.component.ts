@@ -5,7 +5,6 @@
     templateUrl: 'app/choseCar/choseCar.component.html',
     styleUrls: [
         'app/choseCar/choseCar.component.css',
-        'app/styles/shared.css'
     ]
 })
 

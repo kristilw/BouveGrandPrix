@@ -1,0 +1,86 @@
+#welcome_div{
+  margin: 0px 0px 0px 0px;
+  text-align: center;
+
+  position: relative;
+  top: 0;
+}
+
+#welcome_div_space{
+    height: calc(45vh - 150px);
+}
+
+#welcome_carousel{
+
+}
+
+#item_1{
+    height: calc(350px + 7vh);
+}
+
+#item_2{
+    height: calc(350px + 7vh);
+}
+
+#carousel_indicator_1{
+
+}
+
+#carousel_indicator_2{
+    
+}
+
+#bouvet_log_welcome_screen{
+    height:25vh;
+    padding-bottom:15px;
+    margin-left:-15px;
+}
+
+#welcome_screen_bestTimes{
+    margin: 0 0 0 0;
+}
+
+#carousel_indicator_div{
+    position:relative;
+    top:calc((210px + 7vh)/2); 
+    width:100%;
+    text-align:left;
+    padding-left:16px;
+
+    height:0;
+    z-index:10;
+}
+
+.carousel_indicator_btn{
+    margin-top:10px;
+
+    padding: 4px 4px 4px 4px;
+
+    border: 1px solid;
+    border-color: #d45a1f;
+    border-radius: 0;
+
+    pointer-events:all;
+
+    background-color:rgba(0,0,0,0.7);
+
+    width:13px;
+    height:13px;
+}
+
+.carousel_indicator_btn .active{
+    background-color:#f37021;
+}
+
+.carousel_indicator_btn_active{
+    width:3px;
+    height:3px;
+
+    padding:1.5px 1.5px 1.5px 1.5px;
+
+    background-color:white;
+    border-radius:1.5px;
+
+    font-size:0px;
+}
+
