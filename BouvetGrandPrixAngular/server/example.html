@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Bouvet Grandprix Test</title>
+</head>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<body>
+
+	<script type="text/javascript">
+		
+		function getScores(){
+
+			$.ajax({
+				url: 'server.php',
+	        	data: {action: 'getScores'},
+	        	type: 'post',
+		        success: function(output){
+		            console.log(output);
+		            $("#score-list .row").remove();
+		            $.each($.parseJSON(output),function(i,v){
+		        		$("#score-list").append('<tr class="row"><td>'+v.name+'</td><td>'+v.email+'</td><td>'+v.time+'</td><td>'+v.score+'</td></tr>');
+		        	});
+		        }
+			});
+		}
+
+		function setScore(name,email,time,score){
+
+			console.log(name," ",email," ",time," ",score);
+
+			$.ajax({
+				url: 'server.php',
+	        	data: {action: 'setScore',name:name,email:email,time:time,score:score},
+	        	type: 'post',
+		        success: function(output){
+		            console.log("Log output ",output);
+		            getScores();
+		        }
+			});
+		}
+
+		$(document).ready(function(){
+
+			$("form").submit(function( event ) {
+				event.preventDefault();
+				setScore($("#form_name").val(), $("#form_email").val(), $("#form_time").val(), $("#form_score").val());
+			});
+
+			getScores();
+		});
+
+	</script>
+	
+	<div>
+		<p>
+			<button onclick="getScores()">get Scores</button>			
+		</p>
+	</div>
+	
+	<div>
+		<p>
+			<form>
+				<label>Name: 
+					<input id="form_name" type="text" name="name">
+				<label>
+				<br>
+				<label>Score: 
+					<input id="form_score" type="text" name="score">
+				<label>
+				<br>
+				<label>Email: 
+					<input id="form_email" type="text" name="email">
+				<label>
+				<br>
+				<label>Time: 
+					<input id="form_time" type="text" name="time">
+				<label>
+				<br>
+				<button type="submit">Set Score</button>
+			</form>
+		</p>
+	</div>
+	<table id="score-list">
+		  <tr>
+		   <th>Name</th>
+		   <th>Email</th>
+		   <th>Time</th>
+		   <th>Score</th>
+		 </tr>
+	</table>
+</body>
+</html>
