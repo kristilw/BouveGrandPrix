@@ -1,1 +1,48 @@
-"use strict";var __decorate=this&&this.__decorate||function(e,t,o,n){var r,a=arguments.length,c=a<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)c=Reflect.decorate(e,t,o,n);else for(var i=e.length-1;i>=0;i--)(r=e[i])&&(c=(a<3?r(c):a>3?r(t,o,c):r(t,o))||c);return a>3&&c&&Object.defineProperty(t,o,c),c},__metadata=this&&this.__metadata||function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)},core_1=require("@angular/core"),GoalComponent=function(){function e(){this.saveRecord_eventEmitter=new core_1.EventEmitter,this.goToAboutPage_eventEmitter=new core_1.EventEmitter}return e.prototype.registerRecord=function(){this.saveRecord_eventEmitter.emit()},e.prototype.goToAboutPage=function(){this.goToAboutPage_eventEmitter.emit()},e}();__decorate([core_1.Input(),__metadata("design:type",Number)],GoalComponent.prototype,"completionTime",void 0),__decorate([core_1.Output(),__metadata("design:type",core_1.EventEmitter)],GoalComponent.prototype,"saveRecord_eventEmitter",void 0),__decorate([core_1.Output(),__metadata("design:type",core_1.EventEmitter)],GoalComponent.prototype,"goToAboutPage_eventEmitter",void 0),GoalComponent=__decorate([core_1.Component({selector:"goal",templateUrl:"app/game/goal/goal.component.html",styleUrls:["app/game/goal/goal.component.css"]}),__metadata("design:paramtypes",[])],GoalComponent),exports.GoalComponent=GoalComponent;
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require("@angular/core");
+var GoalComponent = (function () {
+    function GoalComponent() {
+        this.saveRecord_eventEmitter = new core_1.EventEmitter();
+        this.goToAboutPage_eventEmitter = new core_1.EventEmitter();
+    }
+    GoalComponent.prototype.registerRecord = function () {
+        this.saveRecord_eventEmitter.emit();
+    };
+    GoalComponent.prototype.goToAboutPage = function () {
+        this.goToAboutPage_eventEmitter.emit();
+    };
+    return GoalComponent;
+}());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], GoalComponent.prototype, "completionTime", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], GoalComponent.prototype, "saveRecord_eventEmitter", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], GoalComponent.prototype, "goToAboutPage_eventEmitter", void 0);
+GoalComponent = __decorate([
+    core_1.Component({
+        selector: 'goal',
+        templateUrl: 'app/game/goal/goal.component.html',
+        styleUrls: [
+            'app/game/goal/goal.component.css',
+        ]
+    }),
+    __metadata("design:paramtypes", [])
+], GoalComponent);
+exports.GoalComponent = GoalComponent;
+//# sourceMappingURL=goal.component.js.map
