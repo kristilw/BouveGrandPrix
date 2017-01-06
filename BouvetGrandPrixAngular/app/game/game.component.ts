@@ -6,7 +6,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GoalComponent } from "./goal/goal.component";
 import { CountdownComponent } from "./countdown/countdown.component";
 
-
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Map } from 'leaflet';

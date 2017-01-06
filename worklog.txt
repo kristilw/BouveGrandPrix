@@ -9,9 +9,11 @@
   - "vinger" på speedometer + bouvet grand prix ikon
  
  Bugs:
+  -Når banen lastes inn på nytt etter å ha kommet i mål kommer det en feilmelding (easy)
+  -Noen bilder har mellomrom i navn, fungerer ikke når man bygger prosjekt med gulp (easy)
+  -Noen gang klikker spillet når man "kræsjer" (medium)
   -Custom tekst laster ikke alltid inn (KANSKJE FIKSET)
-  -Noen gang klikker spillet når man "kræsjer"
-  -Static server kan ikke navigeres via URL! 
+  -Static server kan ikke navigeres via URL! (ukjent)
   
   STEP 3
     - lage server med funksjoner for å hente/sette rekorder

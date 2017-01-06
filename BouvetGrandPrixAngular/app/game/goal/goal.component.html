@@ -19,21 +19,24 @@
                 <table class="table_first_place">
                     <tr>
                         <td> <p id="input_name_description" class="white_text letter_spacing goal_text_description"> {{"fornavn*" | uppercase }} </p></td>
-                        <td> <input id="input_name" type="text" placeholder="Jørgen" class="goal_text_input grey_text letter_spacing"/> </td>
+                        <td> <input id="input_name" type="text" placeholder="Jørgen" class="goal_text_input grey_text letter_spacing"
+                                    #name_box (keyup)="nameChange(name_box.value)"/> </td>
                     </tr>
                 </table>
 
                 <table class="table_first_place">
                     <tr>
-                        <td> <p id="input_surname_description" class="white_text letter_spacing goal_text_description"> {{"etternavn*" | uppercase }} </p></td>
-                        <td> <input id="input_surname" type="text" placeholder="Stiansen" class="goal_text_input grey_text letter_spacing"/> </td>
+                        <td> <p id="input_surname_description" class="white_text letter_spacing goal_text_description"> {{"email*" | uppercase }} </p></td>
+                        <td> <input id="input_surname" type="text" placeholder="bouvet@huset.no" class="goal_text_input grey_text letter_spacing"
+                                    #email_box (keyup)="emailChange(email_box.value)"/> </td>
                     </tr>
                 </table>
 
                 <table class="table_first_place">
                     <tr>
-                        <td> <p id="input_company_description" class="white_text letter_spacing goal_text_description"> {{"company" | uppercase }} </p></td>
-                        <td> <input id="input_company" type="text" placeholder="(Valgfritt)" class="goal_text_input grey_text letter_spacing"/> </td>
+                        <td> <p id="input_company_description" class="white_text letter_spacing goal_text_description"> {{"bedrift" | uppercase }} </p></td>
+                        <td> <input id="input_company" type="text" placeholder="(Valgfritt)" class="goal_text_input grey_text letter_spacing" 
+                                    #company_box (keyup)="companyChange(company_box.value)"/> </td>
                     </tr>
                 </table>
             </div>
