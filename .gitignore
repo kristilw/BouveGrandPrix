@@ -6,3 +6,4 @@ BouvetGrandPrixAngular/dist/app/**/*.js
 BouvetGrandPrixAngular/dist/time.pipe.js
 BouvetGrandPrixAngular/*.log
 BouvetGrandPrixAngular/.idea
+BouvetGrandPrixAngular/.DS_Store
