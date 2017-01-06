@@ -1,3 +1,8 @@
-﻿BouvetGrandPrixAngular/app/**/*.js.map
+BouvetGrandPrixAngular/app/**/*.js.map
 BouvetGrandPrixAngular/app/**/*.js
 BouvetGrandPrixAngular/node_modules/*
+BouvetGrandPrixAngular/dist/
+BouvetGrandPrixAngular/dist/app/**/*.js
+BouvetGrandPrixAngular/dist/time.pipe.js
+BouvetGrandPrixAngular/*.log
+BouvetGrandPrixAngular/.idea
