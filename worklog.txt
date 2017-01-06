@@ -4,6 +4,7 @@
  - fikse bane på kart
  
  Imporivements:
+  - Bruker navn/email/bedrift blir ikke sjekket før det blir lagt inn i databasen
   - Overskrift tekster er i for små størresler
   - center "time" i toppliste
   - "vinger" på speedometer + bouvet grand prix ikon
@@ -18,4 +19,4 @@
   STEP 3
     - lage server med funksjoner for å hente/sette rekorder
     - bruke database for å lagre rekorder
-    - implementere http service for å hente/sette rekorder
+    - implementere http service for å hente/sette rekorder (Ikke testet)
