@@ -14,18 +14,14 @@
     </div>
 
     <div class="row no_margin" id="car_seleciton">
-        <div class="col-lg-6 col-lg-offset-3
-                    col-md-8 col-md-offset-2
-                    col-sm-10 col-sm-offset-1">
+        <div class="">
 
-            <div class="col-sm-2 col-xs-6 car_seleciton_div_parent" *ngFor="let car of cars">
+            <div class=" car_seleciton_div_parent" *ngFor="let car of cars">
                 <div class="car_seleciton_div">
                     <img class="car_image visible" src="{{car.imgSrc}}" />
-                    <div>
-                        <h5 class="white_text hidden drive_text bouvet_orange_border daggerSquare" routerLink="{{car.routerLink}}">
+                        <h5 class="white_text hidden drive_text daggerSquare" routerLink="{{car.routerLink}}">
                             <u> KJØR! </u>
                         </h5>
-                    </div>
                 </div>
             </div>
 
