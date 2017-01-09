@@ -9,25 +9,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var mockData_toplist_1 = require("./mockData_toplist");
+var http_1 = require("@angular/http");
+var Rx_1 = require("rxjs/Rx");
+// Import RxJs required methods
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/catch");
 var ToplistService = (function () {
-    function ToplistService() {
+    function ToplistService(http) {
+        this.http = http;
+        this.serverUrl = 'app/server/server.php';
     }
     ToplistService.prototype.getToplist = function () {
-        console.log("get top list");
-        return Promise.resolve(mockData_toplist_1.TOPLIST);
+        var body = JSON.stringify({ action: 'getScores' }); // Stringify payload
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        var options = new http_1.RequestOptions({ headers: headers }); // Create a request option
+        return this.http.post(this.serverUrl, body, options) // ...using get request
+            .map(function (res) { return console.log(res.json()); }) // ...and calling .json() on the response to return data
+            .catch(function (error) { return Rx_1.Observable.throw(console.log(error) || 'Server error, could not load record'); }); //...errors if any
     };
-    ToplistService.prototype.getToplistSlow = function () {
-        var _this = this;
-        return new Promise(function (resolve) {
-            setTimeout(function () { return resolve(_this.getToplist()); }, 2000);
-        });
+    ToplistService.prototype.saveRecord = function (newRecord) {
+        var bodyString = JSON.stringify(newRecord); // Stringify payload
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        var options = new http_1.RequestOptions({ headers: headers }); // Create a request option
+        this.http.post(this.serverUrl, bodyString, options) // ...using post request
+            .map(function (res) { return res.json(); }) // ...and calling .json() on the response to return data
+            .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error, could not save record'); }); //...errors if any
     };
     return ToplistService;
 }());
 ToplistService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [http_1.Http])
 ], ToplistService);
 exports.ToplistService = ToplistService;
 //# sourceMappingURL=toplist.service.js.map

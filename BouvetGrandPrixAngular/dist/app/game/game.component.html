@@ -11,7 +11,7 @@
             </countdown-game>
         </div>
 
-        
+
 
         <div id="controls_div" *ngIf="showCountDownTimer">
             <!--
@@ -58,9 +58,8 @@
         </div>
 
         <div id="restart_div" *ngIf="zoomedToStartArea">
-            <button class="button bouvet_button background_grey bouvet_orange_border" (click)="restartGameFromButton()">
-                <span class="glyphicon glyphicon-repeat bouvet_orange_text">  </span>
-                <span class="white_text"> OMSTART </span>
+            <button class="button bouvet_button" (click)="restartGameFromButton()">
+                <span data-hover="OMSTART" class="white_text">OMSTART</span>
             </button>
         </div>
 

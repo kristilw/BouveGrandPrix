@@ -20,6 +20,7 @@ var countdown_component_1 = require("./game/countdown/countdown.component");
 var goal_component_1 = require("./game/goal/goal.component");
 var toplist_component_1 = require("./toplist/toplist.component");
 var time_pipe_1 = require("./pipe/time.pipe");
+var http_1 = require("@angular/http");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -28,6 +29,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [
+            http_1.HttpModule,
             platform_browser_1.BrowserModule,
             router_1.RouterModule.forRoot([
                 {

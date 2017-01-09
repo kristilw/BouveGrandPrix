@@ -9,17 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var toplist_service_1 = require("../../services/toplist.service");
+var record_1 = require("../../services/record");
 var GoalComponent = (function () {
-    function GoalComponent() {
+    function GoalComponent(toplistService) {
+        this.toplistService = toplistService;
+        this.user_name = "";
+        this.user_email = "";
+        this.user_company = "";
         this.saveRecord_eventEmitter = new core_1.EventEmitter();
         this.goToAboutPage_eventEmitter = new core_1.EventEmitter();
     }
     GoalComponent.prototype.registerRecord = function () {
-        this.saveRecord_eventEmitter.emit();
+        if (this.completionTime !== null && this.user_name.length > 2 && this.user_email.length > 5) {
+            var newRecord = new record_1.Record(this.completionTime, this.user_name, this.user_email, this.user_company);
+            this.toplistService.saveRecord(newRecord);
+            this.saveRecord_eventEmitter.emit();
+        }
+        else {
+            console.log("Error with inputs");
+        }
     };
     GoalComponent.prototype.goToAboutPage = function () {
         this.goToAboutPage_eventEmitter.emit();
     };
+    GoalComponent.prototype.nameChange = function (value) { this.user_name = value; };
+    GoalComponent.prototype.emailChange = function (value) { this.user_email = value; };
+    GoalComponent.prototype.companyChange = function (value) { this.user_company = value; };
     return GoalComponent;
 }());
 __decorate([
@@ -42,7 +58,7 @@ GoalComponent = __decorate([
             'app/game/goal/goal.component.css',
         ]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [toplist_service_1.ToplistService])
 ], GoalComponent);
 exports.GoalComponent = GoalComponent;
 //# sourceMappingURL=goal.component.js.map

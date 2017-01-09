@@ -12,13 +12,19 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ToplistService {
-    private serverUrl = 'app/services/records.json';
+    private serverUrl = 'app/server/server.php';
     constructor(private http: Http) { }
 
     getToplist(): Observable<Record[]> {
-        return this.http.get(this.serverUrl) // ...using get request
-            .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error, could not load record')); //...errors if any
+
+        let body = JSON.stringify({action: 'getScores'}); // Stringify payload
+        let headers      = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options       = new RequestOptions({ headers: headers }); // Create a request option
+
+
+        return this.http.post(this.serverUrl,body, options) // ...using get request
+            .map((res: Response) => console.log(res.json())) // ...and calling .json() on the response to return data
+            .catch((error: any) => Observable.throw(console.log(error) || 'Server error, could not load record')); //...errors if any
     }
 
     saveRecord(newRecord: Record): void {

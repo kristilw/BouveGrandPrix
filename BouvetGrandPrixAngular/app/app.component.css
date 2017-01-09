@@ -50,16 +50,20 @@ div.modal-content{ /* Removes shadow from modal  */
 
 #map { 
     position: absolute;
-    height: 100vh;
+    top:0;
     width:100%;
+    bottom:0;
+    left: 0;
     z-index: 1;
 }
 
 #map_overlay{
     pointer-events: none;
     position: absolute;
-    height:100vh;
+    top:0;
     width:100%;
+    bottom:0;
+    left: 0;
     z-index: 2;
     background-color:rgba(0, 0, 0, 0.70);
 }
@@ -72,8 +76,10 @@ div.modal-content{ /* Removes shadow from modal  */
 
 #router_outlet_div{
     position: absolute;
-    height:100vh;
+    top:0;
     width:100%;
+    bottom: 0;
+    left:0;
     z-index: 3;
     background-color:transparent;
 }
@@ -111,10 +117,11 @@ div.modal-content{ /* Removes shadow from modal  */
 
 #menu_btn{
 
+    display: inline-block;
 }
 
 #facebook_icon_img{
-    width:10px;
+    width:16px;
     height:auto;
 }
 

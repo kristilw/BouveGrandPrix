@@ -84,3 +84,18 @@
     font-size:0px;
 }
 
+p.grey_text{
+
+
+    color: #eee;
+    font-family:'Open Sans', sans-serif;
+    font-size: 1.32em;
+    font-weight: 300;
+    line-height: 1.78em;
+    word-spacing: 0.07em;
+    letter-spacing: 0.05em;
+    text-align: center;
+    width: 100%;
+    padding: 0px; padding-bottom: 38px; padding-left: 0px; padding-top: 38px;
+
+}

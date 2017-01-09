@@ -24,19 +24,21 @@ var ToplistComponent = (function () {
     }
     ToplistComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.getToplist();
         this.routeParamSubscription = this.route.params.subscribe(function (param) {
             var id = param['id'];
             _this.focusOnRecord = id.toString() - 1;
+            _this.getToplist();
             _this.navigateToFocus();
         });
     };
-    ToplistComponent.prototype.toplistFinishedLoading = function (ans) {
-        console.log(ans);
-    };
     ToplistComponent.prototype.getToplist = function () {
         var _this = this;
-        this.toplistService.getToplist().then(function (toplist) { return _this.toplist = toplist; }).then(function () { return _this.navigateToFocus(); });
+        this.toplistService.getToplist()
+            .subscribe(function (toplist) { return _this.toplist = toplist; }, //Bind to view
+        function (//Bind to view
+            err) {
+            console.log(err);
+        });
     };
     ToplistComponent.prototype.navigateToFocus = function () {
         var _this = this;

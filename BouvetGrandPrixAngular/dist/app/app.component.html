@@ -16,13 +16,13 @@
     <nav class="navbar navbar-default navbar-fixed-top" id="navbar_top_body">
         <div class="container-fluid">
             <div class="nav navbar-header" id="navbar_top_links">
-                <span class="glyphicon glyphicon-menu-hamburger bouvet_orange_border social_icon" id="menu_btn"
+                <span class="glyphicon bouvet_orange_border social_icon" id="menu_btn"
                       data-target="#menu_modal" data-toggle="modal"></span>
             </div>
 
             <div class="nav navbar-nav navbar-right" id="bouvet_logo_div">
                 <a href="http://www.bouvet.no">
-                    <p class="bouvet_orange_text transparent" id="bouvet_logo"> bouvet </p>
+                    <img src="app/img/Bouvet_Logo.svg" alt="bouvet logo">
                 </a>
             </div>
         </div>
@@ -58,7 +58,7 @@
                     <div class="row">
                         <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_modal"
                                 routerLink="/choseCar" data-dismiss="modal">
-                            SPILL GRAND PRIX
+                            <span data-hover="SPILL GRAND PRIX" class="ng-binding">SPILL GRAND PRIX</span>
                         </button>
                     </div>
                 </div>
@@ -76,25 +76,22 @@
                 </div>
 
                 <div id="navbar_bottom_social">
-                    <p>
+                    <div>
                         <a href="http://www.bouvet.no">
                             <span class="glyphicon bouvet_orange_border social_icon" id="twitter_icon">
                                 <img src="app/img/Twitter.png" class="social_img"/>
                             </span>
                         </a>
-
                         <a href="http://www.bouvet.no">
                             <span class="glyphicon bouvet_orange_border social_icon" id="facebook_icon">
                                 <img src="app/img/Facebook_ikon.png" class="social_img" id="facebook_icon_img" />
                             </span>
                         </a>
-
-                        &nbsp;
                         <span class="glyphicon bouvet_orange_border social_icon" id="speaker_icon">
                             <img src="app/img/Lyd_ikon1.png" class="social_img" />
                         </span>
                         <!--span class="glyphicon glyphicon-volume-up" id="speaker_icon"> </span -->
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -110,8 +107,8 @@
                      [class]="idx > 10 ? 'hidden': (idx > 4 ? 'col-lg-1 no_padding hidden-md hidden-sm' : ( idx > 2 ? 'col-lg-1 col-md-2 hidden-sm no_padding':'col-lg-1 col-md-2 col-sm-3 col-xs-4 no_padding'))">
                     <div class="navbar_bottom_box">
                         <p class="bouvet_orange_text navbar_bottom_box_placement_text no_padding">{{idx+1}}.</p>
-                        <p class="navbar_bottom_box_time_text no_padding">{{record.time | recordTime:'m'}}</p>
-                        <p class="navbar_bottom_box_name_text no_padding">{{record.name}}</p>
+                        <p class="navbar_bottom_box_time_text no_padding">{{record.time | recordTime:'m'}}<br><span class="navbar_bottom_box_name_text no_padding">{{record.name}}</span>
+                        </p>
                     </div>
                 </div>
             </div>

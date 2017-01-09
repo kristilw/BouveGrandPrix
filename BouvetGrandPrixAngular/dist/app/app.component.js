@@ -29,26 +29,29 @@ var AppComponent = (function () {
         }).addTo(map_);
         L.control.attribution({ position: 'topright' }).addTo(map_);
         $('#menu_modal').on('show.bs.modal', function () {
-            console.log("show");
             var elem = document.getElementById("router_outlet_div"); //$('#router_outlet');
             elem.style.opacity = "0";
             var modal_btn = document.getElementById("menu_btn");
-            modal_btn.classList.toggle("glyphicon-remove", true);
-            modal_btn.classList.toggle("glyphicon-menu-hamburger", false);
+            modal_btn.classList.toggle("menu-hamburger-remove", true);
+            modal_btn.classList.toggle("menu-hamburger", false);
         });
         $('#menu_modal').on('hide.bs.modal', function () {
-            console.log("hide");
             var elem = document.getElementById("router_outlet_div"); //$('#router_outlet');
             elem.style.opacity = "1";
             var modal_btn = document.getElementById("menu_btn");
-            modal_btn.classList.toggle("glyphicon-remove", false);
-            modal_btn.classList.toggle("glyphicon-menu-hamburger", true);
+            modal_btn.classList.toggle("menu-hamburger-remove", false);
+            modal_btn.classList.toggle("menu-hamburger", true);
         });
         this.getToplist();
     };
     AppComponent.prototype.getToplist = function () {
         var _this = this;
-        this.toplistService.getToplistSlow().then(function (toplist) { return _this.toplist = toplist; });
+        this.toplistService.getToplist()
+            .subscribe(function (toplist) { return _this.toplist = toplist; }, //Bind to view
+        function (//Bind to view
+            err) {
+            console.log(err);
+        });
     };
     return AppComponent;
 }());
