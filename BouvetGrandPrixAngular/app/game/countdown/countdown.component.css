@@ -5,10 +5,31 @@
 }
 
 #count_down_text{
+    display: inline-block;
     font-size:40px;
-    height:100px;
-    border: 1px solid #d45a1f;
-    padding:50px 70px 50px 70px;
+    background-color: rgba(0, 0, 0, 0.251);
+    -webkit-box-shadow: 0 0 32px 6px rgba(17,17,17,.51);
+    -moz-box-shadow: 0 0 32px 6px rgba(17,17,17,.51);
+    box-shadow: 0 0 32px 6px rgba(17,17,17,.51);
+    border: solid 1px #f17030;
+    width: 357px;
+    height: 357px;
+    z-index: 1176;
+    position: relative;
+}
+#count_down_text i{
+
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
 }
 
 #flags_countdown{

@@ -69,9 +69,7 @@
     left:0px;
 }
 
-#w_key{
-    padding:0 0 10px 3px;
-}
+#w_key{}
 
 #s_key_div{
     position:relative;
@@ -80,17 +78,16 @@
 }
 
 #s_key{
+
     margin-top:3px;
-    padding:5px 0 0 3px;
 }
 
 .arrow_keys{
     border-radius:3px;
     background-color:rgba(0, 0, 0, 0.40) !important;
-
+    color: white;
     height:38px;
     width:38px;
-
     text-align:center;
     pointer-events:none;
 }
