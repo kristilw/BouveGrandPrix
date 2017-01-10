@@ -17,13 +17,11 @@ declare var jQuery: any;
 export class CountdownComponent {
     @Output() startGameCountdown: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    countDownTimer: string = "KJØR!";
+    countDownTimer: string = "";
 
     countDownToZero(): void {
         $("#count_down_text").toggleClass("count_down_text_hoverEffect");
-
-        console.log("start countdown");
-        for (let i = 3; i >= 0; i-=0.1) {
+        /*for (let i = 3; i >= 0; i-=0.1) {
             setTimeout(() => {
                 i = Math.floor(i * 10) / 10;
 
@@ -39,6 +37,25 @@ export class CountdownComponent {
                 }
                 
             }, 1000 * (3-i+0.5));
-        }
+        }*/
+
+            let iVal = 3;
+
+            let interval = setInterval(() => {
+
+                this.countDownTimer =  (iVal==0) ? "KJØR!" : ""+iVal;
+
+                if(iVal==-1){
+                    clearInterval(interval);
+                    this.startGameCountdown.emit(true);
+                }
+                else
+                {
+                    iVal--;
+                }
+
+            },1000);
+
+
     }
 }
