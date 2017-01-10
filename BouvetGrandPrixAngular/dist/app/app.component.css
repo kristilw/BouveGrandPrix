@@ -50,16 +50,20 @@ div.modal-content{ /* Removes shadow from modal  */
 
 #map { 
     position: absolute;
-    height: 100vh;
+    top:0;
     width:100%;
+    bottom:0;
+    left: 0;
     z-index: 1;
 }
 
 #map_overlay{
     pointer-events: none;
     position: absolute;
-    height:100vh;
+    top:0;
     width:100%;
+    bottom:0;
+    left: 0;
     z-index: 2;
     background-color:rgba(0, 0, 0, 0.70);
 }
@@ -72,8 +76,10 @@ div.modal-content{ /* Removes shadow from modal  */
 
 #router_outlet_div{
     position: absolute;
-    height:100vh;
+    top:0;
     width:100%;
+    bottom: 0;
+    left:0;
     z-index: 3;
     background-color:transparent;
 }
@@ -109,17 +115,38 @@ div.modal-content{ /* Removes shadow from modal  */
     margin-right: 0;
 }
 
-#menu_btn{
+#menu_btn {
+    cursor: pointer;
+    display: inline-block;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-image: url("../app/img/menu_icon.png");
+}
+
+
+.menu-hamburger{
 
 }
 
+.menu-hamburger-remove{
+
+    background-position: -42px 0px !important;
+
+}
+
+
 #facebook_icon_img{
-    width:10px;
+    width:16px;
     height:auto;
 }
 
 #facebook_icon{
     margin-left:-5px;
+}
+
+
+#speaker_icon{
+    margin-left: 12px;
 }
 
 #bouvet_logo{
@@ -230,15 +257,16 @@ div.modal-content{ /* Removes shadow from modal  */
 }
 
 #navbar_bottom_game_logo{
-    padding-right:16px;
-    padding-bottom:5px;
-    height:63px;
-    pointer-events:all;
+    margin-right: 16px;
+    margin-bottom: 18px;
+    height: 70px;
+    pointer-events: all;
+    padding: 0;
 }
 
 .social_icon{
-    height:50px;
-    width:50px;
+    height:43px;
+    width:43px;
     border: 1px solid;
     border-color: #d45a1f;
     border-radius: 0;

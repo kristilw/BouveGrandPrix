@@ -12,8 +12,8 @@
     -moz-box-shadow: 0 0 32px 6px rgba(17,17,17,.51);
     box-shadow: 0 0 32px 6px rgba(17,17,17,.51);
     border: solid 1px #f17030;
-    width: 357px;
-    height: 357px;
+    width: 250px;
+    height: 250px;
     z-index: 1176;
     position: relative;
 }
