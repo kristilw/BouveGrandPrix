@@ -28,7 +28,7 @@ var ToplistService = (function () {
             .catch(function (error) { return Rx_1.Observable.throw(console.log(error) || 'Server error, could not load record'); }); //...errors if any
     };
     ToplistService.prototype.saveRecord = function (newRecord) {
-        var bodyString = JSON.stringify({ action: 'setScore', name: newRecord.name, email: newRecord.email, time: newRecord.time, score: newRecord.time }); // Stringify payload
+        var bodyString = JSON.stringify({ action: 'setScore', name: newRecord.name, email: newRecord.email, time: newRecord.time, score: 0 }); // Stringify payload
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         var options = new http_1.RequestOptions({ headers: headers }); // Create a request option
         console.log("setScore call :=> ||  ", bodyString);
