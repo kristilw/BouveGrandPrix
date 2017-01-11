@@ -55,11 +55,11 @@
    Bouvet Button Css3 Hover styling starts here.
 */
 .bouvet_button{
-    background-color:transparent;
-    padding: 5px 25px 5px 25px;
+    font-family: 'Kohinoor Bangla';
+    padding: 0px;
     font-size: 12px;
     line-height: 37px;
-    margin: 15px auto;
+   /* margin: 15px auto;*/
     border: none;
     background: transparent;
     -webkit-perspective: 1000px;
@@ -201,18 +201,47 @@ a:active {
 }
 
 @font-face {
+    font-family: 'Kohinoor Bangla';
+    src: url('app/fonts/KohinoorBangla.eot'); /* IE9 Compat Modes */
+    src: url('app/fonts/KohinoorBangla.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('app/fonts/KohinoorBangla.woff') format('woff'), /* Modern Browsers */
+    url('app/fonts/KohinoorBangla.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('app/fonts/KohinoorBangla.svg#bbce4d667c58f15ca19219bb39d0a219') format('svg'); /* Legacy iOS */
+
+    font-style:   normal;
+    font-weight:  400;
+}
+
+
+
+
+@font-face {
     font-family:'OpenSansRegular'; /*a name to be used later*/
     src: url('app/fonts/OpenSansRegular.ttf') format('truetype'); /*URL to font*/
 }
 
 @font-face {
-    font-family:'DAGGERSQUARE'; /*a name to be used later*/
-    src: url('app/fonts/DAGGERSQUARE.otf') format('opentype'); /*URL to font*/
+    font-family: 'DAGGERSQUARE';
+    src: url('app/fonts/DAGGERSQUARE.eot'); /* IE9 Compat Modes */
+    src: url('app/fonts/DAGGERSQUARE.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('app/fonts/DAGGERSQUARE.woff') format('woff'), /* Modern Browsers */
+    url('app/fonts/DAGGERSQUARE.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('app/fonts/DAGGERSQUARE.svg#d02e21bd02a940790d80e4fdeac6d42c') format('svg'); /* Legacy iOS */
+
+    font-style:   normal;
+    font-weight:  400;
 }
 
 @font-face {
-    font-family:'DAGGERSQUARE_OBLIQUE'; /*a name to be used later*/
-    src: url('app/fonts/DAGGERSQUARE_OBLIQUE.otf') format('opentype'); /*URL to font*/
+    font-family: 'DAGGERSQUARE_OBLIQUE';
+    src: url('app/fonts/DAGGERSQUARE OBLIQUE.eot'); /* IE9 Compat Modes */
+    src: url('app/fonts/DAGGERSQUARE OBLIQUE.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('app/fonts/DAGGERSQUARE OBLIQUE.woff') format('woff'), /* Modern Browsers */
+    url('app/fonts/DAGGERSQUARE OBLIQUE.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('app/fonts/DAGGERSQUARE OBLIQUE.svg#1e91e374818370144489d52258ad256e') format('svg'); /* Legacy iOS */
+
+    font-style:   oblique;
+    font-weight:  400;
 }
 
 p{

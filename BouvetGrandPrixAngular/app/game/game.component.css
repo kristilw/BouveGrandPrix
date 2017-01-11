@@ -59,7 +59,7 @@
 
 #restart_div{
     position:absolute;
-    bottom:67px;
+    bottom:74px;
     left:16px;
 }
 
@@ -80,6 +80,13 @@
 #s_key{
 
     margin-top:3px;
+}
+
+.restart-button span,
+.restart-button span:before{
+
+    width: auto;
+    padding: 0 20px;
 }
 
 .arrow_keys{

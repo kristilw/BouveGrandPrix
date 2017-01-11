@@ -194,7 +194,7 @@ div.modal-content{ /* Removes shadow from modal  */
     color:white;
     width: 100%;
     text-align: right;
-    padding-right:16px;
+    padding-right:1px;
     margin-bottom:16px;
 }
 
@@ -247,6 +247,31 @@ div.modal-content{ /* Removes shadow from modal  */
     width:100%;
 }
 
+#resize-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 250px;
+    margin-left: -150px;
+    margin-top: -125px;
+    text-align: center;
+    display: none;
+    color: #ffffff;
+}
+
+#resize-window .message{
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
 .leaflet-tile {
     outline: 1px solid transparent;
 }
@@ -257,7 +282,7 @@ div.modal-content{ /* Removes shadow from modal  */
 }
 
 #navbar_bottom_game_logo{
-    margin-right: 16px;
+    margin-right: 0px;
     margin-bottom: 18px;
     height: 70px;
     pointer-events: all;
@@ -285,4 +310,16 @@ div.modal-content{ /* Removes shadow from modal  */
     -o-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+
+    #main_container {
+       display: none;
+    }
+    #resize-window{
+
+        display: inline-block;
+
+    }
 }

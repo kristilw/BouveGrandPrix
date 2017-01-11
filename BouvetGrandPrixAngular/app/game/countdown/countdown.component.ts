@@ -1,8 +1,6 @@
 ﻿/// <reference path="../../../typings/jquery/jquery.d.ts" />
 
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Map } from 'leaflet';
-import { LatLng } from 'leaflet';
 
 declare var jQuery: any;
 
@@ -17,9 +15,19 @@ declare var jQuery: any;
 export class CountdownComponent {
     @Output() startGameCountdown: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    countDownTimer: string = "";
+    countDownTimer: string = null;
+    showCountDownTimer:Boolean = false;
+
+    start():void {
+        let t = setTimeout(()=>{
+            clearTimeout(t);
+            this.countDownToZero();
+        },2000);
+    }
 
     countDownToZero(): void {
+
+
         $("#count_down_text").toggleClass("count_down_text_hoverEffect");
         /*for (let i = 3; i >= 0; i-=0.1) {
             setTimeout(() => {
@@ -43,6 +51,9 @@ export class CountdownComponent {
 
             let interval = setInterval(() => {
 
+                if(!this.showCountDownTimer){
+                    this.showCountDownTimer = true;
+                }
                 this.countDownTimer =  (iVal==0) ? "KJØR!" : ""+iVal;
 
                 if(iVal==-1){
@@ -56,6 +67,12 @@ export class CountdownComponent {
 
             },1000);
 
+
+    }
+
+    ngOnInit():void{
+
+        this.start();
 
     }
 }

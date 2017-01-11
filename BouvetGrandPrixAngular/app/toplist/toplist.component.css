@@ -12,7 +12,7 @@
 }
 
 #toplist_scroll{
-    height: calc(93vh - 215px);
+    height: calc(93vh - 208px);
     overflow-y:scroll;
     padding-right:10px;
 }
@@ -62,4 +62,7 @@
 #toplist_btn_down{
     margin-top:5px;
     padding: 7px 7px 7px 7px;
+}
+.bouvet_buttons >div{
+    width: auto;
 }
