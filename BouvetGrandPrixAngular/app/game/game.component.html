@@ -42,14 +42,13 @@
             <img id="car_img" *ngIf="zoomedToStartArea" />
         </div>
 
-        <div id="woops_div" *ngIf="showWoops">
-            <img src="app/img/Woops_liten.png" id="woops_img" />
+        <div id="woops_div" class="tada-animation" *ngIf="showWoops">
+            <img src="app/img/Woops.png" id="woops_img" />
         </div>
 
         <div id="speedometer" *ngIf="setUpComplete">
             <div id="speedometer_div">
                 <div class="background_grey bouvet_orange_border" id="speedometer_background_div">
-
                 </div>
                 <img id="speedometer_background" src="app/img/Speedometer_stor.png" />
             </div>
