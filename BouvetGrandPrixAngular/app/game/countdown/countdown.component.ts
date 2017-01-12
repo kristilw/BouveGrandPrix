@@ -19,14 +19,15 @@ export class CountdownComponent {
     showCountDownTimer:Boolean = false;
 
     start():void {
+
+
         let t = setTimeout(()=>{
             clearTimeout(t);
             this.countDownToZero();
-        },2000);
+        },800);
     }
 
     countDownToZero(): void {
-
 
         $("#count_down_text").toggleClass("count_down_text_hoverEffect");
         /*for (let i = 3; i >= 0; i-=0.1) {
@@ -47,25 +48,25 @@ export class CountdownComponent {
             }, 1000 * (3-i+0.5));
         }*/
 
-            let iVal = 3;
+        let iVal = 3;
 
-            let interval = setInterval(() => {
+        let interval = setInterval(() => {
 
-                if(!this.showCountDownTimer){
-                    this.showCountDownTimer = true;
-                }
-                this.countDownTimer =  (iVal==0) ? "KJØR!" : ""+iVal;
+            if(!this.showCountDownTimer){
+                this.showCountDownTimer = true;
+            }
+            this.countDownTimer =  (iVal==0) ? "KJØR!" : ""+iVal;
 
-                if(iVal==-1){
-                    clearInterval(interval);
-                    this.startGameCountdown.emit(true);
-                }
-                else
-                {
-                    iVal--;
-                }
+            if(iVal==-1){
+                clearInterval(interval);
+                this.startGameCountdown.emit(true);
+            }
+            else
+            {
+                iVal--;
+            }
 
-            },1000);
+        },1000);
 
 
     }

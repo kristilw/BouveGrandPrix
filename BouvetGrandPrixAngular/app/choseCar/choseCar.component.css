@@ -11,6 +11,8 @@
     -o-transform: translate(0%, -50%);
     -ms-transform: translate(0%, -50%);
     transform: translate(0%, -50%);
+
+
 }
 
 .car_image{
@@ -100,4 +102,23 @@
 
 #div_with_extra_margin_for_desktop{
 
+}
+
+@media (max-width: 768px) {
+
+    #choseCar_div{
+        position: absolute;
+        padding-top: 80px;
+        left: 0;
+        width: 100%;
+        top: 0;
+        -webkit-transform: translate(0%, 0%);
+        -moz-transform: translate(0%, 0%);
+        -o-transform: translate(0%, 0%);
+        -ms-transform: translate(0%, 0%);
+         transform: translate(0%, 0%);
+        bottom: 0;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
 }

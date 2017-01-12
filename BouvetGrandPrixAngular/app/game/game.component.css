@@ -2,17 +2,30 @@
     z-index:1;
     height: 100vh;
 }
+.game-controls-holder{
+
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left:0;
+    -webkit-transform: translate(0%, -50%);
+    -moz-transform: translate(0%, -50%);
+    -o-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+    margin-top: 50px;
+}
 
 #controls_div{
-    bottom:75px;
     width:100%;
     text-align:center;
-    position: absolute;
+    position: relative;
     z-index:12;
-    text-align:center;
+    margin-top: 32px;
 }
 
 #car_div{
+
     position:absolute;
     top:50vh;
     left:50%;
@@ -20,8 +33,12 @@
 }
 
 #goal_div{
+
     z-index:3;
 }
+
+
+
 
 #woops_div{
     position:absolute;
@@ -61,6 +78,38 @@
     position:absolute;
     bottom:74px;
     left:16px;
+}
+
+#mobile-controller{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: black;
+    z-index: 100;
+    display:table;
+}
+#mobile-controller .controllers{
+
+    display: table-row;
+}
+
+#mobile-controller .controllers >div{
+
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+#mobile-controller .controllers >div button{
+
+    display: inline-block;
+    height: 90px;
+    width: 80px;
+    color: white;
+    margin: 4px;
+    border: solid 1px #f37021;
+    cursor: pointer;
 }
 
 #w_key_div{
@@ -355,3 +404,30 @@
     }
 }
 
+
+
+@media (max-width: 768px) {
+
+    .game-controls-holder {
+
+        margin-top: 10px;
+    }
+
+    #mobile-controller{
+
+        /*
+            display: table;
+        */
+    }
+
+    #helper_text{
+
+        font-size: 2vh;
+    }
+
+    #w_key_div,
+    #s_key_div{
+
+        display: inline-block;
+    }
+}

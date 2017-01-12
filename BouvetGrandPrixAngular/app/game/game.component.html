@@ -5,35 +5,39 @@
     </div>
 
     <div id="other_div_game">
-        <div *ngIf="showCountDownTimer">
-            <countdown-game (startGameCountdown)="startGameFromCountdown($event)">
-
-            </countdown-game>
-        </div>
 
 
+        <div class="game-controls-holder">
 
-        <div id="controls_div" *ngIf="showCountDownTimer">
-            <!--
-                <img id="w_key" src="app/img/w_key_t.png" />
-                <img id="s_key" src="app/img/s_key_t.png" />
-            -->
-
-            <div id="w_key_div">
-                <button id="w_key" class="bouvet_orange_border arrow_keys"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            <div *ngIf="showCountDownTimer">
+                <countdown-game (startGameCountdown)="startGameFromCountdown($event)">
+                </countdown-game>
             </div>
 
-            <div id="s_key_div">
-                <button id="s_key" class="bouvet_orange_border arrow_keys"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            <!--countdown-game (startGameCountdown)="startGameFromCountdown($event)">
+            </countdown-game-->
+
+            <div id="controls_div" *ngIf="showCountDownTimer">
+                <!--
+                    <img id="w_key" src="app/img/w_key_t.png" />
+                    <img id="s_key" src="app/img/s_key_t.png" />
+                -->
+
+                <div id="w_key_div">
+                    <button id="w_key" class="bouvet_orange_border arrow_keys"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                </div>
+
+                <div id="s_key_div">
+                    <button id="s_key" class="bouvet_orange_border arrow_keys"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                </div>
+
+                <p class="grey_text" id="helper_text">
+                    Bruk piltastene og følg den oppmerkede veien fra våre gamle <br />
+                    lokaler på Myrens til våre splitter nye i Sørkedalsveien 8!
+                </p>
+
             </div>
-
-            <p class="grey_text" id="helper_text">
-                Bruk piltastene og følg den oppmerkede veien fra våre gamle <br />
-                lokaler på Myrens til våre splitter nye i Sørkedalsveien 8!
-            </p>
-
         </div>
-
         <div *ngIf="setUpComplete">
 
         </div>
@@ -56,7 +60,7 @@
             <p id="time_text" class="white_text">{{gameTime | recordTime:'m'}}</p>
         </div>
 
-        <div id="restart_div" *ngIf="zoomedToStartArea">
+        <div id="restart_div" *ngIf="zoomedToStartArea && !isTouchDevice && setUpComplete">
             <button class="button bouvet_button restart-button" (click)="restartGameFromButton()">
                 <span data-hover="OMSTART" class="white_text">OMSTART</span>
             </button>
@@ -64,11 +68,18 @@
 
         <!-- -->
         <div *ngIf="showGoal">
-            <goal [completionTime]="completionTime" (saveRecord_eventEmitter)="saveRecord()" (goToAboutPage_eventEmitter)="goToAboutPage()" id="goal_div">
+            <goal [completionTime]="completionTime" (saveRecord_eventEmitter)="saveRecord()" (goToAboutPage_eventEmitter)="goToAboutPage()" >
 
             </goal>
         </div>
-
-
+    </div>
+</div>
+<div id="mobile-controller" *ngIf="isTouchDevice && setUpComplete">
+    <div class="controllers">
+        <div>
+            <button class="restart bouvet_button bouvet_orange_border">restart</button>
+            <button class="up bouvet_button bouvet_orange_border">up</button>
+            <button class="down bouvet_button bouvet_orange_border">down</button>
+        </div>
     </div>
 </div>

@@ -94,7 +94,7 @@ div.modal-content{ /* Removes shadow from modal  */
     padding-right:16px;
     background-color:transparent;
 
-    z-index:1041;
+    z-index:1051;
 }
 
 .navbar-default {
@@ -104,6 +104,8 @@ div.modal-content{ /* Removes shadow from modal  */
 
 #navbar_top_links{
     color:white;
+    display: inline-block;
+    width: 50%;
 }
 
 .container-fluid{
@@ -158,9 +160,16 @@ div.modal-content{ /* Removes shadow from modal  */
 }
 
 #bouvet_logo_div{
+    width: 50%;
+    height: 43px;
+    position: relative;
+    text-align: right;
+    display: inline-block;
+}
+
+#bouvet_logo_div a img{
     width: 107px;
     height: 29px;
-    position: relative;
 }
 
 #bouvet_logo_div a{
@@ -312,14 +321,16 @@ div.modal-content{ /* Removes shadow from modal  */
     transform: translate(-50%, -50%);
 }
 
+
 @media (max-width: 768px) {
 
-    #main_container {
-       display: none;
+    #bouvet_logo_div a img{
+        width: 80px;
+        height: auto;
+        margin-top: 17px;
     }
-    #resize-window{
 
-        display: inline-block;
-
+    #navbar_top_body{
+        padding-top:0px;
     }
 }

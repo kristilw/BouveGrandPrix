@@ -1,6 +1,5 @@
 ﻿#count_down_div{
-    position:absolute;
-    top:25vh;
+    position:relative;
     width:100%;
 }
 
@@ -67,8 +66,34 @@
     margin-top:-85px;
 }
 
-
 .count_down_text_hoverEffect:hover{
     border: 1px solid #ffffff !important;
     cursor:pointer !important;
+}
+
+@media (max-width: 768px) {
+
+    #count_down_text {
+
+        width: 30vh;
+        height: 30vh;
+    }
+
+    #count_down_text .grandprix-logo {
+
+        width: 90%;
+        top: 10%;
+        height:auto;
+    }
+
+    #count_down_text h6 {
+       font-size: 2vh;
+       bottom: 5px;
+    }
+
+
+    #flags_countdown{
+        height:5vh;
+        margin-top:-45px;
+    }
 }
