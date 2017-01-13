@@ -1,8 +1,28 @@
 #goal_div{
     padding-top:20vh;
-    margin-top:20vh;
     background-color:rgba(0,0,0,0.7);
     height:100vh;
+}
+
+#goal_div >div{
+
+    max-width: 660px;
+    margin: 0 auto;
+}
+
+#goal_div .table_first_place td:first-child{
+
+    width:150px;
+}
+
+#goal_div .table_from_buttons{
+
+    width: 100%;
+}
+
+#goal_div .table_from_buttons td{
+
+    width:50%;
 }
 
 #flags_goal_screen{
@@ -12,7 +32,6 @@
 .goal_text_description{
     padding:8px 5px 8px 25px;
     margin:0 0 0 0;
-    width:100px;
 }
 
 .goal_text_input{
@@ -22,4 +41,16 @@
 
 input:focus{
     outline: none;
+}
+
+@media (max-width: 768px) {
+
+
+    #goal_div .table_from_buttons td{
+
+        width:100%;
+        float: left;
+        padding-bottom: 12px;
+        text-align: center;
+    }
 }

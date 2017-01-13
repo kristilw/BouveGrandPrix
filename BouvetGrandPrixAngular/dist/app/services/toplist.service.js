@@ -20,29 +20,28 @@ var ToplistService = (function () {
         this.serverUrl = 'app/server/server.php';
     }
     ToplistService.prototype.getToplist = function () {
-        var bodyString = JSON.stringify({ action: 'getScores' }); // Stringify payload
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        //let bodyString = JSON.stringify({action: 'getScores'}); // Stringify payload
+        var bodyString = 'action=getScores';
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var options = new http_1.RequestOptions({ headers: headers }); // Create a request option
         return this.http.post(this.serverUrl, bodyString, options) // ...using get request
-            .map(function (res) { return console.log(res.json()); }) // ...and calling .json() on the response to return data
+            .map(function (res) { return res.json(); }) // ...and calling .json() on the response to return data
             .catch(function (error) { return Rx_1.Observable.throw(console.log(error) || 'Server error, could not load record'); }); //...errors if any
     };
     ToplistService.prototype.saveRecord = function (newRecord) {
-        var bodyString = JSON.stringify({ action: 'setScore', name: newRecord.name, email: newRecord.email, time: newRecord.time, score: 0 }); // Stringify payload
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-        var options = new http_1.RequestOptions({ headers: headers }); // Create a request option
-        console.log("setScore call :=> ||  ", bodyString);
-        this.http.post(this.serverUrl, bodyString, options) // ...using post request
-            .map(function (res) {
-            var body;
-            console.log("extract data: ", res);
-            // check if empty, before call json
-            if (res.text()) {
-                body = res.json();
-            }
-            return body || {};
-        }) // ...and calling .json() on the response to return data
-            .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error, could not save record'); }); //...errors if any
+        //let bodyString = JSON.stringify({action: 'setScore',name:newRecord.name,email:newRecord.email,time:newRecord.time,score:newRecord.time}); // Stringify payload
+        var bodyString = "action=setScore"
+            + "&name=" + newRecord.name
+            + "&email=" + newRecord.email
+            + "&time=" + newRecord.time
+            + "&score=" + newRecord.time;
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        var options = new http_1.RequestOptions({ headers: headers });
+        this.http.post(this.serverUrl, bodyString, options) // ...using get request
+            .map(function (res) { console.log(res.json()); }) // ...and calling .json() on the response to return data
+            .catch(function (error) { return Rx_1.Observable.throw(console.log(error) || 'Server error, could not load record'); }); //...errors if any
     };
     return ToplistService;
 }());

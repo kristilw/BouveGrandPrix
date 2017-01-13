@@ -1,23 +1,10 @@
 <div id="welcome_div">
-    <div id="welcome_div_space">
+    <!--div id="welcome_div_space">
 
-    </div>
+    </div-->
 
 
     <div class="carousel slide" id="welcome_carousel" data-interval="10000">
-        <div id="carousel_indicator_div">
-            <div>
-                <button class="btn carousel_indicator_btn" data-target="#welcome_carousel" data-slide-to="0">
-                    <span class="carousel_indicator_btn_active" id="carousel_indicator_btn_active_0"></span>
-                </button>
-            </div>
-
-            <div>
-                <button class="btn carousel_indicator_btn" data-target="#welcome_carousel" data-slide-to="1">
-                    <span class="carousel_indicator_btn_active" id="carousel_indicator_btn_active_1"></span>
-                </button>
-            </div>
-        </div>
 
         <div class="carousel-inner" id="carousel_background">
             <!-- ol class="carousel-indicators">
@@ -45,7 +32,7 @@
             </div>
 
             <div class="item" id="item_2">
-                <div class="row">
+                <div class="">
                     <div>
                         <img class="flags" src="app/img/Flagg_medstreker.png" />
                     </div>
@@ -53,8 +40,8 @@
                     <h2 class="bouvet_orange_text" id="welcome_screen_bestTimes"> BESTE TID</h2>
 
                     <br />
-                    <div class="row">
-                        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-10 col-lg-offset-3 col-md-offset-2 col-sm-offset-1 col-xs-offset-1">
+                    <div class="list-container">
+                        <div>
                             <table class="table_first_place">
                                 <tr>
                                     <td class="bouvet_background_orange grey_text toplist_table_postion"><b><i>1.</i></b> </td>
@@ -89,14 +76,10 @@
                             </table>
                         </div>
                     </div>
-
-
                     <p class="grey_text">
-                        Det var jammen raskt, men klarer du å finne <br />
-                        frem til det nye Bouvet-huset enda raskere?
+                        Det var jammen raskt, men klarer du å finne frem til det nye Bouvet-huset enda raskere?
                     </p>
                 </div>
-
                 <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_2" routerLink="/choseCar">
                     <span data-hover="START MOTOREN" class="ng-binding">START MOTOREN</span>
                 </button>
@@ -112,4 +95,16 @@
         
     </div>
 </div>
+<div id="carousel_indicator_div">
+    <div>
+        <button class="btn carousel_indicator_btn" data-target="#welcome_carousel" data-slide-to="0">
+            <span class="carousel_indicator_btn_active" id="carousel_indicator_btn_active_0"></span>
+        </button>
+    </div>
 
+    <div>
+        <button class="btn carousel_indicator_btn" data-target="#welcome_carousel" data-slide-to="1">
+            <span class="carousel_indicator_btn_active" id="carousel_indicator_btn_active_1"></span>
+        </button>
+    </div>
+</div>

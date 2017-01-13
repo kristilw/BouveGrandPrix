@@ -94,7 +94,7 @@ div.modal-content{ /* Removes shadow from modal  */
     padding-right:16px;
     background-color:transparent;
 
-    z-index:1041;
+    z-index:1051;
 }
 
 .navbar-default {
@@ -104,6 +104,8 @@ div.modal-content{ /* Removes shadow from modal  */
 
 #navbar_top_links{
     color:white;
+    display: inline-block;
+    width: 50%;
 }
 
 .container-fluid{
@@ -158,9 +160,16 @@ div.modal-content{ /* Removes shadow from modal  */
 }
 
 #bouvet_logo_div{
+    width: 50%;
+    height: 43px;
+    position: relative;
+    text-align: right;
+    display: inline-block;
+}
+
+#bouvet_logo_div a img{
     width: 107px;
     height: 29px;
-    position: relative;
 }
 
 #bouvet_logo_div a{
@@ -194,7 +203,7 @@ div.modal-content{ /* Removes shadow from modal  */
     color:white;
     width: 100%;
     text-align: right;
-    padding-right:16px;
+    padding-right:1px;
     margin-bottom:16px;
 }
 
@@ -247,6 +256,31 @@ div.modal-content{ /* Removes shadow from modal  */
     width:100%;
 }
 
+#resize-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 250px;
+    margin-left: -150px;
+    margin-top: -125px;
+    text-align: center;
+    display: none;
+    color: #ffffff;
+}
+
+#resize-window .message{
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
 .leaflet-tile {
     outline: 1px solid transparent;
 }
@@ -257,7 +291,7 @@ div.modal-content{ /* Removes shadow from modal  */
 }
 
 #navbar_bottom_game_logo{
-    margin-right: 16px;
+    margin-right: 0px;
     margin-bottom: 18px;
     height: 70px;
     pointer-events: all;
@@ -285,4 +319,18 @@ div.modal-content{ /* Removes shadow from modal  */
     -o-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+
+@media (max-width: 768px) {
+
+    #bouvet_logo_div a img{
+        width: 80px;
+        height: auto;
+        margin-top: 17px;
+    }
+
+    #navbar_top_body{
+        padding-top:0px;
+    }
 }
