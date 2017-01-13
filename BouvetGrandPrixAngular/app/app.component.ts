@@ -10,7 +10,7 @@ import { Map } from 'leaflet';
 import { LatLng } from 'leaflet';
 
 declare var jQuery: any;
-
+declare const FB: any;
 
 @Component({
     selector: 'my-app',
@@ -65,6 +65,22 @@ export class AppComponent {
         this.getToplist();
     }
 
+    fbShare(event):void{
+        event.preventDefault();
+
+        FB.ui({
+            display: 'popup',
+            method: 'share',
+            caption: 'some caption',
+            description: 'some description',
+            image: 'http://fagutvalget.no/wp-content/blogs.dir/10/files/2015/04/bouvet_logo.png',
+            href: 'https://bouvet.no',
+        }, function(response){
+
+
+        });
+
+    }
 
     getToplist(): void {
         this.toplistService.getToplist()
