@@ -65,9 +65,17 @@ export class AppComponent {
         this.getToplist();
     }
 
+    twitterShare(event):void{
+        event.preventDefault();
+        let currentTarget = event.currentTarget;
+
+        var strTitle = ((typeof currentTarget.getAttribute('title') !== 'undefined') ? currentTarget.getAttribute('title') : 'Social Share'),
+            strParam = 'width=' + 500 + ',height=' + 400 + ',resizable=' + 'no',
+            objWindow = window.open(currentTarget.getAttribute('href'), strTitle, strParam).focus();
+    }
+
     fbShare(event):void{
         event.preventDefault();
-
         FB.ui({
             display: 'popup',
             method: 'share',
