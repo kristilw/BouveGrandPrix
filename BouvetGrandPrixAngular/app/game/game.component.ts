@@ -521,34 +521,12 @@ export class GameComponent {
 
     removePiceFromRoad(removePice: number): void {
         let roadPice = this.roadSections.get(removePice);
-        if (roadPice !== null) {
+        if (roadPice !== null && roadPice !== undefined) {
             this.map_game.removeLayer(roadPice);
         }
     }
 
     zoomToStartArea(): void {
-        /*setTimeout(() => {
-            this.map_game.panTo([59.93502, 10.75857]);
-        }, 1500);
-
-
-        /*for (let i = 1; i <= 6; i++) {
-            setTimeout(() => {
-                this.map_game.flyTo([59.93502, 10.75857], (i + 13), { animate: true });
-                console.log("zoom: "+i);
-                if (i === 6) {
-                    this.showCountDownTimer = true;
-                    this.zoomedToStartArea = true;
-                    this.setUpComplete = false;
-
-                    setTimeout(() => {
-                        console.log("load car..");
-                        this.loadImageOfCar();
-                    }, 100);
-                }
-            }, 500 * (i + 1));
-        }*/
-
         setTimeout(() => {
             this.map_game.flyTo([59.93502, 10.75857], 18, {
                 animate: true,
