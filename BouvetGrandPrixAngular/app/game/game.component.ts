@@ -191,7 +191,6 @@ export class GameComponent {
     private EnforcingSpeedLimit(): void {
         this.car_speed = 0;
         this.gameTime += 3000;
-
         this.showWoops = true;
 
         setTimeout(() => {
@@ -282,22 +281,17 @@ export class GameComponent {
 
                     if (lengthOfTurn < lengthToTravel) {
 
-                        if (this.beizerTime < 0.5) { //Assumes turn is the sharpest at t=0.5
-                            var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, 0.5);
+                        var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, 0.5); //Assumes turn is the sharpest at t=0.5
+                        if (this.beizerTime < 0.5 && this.car_speed > speedLimit) { 
+                            this.EnforcingSpeedLimit();
+                            break;
+                        } else {
+                            this.beizerCounter += 2;
+                            this.removePiceFromRoad(this.beizerCounter);
 
-                            if (this.car_speed > speedLimit) {
-
-
-                                console.log(this.car_speed + " " + speedLimit);
-                                this.EnforcingSpeedLimit();
-                            }
+                            this.beizerTime = 0;
+                            timeLeft -= timeLeftOfTurn;
                         }
-
-                        this.beizerCounter += 2;
-                        this.removePiceFromRoad(this.beizerCounter);
-
-                        this.beizerTime = 0;
-                        timeLeft -= timeLeftOfTurn;
                     } else {
                         var firstGuessBeizerTime = this.beizerTime + lengthToTravel / lengthOfTotalTurn;
 
@@ -305,15 +299,15 @@ export class GameComponent {
                             var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, 0.5);
 
                             if (this.car_speed > speedLimit) {
-                                console.log(this.car_speed + " " + speedLimit);
                                 this.EnforcingSpeedLimit();
+                                break;
                             }
                         } else {
                             var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, firstGuessBeizerTime);
 
                             if (this.car_speed > speedLimit) {
-                                console.log(this.car_speed + " " + speedLimit);
                                 this.EnforcingSpeedLimit();
+                                break;
                             }
                         }
 
@@ -322,8 +316,6 @@ export class GameComponent {
 
                         carNewPosition = this.gameLogic.BeizerCurveQuadratic(pCurrent, pNext, pNextNext, this.beizerTime);
                         carNewAngle = this.gameLogic.GetAngleBeizerCurve(pCurrent, pNext, pNextNext, this.beizerTime);
-
-                        //console.log(this.beizerTime);
                         break;
                     }
                 }
