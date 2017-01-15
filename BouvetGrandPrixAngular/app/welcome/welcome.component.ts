@@ -1,11 +1,10 @@
 ﻿/// <reference path="../../typings/bootstrap/bootstrap.d.ts" />
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 
-//import { Component} from '@angular/core';
-
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ToplistService } from '../services/toplist.service';
+import { Record } from '../services/record';
 
-//import { ViewChild, ViewChildren, Component, QueryList,  } from 'angular2/core'
 declare var jQuery: any;
 
 @Component({
@@ -22,10 +21,16 @@ export class WelcomeComponent {
 
     carouselSelector: number = 0;
 
-    constructor(private elementRef: ElementRef) {
+    toplist: Record[];
+
+    constructor(
+        private elementRef: ElementRef,
+        private toplistService: ToplistService) {
     }
 
     ngAfterViewInit() {
+        this.getToplist();
+
         $("#welcome_carousel").carousel();
 
         let elem1: any = $("#carousel_indicator_btn_active_0");
@@ -51,6 +56,15 @@ export class WelcomeComponent {
             }
 
         });
+    }
+
+    getToplist(): void {
+        this.toplistService.getToplist()
+            .subscribe(
+            toplist => this.toplist = toplist, //Bind to view
+            err => {
+                console.log(err);
+            });
     }
     
 }
