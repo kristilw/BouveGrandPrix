@@ -252,6 +252,9 @@ p{
 button{
     font-family: 'OpenSansRegular', sans-serif;
     letter-spacing: 1px;
+
+    -ms-touch-action: manipulation;	/* IE10  */
+    touch-action: manipulation;
 }
 
 .letter_spacing{
