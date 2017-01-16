@@ -28,8 +28,8 @@ export class GoalComponent {
     ) {}
 
     registerRecord(): void {
-
-        if (this.completionTime !== null && this.user_name.length > 2 && this.user_email.length>5) {
+        let roundCompletionTime = this.completionTime - this.completionTime % 1;
+        if (this.completionTime !== null && this.user_name.length > 2 && this.user_email.length > 5) {
             let newRecord = new Record(this.completionTime, this.user_name, this.user_email, this.user_company);
             console.log("newRecord: inside goal.component ",newRecord);
             this.toplistService.saveRecord(newRecord);
@@ -37,15 +37,12 @@ export class GoalComponent {
         }
         else
         {
-
             console.log("Error with inputs");
         }
 
-        // test
-        /*let newRecord = new Record(123546, "Ole", "Ole@test.com", "Bouvet AS");
-        this.toplistService.saveRecord(newRecord);
-        this.saveRecord_eventEmitter.emit();
-        */
+        // test         //bodyString = "action=setScore&name=kindasuccess3&email=kindasuccess3%40test.com&time=123458&score=123458";
+        //let newRecord = new Record(155113, "success123", "kindasuccess123@test.com", "Bouvet AS");
+        //this.toplistService.saveRecord(newRecord);
     }
 
     goToAboutPage(): void {
