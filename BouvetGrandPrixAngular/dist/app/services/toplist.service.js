@@ -27,7 +27,10 @@ var ToplistService = (function () {
         var options = new http_1.RequestOptions({ headers: headers }); // Create a request option
         return this.http.post(this.serverUrl, bodyString, options) // ...using get request
             .map(function (res) { return res.json(); }) // ...and calling .json() on the response to return data
-            .catch(function (error) { return Rx_1.Observable.throw(console.log(error) || 'Server error, could not load record'); }); //...errors if any
+            .catch(function (error) { return Rx_1.Observable.throw(console.log(error) || 'Server error, could not load record'); }); //...errors if any*/
+        /*return this.http.get("http://localhost:3000/app/services/records.json")
+            .map((res: Response) => res.json())
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));//*/
     };
     ToplistService.prototype.saveRecord = function (newRecord) {
         //let bodyString = JSON.stringify({action: 'setScore',name:newRecord.name,email:newRecord.email,time:newRecord.time,score:newRecord.time}); // Stringify payload
@@ -39,6 +42,7 @@ var ToplistService = (function () {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var options = new http_1.RequestOptions({ headers: headers });
+        debugger;
         this.http.post(this.serverUrl, bodyString, options) // ...using get request
             .map(function (res) { console.log(res.json()); }) // ...and calling .json() on the response to return data
             .catch(function (error) { return Rx_1.Observable.throw(console.log(error) || 'Server error, could not load record'); }); //...errors if any

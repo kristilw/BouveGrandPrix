@@ -22,10 +22,10 @@ var GoalComponent = (function () {
     }
     GoalComponent.prototype.registerRecord = function () {
         if (this.completionTime !== null && this.user_name.length > 2 && this.user_email.length > 5) {
+            debugger;
             var newRecord = new record_1.Record(this.completionTime, this.user_name, this.user_email, this.user_company);
             console.log("newRecord: inside goal.component ", newRecord);
             this.toplistService.saveRecord(newRecord);
-            this.saveRecord_eventEmitter.emit();
         }
         else {
             console.log("Error with inputs");

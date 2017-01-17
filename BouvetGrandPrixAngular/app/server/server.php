@@ -113,7 +113,7 @@
 		$sql = "SELECT * FROM grandprix WHERE email='$email' LIMIT 1";
 		
 		$result = $conn->query($sql);
-    	
+
     	if ($result)
     	{
 			$rows = array();

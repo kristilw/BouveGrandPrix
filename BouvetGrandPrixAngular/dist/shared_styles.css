@@ -104,7 +104,7 @@ body {
     transform-origin: 50% 0;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    border: 1px solid #ffffff;
+    border: 1px solid #f37021;
 
 }
 
@@ -252,6 +252,9 @@ p{
 button{
     font-family: 'OpenSansRegular', sans-serif;
     letter-spacing: 1px;
+
+    -ms-touch-action: manipulation;	/* IE10  */
+    touch-action: manipulation;
 }
 
 .letter_spacing{

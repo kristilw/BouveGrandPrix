@@ -74,9 +74,9 @@
 <div id="mobile-controller" *ngIf="isTouchDevice && setUpComplete">
     <div class="controllers">
         <div>
-            <button class="restart bouvet_button bouvet_orange_border">restart</button>
-            <button class="up bouvet_button bouvet_orange_border">up</button>
-            <button class="down bouvet_button bouvet_orange_border">down</button>
+            <button class="restart bouvet_button bouvet_orange_border" (click)="restartGameFromButton()">restart</button>
+            <button class="up bouvet_button bouvet_orange_border" (mousedown)="onkeyDown(38)" (mouseup)="onKeyUp(38)" (mouseleave)="onKeyUp(38)">up</button>
+            <button class="down bouvet_button bouvet_orange_border" (mousedown)="onkeyDown(40)" (mouseup)="onKeyUp(40)" (mouseleave)="onKeyUp(40)">down</button>
         </div>
     </div>
 </div>

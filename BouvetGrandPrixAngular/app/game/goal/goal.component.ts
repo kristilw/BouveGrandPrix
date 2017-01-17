@@ -30,10 +30,12 @@ export class GoalComponent {
     registerRecord(): void {
 
         if (this.completionTime !== null && this.user_name.length > 2 && this.user_email.length>5) {
+
+            debugger;
             let newRecord = new Record(this.completionTime, this.user_name, this.user_email, this.user_company);
             console.log("newRecord: inside goal.component ",newRecord);
             this.toplistService.saveRecord(newRecord);
-            this.saveRecord_eventEmitter.emit();
+            //this.saveRecord_eventEmitter.emit();
         }
         else
         {

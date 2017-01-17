@@ -1,6 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
 import { Record } from './record';
-import { TOPLIST } from './mockData_toplist';
 
 
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -35,6 +34,7 @@ export class ToplistService {
 
     saveRecord(newRecord: Record): void {
 
+
         //let bodyString = JSON.stringify({action: 'setScore',name:newRecord.name,email:newRecord.email,time:newRecord.time,score:newRecord.time}); // Stringify payload
         let bodyString = "action=setScore"
             +"&name="+newRecord.name
@@ -46,6 +46,7 @@ export class ToplistService {
             headers.append('Content-Type', 'application/x-www-form-urlencoded');
         let options = new RequestOptions({ headers: headers });
 
+        debugger;
         this.http.post(this.serverUrl,bodyString, options) // ...using get request
             .map((res: Response) => {console.log(res.json())}) // ...and calling .json() on the response to return data
             .catch((error: any) => Observable.throw(console.log(error) || 'Server error, could not load record')); //...errors if any

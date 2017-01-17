@@ -41,9 +41,8 @@
 }
 
 #bouvet_log_welcome_screen{
-    height:25vh;
-    padding-bottom:15px;
-    margin-left:-15px;
+    width:67vw;
+    max-width: 500px;
 }
 
 #welcome_screen_bestTimes{

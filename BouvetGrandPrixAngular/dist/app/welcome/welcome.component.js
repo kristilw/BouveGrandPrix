@@ -10,16 +10,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-//import { Component} from '@angular/core';
 var core_1 = require("@angular/core");
+var toplist_service_1 = require("../services/toplist.service");
 var WelcomeComponent = (function () {
-    function WelcomeComponent(elementRef) {
+    function WelcomeComponent(elementRef, toplistService) {
         this.elementRef = elementRef;
+        this.toplistService = toplistService;
         //@ViewChild('welcome_carousel') input; 
         //@ViewChild('welcome_carousel') carousel: ElementRef; 
         this.carouselSelector = 0;
     }
     WelcomeComponent.prototype.ngAfterViewInit = function () {
+        this.getToplist();
         $("#welcome_carousel").carousel();
         var elem1 = $("#carousel_indicator_btn_active_0");
         var elem2 = $("#carousel_indicator_btn_active_1");
@@ -40,6 +42,15 @@ var WelcomeComponent = (function () {
             }
         });
     };
+    WelcomeComponent.prototype.getToplist = function () {
+        var _this = this;
+        this.toplistService.getToplist()
+            .subscribe(function (toplist) { return _this.toplist = toplist; }, //Bind to view
+        function (//Bind to view
+            err) {
+            console.log(err);
+        });
+    };
     return WelcomeComponent;
 }());
 WelcomeComponent = __decorate([
@@ -50,7 +61,8 @@ WelcomeComponent = __decorate([
             'app/welcome/welcome.component.css',
         ]
     }),
-    __metadata("design:paramtypes", [core_1.ElementRef])
+    __metadata("design:paramtypes", [core_1.ElementRef,
+        toplist_service_1.ToplistService])
 ], WelcomeComponent);
 exports.WelcomeComponent = WelcomeComponent;
 //# sourceMappingURL=welcome.component.js.map

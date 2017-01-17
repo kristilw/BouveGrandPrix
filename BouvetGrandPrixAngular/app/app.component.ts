@@ -79,8 +79,8 @@ export class AppComponent {
         FB.ui({
             display: 'popup',
             method: 'share',
-            caption: 'some caption',
-            description: 'some description',
+            caption: 'Bouvet',
+            description: 'Vi har flyttet! Spill Bouvet Grand Prix, og bli bedre kjent med det nye Bouvet-huset! Kjør fort, og vinn en premie verdig en racing-sjafør!',
             image: 'http://fagutvalget.no/wp-content/blogs.dir/10/files/2015/04/bouvet_logo.png',
             href: 'https://bouvet.no',
         }, function(response){

@@ -168,7 +168,7 @@ div.modal-content{ /* Removes shadow from modal  */
 }
 
 #bouvet_logo_div a img{
-    width: 107px;
+    width: 90px;
     height: 29px;
 }
 
@@ -293,7 +293,7 @@ div.modal-content{ /* Removes shadow from modal  */
 #navbar_bottom_game_logo{
     margin-right: 0px;
     margin-bottom: 18px;
-    height: 70px;
+    height: 65px;
     pointer-events: all;
     padding: 0;
 }

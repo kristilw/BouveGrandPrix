@@ -218,39 +218,38 @@ var GameComponent = (function () {
                     var lengthOfTotalTurn = this.gameLogic.BeizerCurveQudraticDistance_between(pCurrent, pNext, pNextNext, 0, 1);
                     var timeLeftOfTurn = lengthOfTurn / this.car_speed * 1000;
                     if (lengthOfTurn < lengthToTravel) {
-                        if (this.beizerTime < 0.5) {
-                            var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, 0.5);
-                            if (this.car_speed > speedLimit) {
-                                console.log(this.car_speed + " " + speedLimit);
-                                this.EnforcingSpeedLimit();
-                            }
+                        var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, 0.5); //Assumes turn is the sharpest at t=0.5
+                        if (this.beizerTime < 0.5 && this.car_speed > speedLimit) {
+                            this.EnforcingSpeedLimit();
+                            break;
                         }
-                        this.beizerCounter += 2;
-                        this.removePiceFromRoad(this.beizerCounter);
-                        this.beizerTime = 0;
-                        timeLeft -= timeLeftOfTurn;
+                        else {
+                            this.beizerCounter += 2;
+                            this.removePiceFromRoad(this.beizerCounter);
+                            this.beizerTime = 0;
+                            timeLeft -= timeLeftOfTurn;
+                        }
                     }
                     else {
                         var firstGuessBeizerTime = this.beizerTime + lengthToTravel / lengthOfTotalTurn;
                         if (this.beizerTime < 0.5 && firstGuessBeizerTime > 0.5) {
                             var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, 0.5);
                             if (this.car_speed > speedLimit) {
-                                console.log(this.car_speed + " " + speedLimit);
                                 this.EnforcingSpeedLimit();
+                                break;
                             }
                         }
                         else {
                             var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, firstGuessBeizerTime);
                             if (this.car_speed > speedLimit) {
-                                console.log(this.car_speed + " " + speedLimit);
                                 this.EnforcingSpeedLimit();
+                                break;
                             }
                         }
                         this.beizerTime = firstGuessBeizerTime;
                         timeLeft = 0;
                         carNewPosition = this.gameLogic.BeizerCurveQuadratic(pCurrent, pNext, pNextNext, this.beizerTime);
                         carNewAngle = this.gameLogic.GetAngleBeizerCurve(pCurrent, pNext, pNextNext, this.beizerTime);
-                        //console.log(this.beizerTime);
                         break;
                     }
                 }
@@ -410,32 +409,11 @@ var GameComponent = (function () {
     };
     GameComponent.prototype.removePiceFromRoad = function (removePice) {
         var roadPice = this.roadSections.get(removePice);
-        if (roadPice !== null) {
+        if (roadPice !== null && roadPice !== undefined) {
             this.map_game.removeLayer(roadPice);
         }
     };
     GameComponent.prototype.zoomToStartArea = function () {
-        /*setTimeout(() => {
-            this.map_game.panTo([59.93502, 10.75857]);
-        }, 1500);
-
-
-        /*for (let i = 1; i <= 6; i++) {
-            setTimeout(() => {
-                this.map_game.flyTo([59.93502, 10.75857], (i + 13), { animate: true });
-                console.log("zoom: "+i);
-                if (i === 6) {
-                    this.showCountDownTimer = true;
-                    this.zoomedToStartArea = true;
-                    this.setUpComplete = false;
-
-                    setTimeout(() => {
-                        console.log("load car..");
-                        this.loadImageOfCar();
-                    }, 100);
-                }
-            }, 500 * (i + 1));
-        }*/
         var _this = this;
         setTimeout(function () {
             _this.map_game.flyTo([59.93502, 10.75857], 18, {
