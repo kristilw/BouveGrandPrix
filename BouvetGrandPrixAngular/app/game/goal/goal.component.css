@@ -37,6 +37,9 @@
 .goal_text_input{
     background-color:transparent;
     border:0px solid white;
+    width: 100%;
+    height: 40px;
+    padding: 0px 10px;
 }
 
 input:focus{

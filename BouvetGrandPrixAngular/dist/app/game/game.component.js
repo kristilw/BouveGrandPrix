@@ -39,6 +39,7 @@ var GameComponent = (function () {
         this.showGoal = false;
         this.showWoops = false;
         this.isTouchDevice = false;
+        this.keyPressTimer = null;
         //document.onkeyup = onKeyUp;
         this.keysPressed = new Map();
         this.keyEventToId = new Map();
@@ -478,6 +479,18 @@ var GameComponent = (function () {
         this.showGoal = false;
         this.gameTime = 0;
         this.rePrintRoadToMap();
+    };
+    GameComponent.prototype.onTouchUpKeyRelease = function () {
+        clearTimeout(this.keyPressTimer);
+        console.log("acceleration - leave");
+        return false;
+    };
+    GameComponent.prototype.onTouchUpKeyPress = function () {
+        this.keyPressTimer = setTimeout(function () {
+            console.log("acceleration");
+            this.onkeyDown(38);
+        }, 100);
+        return false;
     };
     GameComponent.prototype.startGame = function (startGame) {
         console.log("from game: " + startGame);

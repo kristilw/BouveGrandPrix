@@ -4,6 +4,7 @@
     z-index:100;
     overflow-y:scroll;
     height:95vh;
+    -webkit-overflow-scrolling: touch;
 }
 
 #about_moving_text{
