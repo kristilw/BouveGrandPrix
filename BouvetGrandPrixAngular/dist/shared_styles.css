@@ -168,10 +168,12 @@ a:active {
 .toplist_table_name{
     padding: 10px 10px 10px 20px;
     width: 40%;
+    font-family: 'OpenSansRegular',"Helvetica Neue",sans-serif;
 }
 
 .toplist_table_firm{
     width: 20%;
+    font-family: 'OpenSansRegular',"Helvetica Neue",sans-serif;
 }
 
 .toplist_table_best_time_glyph{
@@ -293,4 +295,12 @@ button:focus{
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently
                                   not supported by any browser */
+}
+
+@media (max-width: 768px) {
+
+    #toplist_div .table_record .grey_text{
+
+        font-size: 10px;
+    }
 }
