@@ -63,6 +63,14 @@
     margin-top:5px;
     padding: 7px 7px 7px 7px;
 }
+.bouvet_buttons{
+
+    text-align: center;
+}
+
 .bouvet_buttons >div{
     width: auto;
+    display: inline-block;
+    float: none;
+    margin-bottom: 24px;
 }

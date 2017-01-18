@@ -75,8 +75,8 @@
     <div class="controllers">
         <div>
             <button class="noselect restart bouvet_button bouvet_orange_border" (click)="restartGameFromButton()"></button>
-            <button class="noselect up bouvet_button bouvet_orange_border" (mousedown)="onkeyDown(38)" (mouseup)="onKeyUp(38)" (mouseleave)="onKeyUp(38)"></button>
-            <button class="noselect down bouvet_button bouvet_orange_border" (mousedown)="onkeyDown(40)" (mouseup)="onKeyUp(40)" (mouseleave)="onKeyUp(40)"></button>
+            <button class="noselect up bouvet_button bouvet_orange_border" (touchstart)="onTouchUpKeyPress($event)"  (touchend)="onTouchUpKeyRelease($event)"></button>
+            <button class="noselect down bouvet_button bouvet_orange_border" (touchstart)="onTouchDownKeyPress($event)"  (touchend)="onTouchDownKeyRelease($event)"></button>
         </div>
     </div>
 </div>

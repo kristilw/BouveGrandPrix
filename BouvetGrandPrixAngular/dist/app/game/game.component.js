@@ -480,15 +480,50 @@ var GameComponent = (function () {
         this.gameTime = 0;
         this.rePrintRoadToMap();
     };
-    GameComponent.prototype.onTouchUpKeyRelease = function () {
-        clearTimeout(this.keyPressTimer);
+    GameComponent.prototype.onTouchUpKeyRelease = function (event) {
+        event.preventDefault();
+        if (this.keyPressTimer) {
+            clearInterval(this.keyPressTimer);
+        }
+        ;
         console.log("acceleration - leave");
+        event.target.style = "background-color:''";
+        this.onKeyUp(38);
         return false;
     };
-    GameComponent.prototype.onTouchUpKeyPress = function () {
-        this.keyPressTimer = setTimeout(function () {
-            console.log("acceleration");
-            this.onkeyDown(38);
+    GameComponent.prototype.onTouchUpKeyPress = function (event) {
+        var _this = this;
+        event.preventDefault();
+        event.target.style = "background-color:#f37021";
+        if (this.keyPressTimer) {
+            clearInterval(this.keyPressTimer);
+        }
+        ;
+        this.keyPressTimer = setInterval(function () {
+            _this.onkeyDown(38);
+        }, 100);
+        return false;
+    };
+    GameComponent.prototype.onTouchDownKeyRelease = function (event) {
+        event.preventDefault();
+        if (this.keyPressTimer) {
+            clearInterval(this.keyPressTimer);
+        }
+        ;
+        event.target.style = "background-color:''";
+        this.onKeyUp(40);
+        return false;
+    };
+    GameComponent.prototype.onTouchDownKeyPress = function (event) {
+        var _this = this;
+        event.preventDefault();
+        event.target.style = "background-color:#f37021";
+        if (this.keyPressTimer) {
+            clearInterval(this.keyPressTimer);
+        }
+        ;
+        this.keyPressTimer = setInterval(function () {
+            _this.onkeyDown(40);
         }, 100);
         return false;
     };

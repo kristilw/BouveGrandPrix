@@ -15,37 +15,33 @@
             <div class="col-sm-12 col-xs-12" id="toplist_scroll">
                 <table class="table_first_place">
                     <tr>
-                        <td> <p id="input_name_description" class="white_text letter_spacing goal_text_description"> {{"fornavn*" | uppercase }} </p></td>
-                        <td> <input id="input_name" type="text" placeholder="Jørgen" class="goal_text_input grey_text letter_spacing"
+                        <!--td> <p id="input_name_description" class="white_text letter_spacing goal_text_description"> {{"fornavn*" | uppercase }} </p></td-->
+                        <td> <input id="input_name" type="text" placeholder="{{'fornavn*' | uppercase }}" class="goal_text_input grey_text letter_spacing"
                                     #name_box (keyup)="nameChange(name_box.value)"/> </td>
                     </tr>
                 </table>
 
                 <table class="table_first_place">
                     <tr>
-                        <td> <p id="input_surname_description" class="white_text letter_spacing goal_text_description"> {{"email*" | uppercase }} </p></td>
-                        <td> <input id="input_surname" type="text" placeholder="bouvet@huset.no" class="goal_text_input grey_text letter_spacing"
+                        <td> <input id="input_surname" type="text" placeholder="{{'email*' | uppercase }}" class="goal_text_input grey_text letter_spacing"
                                     #email_box (keyup)="emailChange(email_box.value)"/> </td>
                     </tr>
                 </table>
 
                 <table class="table_first_place">
                     <tr>
-                        <td> <p id="input_company_description" class="white_text letter_spacing goal_text_description"> {{"bedrift" | uppercase }} </p></td>
-                        <td> <input id="input_company" type="text" placeholder="(Valgfritt)" class="goal_text_input grey_text letter_spacing" 
+                        <td> <input id="input_company" type="text" placeholder="{{'bedrift' | uppercase }}" class="goal_text_input grey_text letter_spacing"
                                     #company_box (keyup)="companyChange(company_box.value)"/> </td>
                     </tr>
                 </table>
                 <table class="table_from_buttons">
                     <tr>
-                        <td>
+                        <td colspan="2" style="width:100%;text-align:center;">
                             <button class="button bouvet_button bouvet_orange_border background_dark" (click)="registerRecord()">
                                 <span class="white_text" data-hover="REGISTRER TIDEN">REGISTRER TIDEN</span>
                             </button>
-                        </td>
-                        <td>
-                            <button class="button bouvet_button bouvet_orange_border background_dark" (click)="goToAboutPage()">
-                                <span class="white_text" data-hover="OM BOUVET-HUSET">OM BOUVET-HUSET</span>
+                            <button class="button bouvet_button bouvet_orange_border background_dark" (click)="alert('restart')">
+                                <span class="white_text" data-hover="RESTART">RESTART</span>
                             </button>
                         </td>
                     </tr>
