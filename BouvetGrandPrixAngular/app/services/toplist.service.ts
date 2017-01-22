@@ -26,16 +26,7 @@ export class ToplistService {
         return this.http.post(this.serverUrl, bodyString, options) // ...using get request
             .map((res: Response)=>{
 
-                var output = res.json().sort( function(a, b) {
-                    if ( a.score < b.score ){
-                        return -1;
-                    }else if( a.score > b.score ){
-                        return 1;
-                    }else{
-                        return 0;
-                    }
-                });
-
+                var output = res.json();
                 return output;
 
             }) // ...and calling .json() on the response to return data
@@ -44,14 +35,26 @@ export class ToplistService {
 
     saveRecord(newRecord: Record): void {
         let bodyString = "action=setScore"
-            +"&name="+newRecord.name
-            +"&email="+newRecord.email
+            +"&name="+newRecord.name.trim()
+            +"&email="+newRecord.email.trim()
             +"&time="+newRecord.time
             +"&score="+newRecord.time;
 
         let headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         let options = new RequestOptions({ headers: headers });
+        /*
+            var index=0;
+            for (var x in output){
+                 if(output[x].email == newRecord.email){
+
+                    console.log('email.... ',output[x]);
+                    return index; or retun output[x]
+                 }
+
+                index++;
+            }
+         */
 
         this.http.post(this.serverUrl, bodyString, options)
             .toPromise()
