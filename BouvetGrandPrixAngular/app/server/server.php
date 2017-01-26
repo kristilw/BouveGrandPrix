@@ -27,7 +27,7 @@
 		}
 
 		//$sql = "SELECT * FROM `grandprix`";
-		$sql = "SELECT name, time, score FROM grandprix";
+		$sql = "SELECT name, time, score FROM grandprix ORDER BY score ASC";
 		$result = $conn->query($sql);
 
 		if ($result) {
