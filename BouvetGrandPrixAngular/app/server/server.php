@@ -63,11 +63,11 @@
 		VALUES ('$name', '$email', '$time', '$score')";
 				
 		if ($conn->query($sql) === TRUE) {
-		    echo "Success";
+		    return "Success";
 		}
 		else
 		{
-		    echo "Error creating record: " . $conn->error;
+		    return "Error creating record: " . $conn->error;
 		}
 
 		$conn->close();
@@ -88,15 +88,38 @@
 		$sql = "UPDATE grandprix SET score='$score', time='$time' WHERE email='$email'";
 		
 		if ($conn->query($sql) === TRUE) {
-		    echo "Success";
+		    return "Success";
 		}
 		else
 		{
-		    echo "Error updating record: " . $conn->error;
+		    return "Error updating record: " . $conn->error;
 		}
     	
 		$conn->close();
 	};
+	
+	function getPosition($email,$time,$score){
+		global $servername, $username, $password, $dbname;
+		// Create connection
+		$conn = new mysqli($servername, $username, $password, $dbname);
+		
+		// Check connection
+		if ($conn->connect_error)
+		{
+		     die("Connection failed: " . $conn->connect_error);
+		}
+		
+		$sql = "SELECT COUNT(*) AS position FROM grandprix WHERE score<'$score'";
+		$result = $conn->query($sql);
+		
+		if ($result) {
+			return json_encode(mysqli_fetch_assoc($result));
+		}else{
+			return "Could not find position";
+		}
+		
+		$conn->close();
+	}
 
 
 	function setScore($name,$email,$time,$score)
@@ -134,19 +157,28 @@
 				//
 				// If new score is not greater than the best score
 				//
-				if(intval($score) > $bestScore)
+				if(intval($score) < $bestScore)
 				{
-
-					updateScore($email,$time,$score);
+					$msg = updateScore($email,$time,$score);
+					if($msg=="Success"){
+						echo getPosition($email,$time,$score);
+					}else{
+						echo $msg;
+					}
 				}
 				else
 				{
-					echo "new score is lesser than the best score!!! \n your best score is: ".$bestScore;
+					echo getPosition($email,$time,$bestScore);
 				}
 			}
 			else
 			{
-				createUserAndAddScore($name,$email,$time,$score);
+				$msg = createUserAndAddScore($name,$email,$time,$score);
+				if($msg=="Success"){
+					echo getPosition($email,$time,$score);
+				}else{
+					echo $msg;
+				}		
 			}
 		}
 		else
