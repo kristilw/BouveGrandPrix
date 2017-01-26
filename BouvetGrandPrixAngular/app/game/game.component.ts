@@ -672,7 +672,8 @@ export class GameComponent {
 
     saveRecord(position: number): void {
         // registrer tid 
-        let navigateTo = "toplist/" + position.toString();
+        let position_1_index = position + 1;
+        let navigateTo = "toplist/" + position_1_index.toString();
         this.router.navigateByUrl(navigateTo);
     }
 
