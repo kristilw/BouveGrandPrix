@@ -20,7 +20,7 @@ export class GoalComponent {
     @Input() public completionTime: number;
 
     @Output() saveRecord_eventEmitter: EventEmitter<void> = new EventEmitter<void>();
-    @Output() goToAboutPage_eventEmitter: EventEmitter<void> = new EventEmitter<void>();
+    @Output() restartGame_eventEmitter: EventEmitter<void> = new EventEmitter<void>();
 
 
     constructor(
@@ -45,8 +45,8 @@ export class GoalComponent {
         //this.toplistService.saveRecord(newRecord);
     }
 
-    goToAboutPage(): void {
-        this.goToAboutPage_eventEmitter.emit();
+    restartGame(): void {
+        this.restartGame_eventEmitter.emit();
     }
 
     nameChange(value: string) { this.user_name = value; }

@@ -678,10 +678,6 @@ export class GameComponent {
         this.router.navigateByUrl(navigateTo);
     }
 
-    goToAboutPage(): void {
-        this.router.navigateByUrl("about");
-    }
-
     printId(id: number): void {
         console.log(id)
     }

@@ -9,7 +9,7 @@
 
         <div class="game-controls-holder">
 
-            <div *ngIf="showCountDownTimer">
+            <div *ngIf="showCountDownTimer" id="countdown_div">
                 <countdown-game (startGameCountdown)="startGameFromCountdown($event)">
                 </countdown-game>
             </div>
@@ -65,7 +65,7 @@
 
         <!-- -->
         <div *ngIf="showGoal">
-            <goal [completionTime]="completionTime" (saveRecord_eventEmitter)="saveRecord()" (goToAboutPage_eventEmitter)="goToAboutPage()" >
+            <goal [completionTime]="completionTime" (saveRecord_eventEmitter)="saveRecord()" (restartGame_eventEmitter)="restartGameFromButton()" >
 
             </goal>
         </div>
