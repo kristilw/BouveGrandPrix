@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Injectable, EventEmitter } from '@angular/core';
 import { Record } from './record';
 import { ViewRecord } from './viewRecord';
 import { TOPLIST } from './mockData_toplist';
@@ -13,7 +13,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ToplistService {
-    private serverUrl = 'http://localhost/server.php';//'http://localhost/app/server/server.php'; //
+    private serverUrl = 'http://localhost/app/server/server.php'; //'http://localhost/server.php';//
 
     constructor(private http: Http) { }
 
@@ -33,32 +33,26 @@ export class ToplistService {
             .catch((error: any) => Observable.throw(console.log(error) || 'Server error, could not load record')); //...errors if any*/
     }
 
-    saveRecord(newRecord: Record): void {
+    saveRecord(newRecord: Record, event: EventEmitter<number>): Promise<any> {
         let bodyString = "action=setScore"
-            +"&name="+newRecord.name.trim()
-            +"&email="+newRecord.email.trim()
-            +"&time="+newRecord.time
-            +"&score="+newRecord.time;
+            + "&name=" + newRecord.name.trim()
+            + "&email=" + newRecord.email.trim()
+            + "&time=" + newRecord.time
+            + "&score=" + newRecord.time;
 
         let headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         let options = new RequestOptions({ headers: headers });
-        /*
-            var index=0;
-            for (var x in output){
-                 if(output[x].email == newRecord.email){
 
-                    console.log('email.... ',output[x]);
-                    return index; or retun output[x]
-                 }
-
-                index++;
-            }
-         */
-
-        this.http.post(this.serverUrl, bodyString, options)
-            .toPromise()
-            .catch((error: any) => Observable.throw(console.log(error) || 'Server error, could not load record'));
+        return new Promise((resolve, reject) => {
+            this.http.post(this.serverUrl, bodyString, options)
+                .toPromise()
+                .then(res => {
+                    var output = res.json();
+                    resolve({ 'position':output.position, 'event':event});
+                })
+                .catch((error: any) => Observable.throw(console.log(error) || 'Server error, could not load record'));
+        })
     }
 
 }

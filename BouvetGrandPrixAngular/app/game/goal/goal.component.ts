@@ -19,7 +19,7 @@ export class GoalComponent {
 
     @Input() public completionTime: number;
 
-    @Output() saveRecord_eventEmitter: EventEmitter<void> = new EventEmitter<void>();
+    @Output() saveRecord_eventEmitter: EventEmitter<number> = new EventEmitter<number>();
     @Output() restartGame_eventEmitter: EventEmitter<void> = new EventEmitter<void>();
 
 
@@ -31,9 +31,17 @@ export class GoalComponent {
         let roundCompletionTime = this.completionTime - this.completionTime % 1;
         if (this.completionTime !== null && this.user_name.length > 2 && this.user_email.length > 5) {
             let newRecord = new Record(this.completionTime, this.user_name, this.user_email, this.user_company);
-            console.log("newRecord: inside goal.component ",newRecord);
-            this.toplistService.saveRecord(newRecord);
-            this.saveRecord_eventEmitter.emit();
+            console.log("newRecord: inside goal.component ", newRecord);
+
+            this.toplistService.saveRecord(newRecord, this.saveRecord_eventEmitter).then(
+                function (output) {
+                    console.log("This is my position: " + output.position);
+                    output.event.emit(output.position);
+                },
+                function (err) {
+                    console.log("failed getRecord");
+                }
+            );
         }
         else
         {

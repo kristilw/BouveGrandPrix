@@ -670,10 +670,8 @@ export class GameComponent {
         this.tempPolyline = this.printRoadSection(this.beizerCounter, this.beizerTime);
     }
 
-    saveRecord(): void {
+    saveRecord(position: number): void {
         // registrer tid 
-
-        let position = 49;
         let navigateTo = "toplist/" + position.toString();
         this.router.navigateByUrl(navigateTo);
     }

@@ -65,7 +65,7 @@
 
         <!-- -->
         <div *ngIf="showGoal">
-            <goal [completionTime]="completionTime" (saveRecord_eventEmitter)="saveRecord()" (restartGame_eventEmitter)="restartGameFromButton()" >
+            <goal [completionTime]="completionTime" (saveRecord_eventEmitter)="saveRecord($event)" (restartGame_eventEmitter)="restartGameFromButton()" >
 
             </goal>
         </div>
