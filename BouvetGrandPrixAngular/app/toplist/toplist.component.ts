@@ -1,7 +1,7 @@
 ﻿import { Component, ElementRef, OnDestroy } from '@angular/core';
 
 import { ToplistService } from '../services/toplist.service';
-import { Record } from '../services/record';
+import { ViewRecord } from '../services/viewRecord';
 
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 
 export class ToplistComponent {
-    toplist: Record[];
+    toplist: ViewRecord[];
     private routeParamSubscription: any = null;
 
     focusOnRecord: number = 0;

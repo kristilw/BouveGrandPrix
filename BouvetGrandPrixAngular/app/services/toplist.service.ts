@@ -1,5 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { Record } from './record';
+import { ViewRecord } from './viewRecord';
 import { TOPLIST } from './mockData_toplist';
 
 
@@ -16,7 +17,7 @@ export class ToplistService {
 
     constructor(private http: Http) { }
 
-    getToplist(): Observable<Record[]> {
+    getToplist(): Observable<ViewRecord[]> {
         //let bodyString = JSON.stringify({action: 'getScores'}); // Stringify payload
         let bodyString = 'action=getScores';
         let headers      = new Headers();
@@ -25,10 +26,9 @@ export class ToplistService {
 
         return this.http.post(this.serverUrl, bodyString, options) // ...using get request
             .map((res: Response)=>{
-
                 var output = res.json();
+                console.log(output);
                 return output;
-
             }) // ...and calling .json() on the response to return data
             .catch((error: any) => Observable.throw(console.log(error) || 'Server error, could not load record')); //...errors if any*/
     }

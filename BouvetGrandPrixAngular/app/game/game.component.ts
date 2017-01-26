@@ -36,7 +36,7 @@ export class GameComponent {
     car_img_original: any = null;
     car_img_elem: any = null;
 
-    car_resistance_square: number = 0.0015;
+    car_resistance_square: number = 0.015;
     car_resistance_linear: number = 0.1;
 
     car_img_id: number= 0;
