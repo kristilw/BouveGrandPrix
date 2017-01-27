@@ -1,9 +1,9 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "bouvet_grandprix";
+$servername = "bouvet.mysql.domeneshop.no";
+$username = "bouvet";
+$password = "2Nsr2rxZfW7V2Wh";
+$dbname = "bouvet";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
@@ -97,7 +97,6 @@ function updateScore($email,$time,$score){
 
     $conn->close();
 };
-
 
 function setScore($name,$email,$time,$score)
 {

@@ -176,6 +176,10 @@ a:active {
     font-family: 'OpenSansRegular',"Helvetica Neue",sans-serif;
 }
 
+.toplist_table_score{
+    font-family: 'OpenSansRegular',"Helvetica Neue",sans-serif;
+}
+
 .toplist_table_best_time_glyph{
     border-left: solid 1px;
     border-color:#f37021;
