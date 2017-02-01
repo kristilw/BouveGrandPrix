@@ -629,18 +629,23 @@ export class GameComponent {
         }, 100);
 
         if (this.finishedFirstZoomAnimation == false) {
+
+            let height_bouvetHuset = 220 * Math.pow(0.5, 18 - this.zoomLevel);
+            let width_bouvetHuset = 207 * Math.pow(0.5, 18 - this.zoomLevel);
             var bouvetHuset_Icon = L.icon({
                 iconUrl: '../app/img/map/BouvetHuset_Huset.png',
 
-                iconSize: [220, 207], // size of the icon
-                iconAnchor: [110, 103], // point of the icon which will correspond to marker's location
+                iconSize: [height_bouvetHuset, width_bouvetHuset], // size of the icon
+                iconAnchor: [height_bouvetHuset / 2, width_bouvetHuset/2], // point of the icon which will correspond to marker's location
             });
 
+            let height_goal = 65 * Math.pow(0.5, 18 - this.zoomLevel);
+            let width_goal = 77 * Math.pow(0.5, 18 - this.zoomLevel);
             var goal_Icon = L.icon({
                 iconUrl: '../app/img/map/BouvetHuset_Målstreken.png',
 
-                iconSize: [65, 77], // size of the icon
-                iconAnchor: [32, 37], // point of the icon which will correspond to marker's location
+                iconSize: [height_goal, width_goal], // size of the icon
+                iconAnchor: [height_goal / 2, width_goal/2], // point of the icon which will correspond to marker's location
             });
 
             L.marker([59.930338, 10.711191], { icon: bouvetHuset_Icon }).addTo(this.map_game);
