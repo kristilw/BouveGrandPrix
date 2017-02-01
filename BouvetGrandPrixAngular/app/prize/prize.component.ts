@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: 'about-screen',
+    selector: 'prize-screen',
     templateUrl: 'app/prize/prize.component.html',
     styleUrls: [
         'app/prize/prize.component.css',
