@@ -107,7 +107,7 @@ export class GameComponent {
             this.speedometer_needle_img_loaded = true;
             this.updateSpeedometer(0);
         });
-        this.speedometer_needle_img.src = '../app/img/Speedometernål_liten.png';
+        this.speedometer_needle_img.src = '../app/img/Speedometernal_liten.png';
 
         /*$.ajax({
             url: "app/game/roads/road.csv",
@@ -642,7 +642,7 @@ export class GameComponent {
             let height_goal = 65 * Math.pow(0.5, 18 - this.zoomLevel);
             let width_goal = 77 * Math.pow(0.5, 18 - this.zoomLevel);
             var goal_Icon = L.icon({
-                iconUrl: '../app/img/map/BouvetHuset_Målstreken.png',
+                iconUrl: '../app/img/map/BouvetHuset_Malstreken.png',
 
                 iconSize: [height_goal, width_goal], // size of the icon
                 iconAnchor: [height_goal / 2, width_goal/2], // point of the icon which will correspond to marker's location
