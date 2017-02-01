@@ -9,7 +9,7 @@
 
         <div class="game-controls-holder">
 
-            <div *ngIf="showCountDownTimer">
+            <div *ngIf="showCountDownTimer" id="countdown_div">
                 <countdown-game (startGameCountdown)="startGameFromCountdown($event)">
                 </countdown-game>
             </div>
@@ -40,7 +40,7 @@
         </div>
 
         <div id="car_div">
-            <img id="car_img" *ngIf="zoomedToStartArea" />
+            <img id="car_img" *ngIf="zoomedToStartArea"/>
         </div>
 
         <div id="woops_div" class="tada-animation" *ngIf="showWoops">
@@ -65,7 +65,7 @@
 
         <!-- -->
         <div *ngIf="showGoal">
-            <goal [completionTime]="completionTime" (saveRecord_eventEmitter)="saveRecord()" (goToAboutPage_eventEmitter)="goToAboutPage()" >
+            <goal [completionTime]="completionTime" (saveRecord_eventEmitter)="saveRecord($event)" (restartGame_eventEmitter)="restartGameFromButton()" >
 
             </goal>
         </div>
@@ -75,8 +75,8 @@
     <div class="controllers">
         <div>
             <button class="noselect restart bouvet_button bouvet_orange_border" (click)="restartGameFromButton()"></button>
-            <button class="noselect up bouvet_button bouvet_orange_border" (touchstart)="onTouchUpKeyPress($event)"  (touchend)="onTouchUpKeyRelease($event)"></button>
-            <button class="noselect down bouvet_button bouvet_orange_border" (touchstart)="onTouchDownKeyPress($event)"  (touchend)="onTouchDownKeyRelease($event)"></button>
+            <button class="noselect up bouvet_button bouvet_orange_border"></button>
+            <button class="noselect down bouvet_button bouvet_orange_border"></button>
         </div>
     </div>
 </div>

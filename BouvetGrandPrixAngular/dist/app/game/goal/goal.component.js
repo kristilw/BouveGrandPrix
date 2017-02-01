@@ -18,15 +18,19 @@ var GoalComponent = (function () {
         this.user_email = "";
         this.user_company = "";
         this.saveRecord_eventEmitter = new core_1.EventEmitter();
-        this.goToAboutPage_eventEmitter = new core_1.EventEmitter();
+        this.restartGame_eventEmitter = new core_1.EventEmitter();
     }
     GoalComponent.prototype.registerRecord = function () {
         var roundCompletionTime = this.completionTime - this.completionTime % 1;
         if (this.completionTime !== null && this.user_name.length > 2 && this.user_email.length > 5) {
             var newRecord = new record_1.Record(this.completionTime, this.user_name, this.user_email, this.user_company);
             console.log("newRecord: inside goal.component ", newRecord);
-            this.toplistService.saveRecord(newRecord);
-            this.saveRecord_eventEmitter.emit();
+            this.toplistService.saveRecord(newRecord, this.saveRecord_eventEmitter).then(function (output) {
+                console.log("This is my position: " + output.position);
+                output.event.emit(output.position);
+            }, function (err) {
+                console.log("failed getRecord");
+            });
         }
         else {
             console.log("Error with inputs");
@@ -35,8 +39,8 @@ var GoalComponent = (function () {
         //let newRecord = new Record(155113, "success123", "kindasuccess123@test.com", "Bouvet AS");
         //this.toplistService.saveRecord(newRecord);
     };
-    GoalComponent.prototype.goToAboutPage = function () {
-        this.goToAboutPage_eventEmitter.emit();
+    GoalComponent.prototype.restartGame = function () {
+        this.restartGame_eventEmitter.emit();
     };
     GoalComponent.prototype.nameChange = function (value) { this.user_name = value; };
     GoalComponent.prototype.emailChange = function (value) { this.user_email = value; };
@@ -54,7 +58,7 @@ __decorate([
 __decorate([
     core_1.Output(),
     __metadata("design:type", core_1.EventEmitter)
-], GoalComponent.prototype, "goToAboutPage_eventEmitter", void 0);
+], GoalComponent.prototype, "restartGame_eventEmitter", void 0);
 GoalComponent = __decorate([
     core_1.Component({
         selector: 'goal',

@@ -17,7 +17,7 @@ require("rxjs/add/operator/catch");
 var ToplistService = (function () {
     function ToplistService(http) {
         this.http = http;
-        this.serverUrl = 'http://localhost/app/server/server.php'; //'http://localhost/server.php';//
+        this.serverUrl = '/app/server/server.php'; //'http://localhost/app/server/server.php'; //
     }
     ToplistService.prototype.getToplist = function () {
         //let bodyString = JSON.stringify({action: 'getScores'}); // Stringify payload
@@ -27,33 +27,31 @@ var ToplistService = (function () {
         var options = new http_1.RequestOptions({ headers: headers }); // Create a request option
         return this.http.post(this.serverUrl, bodyString, options) // ...using get request
             .map(function (res) {
-            var output = res.json().sort(function (a, b) {
-                if (a.score < b.score) {
-                    return -1;
-                }
-                else if (a.score > b.score) {
-                    return 1;
-                }
-                else {
-                    return 0;
-                }
-            });
+            var output = res.json();
+            console.log(output);
             return output;
         }) // ...and calling .json() on the response to return data
             .catch(function (error) { return Rx_1.Observable.throw(console.log(error) || 'Server error, could not load record'); }); //...errors if any*/
     };
-    ToplistService.prototype.saveRecord = function (newRecord) {
+    ToplistService.prototype.saveRecord = function (newRecord, event) {
+        var _this = this;
         var bodyString = "action=setScore"
-            + "&name=" + newRecord.name
-            + "&email=" + newRecord.email
+            + "&name=" + newRecord.name.trim()
+            + "&email=" + newRecord.email.trim()
             + "&time=" + newRecord.time
             + "&score=" + newRecord.time;
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var options = new http_1.RequestOptions({ headers: headers });
-        this.http.post(this.serverUrl, bodyString, options)
-            .toPromise()
-            .catch(function (error) { return Rx_1.Observable.throw(console.log(error) || 'Server error, could not load record'); });
+        return new Promise(function (resolve, reject) {
+            _this.http.post(_this.serverUrl, bodyString, options)
+                .toPromise()
+                .then(function (res) {
+                var output = res.json();
+                resolve({ 'position': output.position, 'event': event });
+            })
+                .catch(function (error) { return Rx_1.Observable.throw(console.log(error) || 'Server error, could not load record'); });
+        });
     };
     return ToplistService;
 }());
