@@ -85,7 +85,7 @@ var GameComponent = (function () {
             _this.speedometer_needle_img_loaded = true;
             _this.updateSpeedometer(0);
         });
-        this.speedometer_needle_img.src = '../app/img/Speedometernål_liten.png';
+        this.speedometer_needle_img.src = '../app/img/Speedometernal_liten.png';
         /*$.ajax({
             url: "app/game/roads/road.csv",
             dataType: "text",  // jQuery will infer this, but you can set explicitly
@@ -442,7 +442,7 @@ var GameComponent = (function () {
             iconAnchor: [110, 103],
         });
         var goal_Icon = L.icon({
-            iconUrl: '../app/img/map/BouvetHuset_Målstreken.png',
+            iconUrl: '../app/img/map/BouvetHuset_Molstreken.png',
             iconSize: [65, 77],
             iconAnchor: [32, 37],
         });
