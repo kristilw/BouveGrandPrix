@@ -245,6 +245,15 @@ export class GameComponent {
             var carNewAngle = null;
             var safetyCounter = 0;
 
+            //check speedlimit for the next couple of pices of road
+            for (var i = this.beizerCounter+1; i < this.beizerCounter + 30; i++){
+                if (i > this.road.length - 3) {
+                    break;
+                } else if (this.road[i].type === 'b0') {
+                    this.updateRoadSpeed(i, this.car_speed);
+                }
+            }
+
             while (timeLeft > 0 && Math.abs(this.car_speed) > 0 && safetyCounter < 100) {
                 if (this.beizerCounter > this.road.length - 3) {
                     this.showGoal = true;
@@ -475,6 +484,8 @@ export class GameComponent {
         });
     }
 
+    //polyline.setStyle({color: 'black'});
+
     printRoadSection(beizerCounter: number, beizerTime: number): any {
         let roadPoint_A = this.road[beizerCounter];
         let roadPoint_B = this.road[beizerCounter + 1];
@@ -487,10 +498,11 @@ export class GameComponent {
             var pointB = L.latLng(roadPoint_B.lat, roadPoint_B.lon);
             var pointList = [pointA, pointB];
 
-            var polyline = L.polyline(pointList, {
-                color: 'orange',
+            var polyline: any = null;
+            polyline = L.polyline(pointList, {
+                color: '#f37021',
                 weight: 3,
-                opacity: 0.5,
+                opacity: 1,
                 smoothFactor: 1
 
             });
@@ -508,10 +520,11 @@ export class GameComponent {
                 pointList.push(L.latLng(p1.lat, p1.lon));
             }
 
-            var polyline = L.polyline(pointList, {
-                color: 'orange',
+            var polyline: any = null;
+            polyline = L.polyline(pointList, {
+                color: '#f37021',
                 weight: 3,
-                opacity: 0.5,
+                opacity: 1,
                 smoothFactor: 1
 
             });
@@ -527,6 +540,30 @@ export class GameComponent {
         let roadPice = this.roadSections.get(removePice);
         if (roadPice !== null && roadPice !== undefined) {
             this.map_game.removeLayer(roadPice);
+        }
+    }
+
+    updateRoadSpeed(beizerNumber: number, speed: number): void {
+        let roadPice = this.roadSections.get(beizerNumber);
+        if (roadPice !== null && roadPice !== undefined) {
+            var pCurrent = this.road[beizerNumber];
+            var pNext = this.road[beizerNumber + 1];
+            var pNextNext = this.road[beizerNumber + 2];
+
+            if (pCurrent.type === 'b0' && pNext.type === 'b1' && pNextNext.type === 'b2') {
+                roadPice.setStyle({ color: 'red' });
+                var speedLimit = this.GetSpeedLimit(pCurrent, pNext, pNextNext, 0.5);
+
+                speedLimit = Math.max(speedLimit, this.minimumSpeedLimit);
+
+                if (speed > speedLimit) {
+                    roadPice.setStyle({ color: 'red', weight: 5});
+                } else if (speed > speedLimit - 15){
+                    roadPice.setStyle({ color: '#ff4444', weight: 4});
+                } else {
+                    roadPice.setStyle({ color: '#f37021', weight: 3});
+                }
+            }
         }
     }
 
