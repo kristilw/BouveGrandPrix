@@ -3,7 +3,7 @@
 
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ToplistService } from '../services/toplist.service';
-import { Record } from '../services/record';
+import { ViewRecord } from '../services/viewRecord';
 
 declare var jQuery: any;
 
@@ -21,7 +21,7 @@ export class WelcomeComponent {
 
     carouselSelector: number = 0;
 
-    toplist: Record[];
+    toplist: ViewRecord[];
 
     constructor(
         private elementRef: ElementRef,
