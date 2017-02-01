@@ -1,12 +1,18 @@
  <?php
 	header('Access-Control-Allow-Origin: *'); 
- 
+ 	/*
 	$servername = "localhost";
 	$username = "kristian";
 	$password = "Xebcj7xKmCWCRWVs";
 	$dbname = "testdatabase";
+	*/
 
-	// Create connection
+	 $servername = "bouvet.mysql.domeneshop.no";
+	 $username = "bouvet";
+	 $password = "2Nsr2rxZfW7V2Wh";
+	 $dbname = "bouvet";
+
+ // Create connection
 	$conn = new mysqli($servername, $username, $password);
 
 	// Check connection
