@@ -4,7 +4,8 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ToplistService } from './services/toplist.service';
-import { Record } from './services/record';
+import { ViewRecord } from './services/viewRecord';
+
 
 import { Map } from 'leaflet';
 import { LatLng } from 'leaflet';
@@ -22,7 +23,7 @@ declare const FB: any;
 })
 
 export class AppComponent {
-    toplist: Record[];
+    toplist: ViewRecord[];
 
     constructor(private toplistService: ToplistService) {
     }
