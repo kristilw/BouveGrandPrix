@@ -514,6 +514,7 @@ export class GameComponent {
     rePrintRoadToMap(): void {
         this.roadSections.forEach((item, key, mapObj) => {
             item.addTo(this.map_game);
+            item.setStyle({ color: '#f37021' });
         });
     }
 
@@ -600,11 +601,12 @@ export class GameComponent {
         }
     }
 
+    zoomLevel: number = 17;
     zoomToStartArea(): void {
-        let zoomlevel = 18 - (this.isTouchDevice ? 1 : 0);
+        this.zoomLevel = 18 - (this.isTouchDevice ? 1 : 0);
 
         setTimeout(() => {
-            this.map_game.flyTo([59.93502, 10.75857], zoomlevel, {
+            this.map_game.flyTo([59.93502, 10.75857], this.zoomLevel, {
                 animate: true,
                 duration: 6 // in seconds
             });
@@ -615,32 +617,37 @@ export class GameComponent {
         }, 7500);
     }
 
+    finishedFirstZoomAnimation: boolean = false;
     finishedZoomAnimation(): void {
         this.showCountDownTimer = true;
         this.zoomedToStartArea = true;
         this.setUpComplete = false;
 
-        var bouvetHuset_Icon = L.icon({
-            iconUrl: '../app/img/map/BouvetHuset_Huset.png',
-
-            iconSize: [220, 207], // size of the icon
-            iconAnchor: [110, 103], // point of the icon which will correspond to marker's location
-        });
-
-        var goal_Icon = L.icon({
-            iconUrl: '../app/img/map/BouvetHuset_Målstreken.png',
-
-            iconSize: [65, 77], // size of the icon
-            iconAnchor: [32, 37], // point of the icon which will correspond to marker's location
-        });
-
-        L.marker([59.930338, 10.711191], { icon: bouvetHuset_Icon }).addTo(this.map_game);
-        L.marker([59.930811, 10.711663], { icon: goal_Icon }).addTo(this.map_game);
-
         setTimeout(() => {
             console.log("load car..");
             this.loadImageOfCar();
         }, 100);
+
+        if (this.finishedFirstZoomAnimation == false) {
+            var bouvetHuset_Icon = L.icon({
+                iconUrl: '../app/img/map/BouvetHuset_Huset.png',
+
+                iconSize: [220, 207], // size of the icon
+                iconAnchor: [110, 103], // point of the icon which will correspond to marker's location
+            });
+
+            var goal_Icon = L.icon({
+                iconUrl: '../app/img/map/BouvetHuset_Målstreken.png',
+
+                iconSize: [65, 77], // size of the icon
+                iconAnchor: [32, 37], // point of the icon which will correspond to marker's location
+            });
+
+            L.marker([59.930338, 10.711191], { icon: bouvetHuset_Icon }).addTo(this.map_game);
+            L.marker([59.930811, 10.711663], { icon: goal_Icon }).addTo(this.map_game);
+
+            this.finishedFirstZoomAnimation = true;
+        }
     }
 
     loadImageOfCar(): void {
@@ -675,15 +682,22 @@ export class GameComponent {
     restartGameFromButton(): void {
         console.log("Start from button");
         this.setUpComplete = false;
+        this.zoomedToStartArea = false;
 
-        this.map_game.panTo([59.93502, 10.75857],{ animate: true });
+        //this.map_game.panTo([59.93502, 10.75857],{ animate: true });
         this.MoveCar(Math.PI * 1.27);
-        this.showCountDownTimer = true;
         this.updateSpeedometer(0);
         this.showGoal = false;
         this.gameTime = 0;
-
         this.rePrintRoadToMap();
+
+        this.map_game.flyTo([59.93502, 10.75857], this.zoomLevel, {
+            animate: true,
+            duration: 4 // in seconds
+        });
+        setTimeout(() => {
+            this.finishedZoomAnimation();
+        }, 4000);
     }
 
     onTouchUpKeyRelease(event):boolean{
