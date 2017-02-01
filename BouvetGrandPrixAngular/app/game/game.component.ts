@@ -666,6 +666,8 @@ export class GameComponent {
                 
                 if (this.isTouchDevice) {
                     this.car_img_elem.css("width", "20px");
+                    this.car_img_elem.css("margin-top", "-21px");
+                    this.car_img_elem.css("margin-left", "-11px");
                 }
             });
         });
