@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from "./welcome/welcome.component";
 import { AboutComponent } from "./about/about.component";
+import { PrizeComponent } from "./prize/prize.component";
 import { ChoseCarComponent } from "./choseCar/choseCar.component";
 import { GameComponent } from "./game/game.component";
 import { CountdownComponent } from "./game/countdown/countdown.component";
@@ -36,6 +37,10 @@ import { HttpModule } from '@angular/http';
                 component: AboutComponent
             },
             {
+                path: 'prize',
+                component: PrizeComponent
+            },
+            {
                 path: 'toplist/:id',
                 component: ToplistComponent
             },
@@ -49,6 +54,7 @@ import { HttpModule } from '@angular/http';
         AppComponent,
         WelcomeComponent,
         AboutComponent,
+        PrizeComponent,
         ChoseCarComponent,
         GameComponent,
         GoalComponent,
