@@ -603,7 +603,7 @@ export class GameComponent {
 
     zoomLevel: number = 17;
     zoomToStartArea(): void {
-        this.zoomLevel = 18 - (this.isTouchDevice ? 1 : 0);
+        //this.zoomLevel = 18 - (this.isTouchDevice ? 1 : 0);
 
         setTimeout(() => {
             this.map_game.flyTo([59.93502, 10.75857], this.zoomLevel, {
@@ -664,11 +664,11 @@ export class GameComponent {
             img_r.onload = (() => {
                 this.car_img_elem.attr("src", img_r.src);
                 
-                if (this.isTouchDevice) {
+                //if (this.isTouchDevice) {
                     this.car_img_elem.css("width", "20px");
                     this.car_img_elem.css("margin-top", "-21px");
                     this.car_img_elem.css("margin-left", "-11px");
-                }
+                //}
             });
         });
 
