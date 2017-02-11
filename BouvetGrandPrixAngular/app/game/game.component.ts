@@ -54,6 +54,9 @@ export class GameComponent {
     speedometer_needle_img_scale: number = 0.1;
     speedometer_maxSpeed: number = 80;
 
+    roadWidth: number = 3;
+    roadWidth_inital: number = 1;
+
     zoomedToStartArea: boolean = false;
 
     gameLogic: GameLogic_helperClass = new GameLogic_helperClass();
@@ -387,7 +390,7 @@ export class GameComponent {
                 this.MoveCar(carNewAngle);
 
                 this.removeTempPolyline();
-                this.tempPolyline = this.printRoadSection(this.beizerCounter, this.beizerTime);
+                this.tempPolyline = this.printRoadSection(this.beizerCounter, this.beizerTime, this.roadWidth);
 
                 if (this.updatePan === true) {
                     var dN = this.car_speed * Math.cos(carNewAngle-Math.PI/2) * 125 / 1000;
@@ -504,7 +507,7 @@ export class GameComponent {
         console.log("..print road to map: ");
         let roadSections_length = road.length;
         for (var i = 0; i < roadSections_length - 3; i++) {
-            let polyline = this.printRoadSection(i, 0);
+            let polyline = this.printRoadSection(i, 0, this.roadWidth_inital);
             if (polyline !== null) {
                 this.roadSections.set(i, polyline);
             }
@@ -518,9 +521,15 @@ export class GameComponent {
         });
     }
 
+    setWidthOfRoad(roadWeight: number): void {
+        this.roadSections.forEach((item, key, mapObj) => {
+            item.setStyle({weight: roadWeight });
+        });
+    }
+
     //polyline.setStyle({color: 'black'});
 
-    printRoadSection(beizerCounter: number, beizerTime: number): any {
+    printRoadSection(beizerCounter: number, beizerTime: number, lineWeight: number): any {
         let roadPoint_A = this.road[beizerCounter];
         let roadPoint_B = this.road[beizerCounter + 1];
         let roadPoint_C = this.road[beizerCounter + 2];
@@ -535,7 +544,7 @@ export class GameComponent {
             var polyline: any = null;
             polyline = L.polyline(pointList, {
                 color: '#f37021',
-                weight: 3,
+                weight: lineWeight,
                 opacity: 1,
                 smoothFactor: 1
 
@@ -557,7 +566,7 @@ export class GameComponent {
             var polyline: any = null;
             polyline = L.polyline(pointList, {
                 color: '#f37021',
-                weight: 3,
+                weight: lineWeight,
                 opacity: 1,
                 smoothFactor: 1
 
@@ -591,11 +600,11 @@ export class GameComponent {
                 speedLimit = Math.max(speedLimit, this.minimumSpeedLimit);
 
                 if (speed > speedLimit) {
-                    roadPice.setStyle({ color: 'red', weight: 5});
+                    roadPice.setStyle({ color: 'red', weight: (this.roadWidth+2)});
                 } else if (speed > speedLimit - 15){
-                    roadPice.setStyle({ color: '#ff4444', weight: 4});
+                    roadPice.setStyle({ color: '#ff4444', weight: (this.roadWidth+1)});
                 } else {
-                    roadPice.setStyle({ color: '#f37021', weight: 3});
+                    roadPice.setStyle({ color: '#f37021', weight: this.roadWidth });
                 }
             }
         }
@@ -629,6 +638,7 @@ export class GameComponent {
         }, 100);
 
         if (this.finishedFirstZoomAnimation == false) {
+            this.setWidthOfRoad(this.roadWidth);
 
             let height_bouvetHuset = 220 * Math.pow(0.5, 18 - this.zoomLevel);
             let width_bouvetHuset = 207 * Math.pow(0.5, 18 - this.zoomLevel);
@@ -762,7 +772,7 @@ export class GameComponent {
         this.unixTimeOld = 0;
 
         this.removePiceFromRoad(0);
-        this.tempPolyline = this.printRoadSection(this.beizerCounter, this.beizerTime);
+        this.tempPolyline = this.printRoadSection(this.beizerCounter, this.beizerTime, this.roadWidth);
     }
 
     saveRecord(position: number): void {
