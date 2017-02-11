@@ -57,6 +57,8 @@ export class GameComponent {
     roadWidth: number = 3;
     roadWidth_inital: number = 1;
 
+    zoomToStartAreaWhenRestarting: boolean = false;
+
     zoomedToStartArea: boolean = false;
 
     gameLogic: GameLogic_helperClass = new GameLogic_helperClass();
@@ -701,20 +703,25 @@ export class GameComponent {
         this.setUpComplete = false;
         this.zoomedToStartArea = false;
 
-        //this.map_game.panTo([59.93502, 10.75857],{ animate: true });
         this.MoveCar(Math.PI * 1.27);
         this.updateSpeedometer(0);
         this.showGoal = false;
         this.gameTime = 0;
         this.rePrintRoadToMap();
 
-        this.map_game.flyTo([59.93502, 10.75857], this.zoomLevel, {
-            animate: true,
-            duration: 4 // in seconds
-        });
-        setTimeout(() => {
+        if (this.zoomToStartAreaWhenRestarting) {
+            this.map_game.flyTo([59.93502, 10.75857], this.zoomLevel, {
+                animate: true,
+                duration: 4 // in seconds
+            });
+
+            setTimeout(() => {
+                this.finishedZoomAnimation();
+            }, 4000);
+        } else {
+            this.map_game.panTo([59.93502, 10.75857], { animate: false });
             this.finishedZoomAnimation();
-        }, 4000);
+        }
     }
 
     onTouchUpKeyRelease(event):boolean{
