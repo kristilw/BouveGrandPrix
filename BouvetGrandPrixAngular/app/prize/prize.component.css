@@ -2,4 +2,98 @@
     padding-top: 30px;
     text-align: center;
     z-index:100;
+    background-image: url("/app/img/prize_small.jpg");
+    background-size: 50vh;
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    height:100%;
+}
+
+#prize_page .prize-page-container{
+    top: 3%;
+    position: relative;
+}
+#prize_page h1{
+    color:#f1702f;
+    font-size: 20px;
+}
+#prize_page p{
+   color :#ffffff;
+    max-width: 300px;
+    margin:20px auto 0px auto;
+    font-size: 12px;
+}
+
+#prize_page .blir-det-deg{
+    display: inline-block;
+    margin-top: 10px;
+}
+#prize_page .bouvet_button{
+    margin-top: 10px;
+}
+
+@media only screen and (min-width: 480px) {
+    #prize_page{
+
+        background-image: url("/app/img/prize_large.jpg");
+        background-size: 100vh;
+
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    #prize_page{
+
+        background-size: 200%;
+        background-position: 50% 100%;
+        padding: 0px 20px 0px 20px;
+
+    }
+
+    #prize_page .prize-page-container{
+
+        top: 10%;
+        left: 50%;
+        margin-left: -350px;
+        position: absolute;
+        text-align: left;
+    }
+    #prize_page .prize-page-container p{
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    #prize_page{
+
+        background-size: 140%;
+        background-position: 50% 100%;
+    }
+
+    #prize_page .prize-page-container{
+
+        top: 10%;
+        left: 50%;
+        margin-left: -350px;
+        position: absolute;
+        text-align: left;
+    }
+    #prize_page .prize-page-container p{
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #prize_page {
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+    #prize_page .prize-page-container{
+
+        top:20%;
+        margin-left: -570px;
+    }
 }

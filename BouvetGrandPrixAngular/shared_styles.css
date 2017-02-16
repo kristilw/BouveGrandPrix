@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: #333!important;
+    background-color: #000!important;
 }
 
 .white_text{
@@ -133,10 +133,6 @@
     background-color:rgba(0, 0, 0, 0.30);
 }
 
-.flags{
-    height:6vh;
-    padding-bottom:10px;
-}
 
 /* unvisited link */
 a:link {
@@ -220,13 +216,6 @@ a:active {
 }
 
 
-
-
-@font-face {
-    font-family:'OpenSansRegular'; /*a name to be used later*/
-    src: url('app/fonts/OpenSansRegular.ttf') format('truetype'); /*URL to font*/
-}
-
 @font-face {
     font-family: 'DAGGERSQUARE';
     src: url('app/fonts/DAGGERSQUARE.eot'); /* IE9 Compat Modes */
@@ -300,11 +289,116 @@ button:focus{
     user-select: none; /* Non-prefixed version, currently
                                   not supported by any browser */
 }
+.flag-element{
+    width: 193px;
+    height: auto;
+}
+
+
+#splash {
+    position: relative;
+    width:100%;
+    height: 100%;
+
+}
+
+#splash .splash-container{
+
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    display: inline-block;
+    transform: translate(-50%,-50%);
+    margin-top: -20px;
+}
+
+#splash .splash-container h2 {
+    font-size: 8vw;
+}
+
+
+#splash .loader{
+    position: absolute;
+    top:70px;
+    left: 50%;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+    background: #f17030;
+    -webkit-animation: load1 1s infinite ease-in-out;
+    animation: load1 1s infinite ease-in-out;
+    width: 1px;
+    height: 4px;
+    color: #f17030;
+}
+.loader {
+    text-indent: -9999em;
+    margin: 88px auto;
+    position: relative;
+    font-size: 11px;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+    position: absolute;
+    top: 0;
+    content: '';
+}
+.loader:before {
+    left: -10px;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+.loader:after {
+    left: 10px;
+}
+@-webkit-keyframes load1 {
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 0;
+        height: 4em;
+    }
+    40% {
+        box-shadow: 0 -2em;
+        height: 5em;
+    }
+}
+@keyframes load1 {
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 0;
+        height: 4em;
+    }
+    40% {
+        box-shadow: 0 -2em;
+        height: 5em;
+    }
+}
+
 
 @media (max-width: 768px) {
 
     #toplist_div .table_record .grey_text{
 
         font-size: 10px;
+    }
+}
+
+@media (min-width:765px) {
+    #splash .splash-container {
+        width: 100%;
+    }
+    #splash .splash-container h2 {
+        font-size: 54px;
     }
 }

@@ -1,5 +1,5 @@
 ﻿#about_page{
-    padding-top: 30px;
+    padding-top: 70px;
     text-align: center;
     z-index:100;
     overflow-y:scroll;
@@ -7,15 +7,79 @@
     -webkit-overflow-scrolling: touch;
 }
 
-#about_moving_text{
+#about_page .text-block{
 
+    position: relative;
+    overflow: hidden;
+    display: none;
+}
+
+
+#about_page .top-text{
+
+    font-size: 13px;
+    font-family: 'OpenSansRegular',"Helvetica Neue",sans-serif;
+
+}
+
+#about_page .type-kohinoor-bangla{
+    font-family: 'Kohinoor Bangla';
+    font-size: 23px;
+    font-weight: bolder;
+    letter-spacing: 0.07em;
+}
+
+#about_page .heading-text{
+    font-size: 9vw;
+
+}
+
+#about_page .introduction-text{
+    font-size: 24px;
+    padding: 0px 10px;
+    margin: 44px 0px 24px 0px;
+    line-height: 1.6em;
+}
+
+
+#about_page p{
+    font-size: 14px;
+    position: relative;
+    padding-top: 10px;
+    line-height: 1.8em;
+}
+
+#about_page .introduction-text:before{
+
+    position: absolute;
+    content: "";
+    left: 50%;
+    width:20px;
+    background-color: #ffffff;
+    height: 1px;
+    margin-left: -10px;
+    top:-24px;
+}
+
+#about_moving_text
+{
+    padding-top: 0;
+    margin-top: -8px;
 }
 
 #about_moving_text_div{
     margin-top: 15px;
-    border-left: 1px solid;
-    border-color: #d45a1f;
     text-align:left;
+}
+
+.about_moving_text_img_divider {
+    background-color: #d45a1f;
+    width: 1px;
+    display: block;
+    top: 14px;
+    position: absolute;
+    left: 50%;
+    height: 100%;
 }
 
 #image_1{
@@ -44,7 +108,7 @@
 }
 
 #see_map_button{
-    
+    margin: 36px 0px 48px 0px;
 }
 
 .strek{
@@ -55,11 +119,15 @@
 }
 
 #go_to_front_page_button_div{
-    text-align:right;
+    text-align:center;
+    width: 100%;
+    margin: 12px 0px;
 }
 
 #play_grand_prix_button_div{
-    text-align:left;
+    text-align:center;
+    width:100%;
+    margin: 12px 0px;
 }
 
 #go_to_front_page_button{
@@ -74,5 +142,37 @@
 
 #flags_about_screen{
     padding-top:30px;
-    height:8vh;
+}
+
+@media only screen and (min-width: 768px) {
+
+    #about_page .top-text {
+
+        font-size: 24px;
+    }
+
+    #about_page .text-block-left{
+        padding-right:40px;
+    }
+    #about_page .text-block-right{
+        padding-left:40px;
+    }
+    #about_page .text-block{
+
+        display: block;
+    }
+    #go_to_front_page_button_div{
+        text-align:right;
+        width: 50%;
+    }
+
+    #play_grand_prix_button_div{
+        text-align:left;
+        width:50%;
+    }
+    #about_page .heading-text{
+        font-size: 80px;
+        letter-spacing: 0.02em;
+        line-height: 0.9em;
+    }
 }
