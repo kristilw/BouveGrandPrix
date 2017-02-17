@@ -41,9 +41,9 @@
 }
 
 #bouvet_log_welcome_screen{
-    width:50vh;
     max-width: 500px;
     height: auto;
+    width: 60vw;
 }
 
 #welcome_screen_bestTimes{
@@ -144,10 +144,14 @@ p.grey_text{
 
         margin-top: 0;
     }
-    #welcome_carousel p{
-        padding: 0px 0px 0px 0px;
-        font-size: 12px;
-        font-size: 3vh;
+    #welcome_carousel p {
+
+        font-size: 3.5vw;
+        padding: 0px;
+        padding-bottom: 30px;
+        padding-left: 0px;
+        padding-top: 20px;
+
     }
     #start_engine_button,
     #start_engine_button_2 {

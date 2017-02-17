@@ -230,11 +230,11 @@ a:active {
 
 @font-face {
     font-family: 'DAGGERSQUARE_OBLIQUE';
-    src: url('app/fonts/DAGGERSQUARE OBLIQUE.eot'); /* IE9 Compat Modes */
-    src: url('app/fonts/DAGGERSQUARE OBLIQUE.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('app/fonts/DAGGERSQUARE OBLIQUE.woff') format('woff'), /* Modern Browsers */
-    url('app/fonts/DAGGERSQUARE OBLIQUE.ttf')  format('truetype'), /* Safari, Android, iOS */
-    url('app/fonts/DAGGERSQUARE OBLIQUE.svg#1e91e374818370144489d52258ad256e') format('svg'); /* Legacy iOS */
+    src: url('app/fonts/DAGGERSQUARE_OBLIQUE.eot'); /* IE9 Compat Modes */
+    src: url('app/fonts/DAGGERSQUARE_OBLIQUE.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('app/fonts/DAGGERSQUARE_OBLIQUE.woff') format('woff'), /* Modern Browsers */
+    url('app/fonts/DAGGERSQUARE_OBLIQUE.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('app/fonts/DAGGERSQUARE_OBLIQUE.svg#1e91e374818370144489d52258ad256e') format('svg'); /* Legacy iOS */
 
     font-style:   oblique;
     font-weight:  400;

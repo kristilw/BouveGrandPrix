@@ -34,10 +34,6 @@
     border: 1px solid #f37021;
 }
 
-#flags_chose_car_screen{
-    height:6vh;
-}
-
 .drive_text{
     width: 100%;
     cursor:pointer;

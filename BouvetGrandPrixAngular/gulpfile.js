@@ -5,6 +5,9 @@ const tscConfig = require('./tsconfig.json');
 const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
+const sourcemaps = require('gulp-sourcemaps');
+
+const tsProject = typescript.createProject("tsconfig.json");
 
 // clean the contents of the distribution directory
 gulp.task('clean', function () {
@@ -13,17 +16,25 @@ gulp.task('clean', function () {
 
 // TypeScript compile
 gulp.task('compile', ['clean'], function () {
-    return gulp
-      .src('app/**/*.ts')
-      //.pipe(sourcemaps.init())
-      .pipe(typescript(tscConfig.compilerOptions))
-//      .pipe(concat('scripts.js'))
-//      .pipe(gulp.dest('dist/app'))
-//      .pipe(rename('scripts.min.js'))
-      .pipe(uglify())
-        
-        //.pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest('dist/app'));
+    //return gulp
+    //  .src('app/**/*.ts')
+    //  .pipe(sourcemaps.init())
+    //  .pipe(typescript(tscConfig.compilerOptions))
+    //  .pipe(concat('scripts.js'))
+    //  .pipe(gulp.dest('dist/app'))
+    //  .pipe(rename('main.min.js'))
+    //  .pipe(uglify())
+    //    
+    //  .pipe(sourcemaps.write('.'))
+    //  .pipe(gulp.dest('dist/app'));
+
+    var tsResult = gulp.src("app/**/*.ts")
+    .pipe(sourcemaps.init())
+    .pipe(tsProject());
+    return tsResult.js
+        .pipe(uglify())
+        .pipe(sourcemaps.write("."))
+        .pipe(gulp.dest('dist/app'));
 });
 
 
@@ -36,6 +47,8 @@ gulp.task('copy:assets', ['clean'], function () {
         'node_modules/bootstrap/dist/css/bootstrap.css',
         'node_modules/leaflet/dist/leaflet.css',
         'node_modules/bootstrap/dist/fonts/*',
+        '!app/**/*.js',
+        '!app/**/*.js.map',
         '!app/**/*.ts'],
         { base: './' })
       .pipe(gulp.dest('dist'))

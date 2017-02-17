@@ -214,6 +214,33 @@
     z-index:-10;
 }
 
+#speedometer_background_div:after,
+#speedometer_background_div:before{
+    content:"";
+    display:inline-block;
+    width:126px;
+    height:33px;
+    background-position: 50%;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    top: 50px;
+}
+
+
+#speedometer_background_div:after{
+    background-image: url("/app/img/speedometer_line_right.png");
+    right: -122px;
+
+}
+
+#speedometer_background_div:before{
+    background-image: url("/app/img/speedometer_line_left.png");
+    left: -122px;
+}
+
+
+
 #speedometer_background{
     width:120px;
     margin-top:3px;

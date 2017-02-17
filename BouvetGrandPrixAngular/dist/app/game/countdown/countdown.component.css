@@ -62,7 +62,6 @@
 }
 
 #flags_countdown{
-    height:5vh;
     margin-top:-85px;
 }
 
@@ -94,7 +93,6 @@
 
 
     #flags_countdown{
-        height:5vh;
         margin-top:-45px;
     }
 }
