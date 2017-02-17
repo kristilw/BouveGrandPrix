@@ -103,7 +103,9 @@ export class GameComponent {
             maxZoom:20
         }).addTo(this.map_game);
 
-        L.control.attribution({ position: 'topright' }).addTo(this.map_game);
+        if (this.isTouchDevice !== true) {
+            L.control.attribution({ position: 'topright' }).addTo(this.map_game);
+        }
 
         this.zoomToStartArea();
 
