@@ -392,6 +392,11 @@ button:focus{
 
         font-size: 10px;
     }
+
+    #toplist_div .table_first_place .grey_text{
+
+        font-size: 12px;
+    }
 }
 
 @media (min-width:765px) {
