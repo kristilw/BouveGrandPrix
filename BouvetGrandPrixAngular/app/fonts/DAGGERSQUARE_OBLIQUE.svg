@@ -9,9 +9,7 @@ Copyright (c) 2015 by Nestor Delgado. All rights reserved.
 <defs>
 <font id="1e91e374818370144489d52258ad256e" horiz-adv-x='1024' >
   <font-face 
-    font-family="DAGGERSQUARE-OBLIQUE"
-    font-weight="400"
-    font-style="oblique"
+    font-family="DAGGERSQUARE_OBLIQUE"
     font-stretch="normal"
     units-per-em="2048"
     panose-1="0 0 0 0 0 0 0 0 0 0"

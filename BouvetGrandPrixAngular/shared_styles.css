@@ -226,11 +226,12 @@ a:active {
 
 @font-face {
     font-family: 'DAGGERSQUARE';
-    src: url('app/fonts/DAGGERSQUARE.eot'); /* IE9 Compat Modes */
-    src: url('app/fonts/DAGGERSQUARE.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('app/fonts/DAGGERSQUARE.woff') format('woff'), /* Modern Browsers */
-    url('app/fonts/DAGGERSQUARE.ttf')  format('truetype'), /* Safari, Android, iOS */
-    url('app/fonts/DAGGERSQUARE.svg#d02e21bd02a940790d80e4fdeac6d42c') format('svg'); /* Legacy iOS */
+    src: url('/app/fonts/DAGGERSQUARE.eot'); /* IE9 Compat Modes */
+    src: local('☺'),
+    url('/app/fonts/DAGGERSQUARE.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/app/fonts/DAGGERSQUARE.woff') format('woff'), /* Modern Browsers */
+    url('/app/fonts/DAGGERSQUARE.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/app/fonts/DAGGERSQUARE.svg#d02e21bd02a940790d80e4fdeac6d42c') format('svg'); /* Legacy iOS */
 
     font-style:   normal;
     font-weight:  400;
@@ -238,13 +239,14 @@ a:active {
 
 @font-face {
     font-family: 'DAGGERSQUARE_OBLIQUE';
-    src: url('app/fonts/DAGGERSQUARE_OBLIQUE.eot'); /* IE9 Compat Modes */
-    src: url('app/fonts/DAGGERSQUARE_OBLIQUE.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('app/fonts/DAGGERSQUARE_OBLIQUE.woff') format('woff'), /* Modern Browsers */
-    url('app/fonts/DAGGERSQUARE_OBLIQUE.ttf')  format('truetype'), /* Safari, Android, iOS */
-    url('app/fonts/DAGGERSQUARE_OBLIQUE.svg#1e91e374818370144489d52258ad256e') format('svg'); /* Legacy iOS */
+    src: url('/app/fonts/DAGGERSQUARE_OBLIQUE.eot'); /* IE9 Compat Modes */
+    src: local('☺'), 
+    url('/app/fonts/DAGGERSQUARE_OBLIQUE.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/app/fonts/DAGGERSQUARE_OBLIQUE.woff') format('woff'), /* Modern Browsers */
+    url('/app/fonts/DAGGERSQUARE_OBLIQUE.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/app/fonts/DAGGERSQUARE_OBLIQUE.svg#1e91e374818370144489d52258ad256e') format('svg'); /* Legacy iOS */
 
-    font-style:   oblique;
+    font-style:   normal;
     font-weight:  400;
 }
 
