@@ -258,6 +258,7 @@ export class GameComponent {
     unixTimeOld: number = 0;
     completionTime: number = null;
     tempPolyline: any = null;
+    speedLimit_lookahead: number = 60;
 
     gameLoop(): void {
         if (this.setUpComplete) {
@@ -286,7 +287,7 @@ export class GameComponent {
             var safetyCounter = 0;
 
             //check speedlimit for the next couple of pices of road
-            for (var i = this.beizerCounter+1; i < this.beizerCounter + 30; i++){
+            for (var i = this.beizerCounter + 1; i < this.beizerCounter + this.speedLimit_lookahead; i++){
                 if (i > this.road.length - 3) {
                     break;
                 } else if (this.road[i].type === 'b0') {
