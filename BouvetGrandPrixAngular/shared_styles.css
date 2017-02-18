@@ -1,5 +1,7 @@
 ﻿body {
     background-color: #000!important;
+    overflow-x:hidden;
+    overflow-y:hidden;
 }
 
 .white_text{
@@ -174,12 +176,18 @@ a:active {
 
 .toplist_table_score{
     font-family: 'OpenSansRegular',"Helvetica Neue",sans-serif;
+    text-align:center;
+}
+
+.toplist_table_score_div{
+    width:100%;
+    padding-right:20px;
+    border-left: solid 1px;
+    border-color:#f37021;
 }
 
 .toplist_table_best_time_glyph{
-    border-left: solid 1px;
-    border-color:#f37021;
-    padding-left:40px;
+    padding-left:10px;
     padding-right:10px;
 }
 

@@ -20,7 +20,9 @@
                         <td class="grey_text toplist_table_name">{{record.name}}</td>
                         <td class="grey_text toplist_table_firm hidden-xs">{{record.company}}</td>
                         <td class="grey_text toplist_table_score">
-                            <span class="glyphicon glyphicon-time bouvet_orange_text toplist_table_best_time_glyph"></span> {{record.time | recordTime:'m'}}
+                            <div class="toplist_table_score_div">
+                                <span class="glyphicon glyphicon-time bouvet_orange_text toplist_table_best_time_glyph"></span> {{record.time | recordTime:'m'}}
+                            </div>
                         </td>
                     </tr>
                 </table>

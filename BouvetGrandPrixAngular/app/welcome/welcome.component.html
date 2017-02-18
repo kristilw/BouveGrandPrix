@@ -1,9 +1,4 @@
-﻿<div id="welcome_div">
-    <!--div id="welcome_div_space">
-
-    </div-->
-
-
+﻿<div class="container" id="welcome_div">
     <div class="carousel slide" id="welcome_carousel" data-interval="10000">
 
         <div class="carousel-inner" id="carousel_background">
@@ -13,25 +8,24 @@
             </ol> -->
 
             <div class="item active" id="item_1">
-                <!--div>
-                    <img class="flags" src="app/img/Flagg_medstreker.png" />
-                </div-->
-                <div>
-                    <img id="bouvet_log_welcome_screen" src="app/img/BouvetGrandPrix_emblem_decor.svg" />
+                <div id="item_1_div">
+                    <div>
+                        <img id="bouvet_log_welcome_screen" src="app/img/BouvetGrandPrix_emblem_decor.svg" />
+                    </div>
+
+                    <p class="grey_text">
+                        Vi har flyttet til nye Bouvethuset i<br />Sørkedalsveien 8 på Majorstuen! Nå kan du<br />prøvekjøre veien hit, uten fartsgrense! Raskeste<br />sjåføren vinner en ekte racing-premie.
+                        <br />
+                    </p>
+
+                    <button class="button bouvet_orange_border bouvet_button" id="start_engine_button" routerLink="/choseCar">
+                        <span data-hover="KJØR!" class="ng-binding">START MOTOREN</span>
+                    </button>
                 </div>
-
-                <p class="grey_text">
-                    Vi har flyttet til nye Bouvethuset i<br/>Sørkedalsveien 8 på Majorstuen! Nå kan du<br/>prøvekjøre veien hit, uten fartsgrense! Raskeste<br/>sjåføren vinner en ekte racing-premie.
-                    <br />
-                </p>
-
-                <button class="button bouvet_orange_border bouvet_button" id="start_engine_button" routerLink="/choseCar">
-                    <span data-hover="KJØR!" class="ng-binding">START MOTOREN</span>
-                </button>
             </div>
 
             <div class="item" id="item_2">
-                <div class="">
+                <div id="item_2_div">
                     <div>
                         <img class="flags flag-element" src="app/img/Flagg_medstreker.png" />
                     </div>
@@ -50,7 +44,9 @@
                                     <td class="grey_text toplist_table_name">{{record.name}}</td>
                                     <td class="grey_text toplist_table_firm hidden-xs">{{record.company}}</td>
                                     <td class="grey_text toplist_table_score">
-                                        <span class="glyphicon glyphicon-time bouvet_orange_text toplist_table_best_time_glyph"></span> {{record.time | recordTime:'m'}}
+                                        <div class="toplist_table_score_div">
+                                            <span class="glyphicon glyphicon-time bouvet_orange_text toplist_table_best_time_glyph"></span> {{record.time | recordTime:'m'}}
+                                        </div>
                                     </td>
                                 </tr>
                             </table>
@@ -59,10 +55,11 @@
                     <p class="grey_text">
                         Det var jammen raskt, men klarer du å finne frem til det nye Bouvet-huset enda raskere?
                     </p>
+
+                    <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_2" routerLink="/choseCar">
+                        <span data-hover="START MOTOREN" class="ng-binding">START MOTOREN</span>
+                    </button>
                 </div>
-                <button class="button bouvet_orange_border bouvet_button" id="start_engine_button_2" routerLink="/choseCar">
-                    <span data-hover="START MOTOREN" class="ng-binding">START MOTOREN</span>
-                </button>
             </div>
         </div>
 

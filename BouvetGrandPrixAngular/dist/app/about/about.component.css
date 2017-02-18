@@ -3,13 +3,11 @@
     text-align: center;
     z-index:100;
     overflow-y:scroll;
-    height:95vh;
+    height:97vh;
     -webkit-overflow-scrolling: touch;
 }
 
 #about_page .text-block{
-
-    position: relative;
     overflow: hidden;
     display: none;
 }
@@ -75,10 +73,9 @@
 .about_moving_text_img_divider {
     background-color: #d45a1f;
     width: 1px;
-    display: block;
-    top: 14px;
+    top: 4px;
     position: absolute;
-    left: 50%;
+    left: -1px;
     height: 100%;
 }
 
@@ -108,7 +105,7 @@
 }
 
 #see_map_button{
-    margin: 36px 0px 48px 0px;
+    margin: 36px 0px 18px 0px;
 }
 
 .strek{
@@ -144,6 +141,21 @@
     padding-top:30px;
 }
 
+@media (max-width: 768px) {
+    #about_moving_text{
+        text-align:center;
+    }
+
+    #see_map_button_div{
+        width:100%;
+    }
+
+    #see_map_button{
+        width:100%;
+        text-align:center;
+    }
+}
+
 @media only screen and (min-width: 768px) {
 
     #about_page .top-text {
@@ -158,9 +170,10 @@
         padding-left:40px;
     }
     #about_page .text-block{
-
         display: block;
     }
+    
+
     #go_to_front_page_button_div{
         text-align:right;
         width: 50%;
@@ -170,6 +183,11 @@
         text-align:left;
         width:50%;
     }
+
+    
+
+
+
     #about_page .heading-text{
         font-size: 80px;
         letter-spacing: 0.02em;
