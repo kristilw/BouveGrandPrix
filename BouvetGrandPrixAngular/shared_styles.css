@@ -246,7 +246,7 @@ a:active {
     url('/app/fonts/DAGGERSQUARE_OBLIQUE.ttf') format('truetype'), /* Safari, Android, iOS */
     url('/app/fonts/DAGGERSQUARE_OBLIQUE.svg#1e91e374818370144489d52258ad256e') format('svg'); /* Legacy iOS */
 
-    font-style:   normal;
+    font-style:   oblique;
     font-weight:  400;
 }
 
