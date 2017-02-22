@@ -13,7 +13,7 @@
 }
 
 #toplist_scroll{
-    height: calc(93vh - 208px);
+    height: calc(92vh - 208px);
     overflow-y:scroll;
     padding-right:10px;
 }
@@ -65,7 +65,7 @@
     padding: 7px 7px 7px 7px;
 }
 .bouvet_buttons{
-
+    padding-top:5px;
     text-align: center;
 }
 
@@ -74,4 +74,12 @@
     display: inline-block;
     float: none;
     margin-bottom: 24px;
+}
+
+@media only screen and (max-width: 768px) {
+    #toplist_scroll{
+        height: calc(92vh - 250px);
+        overflow-y:scroll;
+        padding-right:10px;
+    }
 }
