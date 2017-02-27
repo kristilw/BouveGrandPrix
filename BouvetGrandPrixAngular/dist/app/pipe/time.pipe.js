@@ -1,2 +1,45 @@
-"use strict";var __decorate=this&&this.__decorate||function(e,t,r,o){var n,i=arguments.length,a=i<3?t:null===o?o=Object.getOwnPropertyDescriptor(t,r):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,r,o);else for(var c=e.length-1;c>=0;c--)(n=e[c])&&(a=(i<3?n(a):i>3?n(t,r,a):n(t,r))||a);return i>3&&a&&Object.defineProperty(t,r,a),a},__metadata=this&&this.__metadata||function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)},core_1=require("@angular/core"),TimePipe=function(){function e(){}return e.prototype.transform=function(e,t){if(null===e||e<0)return"404, time not found";if("m"===t[0]&&(e/=1e3),e>1e5)return"-";var r=Math.floor(100*e%100).toString();1===r.length&&(r="0"+r);var o=Math.floor(e%60).toString();1===o.length&&(o="0"+o);var n=Math.floor(e/60).toString();return 1===n.length&&(n="0"+n),n+"."+o+"."+r},e}();TimePipe=__decorate([core_1.Pipe({name:"recordTime"}),__metadata("design:paramtypes",[])],TimePipe),exports.TimePipe=TimePipe;
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require("@angular/core");
+var TimePipe = (function () {
+    function TimePipe() {
+    }
+    TimePipe.prototype.transform = function (value, args) {
+        if (value === null || value < 0) {
+            return "404, time not found";
+        }
+        if (args[0] === 'm') {
+            value /= 1000;
+        }
+        if (value > 100000) {
+            return "-";
+        }
+        var milliseconds_string = (Math.floor((value * 100 % 100))).toString();
+        if (milliseconds_string.length === 1)
+            milliseconds_string = "0" + milliseconds_string;
+        var seconds_string = (Math.floor((value % 60))).toString();
+        if (seconds_string.length === 1)
+            seconds_string = "0" + seconds_string;
+        var minute_string = (Math.floor((value / 60))).toString();
+        if (minute_string.length === 1)
+            minute_string = "0" + minute_string;
+        return minute_string + "." + seconds_string + "." + milliseconds_string;
+    };
+    return TimePipe;
+}());
+TimePipe = __decorate([
+    core_1.Pipe({
+        name: 'recordTime'
+    }),
+    __metadata("design:paramtypes", [])
+], TimePipe);
+exports.TimePipe = TimePipe;
 //# sourceMappingURL=time.pipe.js.map

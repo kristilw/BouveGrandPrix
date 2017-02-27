@@ -1,2 +1,28 @@
-"use strict";var __decorate=this&&this.__decorate||function(t,e,o,n){var a,r=arguments.length,c=r<3?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)c=Reflect.decorate(t,e,o,n);else for(var p=t.length-1;p>=0;p--)(a=t[p])&&(c=(r<3?a(c):r>3?a(e,o,c):a(e,o))||c);return r>3&&c&&Object.defineProperty(e,o,c),c},__metadata=this&&this.__metadata||function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)},core_1=require("@angular/core"),AboutComponent=function(){function t(){}return t}();AboutComponent=__decorate([core_1.Component({selector:"about-screen",templateUrl:"app/about/about.component.html",styleUrls:["app/about/about.component.css"]}),__metadata("design:paramtypes",[])],AboutComponent),exports.AboutComponent=AboutComponent;
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require("@angular/core");
+var AboutComponent = (function () {
+    function AboutComponent() {
+    }
+    return AboutComponent;
+}());
+AboutComponent = __decorate([
+    core_1.Component({
+        selector: 'about-screen',
+        templateUrl: 'app/about/about.component.html',
+        styleUrls: [
+            'app/about/about.component.css',
+        ]
+    }),
+    __metadata("design:paramtypes", [])
+], AboutComponent);
+exports.AboutComponent = AboutComponent;
 //# sourceMappingURL=about.component.js.map

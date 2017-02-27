@@ -1,5 +1,6 @@
 ﻿#prize_page{
-    padding-top: 30px;
+    padding-top: 0px;
+
     text-align: center;
     z-index:100;
     background-image: url("/app/img/prize_small.jpg");
@@ -10,90 +11,353 @@
 }
 
 #prize_page .prize-page-container{
-    top: 3%;
+    top: 0%;
     position: relative;
 }
 #prize_page h1{
     color:#f1702f;
-    font-size: 20px;
+    font-size: 60px;
 }
 #prize_page p{
    color :#ffffff;
     max-width: 300px;
     margin:20px auto 0px auto;
-    font-size: 12px;
+    font-size: 15px;
+    font-family: "open Sans" !important;
+    line-height: 1.6em;    
 }
 
 #prize_page .blir-det-deg{
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 14px;
 }
 #prize_page .bouvet_button{
-    margin-top: 10px;
+    margin-top: 32px;
+}
+
+
+#background_prizePage{
+    position: absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index: -1;
+    background:#000000;
+}
+
+
+@media only screen and (min-width: 320px) {
+    #prize_page p{
+       color :#ffffff;
+        max-width: 340px;
+        margin:0px auto 0px auto;
+        font-size: 18px;
+        font-family: "open Sans" !important;
+        line-height: 1.5em;    
+    }
+
+    #prize_page .bouvet_button{
+        margin-top: 18px;
+    }
+
+    #prize_page{
+        margin-top:0px;
+        padding-top:15px;
+       background-image: url("/app/img/prize_ipad_2.jpg");
+        background-size: 160%;
+        background-position: 46% 103%;
+        background-repeat: no-repeat;
+        height:100%;
+    }
+
+    #prize_page .blir-det-deg{
+        display: inline-block;
+        margin-top: 6px;
+    }
+
+    #prize_page h1{
+
+       margin-bottom: 0px;
+        margin-top: 30px;
+    font-size: 50px;
+    }
+}
+
+
+
+@media only screen and (min-width: 375px) {
+
+    #prize_page p{
+       color :#ffffff;
+        max-width: 340px;
+        margin:0px auto 0px auto;
+        font-size: 18px;
+        font-family: "open Sans" !important;
+        line-height: 1.5em;    
+    }
+
+    #prize_page .bouvet_button{
+        margin-top: 18px;
+    }
+
+    #prize_page{
+        margin-top:0px;
+        padding-top:15px;
+       background-image: url("/app/img/prize_ipad_2.jpg");
+        background-size: 160%;
+        background-position: 46% 103%;
+        background-repeat: no-repeat;
+        height:100%;
+    }
+
+    #prize_page .blir-det-deg{
+        display: inline-block;
+        margin-top: 6px;
+    }
+
+    #prize_page h1{
+       margin-bottom: 0px;
+        margin-top: 30px;
+        font-size: 60px;
+    }
+}
+
+
+@media only screen and (min-width: 414px) {
+    #prize_page{
+        margin-top:0px;
+        padding-top:15px;
+        background-image: url("/app/img/prize_ipad_2.jpg");
+        background-size: 185%;
+        background-position: 46% 100%;
+        padding: 0px 20px 0px 20px;
+    }
+
+    #prize_page p{
+       color :#ffffff;
+        max-width: 340px;
+        margin:0px auto 0px auto;
+        font-size: 20px;
+        font-family: "open Sans" !important;
+        line-height: 1.5em;    
+    }
+
+        #prize_page .bouvet_button{
+        margin-top: 30px;
+    }
+
+
+    #prize_page .blir-det-deg{
+        display: inline-block;
+        margin-top: 6px;
+    }
+
+    #prize_page h1{
+       margin-bottom: 0px;
+       margin-top: 35px;
+    }
 }
 
 @media only screen and (min-width: 480px) {
     #prize_page{
-
-        background-image: url("/app/img/prize_large.jpg");
-        background-size: 100vh;
-
+        margin-top:0px;
+        padding-top:15px;
+        background-image: url("/app/img/prize_ipad_2.jpg");
+        background-size: 150%;
+        background-position: 46% 100%;
+        padding: 0px 20px 0px 20px;
     }
 
+    #prize_page .bouvet_button{
+        margin-top: 28px;
+    }
+
+    #prize_page p{
+        font-size: 18px;
+        max-width: 340px;
+    }
+
+    #prize_page h1{
+        color:#f1702f;
+        font-size: 70px;
+    }
 }
+
+
 
 @media only screen and (min-width: 768px) {
     #prize_page{
-
-        background-size: 200%;
-        background-position: 50% 100%;
-        padding: 0px 20px 0px 20px;
+        margin-top:-30px;
+         background-image: url("/app/img/prize_ipad_2.jpg");
+        background-size: 137%;
+        background-position: 44% 110%;
+        padding: 0px 0px 0px 0px;
 
     }
 
     #prize_page .prize-page-container{
-
-        top: 10%;
-        left: 50%;
-        margin-left: -350px;
-        position: absolute;
-        text-align: left;
+        top: 2%;
+        width: 50%;
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
     }
-    #prize_page .prize-page-container p{
-        margin: 0;
-        padding: 0;
+
+    #prize_page p{
+        max-width: 400px;
+        font-size: 20px;
+        line-height: 1.5em;    
+    }
+
+    #prize_page .bouvet_button{
+        margin-top: 30px;
+    }
+
+    #prize_page h1{
+        color:#f1702f;
+        font-size: 75px;
     }
 }
 
-@media only screen and (min-width: 800px) {
-    #prize_page{
 
-        background-size: 140%;
-        background-position: 50% 100%;
+@media only screen and (min-width: 768px) and (orientation : landscape) {
+     #prize_page{
+        background-image: url("/app/img/prize_large2.png");
+         background-size: contain;
+         background-position: center center;
     }
 
     #prize_page .prize-page-container{
-
-        top: 10%;
-        left: 50%;
-        margin-left: -350px;
-        position: absolute;
+        top:20%;
+        margin-left: 75px;
         text-align: left;
+
     }
-    #prize_page .prize-page-container p{
-        margin: 0;
-        padding: 0;
+
+     #prize_page p{
+        max-width: 450px;
+        margin:0px 0px 0px 0px;
+        font-size: 18px;
+        line-height: 1.6em;    
+    }
+
+    #prize_page h1{
+        font-size: 62px;
     }
 }
+
+
+@media only screen and (min-width: 1030px) {
+   #prize_page{
+        background-image: url("/app/img/prize_large2.png");
+         background-size: contain;
+         background-position: center center;
+    }
+    
+    #prize_page .prize-page-container{
+        top:20%;
+        margin-left: 75px;
+        text-align: left;
+    }
+
+     #prize_page p{
+        max-width: 450px;
+        margin:0px 0px 0px 0px;
+        font-size: 17.5px;
+        line-height: 1.6em;    
+    }
+
+    #prize_page h1{
+        font-size: 58px;
+    }
+}
+
 
 @media only screen and (min-width: 1200px) {
     #prize_page {
-        background-size: cover;
-        background-position: 50% 50%;
+        background-image: url("/app/img/prize_large2.png");
+        background-size: contain;
     }
-    #prize_page .prize-page-container{
+   
 
+    #prize_page .prize-page-container{
         top:20%;
-        margin-left: -570px;
+        margin-left: 75px;
+        text-align: left;
+    }
+
+     #prize_page p{
+        max-width: 450px;
+        margin:0px 0px 0px 0px;
+        font-size: 17.5px;
+        line-height: 1.6em;    
+    }
+
+    #prize_page h1{
+        font-size: 58px;
     }
 }
+
+
+@media only screen and (min-width: 1350px) {
+    #prize_page .prize-page-container{
+        top:20%;
+        margin-left: 115px;
+        text-align: left;
+    }
+
+     #prize_page p{
+        max-width: 450px;
+        margin:0px 0px 0px 0px;
+        font-size: 17.5px;
+        line-height: 1.6em;    
+    }
+
+    #prize_page h1{
+        font-size: 62px;
+    }
+}
+
+
+@media only screen and (min-width: 1600px) {
+    #prize_page .prize-page-container{
+        top:20%;
+        margin-left: 200px;
+        text-align: left;
+    }
+
+     #prize_page p{
+        max-width: 450px;
+        margin:0px 0px 0px 0px;
+        font-size: 21px;
+        line-height: 1.6em;    
+    }
+
+    #prize_page h1{
+        font-size: 80px;
+    }
+}
+
+
+@media only screen and (min-width: 2000px) {
+    #prize_page .prize-page-container{
+        top:20%;
+        margin-left: 400px;
+        text-align: left;
+    }
+
+     #prize_page p{
+        max-width: 450px;
+        margin:0px 0px 0px 0px;
+        font-size: 20px;
+        line-height: 1.6em;    
+    }
+
+    #prize_page h1{
+        font-size: 80px;
+    }
+}
+
+
+
