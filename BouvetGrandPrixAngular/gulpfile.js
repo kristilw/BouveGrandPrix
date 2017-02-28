@@ -11,7 +11,7 @@ const tsProject = typescript.createProject("tsconfig.json");
 
 // clean the contents of the distribution directory
 gulp.task('clean', function () {
-    return del('dist/**/*');
+    return;// del('dist/**/*');
 });
 
 // TypeScript compile
@@ -42,6 +42,7 @@ gulp.task('compile', ['clean'], function () {
 gulp.task('copy:assets', ['clean'], function () {
     return gulp.src([
         'app/**/*',
+        'systemjs.config.js',
         'index.html',
         'shared_styles.css',
         'node_modules/bootstrap/dist/css/bootstrap.css',
@@ -76,5 +77,17 @@ gulp.task('copy:libs', ['clean'], function () {
       .pipe(gulp.dest('dist'))
 });
 
+
+// Watch for changes in TypeScript, HTML and CSS files.
+gulp.task('watch', function () {
+    gulp.watch(["app/**/*.ts"], ['compile']).on('change', function (e) {
+        console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
+    });
+    gulp.watch(["app/**/*.html", "app/**/*.css"], ['copy:assets']).on('change', function (e) {
+        console.log('Resource file ' + e.path + ' has been changed. Updating.');
+    });
+});
+
 gulp.task('build', ['compile', 'copy:assets', 'copy:libs']);
-gulp.task('default', ['build']);
+gulp.task('realtime', ['build', 'watch']);
+gulp.task('default', ['build', 'watch']);

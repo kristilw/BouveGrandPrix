@@ -2,10 +2,11 @@
   "name": "bouvetgrandprix",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
-    "lite": "lite-server",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "start": "concurrent \"gulp realtime\" \"npm run lite\" ",
+    "server": "concurrent \"gulp watch\" \"npm lite-server\" "
   },
   "licenses": [
     {

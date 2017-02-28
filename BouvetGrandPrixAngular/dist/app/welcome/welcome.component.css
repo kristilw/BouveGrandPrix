@@ -220,15 +220,7 @@ p.greysmall_text{
 
         margin-top: 0;
     }
-    #welcome_carousel p {
 
-        font-size: 3.5vw;
-        padding: 0px;
-        padding-bottom: 30px;
-        padding-left: 0px;
-        padding-top: 20px;
-
-    }
     #start_engine_button,
     #start_engine_button_2 {
         margin: 0px 0px 0px 0px;
@@ -243,8 +235,8 @@ p.greysmall_text{
 	
 /*Iphone 6 Portrait*/		
 @media only screen 		
-    and (min-device-width : 375px) // or 213.4375em		
-    and (max-device-width : 667px) // or 41.6875em		
+    and (min-device-width : 375px)
+    and (max-device-width : 667px)
     and (orientation : portrait) 		
 { 		
     p.grey_text{		
@@ -286,8 +278,8 @@ p.greysmall_text{
 }		
 /*Iphone 6 Landscape*/		
 @media only screen 		
-    and (min-device-width : 375px) // or 213.4375em or 3in or 9cm		
-    and (max-device-width : 667px) // or 41.6875em		
+    and (min-device-width : 375px)
+    and (max-device-width : 667px)
     and (orientation : landscape) 		
 { }		
 /*Ipad Portrait*/		
@@ -321,27 +313,9 @@ and (orientation : portrait)
         width: 75vw;		
     } 		
 }		
-/*Ipad Landscape*/		
-@media only screen 		
-and (min-device-width : 768px) 		
-and (max-device-width : 1024px) 		
-and (orientation : landscape) 		
-{ /* STYLES GO HERE */}		
-/*Ipad Pro Landscape*/		
-@media only screen 		
-and (min-device-width : 1024px) 		
-and (max-device-width : 1366px)		
-and (orientation : portrait)  		
-{ /* STYLES GO HERE */}		
-/*Ipad Pro Landscape*/		
-@media only screen 		
-and (min-device-width : 1024px) 		
-and (max-device-width : 1366px) 		
-and (orientation : landscape) 		
-{ /* STYLES GO HERE */}		
- /* Medium Devices, Desktops */		
-    @media only screen and (min-width : 770px) 		
-    {		
+
+
+@media only screen and (min-width : 770px){		
      p.grey_text{		
         color: #eee;		
         font-family:'Open Sans', sans-serif;		
@@ -448,3 +422,23 @@ and (orientation : landscape)
 }		
 
 
+
+/*Ipad Landscape*/		
+@media only screen 		
+and (min-device-width : 768px) 		
+and (max-device-width : 1024px) 		
+and (orientation : landscape) 		
+{ /* STYLES GO HERE */}		
+/*Ipad Pro Landscape*/		
+@media only screen 		
+and (min-device-width : 1024px) 		
+and (max-device-width : 1366px)		
+and (orientation : portrait)  		
+{ /* STYLES GO HERE */}		
+/*Ipad Pro Landscape*/		
+@media only screen 		
+and (min-device-width : 1024px) 		
+and (max-device-width : 1366px) 		
+and (orientation : landscape) 		
+{ /* STYLES GO HERE */}		
+ /* Medium Devices, Desktops */		

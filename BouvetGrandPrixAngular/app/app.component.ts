@@ -66,7 +66,7 @@ export class AppComponent {
         this.getToplist();
     }
 
-    twitterShare(event):void{
+    twitterShare(event: any): void{
         event.preventDefault();
         let currentTarget = event.currentTarget;
 
@@ -75,7 +75,7 @@ export class AppComponent {
             objWindow = window.open(currentTarget.getAttribute('href'), strTitle, strParam).focus();
     }
 
-    fbShare(event):void{
+    fbShare(event: any): void{
         event.preventDefault();
         FB.ui({
             display: 'popup',
@@ -84,7 +84,7 @@ export class AppComponent {
             description: 'Vi har flyttet! Spill Bouvet Grand Prix, og bli bedre kjent med det nye Bouvet-huset! Kjør fort, og vinn en premie verdig en racing-sjafør!',
             image: 'http://fagutvalget.no/wp-content/blogs.dir/10/files/2015/04/bouvet_logo.png',
             href: 'https://bouvet.no',
-        }, function(response){
+        }, function (response: any) {
 
 
         });
@@ -92,6 +92,7 @@ export class AppComponent {
     }
 
     getToplist(): void {
+        var toplist = 3;
         this.toplistService.getToplist()
             .subscribe(
             toplist => this.toplist = toplist, //Bind to view

@@ -208,7 +208,7 @@ export class GameComponent {
     }
 
     handleAcceleration(actualFrameTime_milli: number) {
-        this.keysPressed.forEach((item, key, mapObj) => {
+        this.keysPressed.forEach((item: any, key: any, mapObj: any) => {
             if (item === true) {
                 let keyPressed = this.keyEventToId.get(key).trim();
                 //console.log("keyPressed: " + keyPressed);
@@ -230,7 +230,7 @@ export class GameComponent {
     }
 
     //   based on v^2 / r <= F_grip
-    public GetSpeedLimit(p1, p2, p3, t): number {
+    public GetSpeedLimit(p1: any, p2: any, p3: any, t: number): number {
         var turnRadius = this.gameLogic.GetCurrentTurnRadius(p1, p2, p3, t);
         var speedLimit = Math.sqrt(turnRadius * this.car_grip); 
         return speedLimit;
@@ -282,8 +282,8 @@ export class GameComponent {
 
             var timeLeft = actualFrameTime_milli;
             var oTimeLeft = timeLeft;
-            var carNewPosition = null;
-            var carNewAngle = null;
+            var carNewPosition: any = null;
+            var carNewAngle: any = null;
             var safetyCounter = 0;
 
             //check speedlimit for the next couple of pices of road
@@ -520,14 +520,14 @@ export class GameComponent {
     }
 
     rePrintRoadToMap(): void {
-        this.roadSections.forEach((item, key, mapObj) => {
+        this.roadSections.forEach((item: any, key: any, mapObj: any) => {
             item.addTo(this.map_game);
             item.setStyle({ color: '#f37021' });
         });
     }
 
     setWidthOfRoad(roadWeight: number): void {
-        this.roadSections.forEach((item, key, mapObj) => {
+        this.roadSections.forEach((item: any, key: any, mapObj: any) => {
             item.setStyle({weight: roadWeight });
         });
     }
@@ -557,7 +557,7 @@ export class GameComponent {
             polyline.addTo(this.map_game);
             return polyline;
         } else if (roadPoint_A.type === 'b0') {
-            let pointList = [];
+            let pointList: any = [];
             var p1 = this.gameLogic.BeizerCurveQuadratic(roadPoint_A, roadPoint_B, roadPoint_C, beizerTime);
             pointList.push(L.latLng(p1.lat, p1.lon));
 
@@ -727,7 +727,7 @@ export class GameComponent {
         }
     }
 
-    onTouchUpKeyRelease(event):boolean{
+    onTouchUpKeyRelease(event: any): boolean{
 
         event.preventDefault();
         console.log(this.keyPressTimer);
@@ -739,7 +739,7 @@ export class GameComponent {
         return false;
     }
 
-    onTouchUpKeyPress(event):boolean{
+    onTouchUpKeyPress(event: any): boolean{
         event.preventDefault();
         //event.target.style="background-color:#f37021";
         if(this.keyPressTimer){clearInterval(this.keyPressTimer)};
@@ -750,7 +750,7 @@ export class GameComponent {
     }
 
 
-    onTouchDownKeyRelease(event):boolean{
+    onTouchDownKeyRelease(event: any): boolean{
         event.preventDefault();
         if(this.keyPressTimer){clearInterval(this.keyPressTimer)};
         //event.target.style="background-color:''";
@@ -758,7 +758,7 @@ export class GameComponent {
         return false;
     }
 
-    onTouchDownKeyPress(event):boolean{
+    onTouchDownKeyPress(event: any): boolean{
 
         event.preventDefault();
         //event.target.style="background-color:#f37021";
@@ -843,14 +843,14 @@ export class GameLogic_helperClass {
     }
     
 
-    public BeizerCurveQuadratic(p1, p2, p3, t): any {
+    public BeizerCurveQuadratic(p1: any, p2: any, p3: any, t: number): any {
         return {
             'lat': (Math.pow((1 - t), 2) * p1.lat + 2 * (1 - t) * t * p2.lat + p3.lat * Math.pow(t, 2)),
             'lon': (Math.pow((1 - t), 2) * p1.lon + 2 * (1 - t) * t * p2.lon + p3.lon * Math.pow(t, 2))
         };
     }
 
-    public GetPostionByLineAndTime(p1, p2, t):any {
+    public GetPostionByLineAndTime(p1: any, p2: any, t: number): any {
         return {
             'lat': (1 - t) * p1.lat + t * p2.lat,
             'lon': (1 - t) * p1.lon + t * p2.lon
@@ -875,7 +875,7 @@ export class GameLogic_helperClass {
         return this.BeizerCurveQudraticDistance_between(p1, p2, p3, 0, tTo);
     }
 
-    public BeizerCurveQudraticDistance_between(pA, pB, pC, tFrom, tTo):any {
+    public BeizerCurveQudraticDistance_between(pA: any, pB: any, pC: any, tFrom: number, tTo: number): any {
         var sumDistance = 0;
 
         var p1 = this.BeizerCurveQuadratic(pA, pB, pC, tFrom);
