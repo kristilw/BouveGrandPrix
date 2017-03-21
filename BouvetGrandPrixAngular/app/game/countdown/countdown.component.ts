@@ -23,7 +23,7 @@ export class CountdownComponent {
 
         let t = setTimeout(()=>{
             clearTimeout(t);
-            this.countDownToZero();
+           this.countDownToZero();
         },800);
     }
 
@@ -64,6 +64,7 @@ export class CountdownComponent {
             else
             {
                 iVal--;
+
             }
 
         },1000);

@@ -16,18 +16,34 @@
     z-index: 1176;
     position: relative;
 }
+#count_down_text >div{
+
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    top: 50%;
+    left:50%;
+
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
 
 #count_down_text .grandprix-logo{
 
     width: 150px;
-    position: absolute;
-    top: 70px;
+    position: relative;
+    /*top: 70px;
     left: 50%;
     -webkit-transform: translate(-50%, 0%);
     -moz-transform: translate(-50%,0%);
     -o-transform: translate(-50%, 0%);
     -ms-transform: translate(-50%, 0%);
-    transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);*/
     height:82px;
 }
 
@@ -39,7 +55,7 @@
     font-size: 12px;
     text-align: center;
     position: absolute;
-    bottom: 57px;
+    bottom: 0px;
     left: 0;
     right: 0;
     margin: 0;
@@ -72,6 +88,12 @@
 
 @media (max-width: 768px) {
 
+    #count_down_text >div{
+
+        width: 30vh;
+        height: 23vh;
+    }
+
     #count_down_text {
 
         width: 30vh;
@@ -79,10 +101,15 @@
         font-size: 30px;
     }
 
+    #count_down_text i{
+
+        display: inline-block;
+        width: 140px;
+    }
+
     #count_down_text .grandprix-logo {
 
         width: 90%;
-        top: 10%;
         height:auto;
     }
 

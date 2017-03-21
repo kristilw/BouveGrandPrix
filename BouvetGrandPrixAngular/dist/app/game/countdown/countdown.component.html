@@ -2,11 +2,13 @@
     <div class="row no_margin">
         <img id="flags_countdown" class="flag-element" src="app/img/Flagg_medstreker.png" />
     </div>
-    <span id="count_down_text" class="white_text count_down_text_hoverEffect background_grey daggerSquare">
-        <div *ngIf="!showCountDownTimer" >
-           <img src="app/img/BouvetGrandPrix_Medium_hvit.png" class="grandprix-logo" alt="bouvet grandrpix" >
+    <div id="count_down_text" class="white_text count_down_text_hoverEffect background_grey daggerSquare">
+        <div *ngIf="!showCountDownTimer">
+           <img src="app/img/BouvetGrandPrix_Medium_hvit.png" class="grandprix-logo" alt="bouvet grandprix" >
             <h6>VEIEN TIL SØRKELDALSVEIEN 8</h6>
         </div>
        <i> {{countDownTimer}}  </i>
-    </span>
+    </div>
 </div>
+
+
