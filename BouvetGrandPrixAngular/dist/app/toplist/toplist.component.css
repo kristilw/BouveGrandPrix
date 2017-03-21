@@ -1,10 +1,10 @@
 #toplist_div{
-    position:relative;
+    position:absolute;
     text-align:center;
     width:100%;
-
     top:50px;
-    bottom:60px;
+    left:0;
+    bottom:0px;
 }
 
 #toplist_text{
@@ -13,28 +13,40 @@
 }
 
 #toplist_scroll{
-    height: calc(92vh - 208px);
-    overflow-y:scroll;
-    padding-right:10px;
+    top: 114px;
+    position: absolute;
+    right: 10px;
+    left: 10px;
+    bottom: 10px;
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+
+}
+
+.toplist_scroll_wrapper
+{
+    position: relative;
+    margin: 0 auto;
+    max-width: 1000px;
 }
 
 ::-webkit-scrollbar {
     width: 2px;
 }
- 
+
 /* Track */
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.7); 
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.7); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.7);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.7);
     -webkit-border-radius: 2px;
     border-radius: 2px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 1px;
     border-radius: 1px;
-    background: rgba(243,112,33,1); 
+    background: rgba(243,112,33,1);
     -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0);
     box-shadow: inset 0 0 1px rgba(0,0,0,0);
 }
@@ -76,10 +88,19 @@
     margin-bottom: 24px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
+
     #toplist_scroll{
-        height: calc(92vh - 250px);
-        overflow-y:scroll;
-        padding-right:10px;
+
+        bottom: 54px;
+        right: 180px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+
+    #toplist_text{
+
+        font-size: 56px;
     }
 }

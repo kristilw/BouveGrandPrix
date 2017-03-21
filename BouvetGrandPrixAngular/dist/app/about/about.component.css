@@ -1,5 +1,5 @@
 #about_page{
-    padding-top: 70px;
+    padding-top: 35px;
     text-align: center;
     z-index:100;
     overflow-y:scroll;
@@ -22,9 +22,9 @@
 
 #about_page .type-kohinoor-bangla{
     font-family: 'Kohinoor Bangla';
-    font-size: 23px;
+    font-size: 22px;
     font-weight: bolder;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.05em;
 }
 
 #about_page .heading-text{
@@ -33,18 +33,30 @@
 }
 
 #about_page .introduction-text{
-    font-size: 24px;
+    font-family: "open sans";
+    font-size: 22px;
     padding: 0px 10px;
-    margin: 44px 0px 24px 0px;
-    line-height: 1.6em;
+    							margin: 38px 0px 0px 0px;
+    line-height: 1.5em;
+    padding-bottom: 20px;
 }
 
 
 #about_page p{
-    font-size: 14px;
+	font-family: "open sans";
+    font-size: 16px;
     position: relative;
-    padding-top: 10px;
-    line-height: 1.8em;
+    padding-top: 0px;
+    line-height: 1.58em;
+    color: #eee;
+}
+
+#about_page h2{
+    font-size:74px !important;
+}
+
+#about_page h4{
+    font-size:22px !important;
 }
 
 #about_page .introduction-text:before{
@@ -56,7 +68,7 @@
     background-color: #ffffff;
     height: 1px;
     margin-left: -10px;
-    top:-24px;
+    								top:-18px;
 }
 
 #about_moving_text
@@ -73,7 +85,7 @@
 .about_moving_text_img_divider {
     background-color: #d45a1f;
     width: 1px;
-    top: 4px;
+    top: -4px;
     position: absolute;
     left: -1px;
     height: 100%;
@@ -85,31 +97,31 @@
 }
 
 #image_2{
-    padding-top:30px;
+    padding-top:32px;
     width: 100%;
 }
 
 #image_3{
-    margin:15px 0px 15px 0px;
+    margin:15px 0px 0px 0px;
     width: 100%;
 }
 
 #image_4{
-    margin:15px 0px 15px 0px;
+    margin:15px 0px 0px 0px;
     width: 100%;
 }
 
 #image_5{
-    margin:15px 0px 15px 0px;
+  		  margin:15px 0px 0px 0px;
     width: 100%;
 }
 
 #see_map_button{
-    margin: 36px 0px 18px 0px;
+    margin: 20px 0px 30px 0px;
 }
 
 .strek{
-    margin: 15px 0px 15px 0px;
+    margin: 28px 0px 15px 0px;
     border-right: 1px solid;
     border-color: #d45a1f;
     height:30px;
@@ -118,13 +130,13 @@
 #go_to_front_page_button_div{
     text-align:center;
     width: 100%;
-    margin: 12px 0px;
+    margin: 17px 0px;
 }
 
 #play_grand_prix_button_div{
     text-align:center;
     width:100%;
-    margin: 12px 0px;
+    margin: 17px 0px;
 }
 
 #go_to_front_page_button{
@@ -134,17 +146,39 @@
 }
 
 #end_div_about_page{
-    height:100px;
+    height:-100px;
 }
 
 #flags_about_screen{
-    padding-top:30px;
+    padding-top:35px;
+    padding-bottom: 70px;
 }
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
     #about_moving_text{
-        text-align:center;
+        text-align:left;
+        width: 100%;
     }
+
+    #about_page p{
+    font-size: 17px;
+
+}
+
+    #about_page .introduction-text{
+    font-size: 20px;
+    line-height: 1.5em;
+}
 
     #see_map_button_div{
         width:100%;
@@ -154,13 +188,44 @@
         width:100%;
         text-align:center;
     }
+
+
+#about_page h2{
+    font-size:45px !important;
 }
+
+.col-xs-offset-1 {
+    margin-left: 0.0%;
+}
+
+.col-xs-10 {
+    width: 99%;
+}
+
+#venstrestill{
+text-align: left;
+}
+
+#avslutning{
+    text-align: center !important;
+}
+
+}
+
+
+
+
+
+
+
+
+
 
 @media only screen and (min-width: 768px) {
 
     #about_page .top-text {
-
-        font-size: 24px;
+ 	 font-size: 13px;
+    font-family: 'OpenSansRegular',"Helvetica Neue",sans-serif;
     }
 
     #about_page .text-block-left{
@@ -183,6 +248,8 @@
         text-align:left;
         width:50%;
     }
+
+
 
     #about_page .heading-text{
         font-size: 80px;

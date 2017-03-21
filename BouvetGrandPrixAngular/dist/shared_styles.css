@@ -10,6 +10,7 @@ body {
 
 .grey_text{
     color:#d0d0d0;
+    font-size: 12px;
 }
 
 .underline_text{
@@ -138,27 +139,27 @@ body {
 
 /* unvisited link */
 a:link {
-    text-decoration: none;      
+    text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-    text-decoration: none;      
+    text-decoration: none;
 }
 
 /* mouse over link */
 a:hover {
-    text-decoration: none;      
+    text-decoration: none;
 }
 
 /* selected link */
 a:active {
-    text-decoration: none;      
+    text-decoration: none;
 }
 
 .toplist_table_postion{
     padding:10px 0px 10px 0px;
-    width:35px;
+    width:60px;
     text-align:center;
 }
 
@@ -240,7 +241,7 @@ a:active {
 @font-face {
     font-family: 'DAGGERSQUARE_OBLIQUE';
     src: url('/app/fonts/DAGGERSQUARE_OBLIQUE.eot'); /* IE9 Compat Modes */
-    src: local('☺'), 
+    src: local('☺'),
     url('/app/fonts/DAGGERSQUARE_OBLIQUE.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
     url('/app/fonts/DAGGERSQUARE_OBLIQUE.woff') format('woff'), /* Modern Browsers */
     url('/app/fonts/DAGGERSQUARE_OBLIQUE.ttf') format('truetype'), /* Safari, Android, iOS */
@@ -543,12 +544,12 @@ button:focus{
 
     #toplist_div .table_record .grey_text{
 
-        font-size: 12px;
+        font-size: 16px;
     }
 
     #toplist_div .table_first_place .grey_text{
 
-        font-size: 12px;
+        font-size: 16px;
     }
 
 
@@ -615,12 +616,12 @@ button:focus{
 
     #toplist_div .table_record .grey_text{
 
-        font-size: 12px;
+        font-size: 16px;
     }
 
     #toplist_div .table_first_place .grey_text{
 
-        font-size: 12px;
+        font-size: 16px;
     }
 
 
@@ -699,16 +700,16 @@ button:focus{
 
 
 
-@media (min-width: 1390px) {
+@media (min-width: 1440px) {
 
     #toplist_div .table_record .grey_text{
 
-        font-size: 12px;
+        font-size: 22px;
     }
 
     #toplist_div .table_first_place .grey_text{
 
-        font-size: 12px;
+        font-size: 22px;
     }
 
 

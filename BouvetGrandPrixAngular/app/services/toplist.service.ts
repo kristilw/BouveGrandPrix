@@ -13,9 +13,20 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ToplistService {
-    private serverUrl = '/app/server/server.php';// 'http://localhost/server.php'; //  
+    private serverUrl = '/app/server/server.php';// 'http://localhost/server.php'; //
 
     constructor(private http: Http) { }
+
+    // To Test / Debug locally
+    /*getToplist(): Observable<ViewRecord[]> {
+
+        return this.http.get('/app/server/dummydata.json')
+            .map((res: Response)=>{
+                var output = res.json();
+                return output;
+            }) // ...and calling .json() on the response to return data
+            .catch((error: any) => Observable.throw(console.log(error) || 'Server error, could not load record'));
+    }*/
 
     getToplist(): Observable<ViewRecord[]> {
         //let bodyString = JSON.stringify({action: 'getScores'}); // Stringify payload
@@ -31,6 +42,7 @@ export class ToplistService {
             }) // ...and calling .json() on the response to return data
             .catch((error: any) => Observable.throw(console.log(error) || 'Server error, could not load record')); //...errors if any*/
     }
+
 
     saveRecord(newRecord: Record, event: EventEmitter<number>): Promise<any> {
         let bodyString = "action=setScore"
