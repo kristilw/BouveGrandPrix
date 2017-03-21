@@ -29,19 +29,19 @@ export class ToplistService {
     }*/
 
     getToplist(): Observable<ViewRecord[]> {
-        //let bodyString = JSON.stringify({action: 'getScores'}); // Stringify payload
         let bodyString = 'action=getScores';
         let headers      = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        let options       = new RequestOptions({ headers: headers }); // Create a request option
+        let options       = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.serverUrl, bodyString, options) // ...using get request
+        return this.http.post(this.serverUrl, bodyString, options)
             .map((res: Response)=>{
                 var output = res.json();
                 return output;
-            }) // ...and calling .json() on the response to return data
-            .catch((error: any) => Observable.throw(console.log(error) || 'Server error, could not load record')); //...errors if any*/
+            })
+            .catch((error: any) => Observable.throw(console.log(error) || 'Server error, could not load record'));
     }
+
 
 
     saveRecord(newRecord: Record, event: EventEmitter<number>): Promise<any> {

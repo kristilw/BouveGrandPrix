@@ -13,10 +13,10 @@
 }
 
 #toplist_scroll{
-    top: 114px;
+    top: 124px;
     position: absolute;
-    right: 10px;
-    left: 10px;
+    right: 0px;
+    left: 0px;
     bottom: 10px;
     overflow-y: scroll; /* has to be scroll, not auto */
     -webkit-overflow-scrolling: touch;
@@ -28,6 +28,7 @@
     position: relative;
     margin: 0 auto;
     max-width: 1000px;
+    padding: 0px 10px;
 }
 
 ::-webkit-scrollbar {
@@ -90,10 +91,13 @@
 
 @media only screen and (min-width: 768px) {
 
-    #toplist_scroll{
+    .toplist_scroll_wrapper {
+        width: 68%;
+        padding: 0px;
+    }
 
+    #toplist_scroll {
         bottom: 54px;
-        right: 180px;
     }
 }
 
