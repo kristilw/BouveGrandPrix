@@ -36,15 +36,15 @@ export class GameComponent {
     car_img_original: any = null;
     car_img_elem: any = null;
 
-    car_resistance_square: number = 0.0015;
+    car_resistance_square: number = 0.0010;
     car_resistance_linear: number = 0.1;
 
     car_img_id: number= 0;
 
     car_speed: number = 0;
-    car_maxAcceleration: number = 18;
-    car_grip: number = 700;
-    minimumSpeedLimit: number = 20;
+    car_maxAcceleration: number = 30;
+    car_grip: number = 1200;
+    minimumSpeedLimit: number = 30;
 
     gameLoopInterval: any = null;
 
@@ -218,7 +218,7 @@ export class GameComponent {
                     car_speed_delta = this.car_maxAcceleration * actualFrameTime_milli / 1000;
                      
                 } else if (keyPressed === "s_key") {
-                    car_speed_delta = -this.car_maxAcceleration * actualFrameTime_milli / 1000 * 1.5;
+                    car_speed_delta = -this.car_maxAcceleration * actualFrameTime_milli / 1000 * 2;
                 }
                 this.car_speed += car_speed_delta;
             }
