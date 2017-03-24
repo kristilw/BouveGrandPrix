@@ -543,12 +543,12 @@ button:focus{
 
 @media (min-width: 768px) {
 
-    #toplist_div .table_record .grey_text{
+    .table_record .grey_text{
 
         font-size: 16px;
     }
 
-    #toplist_div .table_first_place .grey_text{
+    .table_first_place .grey_text{
 
         font-size: 16px;
     }
