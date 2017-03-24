@@ -2,12 +2,37 @@
     padding-top:20vh;
     background-color:rgba(0,0,0,0.7);
     height:100vh;
+    width: 100%;
+
+    text-align: center;
 }
 
 #goal_div >div{
+    position: absolute;
+    top: calc(50vh - 25px);
+    text-align: center;
+    width: 100%;
 
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+
+#goal_div> div > div{
     max-width: 660px;
     margin: 0 auto;
+}
+
+#goal_information_text{
+    font-size:18px;
+}
+
+
+
+#goal_buttons_div{
+    margin-top:25px;
 }
 
 #goal_div .table_first_place td:first-child{

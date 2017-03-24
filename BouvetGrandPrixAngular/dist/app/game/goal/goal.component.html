@@ -1,49 +1,57 @@
 <div id="goal_div" class="">
     <div class="">
+        <div class="">
+            <div id="goal_flag">
+                <img id="flags_goal_screen" class="flag-element" src="app/img/Flagg_medstreker.png" />
+            </div>
 
-        <div>
-            <img id="flags_goal_screen" class="flag-element" src="app/img/Flagg_medstreker.png" />
-        </div>
+            <div>
+                <h2 class="bouvet_orange_text">
+                    <b>{{completionTime | recordTime:'m'}}</b>
+                </h2>
+                <p class="white_text" id="goal_information_text"> Fyll ut informasjon for å se hvor du havnet på resultatlisten.</p>
 
-        <div>
-            <h2 class="bouvet_orange_text"> <b>{{completionTime | recordTime:'m'}}</b>
-            </h2>
-            <p class="grey_text"> Fyll ut informasjon for å se hvor du havnet på resultatlisten.</p>
+                <div class="col-sm-12 col-xs-12" id="toplist_scroll">
+                    <table class="table_first_place">
+                        <tr>
+                            <!--td> <p id="input_name_description" class="white_text letter_spacing goal_text_description"> {{"fornavn*" | uppercase }} </p></td-->
+                            <td>
+                                <input id="input_name" type="text" placeholder="{{'fornavn*' | uppercase }}" class="goal_text_input grey_text letter_spacing"
+                                       #name_box (keyup)="nameChange(name_box.value)" />
+                            </td>
+                        </tr>
+                    </table>
 
-            <div class="col-sm-12 col-xs-12" id="toplist_scroll">
-                <table class="table_first_place">
-                    <tr>
-                        <!--td> <p id="input_name_description" class="white_text letter_spacing goal_text_description"> {{"fornavn*" | uppercase }} </p></td-->
-                        <td> <input id="input_name" type="text" placeholder="{{'fornavn*' | uppercase }}" class="goal_text_input grey_text letter_spacing"
-                                    #name_box (keyup)="nameChange(name_box.value)"/> </td>
-                    </tr>
-                </table>
+                    <table class="table_first_place">
+                        <tr>
+                            <td>
+                                <input id="input_surname" type="text" placeholder="{{'email*' | uppercase }}" class="goal_text_input grey_text letter_spacing"
+                                       #email_box (keyup)="emailChange(email_box.value)" />
+                            </td>
+                        </tr>
+                    </table>
 
-                <table class="table_first_place">
-                    <tr>
-                        <td> <input id="input_surname" type="text" placeholder="{{'email*' | uppercase }}" class="goal_text_input grey_text letter_spacing"
-                                    #email_box (keyup)="emailChange(email_box.value)"/> </td>
-                    </tr>
-                </table>
-
-                <table class="table_first_place">
-                    <tr>
-                        <td> <input id="input_company" type="text" placeholder="{{'bedrift' | uppercase }}" class="goal_text_input grey_text letter_spacing"
-                                    #company_box (keyup)="companyChange(company_box.value)"/> </td>
-                    </tr>
-                </table>
-                <table class="table_from_buttons">
-                    <tr>
-                        <td colspan="2" style="width:100%;text-align:center;">
-                            <button class="button bouvet_button bouvet_orange_border background_dark" (click)="registerRecord()">
-                                <span class="white_text" data-hover="REGISTRER TIDEN">REGISTRER TIDEN</span>
-                            </button>
-                            <button class="button bouvet_button bouvet_orange_border background_dark" (click)="restartGame()">
-                                <span class="white_text" data-hover="RESTART">RESTART</span>
-                            </button>
-                        </td>
-                    </tr>
-                </table>
+                    <table class="table_first_place">
+                        <tr>
+                            <td>
+                                <input id="input_company" type="text" placeholder="{{'bedrift' | uppercase }}" class="goal_text_input grey_text letter_spacing"
+                                       #company_box (keyup)="companyChange(company_box.value)" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table_from_buttons" id="goal_buttons_div">
+                        <tr>
+                            <td colspan="2" style="width:100%;text-align:center;">
+                                <button class="button bouvet_button bouvet_orange_border background_dark" (click)="registerRecord()">
+                                    <span class="white_text" data-hover="REGISTRER TIDEN">REGISTRER TIDEN</span>
+                                </button>
+                                <button class="button bouvet_button bouvet_orange_border background_dark" (click)="restartGame()">
+                                    <span class="white_text" data-hover="RESTART">RESTART</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
