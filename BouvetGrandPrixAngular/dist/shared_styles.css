@@ -9,7 +9,7 @@ body {
 }
 
 .grey_text{
-    color:#d0d0d0;
+    color:#eee;
     font-size: 12px;
 }
 
@@ -412,58 +412,62 @@ button:focus{
 @media (min-width: 320px) {
 
     .bouvet_button{
-    font-family: 'Kohinoor Bangla';
-    padding: 0px;
-    font-size: 13px;
-    line-height: 41px;
-   /* margin: 15px auto;*/
-    border: none;
-    background: transparent;
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-    text-align: center;
-}
+        font-family: 'Kohinoor Bangla';
+        padding: 0px;
+        font-size: 13px;
+        line-height: 41px;
+       /* margin: 15px auto;*/
+        border: none;
+        background: transparent;
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+        text-align: center;
+    }
 
-.bouvet_button span{
+    .bouvet_button span{
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        background: transparent;
+        height: 43px;
+        width: 250px;
+        position: relative;
+        display: inline-block;
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        border: 1px solid #f37021;
+        color: white;
+    }
 
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    background: transparent;
-    height: 43px;
-    width: 250px;
-    position: relative;
-    display: inline-block;
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    border: 1px solid #f37021;
-    color: white;
-}
+    .bouvet_button span:before{
+        position: absolute;
+        top: 100%;
+        left: -1px;
+        height: 43px;
+        width: 250px;
+        background: #f37021;
+        color:#ffffff;
+        content: attr(data-hover);
+        -webkit-transition: background 0.3s;
+        transition: background 0.3s;
+        -webkit-transform: rotateX(-90deg);
+        transform: rotateX(-90deg);
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border: 1px solid #f37021;
+    }
 
-.bouvet_button span:before{
-
-    position: absolute;
-    top: 100%;
-    left: -1px;
-    height: 43px;
-    width: 250px;
-    background: #f37021;
-    color:#ffffff;
-    content: attr(data-hover);
-    -webkit-transition: background 0.3s;
-    transition: background 0.3s;
-    -webkit-transform: rotateX(-90deg);
-    transform: rotateX(-90deg);
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1px solid #f37021;
-
-}
+    #toplist_div .table_record .grey_text{
+        font-size: 14.5px;		
+    }		
+    #toplist_div .table_first_place .grey_text{		
+        font-size: 14.5px;		
+    }
 }
 
 
@@ -545,68 +549,68 @@ button:focus{
 
     .table_record .grey_text{
 
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .table_first_place .grey_text{
 
-        font-size: 16px;
+        font-size: 15px;
     }
 
 
     .bouvet_button{
-    font-family: 'Kohinoor Bangla';
-    padding: 0px;
-    font-size: 14.5px;
-    line-height: 46px;
-   /* margin: 15px auto;*/
-    border: none;
-    background: transparent;
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-    text-align: center;
-}
+        font-family: 'Kohinoor Bangla';
+        padding: 0px;
+        font-size: 14.5px;
+        line-height: 46px;
+       /* margin: 15px auto;*/
+        border: none;
+        background: transparent;
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+        text-align: center;
+    }
 
-.bouvet_button span{
+    .bouvet_button span{
 
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    background: transparent;
-    height: 49px;
-    width: 235px;
-    position: relative;
-    display: inline-block;
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    border: 1px solid #f37021;
-    color: white;
-}
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        background: transparent;
+        height: 49px;
+        width: 235px;
+        position: relative;
+        display: inline-block;
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        border: 1px solid #f37021;
+        color: white;
+    }
 
-.bouvet_button span:before{
+    .bouvet_button span:before{
 
-    position: absolute;
-    top: 100%;
-    left: -1px;
-    height: 48px;
-    width: 235px;
-    background: #f37021;
-    color:#ffffff;
-    content: attr(data-hover);
-    -webkit-transition: background 0.3s;
-    transition: background 0.3s;
-    -webkit-transform: rotateX(-90deg);
-    transform: rotateX(-90deg);
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1px solid #f37021;
+        position: absolute;
+        top: 100%;
+        left: -1px;
+        height: 48px;
+        width: 235px;
+        background: #f37021;
+        color:#ffffff;
+        content: attr(data-hover);
+        -webkit-transition: background 0.3s;
+        transition: background 0.3s;
+        -webkit-transform: rotateX(-90deg);
+        transform: rotateX(-90deg);
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border: 1px solid #f37021;
 
-}
+    }
 }
 
 
@@ -616,69 +620,64 @@ button:focus{
 @media (min-width: 1100px) {
 
     #toplist_div .table_record .grey_text{
-
-        font-size: 16px;
+        font-size: 15px;
     }
 
     #toplist_div .table_first_place .grey_text{
-
-        font-size: 16px;
+        font-size: 15px;
     }
 
 
     .bouvet_button{
-    font-family: 'Kohinoor Bangla';
-    padding: 0px;
-    font-size: 14px;
-    line-height: 41px;
-   /* margin: 15px auto;*/
-    border: none;
-    background: transparent;
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-    text-align: center;
-}
+        font-family: 'Kohinoor Bangla';
+        padding: 0px;
+        font-size: 14px;
+        line-height: 41px;
+       /* margin: 15px auto;*/
+        border: none;
+        background: transparent;
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+        text-align: center;
+    }
 
-.bouvet_button span{
+    .bouvet_button span{
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        background: transparent;
+        height: 45px;
+        width: 235px;
+        position: relative;
+        display: inline-block;
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        border: 1px solid #f37021;
+        color: white;
+    }
 
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    background: transparent;
-    height: 45px;
-    width: 235px;
-    position: relative;
-    display: inline-block;
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    border: 1px solid #f37021;
-    color: white;
-}
-
-.bouvet_button span:before{
-
-    position: absolute;
-    top: 100%;
-    left: -1px;
-    height: 45px;
-    width: 235px;
-    background: #f37021;
-    color:#ffffff;
-    content: attr(data-hover);
-    -webkit-transition: background 0.3s;
-    transition: background 0.3s;
-    -webkit-transform: rotateX(-90deg);
-    transform: rotateX(-90deg);
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1px solid #f37021;
-
-}
+    .bouvet_button span:before{
+        position: absolute;
+        top: 100%;
+        left: -1px;
+        height: 45px;
+        width: 235px;
+        background: #f37021;
+        color:#ffffff;
+        content: attr(data-hover);
+        -webkit-transition: background 0.3s;
+        transition: background 0.3s;
+        -webkit-transform: rotateX(-90deg);
+        transform: rotateX(-90deg);
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border: 1px solid #f37021;
+    }
 }
 
 
@@ -704,69 +703,63 @@ button:focus{
 @media (min-width: 1440px) {
 
     #toplist_div .table_record .grey_text{
-
-        font-size: 19px;
+        font-size: 15px;
     }
 
     #toplist_div .table_first_place .grey_text{
-
-        font-size: 19px;
+        font-size: 15px;
     }
 
-
     .bouvet_button{
-    font-family: 'Kohinoor Bangla';
-    padding: 0px;
-    font-size: 14.5px;
-    line-height: 46px;
-   /* margin: 15px auto;*/
-    border: none;
-    background: transparent;
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-    text-align: center;
-}
+        font-family: 'Kohinoor Bangla';
+        padding: 0px;
+        font-size: 14.5px;
+        line-height: 46px;
+       /* margin: 15px auto;*/
+        border: none;
+        background: transparent;
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+        text-align: center;
+    }
 
-.bouvet_button span{
+    .bouvet_button span{
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        background: transparent;
+        height: 49px;
+        width: 235px;
+        position: relative;
+        display: inline-block;
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        border: 1px solid #f37021;
+        color: white;
+    }
 
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    background: transparent;
-    height: 49px;
-    width: 235px;
-    position: relative;
-    display: inline-block;
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    border: 1px solid #f37021;
-    color: white;
-}
-
-.bouvet_button span:before{
-
-    position: absolute;
-    top: 100%;
-    left: -1px;
-    height: 48px;
-    width: 235px;
-    background: #f37021;
-    color:#ffffff;
-    content: attr(data-hover);
-    -webkit-transition: background 0.3s;
-    transition: background 0.3s;
-    -webkit-transform: rotateX(-90deg);
-    transform: rotateX(-90deg);
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1px solid #f37021;
-
-}
+    .bouvet_button span:before{
+        position: absolute;
+        top: 100%;
+        left: -1px;
+        height: 48px;
+        width: 235px;
+        background: #f37021;
+        color:#ffffff;
+        content: attr(data-hover);
+        -webkit-transition: background 0.3s;
+        transition: background 0.3s;
+        -webkit-transform: rotateX(-90deg);
+        transform: rotateX(-90deg);
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border: 1px solid #f37021;
+    }
 }
 
 
@@ -779,59 +772,63 @@ button:focus{
 
 
 @media (min-width: 1600px) {
+    #toplist_div .table_record .grey_text{		
+        font-size: 16px;		
+    }		
+    #toplist_div .table_first_place .grey_text{		
+        font-size: 16px;		
+    }
 
     .bouvet_button{
-    font-family: 'Kohinoor Bangla';
-    padding: 0px;
-    font-size: 15px;
-    line-height: 47px;
-   /* margin: 15px auto;*/
-    border: none;
-    background: transparent;
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-    text-align: center;
-}
+        font-family: 'Kohinoor Bangla';
+        padding: 0px;
+        font-size: 15px;
+        line-height: 47px;
+       /* margin: 15px auto;*/
+        border: none;
+        background: transparent;
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+        text-align: center;
+    }
 
-.bouvet_button span{
+    .bouvet_button span{
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        background: transparent;
+        height: 50px;
+        width: 265px;
+        position: relative;
+        display: inline-block;
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        border: 1px solid #f37021;
+        color: white;
+    }
 
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    background: transparent;
-    height: 50px;
-    width: 265px;
-    position: relative;
-    display: inline-block;
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    border: 1px solid #f37021;
-    color: white;
-}
-
-.bouvet_button span:before{
-
-    position: absolute;
-    top: 100%;
-    left: -1px;
-    height: 50px;
-    width: 265px;
-    background: #f37021;
-    color:#ffffff;
-    content: attr(data-hover);
-    -webkit-transition: background 0.3s;
-    transition: background 0.3s;
-    -webkit-transform: rotateX(-90deg);
-    transform: rotateX(-90deg);
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1px solid #f37021;
-}
+    .bouvet_button span:before{
+        position: absolute;
+        top: 100%;
+        left: -1px;
+        height: 50px;
+        width: 265px;
+        background: #f37021;
+        color:#ffffff;
+        content: attr(data-hover);
+        -webkit-transition: background 0.3s;
+        transition: background 0.3s;
+        -webkit-transform: rotateX(-90deg);
+        transform: rotateX(-90deg);
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border: 1px solid #f37021;
+    }
 }
 
 

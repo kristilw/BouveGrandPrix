@@ -280,58 +280,66 @@ and (orientation : portrait)
         max-width: 500px;		
         height: auto;		
         width: 75vw;		
-    } 		
-}		
+    } 
 
-
-@media only screen and (min-width : 770px){		
-     p.grey_text{		
-        color: #eee;		
-        font-family:'Open Sans', sans-serif;		
-        font-size: 17px;		
-        font-weight: 300;		
-        line-height: 1.6em;		
-        word-spacing: 0.07em;		
-        letter-spacing: 0.05em;		
-        text-align: center;		
-        width: 100%;		
-        padding: 0px; padding-bottom: 27px; padding-left: 0px; padding-top: 22px;		
-        max-width: 650px;		
-        margin: 0 auto;		
-        display: block;		
-    }		
-    p.greysmall_text{		
-       display: none;		
-    }		
-    #bouvet_log_welcome_screen{		
-        max-width: 450px;		
-        height: auto;		
-        width: 40vw;		
-    }	
-
-    #welcome_screen_bestTimes{
-    font-size: 60px;
+    #welcome_div table td{		
+        font-size: 14px; 		
+    }
 }
 
 
+@media only screen and (min-width : 770px) {
+    p.grey_text {
+        color: #eee;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.6em;
+        word-spacing: 0.07em;
+        letter-spacing: 0.05em;
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        padding-bottom: 27px;
+        padding-left: 0px;
+        padding-top: 12px;
+        max-width: 650px;
+        margin: 0 auto;
+        display: block;
+    }
 
+    p.greysmall_text {
+        display: none;
+    }
 
+    #bouvet_log_welcome_screen {
+        max-width: 450px;
+        height: auto;
+        width: 40vw;
+    }
 
+    #welcome_screen_bestTimes {
+        font-size: 60px;
+    }
 
-}		
+    #welcome_div table td{		
+        font-size: 14px; 		
+    }
+}
+		
 /* Medium +, Desktop */		
 @media only screen and (min-width : 1150px) {		
     p.grey_text{		
         color: #eee;		
         font-family:'Open Sans', sans-serif;		
-        font-size: 17px;		
+        font-size: 16px;		
         font-weight: 300;		
         line-height: 1.6em;		
         word-spacing: 0.07em;		
         letter-spacing: 0.05em;		
         text-align: center;		
         width: 100%;		
-        padding: 0px; padding-bottom: 27px; padding-left: 0px; padding-top: 22px;		
+        padding: 0px; padding-bottom: 27px; padding-left: 0px; padding-top: 12px;		
         max-width: 650px;		
         margin: 0 auto;		
         display: block;		
@@ -346,8 +354,12 @@ and (orientation : portrait)
     }	
 
     #welcome_screen_bestTimes{
-    font-size: 65px;
-}	
+        font-size: 65px;
+    }
+    
+    #welcome_div table td{		
+        font-size: 14.5px; 		
+    }	
 }	
 	
 /* MacBook Pro */		
@@ -355,14 +367,14 @@ and (orientation : portrait)
     p.grey_text{		
         color: #eee;		
         font-family:'Open Sans', sans-serif;		
-        font-size: 17.5px;		
+        font-size: 17px;		
         font-weight: 300;		
         line-height: 1.7em;		
         word-spacing: 0.07em;		
         letter-spacing: 0.05em;		
         text-align: center;		
         width: 100%;		
-        padding: 0px; padding-bottom: 28px; padding-left: 0px; padding-top: 25px;		
+        padding: 0px; padding-bottom: 28px; padding-left: 0px; padding-top: 13px;		
         max-width: 650px;		
         margin: 0 auto;		
         display: block;		
@@ -376,9 +388,9 @@ and (orientation : portrait)
         width: 35vw;		
     }	
       
-       #welcome_screen_bestTimes{
-    font-size: 70px;
-}   
+    #welcome_screen_bestTimes{
+        font-size: 70px;
+    }   
 }	
 		
     
@@ -387,14 +399,14 @@ and (orientation : portrait)
     p.grey_text{		
         color: #eee;		
         font-family:'Open Sans', sans-serif;		
-        font-size: 20px;		
+        font-size: 18px;		
         font-weight: 300;		
         line-height: 1.7em;		
         word-spacing: 0.07em;		
         letter-spacing: 0.05em;		
         text-align: center;		
         width: 100%;		
-        padding: 0px; padding-bottom: 35px; padding-left: 0px; padding-top: 30px;		
+        padding: 0px; padding-bottom: 35px; padding-left: 0px; padding-top: 13px;		
         max-width: 650px;		
         margin: 0 auto;		
         display: block;		
@@ -408,10 +420,17 @@ and (orientation : portrait)
         width: 78vw;		
     }	
 
-     #welcome_screen_bestTimes{
-    font-size: 90px;
-}   
-	
+    #welcome_screen_bestTimes{
+        font-size: 85px;
+    }
+    
+    #welcome_div table td{		
+        font-size: 15.5px; 		
+    }	
+        	
+    .list-container{		
+        margin:0 auto; max-width:700px;		
+    }   
 }		
 
 

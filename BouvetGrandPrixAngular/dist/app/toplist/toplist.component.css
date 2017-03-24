@@ -9,7 +9,7 @@
 
 #toplist_text{
     margin-top:10px;
-    font-size: 45px;
+    font-size: 55px;
 }
 
 #toplist_scroll{
@@ -89,6 +89,13 @@
     margin-bottom: 24px;
 }
 
+@media only screen and (min-width: 320px) {		
+    #toplist_text{		
+        margin-top:10px;		
+        font-size: 49px;		
+    }		
+}
+
 @media only screen and (min-width: 768px) {
 
     .toplist_scroll_wrapper {
@@ -99,12 +106,26 @@
     #toplist_scroll {
         bottom: 54px;
     }
+
+    #toplist_text{		
+        margin-top:10px;		
+        font-size: 55px;		
+    }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1000px) {
+    .toplist_scroll_wrapper {
+        width: 55%;		
+        padding: 0px;		
+    }		
+}		
 
-    #toplist_text{
+@media only screen and (min-width: 1600px) {
+    #toplist_text {
+        font-size: 70px;
+    }
 
-        font-size: 56px;
+     #toplist_scroll{		
+        top: 140px;		
     }
 }
