@@ -86,6 +86,9 @@ gulp.task('watch', function () {
     gulp.watch(["app/**/*.html", "app/**/*.css"], ['copy:assets']).on('change', function (e) {
         console.log('Resource file ' + e.path + ' has been changed. Updating.');
     });
+    gulp.watch(["shared_styles.css"], ['copy:assets']).on('change', function (e) {
+        console.log('Resource file ' + e.path + ' has been changed. Updating.');
+    });
 });
 
 gulp.task('build', ['compile', 'copy:assets', 'copy:libs']);
