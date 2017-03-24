@@ -52,7 +52,7 @@ export class GameComponent {
     speedometer_needle_img_loaded: boolean = false;
     speedometer_needle_img_path: string = 'img/needle';
     speedometer_needle_img_scale: number = 0.1;
-    speedometer_maxSpeed: number = 80;
+    speedometer_maxSpeed: number = 110;
 
     roadWidth: number = 3;
     roadWidth_inital: number = 1;
