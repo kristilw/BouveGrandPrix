@@ -1,6 +1,6 @@
 #map_game{
     z-index:1;
-    height: 100vh;
+    height: calc(100vh - 50px);
 }
 
 #map_game_invisibleOverlay{
@@ -40,10 +40,9 @@
 }
 
 #car_div{
-
     position:absolute;
-    top:50vh;
-    left:50%;
+    top:calc(50vh - 25px);
+    left:calc(50% - 0px);
     z-index:-1;
 }
 
@@ -57,11 +56,9 @@
 }
 
 
-
-
 #woops_div{
     position:absolute;
-    top:50vh;
+    top:calc(50vh - 25px);
     left:50%;
     z-index:40;
 }
