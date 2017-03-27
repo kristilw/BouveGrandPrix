@@ -27,16 +27,16 @@
 
 #goal_information_text{
     font-size:18px;
+    margin-bottom:25px;
 }
 
 
 
 #goal_buttons_div{
-    margin-top:25px;
+    margin-top:35px;
 }
 
 #goal_div .table_first_place td:first-child{
-
     width:150px;
 }
 
