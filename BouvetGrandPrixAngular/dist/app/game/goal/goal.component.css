@@ -51,13 +51,11 @@
 }
 
 #goal_div .table_from_buttons .bouvet_button {
-
-    margin: 0px 12px 12px 0px;
+    margin: 0px 12px 0px 12px;
 }
 
 #goal_div .bouvet_orange_text{
-
-    font-size: 64px;
+    font-size: 75px;
 }
 
 #flags_goal_screen{
@@ -75,7 +73,7 @@
     height: 40px;
     padding: 0px 10px;
     font-family: 'Kohinoor Bangla';
-    font-size: 13px;
+    font-size: 15px;
     color: white;
 }
 
@@ -83,8 +81,13 @@ input:focus{
     outline: none;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1600px) {
+    #goal_div .bouvet_orange_text{
+        font-size: 85px;
+    }
+}
 
+@media (max-width: 768px) {
     #goal_div{
 
         padding-top: 80px;
