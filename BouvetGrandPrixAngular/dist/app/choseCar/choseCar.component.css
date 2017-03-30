@@ -129,7 +129,20 @@ h5{
         -webkit-overflow-scrolling: touch;
     }
 
+    h5 {		
+        font-size: 16px;		
+        padding: 0px;		
+        padding-left: 0px;		
+    }
+}
 
+
+@media (min-width: 770px) {		
+    h5 {		
+        font-size: 17px;		
+        padding: 0px;		
+        padding-left: 0px;		
+    }		
 }
 
 
@@ -139,9 +152,9 @@ h5{
     }
 
     h5 {
-        font-size: 20px;
-        padding: 29px;
-        padding-left: 25px;
+        font-size: 19px;
+        padding: 18px;
+        padding-left: 15px;
     }
 
     .car_seleciton_div {

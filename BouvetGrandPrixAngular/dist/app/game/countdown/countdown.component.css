@@ -5,7 +5,7 @@
 
 #count_down_text{
     display: inline-block;
-    font-size:60px;
+    font-size:80px;
     background-color: rgba(0, 0, 0, 0.251);
     -webkit-box-shadow: 0 0 32px 6px rgba(17,17,17,.51);
     -moz-box-shadow: 0 0 32px 6px rgba(17,17,17,.51);
@@ -16,6 +16,11 @@
     z-index: 1176;
     position: relative;
 }
+
+#countDownTimer_drive{
+    font-size:60px;
+}
+
 #count_down_text >div{
 
     display: inline-block;
@@ -48,7 +53,6 @@
 }
 
 #count_down_text h6{
-
     font-family: 'Kohinoor Bangla';
     color: rgb(241, 112, 48);
     line-height: 1.176;
@@ -98,7 +102,11 @@
 
         width: 30vh;
         height: 30vh;
-        font-size: 30px;
+        font-size: 160px;
+    }
+
+    #countDownTimer_drive{
+        font-size:30px;
     }
 
     #count_down_text i{

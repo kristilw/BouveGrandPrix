@@ -15,7 +15,9 @@ declare var jQuery: any;
 export class CountdownComponent {
     @Output() startGameCountdown: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    countDownTimer: string = null;
+    countDownTimer: string = "";
+    countDownTimer_drive: string = "";
+
     showCountDownTimer:Boolean = false;
 
     start():void {
@@ -55,7 +57,13 @@ export class CountdownComponent {
             if(!this.showCountDownTimer){
                 this.showCountDownTimer = true;
             }
-            this.countDownTimer =  (iVal==0) ? "KJØR!" : ""+iVal;
+
+            if (iVal == 0) {
+                this.countDownTimer = "";
+                this.countDownTimer_drive = "KJØR!";
+            } else {
+                this.countDownTimer = "" + iVal;
+            }
 
             if(iVal==-1){
                 clearInterval(interval);
