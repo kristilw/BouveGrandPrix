@@ -209,10 +209,11 @@ div.modal-content{ /* Removes shadow from modal  */
 }
 
 #navbar_bottom_body{
+    position:absolute;
     border: 0px solid; 
     pointer-events:none;
 
-    z-index:1041;
+    z-index:1024;
 }
 
 #navbar_bottom{
