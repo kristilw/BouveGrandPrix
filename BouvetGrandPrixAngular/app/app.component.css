@@ -242,6 +242,11 @@ div.modal-content{ /* Removes shadow from modal  */
     position: relative;
 }
 
+#navbar_bottom_bottom{
+    position:relative;
+    z-index:-1;
+}
+
 #navbar_bottom_top{
     pointer-events:none;
 }

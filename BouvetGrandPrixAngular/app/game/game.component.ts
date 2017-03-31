@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../typings/leaflet/leaflet.d.ts" />
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 
 import { GoalComponent } from "./goal/goal.component";
 import { CountdownComponent } from "./countdown/countdown.component";
@@ -103,7 +103,9 @@ export class GameComponent {
             maxZoom:20
         }).addTo(this.map_game);
 
-        if (this.isTouchDevice !== true) {
+        if (this.isTouchDevice === true) {
+            $("#navbar_bottom_body")[0].style.visibility = "hidden";
+        }else{
             L.control.attribution({ position: 'topright' }).addTo(this.map_game);
         }
 
@@ -162,7 +164,7 @@ export class GameComponent {
         $(document).bind('touchend', function(event){
 
             let target = event.target;
-            console.log(target);
+            //console.log(target);
 
             if($(target).hasClass('up bouvet_button')){
                 that.onTouchUpKeyRelease(event);
@@ -606,7 +608,7 @@ export class GameComponent {
 
                 if (speed > speedLimit) {
                     roadPice.setStyle({ color: 'red', weight: (this.roadWidth+2)});
-                } else if (speed > speedLimit - 15){
+                } else if (speed > speedLimit - 20){
                     roadPice.setStyle({ color: '#ff4444', weight: (this.roadWidth+1)});
                 } else {
                     roadPice.setStyle({ color: '#f37021', weight: this.roadWidth });
@@ -692,7 +694,6 @@ export class GameComponent {
                 let userId = param['id'];
                 this.car_img_id = userId;
                 this.car_img_original.src = '../app/img/biler_small/bil_utenlykter_' + this.car_img_id + '.png';
-                console.log(userId);
             });
     }
 
@@ -730,7 +731,7 @@ export class GameComponent {
     onTouchUpKeyRelease(event: any): boolean{
 
         event.preventDefault();
-        console.log(this.keyPressTimer);
+        //console.log(this.keyPressTimer);
 
         if(this.keyPressTimer){clearInterval(this.keyPressTimer)};
       //  console.log("acceleration - leave");
@@ -798,6 +799,8 @@ export class GameComponent {
 
     ngOnDestroy() {
         console.log("DONE");
+        $("#navbar_bottom_body")[0].style.visibility = "visible";
+
         if (this.subscription !== null) {
             this.subscription.unsubscribe();
         }
