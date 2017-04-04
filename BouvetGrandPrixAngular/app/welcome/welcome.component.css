@@ -38,6 +38,7 @@
 #item_1_div .logo-container{
 
     position: relative;
+    display: inline-block;
 }
 
 #item_2_div{
