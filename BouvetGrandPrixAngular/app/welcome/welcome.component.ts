@@ -28,10 +28,56 @@ export class WelcomeComponent {
         private toplistService: ToplistService) {
     }
 
-    ngAfterViewInit() {
+    animateLogo(element){
+
+        var messageElement = $(element);
+        var t = setTimeout(function() {
+            clearTimeout(t);
+            $(messageElement).css({width:0});
+        },2000);
+
+    }
+
+    animateIntroText(element){
+
+
+        var log = console.log.bind(console),
+            messageElement = document.querySelector(element),
+            text = messageElement.innerText.trim();
+        var words = text.split(' ');
+
+        var work = [];
+
+        words.forEach(function (word) {
+            var splitWord = word.split('').map(function (char, index) {
+                return '<i>' + char + '</i>';
+            }).join('');
+            work.push(splitWord);
+        });
+
+        var formattedWords = work.map(function (word, index) {
+            return '<span class="test-span">' + word + '</span>';
+        }).join(' ');
+
+        messageElement.innerHTML = formattedWords;
+        messageElement.classList.add('animate');
+
+        messageElement.classList.remove('animate');
+        messageElement.offsetHeight; // force reflow
+
+        var t = setTimeout(function () {
+            clearTimeout(t);
+            messageElement.classList.add('animate');
+        },2500);
+
+    }
+
+    ngAfterViewInit(){
+
+
         this.getToplist();
 
-        $("#welcome_carousel").carousel();
+        //$("#welcome_carousel").carousel();
 
         let elem1: any = $("#carousel_indicator_btn_active_0");
         let elem2: any = $("#carousel_indicator_btn_active_1");
@@ -56,6 +102,12 @@ export class WelcomeComponent {
             }
 
         });
+
+        this.animateIntroText('.js-typewriter-mobile');
+        this.animateIntroText('.js-typewriter-desktop');
+        this.animateLogo('.bouvet_logo_mask');
+
+
     }
 
     getToplist(): void {
