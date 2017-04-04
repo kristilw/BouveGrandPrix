@@ -1,24 +1,9 @@
 #map_game{
     z-index:1;
-    height: calc(100vh - 50px);
-}
-
-#map_game_invisibleOverlay{
-    pointer-events: none;
-    position: absolute;
-    width:100%;
-    height:100vh;
-
-    top:0;
-    left: 0;
-
-    z-index: 2;
-
-    background-color:rgba(0, 0, 0, 0);
+    height: calc(100%);
 }
 
 .game-controls-holder{
-
     position: absolute;
     top: 50%;
     width: 100%;
@@ -41,7 +26,7 @@
 
 #car_div{
     position:absolute;
-    top:calc(50vh - 25px);
+    top:calc(50%);
     left:calc(50% - 0px);
     z-index:-1;
 }
@@ -97,17 +82,17 @@
 }
 
 #mobile-controller{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 80px;
     background-color: black;
-    z-index: 100;
     display:table;
+    z-index:1050;
 }
-#mobile-controller .controllers{
 
+#mobile-controller .controllers{
     display: table-row;
 }
 
@@ -191,6 +176,7 @@
 }
 
 #helper_text{
+    font-size:16px;
     margin-top:20px;
 }
 
@@ -199,7 +185,7 @@
     top:0px;
     left:0px;
     width:100%;
-    height:100vh;
+    height:100%;
     z-index:11;
 }
 
@@ -230,7 +216,7 @@
 #speedometer_background_div:before{
     content:"";
     display:inline-block;
-    width:126px;
+    width:116px;
     height:33px;
     background-position: 50%;
     position: absolute;
@@ -242,13 +228,13 @@
 
 #speedometer_background_div:after{
     background-image: url("/app/img/speedometer_line_right.png");
-    right: -122px;
+    right: -112px;
 
 }
 
 #speedometer_background_div:before{
     background-image: url("/app/img/speedometer_line_left.png");
-    left: -122px;
+    left: -112px;
 }
 
 
@@ -468,9 +454,17 @@
     }
 }
 
-
+@media(max-width: 1600){
+    #helper_text{
+        font-size: 18px;
+    }
+}
 
 @media (max-width: 768px) {
+
+    #speedometer{
+        height:210px;
+    }
 
     .game-controls-holder {
 
@@ -484,14 +478,16 @@
         */
     }
 
-    #helper_text{
-
-        font-size: 2vh;
-    }
-
     #w_key_div,
     #s_key_div{
 
         display: inline-block;
+    }
+}
+
+/*Ipad Portrait*/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    #speedometer{
+        height:230px;
     }
 }

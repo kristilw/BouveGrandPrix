@@ -4,10 +4,6 @@
 
     </div>
 
-    <div id="map_game_invisibleOverlay">
-
-    </div>
-
     <div id="other_div_game">
 
 
@@ -33,8 +29,7 @@
                 </div>
 
                 <p class="grey_text" id="helper_text">
-                    Bruk piltastene og følg den oppmerkede veien fra våre gamle <br />
-                    lokaler på Myrens til våre splitter nye i Sørkedalsveien 8!
+                    Bruk piltastene for å akselerere <br/> og bremse underveis.
                 </p>
 
             </div>
@@ -75,7 +70,7 @@
         </div>
     </div>
 </div>
-<div id="mobile-controller" *ngIf="isTouchDevice && setUpComplete">
+<div id="mobile-controller" *ngIf="isTouchDevice && zoomedToStartArea">
     <div class="controllers">
         <div>
             <button class="noselect restart bouvet_button bouvet_orange_border" (click)="restartGameFromButton()"></button>
