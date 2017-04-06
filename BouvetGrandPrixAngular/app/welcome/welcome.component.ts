@@ -27,14 +27,30 @@ export class WelcomeComponent {
         private elementRef: ElementRef,
         private toplistService: ToplistService) {
     }
+    animateStartButton(element){
 
-    animateLogo(element){
+        var button = $(element);
+        var t = setTimeout(function() {
+            clearTimeout(t);
+            $(button).css({opacity:1});
+        },3000);
+    }
+    animateLogoMask(element){
 
         var messageElement = $(element);
         var t = setTimeout(function() {
             clearTimeout(t);
             $(messageElement).css({width:0});
-        },2000);
+        },2500);
+
+    }
+    animateLogo(element){
+
+        var messageElement = $(element);
+        var t = setTimeout(function() {
+            clearTimeout(t);
+            $(messageElement).addClass('animate');
+        },1500);
 
     }
 
@@ -105,9 +121,9 @@ export class WelcomeComponent {
 
         this.animateIntroText('.js-typewriter-mobile');
         this.animateIntroText('.js-typewriter-desktop');
-        this.animateLogo('.bouvet_logo_mask');
-
-
+        //this.animateLogoMask('.bouvet_logo_mask');
+        this.animateStartButton('#start_engine_button');
+        this.animateLogo('.logo-container');
     }
 
     getToplist(): void {

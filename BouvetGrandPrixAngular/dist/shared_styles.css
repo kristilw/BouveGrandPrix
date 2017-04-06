@@ -854,7 +854,11 @@ button:focus{
     width: 100%;
     bottom: 0;
     /*background-color: #f27031;*/
-    background-color: #000;
+    background-color: #100f0f;
+}
+
+#start_engine_button{
+    opacity:0;
 }
 
 .intro-component {

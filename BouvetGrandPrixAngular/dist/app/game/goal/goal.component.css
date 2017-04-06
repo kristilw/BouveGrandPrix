@@ -9,7 +9,7 @@
 
 #goal_div >div{
     position: absolute;
-    top: calc(50vh - 25px);
+    top: calc(49vh - 25px);
     text-align: center;
     width: 100%;
 
@@ -33,7 +33,7 @@
 
 
 #goal_buttons_div{
-    margin-top:35px;
+    margin-top:40px;
 }
 
 #goal_div .table_first_place td:first-child{

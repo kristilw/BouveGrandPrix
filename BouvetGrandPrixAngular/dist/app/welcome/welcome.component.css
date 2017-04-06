@@ -25,7 +25,7 @@
 #item_1_div{
     text-align: center;
     position: absolute;
-    top: calc(50vh - 25px);
+    top: calc(49vh - 25px);
     width: 100%;
 
     -webkit-transform: translate(0%, -50%);
@@ -72,7 +72,7 @@
     #item_1_div{
         text-align: center;
         position: absolute;
-        top: 48%;
+        top: 46%;
         width: 100%;
 
         -webkit-transform: translate(0%, -50%);
@@ -118,8 +118,17 @@
     max-width: 500px;
     height: auto;
     width: 78vw;
-}
 
+}
+.logo-container{
+    opacity: 0;
+    margin-left:-150px;
+}
+.logo-container.animate{
+
+    opacity: 1;
+    margin-left:0px;
+}
 #welcome_screen_bestTimes{
     margin: 0 0 0 0;
     font-family: 'DAGGERSQUARE_OBLIQUE', sans-serif;
@@ -210,7 +219,7 @@ p.greysmall_text{
 
     #welcome_div table td{
         font-size: 12px;
-        font-size: 3vw;
+        font-size: 3.8vw;
     }
     #carousel_indicator_div{
 
@@ -234,9 +243,9 @@ p.greysmall_text{
         margin-top: 0;
     }
 
-    #start_engine_button,
+   
     #start_engine_button_2 {
-        margin: 0px 0px 0px 0px;
+        margin: 20px 0px 0px 0px;
     }
 }
 
@@ -356,7 +365,7 @@ and (orientation : portrait)
     #bouvet_log_welcome_screen{		
         max-width: 450px;		
         height: auto;		
-        width: 35vw;		
+        width: 35vw;
     }	
 
     #welcome_screen_bestTimes{
@@ -391,7 +400,7 @@ and (orientation : portrait)
     #bouvet_log_welcome_screen{		
         max-width: 450px;		
         height: auto;		
-        width: 35vw;		
+        width: 35vw;
     }	
       
     #welcome_screen_bestTimes{
@@ -423,7 +432,7 @@ and (orientation : portrait)
     #bouvet_log_welcome_screen{		
         max-width: 500px;		
         height: auto;		
-        width: 78vw;		
+        width: 78vw;
     }	
 
     #welcome_screen_bestTimes{
