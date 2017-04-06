@@ -108,7 +108,8 @@ export class GameComponent {
 
             this.keyEventToId.set(38, "up_button");
             this.keyEventToId.set(40, "down_button");
-            console.log("Set mobile ketEvent map..");
+
+            this.roadWidth = 2;
         }else{
             L.control.attribution({ position: 'topright' }).addTo(this.map_game);
 
@@ -178,10 +179,6 @@ export class GameComponent {
                 that.onTouchDownKeyRelease(event);
             }
         });
-
-
-
-
     }
 
     //document.onkeyup = onKeyUp;
@@ -608,9 +605,9 @@ export class GameComponent {
                 speedLimit = Math.max(speedLimit, this.minimumSpeedLimit);
 
                 if (speed > speedLimit) {
-                    roadPice.setStyle({ color: 'red', weight: (this.roadWidth+2)});
+                    roadPice.setStyle({ color: 'red', weight: (this.roadWidth + 2 + (this.isTouchDevice ? 1 : 0))});
                 } else if (speed > speedLimit - 20){
-                    roadPice.setStyle({ color: '#ff4444', weight: (this.roadWidth+1)});
+                    roadPice.setStyle({ color: '#ff4444', weight: (this.roadWidth + 1)});
                 } else {
                     roadPice.setStyle({ color: '#f37021', weight: this.roadWidth });
                 }
