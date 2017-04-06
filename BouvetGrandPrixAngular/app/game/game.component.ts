@@ -105,9 +105,19 @@ export class GameComponent {
 
         if (this.isTouchDevice === true) {
             $("#navbar_bottom_body")[0].style.visibility = "hidden";
+
+            this.keyEventToId.set(38, "up_button");
+            this.keyEventToId.set(40, "down_button");
+            console.log("Set mobile ketEvent map..");
         }else{
             L.control.attribution({ position: 'topright' }).addTo(this.map_game);
+
+            this.keyEventToId.set(38, "w_key");
+            this.keyEventToId.set(40, "s_key");
         }
+
+        this.keyToEvent.set(38, "accelerate");
+        this.keyToEvent.set(40, "brake");
 
         this.zoomToStartArea();
 
@@ -135,13 +145,7 @@ export class GameComponent {
             var event: any = null;
             event = window.event ? window.event : e;
             this.onKeyUp(event.keyCode);
-        });
-
-        //this.keyEventToId.set(87, "w_key");
-        //this.keyEventToId.set(83, "s_key");
-
-        this.keyEventToId.set(38, "w_key");
-        this.keyEventToId.set(40, "s_key");
+        });        
 
         this.readCSVfile(this.gameLogic.initRoad());
         this.gameLoopInterval = setInterval(() => { this.gameLoop(); }, this.frameTime_milli);
@@ -184,14 +188,13 @@ export class GameComponent {
 
     keysPressed: any = new Map();
     keyEventToId: any = new Map();
+    keyToEvent: any = new Map();
 
     onkeyDown(keyCode: number): void {     
         let keyStatus = this.keysPressed.get(keyCode);
         if (keyStatus === undefined || keyStatus === false) {
             this.keysPressed.set(keyCode, true);
-            //console.log("keyCode down: " + keyCode);
-            if (this.keyEventToId.get(keyCode) !== undefined && this.showCountDownTimer) {
-                //document.getElementById(this.keyEventToId.get(keyCode)).style.opacity = "1";
+            if (this.keyEventToId.get(keyCode) !== undefined && (this.showCountDownTimer || this.isTouchDevice)) {
                 document.getElementById(this.keyEventToId.get(keyCode)).classList.toggle("arrow_keys_pressed", true);
             }
         }
@@ -201,9 +204,7 @@ export class GameComponent {
         let keyStatus = this.keysPressed.get(keyCode);
         if (keyStatus === undefined || keyStatus === true) {
             this.keysPressed.set(keyCode, false);
-            //console.log("keyCode up: " + keyCode);
-            if (this.keyEventToId.get(keyCode) !== undefined && this.showCountDownTimer) {
-                //document.getElementById(this.keyEventToId.get(keyCode)).style.opacity = "0.5";
+            if (this.keyEventToId.get(keyCode) !== undefined && (this.showCountDownTimer || this.isTouchDevice)) {
                 document.getElementById(this.keyEventToId.get(keyCode)).classList.toggle("arrow_keys_pressed", false);
             }
         }
@@ -212,14 +213,14 @@ export class GameComponent {
     handleAcceleration(actualFrameTime_milli: number) {
         this.keysPressed.forEach((item: any, key: any, mapObj: any) => {
             if (item === true) {
-                let keyPressed = this.keyEventToId.get(key).trim();
+                let keyPressed = this.keyToEvent.get(key).trim();
                 //console.log("keyPressed: " + keyPressed);
 
                 let car_speed_delta = 0;
-                if (keyPressed === "w_key") {
+                if (keyPressed === "accelerate") {
                     car_speed_delta = this.car_maxAcceleration * actualFrameTime_milli / 1000;
                      
-                } else if (keyPressed === "s_key") {
+                } else if (keyPressed === "brake") {
                     car_speed_delta = -this.car_maxAcceleration * actualFrameTime_milli / 1000 * 2;
                 }
                 this.car_speed += car_speed_delta;
@@ -619,7 +620,7 @@ export class GameComponent {
 
     zoomLevel: number = 17;
     zoomToStartArea(): void {
-        //this.zoomLevel = 18 - (this.isTouchDevice ? 1 : 0);
+        this.zoomLevel = this.zoomLevel - (this.isTouchDevice ? 1 : 0);
 
         setTimeout(() => {
             this.map_game.flyTo([59.93502, 10.75857], this.zoomLevel, {

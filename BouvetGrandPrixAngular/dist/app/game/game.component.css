@@ -103,7 +103,6 @@
     vertical-align: middle;
 }
 #mobile-controller .controllers >div button{
-
     display: inline-block;
     height: 90px;
     width: 80px;
@@ -113,24 +112,23 @@
     cursor: pointer;
     background-repeat: no-repeat;
     background-position: 50%;
-    background-size: 20%;
-
-    
 }
 
 #mobile-controller .controllers >div button.restart{
-
+    background-size: 20%;
     background-image: url("/app/img/previous_icon.png");
 }
 
 #mobile-controller .controllers >div button.up{
-
+    background-color:black;
+    background-size: 20%;
     background-image: url("/app/img/arrow_up.png");
 }
 
 #mobile-controller .controllers >div button.down{
-
-    background-image: url("/app/img/arrow_down.png");
+    background-color:black;
+    background-size: 40%;
+    background-image: url("/app/img/BGP_Bremseikon.png");
 }
 
 

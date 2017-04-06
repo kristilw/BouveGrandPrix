@@ -20,16 +20,17 @@
                     <img id="s_key" src="app/img/s_key_t.png" />
                 -->
 
-                <div id="w_key_div">
+                <div id="w_key_div" *ngIf="!isTouchDevice">
                     <button id="w_key" class="bouvet_orange_border arrow_keys"><span class="glyphicon glyphicon-chevron-up"></span></button>
                 </div>
 
-                <div id="s_key_div">
+                <div id="s_key_div" *ngIf="!isTouchDevice">
                     <button id="s_key" class="bouvet_orange_border arrow_keys"><span class="glyphicon glyphicon-chevron-down"></span></button>
                 </div>
 
                 <p class="grey_text" id="helper_text">
-                    Bruk piltastene for å akselerere <br/> og bremse underveis.
+                    <span *ngIf="isTouchDevice">Bruk knappene for å akselerere <br /> og bremse underveis.</span>
+                    <span *ngIf="!isTouchDevice">Bruk piltastene for å akselerere <br /> og bremse underveis.</span>
                 </p>
 
             </div>
@@ -74,8 +75,8 @@
     <div class="controllers">
         <div>
             <button class="noselect restart bouvet_button bouvet_orange_border" (click)="restartGameFromButton()"></button>
-            <button class="noselect up bouvet_button bouvet_orange_border"></button>
-            <button class="noselect down bouvet_button bouvet_orange_border"></button>
+            <button class="noselect up bouvet_button bouvet_orange_border" id="up_button"></button>
+            <button class="noselect down bouvet_button bouvet_orange_border" id="down_button"></button>
         </div>
     </div>
 </div>
