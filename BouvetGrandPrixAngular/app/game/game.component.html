@@ -70,7 +70,7 @@
         </div>
     </div>
 </div>
-<div id="mobile-controller" *ngIf="isTouchDevice && zoomedToStartArea">
+<div id="mobile-controller" *ngIf="isTouchDevice && zoomedToStartArea && !showGoal">
     <div class="controllers">
         <div>
             <button class="noselect restart bouvet_button bouvet_orange_border" (click)="restartGameFromButton()"></button>
