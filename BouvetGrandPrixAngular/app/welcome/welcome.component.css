@@ -122,12 +122,12 @@
 }
 .logo-container{
     opacity: 0;
-    margin-left:-150px;
+    transform:translateX(-150px);
 }
 .logo-container.animate{
 
     opacity: 1;
-    margin-left:0px;
+    transform:translateX(0px);
 }
 #welcome_screen_bestTimes{
     margin: 0 0 0 0;
