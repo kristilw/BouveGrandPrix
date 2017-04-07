@@ -13,7 +13,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ToplistService {
-    private serverUrl = '/app/server/server.php';// 'http://localhost/server.php'; //
+    private serverUrl = '/app/server/server.php';// 'http://localhost/server.php'; //  
 
     constructor(private http: Http) { }
 

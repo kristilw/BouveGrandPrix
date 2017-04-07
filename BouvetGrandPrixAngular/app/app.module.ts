@@ -15,6 +15,7 @@ import { CountdownComponent } from "./game/countdown/countdown.component";
 import { GoalComponent } from "./game/goal/goal.component";
 import { ToplistComponent } from "./toplist/toplist.component";
 import { TimePipe } from "./pipe/time.pipe";
+import { NamePipe } from "./pipe/name.pipe";
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -67,7 +68,8 @@ import { HttpModule } from '@angular/http';
         GoalComponent,
         CountdownComponent,
         ToplistComponent,
-        TimePipe
+        TimePipe,
+        NamePipe
     ],
     bootstrap: [
         AppComponent

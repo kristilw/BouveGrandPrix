@@ -994,3 +994,19 @@ button:focus{
 }
 
 
+@media (max-width: 768px) {
+    .toplist_table_postion{
+        padding:10px 0px 10px 0px;
+        width:50px;
+        text-align:center;
+    }
+
+
+    .toplist_table_name{
+        padding: 10px 0px 10px 10px;
+        width: 43%;
+        font-family: 'Open Sans',"Helvetica Neue",sans-serif;
+    }
+}
+
+
