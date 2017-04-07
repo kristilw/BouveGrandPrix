@@ -33,7 +33,7 @@
 
 
 #goal_buttons_div{
-    margin-top:40px;
+    margin-top:20px;
 }
 
 #goal_div .table_first_place td:first-child{
@@ -51,7 +51,7 @@
 }
 
 #goal_div .table_from_buttons .bouvet_button {
-    margin: 0px 12px 0px 12px;
+    margin: 12px 12px 0px 12px;
 }
 
 #goal_div .bouvet_orange_text{
@@ -99,6 +99,13 @@ input:focus{
         height: auto;
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
+    }
+
+    #goal_div >div{
+    position: absolute;
+    top: calc(52vh - 25px);
+    text-align: center;
+    width: 100%;
     }
 
     #goal_div .table_from_buttons td{
