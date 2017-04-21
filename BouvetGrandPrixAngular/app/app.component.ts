@@ -81,9 +81,9 @@ export class AppComponent {
             display: 'popup',
             method: 'share',
             caption: 'Bouvet',
-            description: 'Vi har flyttet! Spill Bouvet Grand Prix, og bli bedre kjent med det nye Bouvet-huset! Kjør fort, og vinn en premie verdig en racing-sjafør!',
+            description: 'Spill Bouvet Grand Prix, og bli bedre kjent med det nye Bouvethuset! Kjør raskest og vinn på – grandprix.bouvet.no',
             image: 'http://fagutvalget.no/wp-content/blogs.dir/10/files/2015/04/bouvet_logo.png',
-            href: 'https://bouvet.no',
+            href: 'http://grandprix.bouvet.no',
         }, function (response: any) {
 
 
