@@ -15,18 +15,16 @@
     <script src="node_modules/core-js/client/shim.min.js"></script>
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="app/bundle.js"></script>
+
+    <!--script src="node_modules/systemjs/dist/system.src.js"></script-->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             ntegrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
             crossorigin="anonymous"></script>
+
     <!-- script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script -->
     <script src="node_modules/leaflet/dist/leaflet.js"></script>
-    <!-- 2. Configure SystemJS -->
-    <script src="systemjs.config.js"></script>
-    <script>
-      System.import('app').catch(function(err){ console.error(err); });
-    </script>
   </head>
   <!-- 3. Display the application -->
   <body>

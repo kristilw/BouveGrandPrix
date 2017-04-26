@@ -1,2 +1,109 @@
-"use strict";var __decorate=this&&this.__decorate||function(e,t,o,n){var i,c=arguments.length,s=c<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)s=Reflect.decorate(e,t,o,n);else for(var a=e.length-1;a>=0;a--)(i=e[a])&&(s=(c<3?i(s):c>3?i(t,o,s):i(t,o))||s);return c>3&&s&&Object.defineProperty(t,o,s),s},__metadata=this&&this.__metadata||function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)},core_1=require("@angular/core"),toplist_service_1=require("../services/toplist.service"),WelcomeComponent=function(){function e(e,t){this.elementRef=e,this.toplistService=t,this.carouselSelector=0}return e.prototype.animateStartButton=function(e){var t=$(e),o=setTimeout(function(){clearTimeout(o),$(t).css({opacity:1})},3e3)},e.prototype.animateLogoMask=function(e){var t=$(e),o=setTimeout(function(){clearTimeout(o),$(t).css({width:0})},2500)},e.prototype.animateLogo=function(e){var t=$(e),o=setTimeout(function(){clearTimeout(o),$(t).addClass("animate")},1500)},e.prototype.animateIntroText=function(e){var t=(console.log.bind(console),document.querySelector(e)),o=t.innerText.trim(),n=o.split(" "),i=[];n.forEach(function(e){var t=e.split("").map(function(e,t){return"<i>"+e+"</i>"}).join("");i.push(t)});var c=i.map(function(e,t){return'<span class="test-span">'+e+"</span>"}).join(" ");t.innerHTML=c,t.classList.add("animate"),t.classList.remove("animate"),t.offsetHeight;var s=setTimeout(function(){clearTimeout(s),t.classList.add("animate")},2500)},e.prototype.ngAfterViewInit=function(){this.getToplist();var e=$("#carousel_indicator_btn_active_0"),t=$("#carousel_indicator_btn_active_1");e.css("display","block"),t.css("display","none"),$("#welcome_carousel").on("slide.bs.carousel",function(){var e=$("#carousel_indicator_btn_active_0"),t=$("#carousel_indicator_btn_active_1");1===this.carouselSelector?(this.carouselSelector=0,e.css("display","block"),t.css("display","none")):(this.carouselSelector=1,e.css("display","none"),t.css("display","block"))}),this.animateIntroText(".js-typewriter-mobile"),this.animateIntroText(".js-typewriter-desktop"),this.animateStartButton("#start_engine_button"),this.animateLogo(".logo-container")},e.prototype.getToplist=function(){var e=this;this.toplistService.getToplist().subscribe(function(t){return e.toplist=t},function(e){console.log(e)})},e}();WelcomeComponent=__decorate([core_1.Component({selector:"welcome-screen",templateUrl:"app/welcome/welcome.component.html",styleUrls:["app/welcome/welcome.component.css"]}),__metadata("design:paramtypes",[core_1.ElementRef,toplist_service_1.ToplistService])],WelcomeComponent),exports.WelcomeComponent=WelcomeComponent;
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require("@angular/core");
+var toplist_service_1 = require("../services/toplist.service");
+var WelcomeComponent = (function () {
+    function WelcomeComponent(elementRef, toplistService) {
+        this.elementRef = elementRef;
+        this.toplistService = toplistService;
+        this.carouselSelector = 0;
+    }
+    WelcomeComponent.prototype.animateStartButton = function (element) {
+        var button = $(element);
+        var t = setTimeout(function () {
+            clearTimeout(t);
+            $(button).css({ opacity: 1 });
+        }, 3000);
+    };
+    WelcomeComponent.prototype.animateLogoMask = function (element) {
+        var messageElement = $(element);
+        var t = setTimeout(function () {
+            clearTimeout(t);
+            $(messageElement).css({ width: 0 });
+        }, 2500);
+    };
+    WelcomeComponent.prototype.animateLogo = function (element) {
+        var messageElement = $(element);
+        var t = setTimeout(function () {
+            clearTimeout(t);
+            $(messageElement).addClass('animate');
+        }, 1500);
+    };
+    WelcomeComponent.prototype.animateIntroText = function (element) {
+        var log = console.log.bind(console), messageElement = document.querySelector(element), text = messageElement.innerText.trim();
+        var words = text.split(' ');
+        var work = [];
+        words.forEach(function (word) {
+            var splitWord = word.split('').map(function (char, index) {
+                return '<i>' + char + '</i>';
+            }).join('');
+            work.push(splitWord);
+        });
+        var formattedWords = work.map(function (word, index) {
+            return '<span class="test-span">' + word + '</span>';
+        }).join(' ');
+        messageElement.innerHTML = formattedWords;
+        messageElement.classList.add('animate');
+        messageElement.classList.remove('animate');
+        messageElement.offsetHeight;
+        var t = setTimeout(function () {
+            clearTimeout(t);
+            messageElement.classList.add('animate');
+        }, 2500);
+    };
+    WelcomeComponent.prototype.ngAfterViewInit = function () {
+        this.getToplist();
+        var elem1 = $("#carousel_indicator_btn_active_0");
+        var elem2 = $("#carousel_indicator_btn_active_1");
+        elem1.css("display", "block");
+        elem2.css("display", "none");
+        $("#welcome_carousel").on('slide.bs.carousel', function () {
+            var elem1 = $("#carousel_indicator_btn_active_0");
+            var elem2 = $("#carousel_indicator_btn_active_1");
+            if (this.carouselSelector === 1) {
+                this.carouselSelector = 0;
+                elem1.css("display", "block");
+                elem2.css("display", "none");
+            }
+            else {
+                this.carouselSelector = 1;
+                elem1.css("display", "none");
+                elem2.css("display", "block");
+            }
+        });
+        this.animateIntroText('.js-typewriter-mobile');
+        this.animateIntroText('.js-typewriter-desktop');
+        this.animateStartButton('#start_engine_button');
+        this.animateLogo('.logo-container');
+    };
+    WelcomeComponent.prototype.getToplist = function () {
+        var _this = this;
+        this.toplistService.getToplist()
+            .subscribe(function (toplist) { return _this.toplist = toplist; }, function (err) {
+            console.log(err);
+        });
+    };
+    return WelcomeComponent;
+}());
+WelcomeComponent = __decorate([
+    core_1.Component({
+        selector: 'welcome-screen',
+        templateUrl: 'app/welcome/welcome.component.html',
+        styleUrls: [
+            'app/welcome/welcome.component.css',
+        ]
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef,
+        toplist_service_1.ToplistService])
+], WelcomeComponent);
+exports.WelcomeComponent = WelcomeComponent;
+
 //# sourceMappingURL=welcome.component.js.map
