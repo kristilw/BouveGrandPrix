@@ -20,7 +20,21 @@ gulp.task('clean', function () {
 });
 
 // TypeScript compile
-gulp.task('compile', function (done){
+gulp.task('compile', function (done) {
+    return new Promise(function (resolve, reject) {
+        console.log("compiling..");
+
+        gulp.src(appDev + '/**/*.ts')
+        .pipe(sourcemaps.init({
+            loadMaps: true
+        }))
+        .pipe(tsProject())
+        //.pipe(uglify())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(appProd));
+        resolve();
+    });
+
     //return gulp
     //  .src('app/**/*.ts')
     //  .pipe(sourcemaps.init())
@@ -33,17 +47,9 @@ gulp.task('compile', function (done){
     //  .pipe(sourcemaps.write('.'))
     //  .pipe(gulp.dest('dist/app'));
 
-    console.log("compiling..");
 
-    gulp.src(appDev + '/**/*.ts')
-        .pipe(sourcemaps.init({
-            loadMaps: true
-        }))
-        .pipe(tsProject())
-        //.pipe(uglify())
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(appProd));
-    done();
+    
+    //done();
 
     //var tsResult = gulp.src("app/**/*.ts")
     /*.pipe(sourcemaps.init())
@@ -75,7 +81,6 @@ gulp.task('copy:assets', () => {
     console.log("copy assets..");
     return gulp.src([
         'app/**/*',
-        'system.config.js',
         'index.html',
         'shared_styles.css',
         'node_modules/bootstrap/dist/css/bootstrap.css',
@@ -92,20 +97,11 @@ gulp.task('copy:assets', () => {
 gulp.task('copy:libs', function (done) {
     console.log("copy liberaries..");
     return gulp.src([
-        //'node_modules/angular2/bundles/angular2-polyfills.js',
-        'node_modules/systemjs/dist/system.src.js',
-        'node_modules/rxjs/**/*.js',
-        'node_modules/rxjs/**/*.js.map',
-        //'node_modules/angular2/bundles/angular2.dev.js',
-        //'node_modules/angular2/bundles/router.dev.js',
         'node_modules/core-js/client/shim.min.js',
         'node_modules/zone.js/dist/zone.js',
         'node_modules/reflect-metadata/Reflect.js',
-        'node_modules/systemjs/dist/system.src.js',
         'node_modules/jquery/dist/jquery.min.js',
         'node_modules/leaflet/dist/leaflet.js',
-        'system.config.js',
-        'node_modules/@angular/**/*.js'
     ], { base: './' })
       .pipe(gulp.dest('dist'))
     done();
