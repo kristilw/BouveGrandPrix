@@ -84,6 +84,7 @@ gulp.task('copy:libs', function (done) {
         'node_modules/zone.js/dist/zone.js',
         'node_modules/reflect-metadata/Reflect.js',
         'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/leaflet/dist/leaflet.js',
     ], { base: './' })
       .pipe(gulp.dest('dist'))
