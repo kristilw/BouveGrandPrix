@@ -8,6 +8,7 @@ const uglify = require('gulp-uglify');
 const sourcemaps = require('gulp-sourcemaps');
 const path = require('path');
 const Builder = require('systemjs-builder');
+//const wait = require('gulp-wait');
 
 const tsProject = typescript.createProject("tsconfig.json");
 
@@ -15,8 +16,11 @@ var appDev = 'app';
 var appProd = 'dist/app';
 
 // clean the contents of the distribution directory
-gulp.task('clean', function () {
-    return;// del('dist/**/*');
+gulp.task('clean', function (done) {
+    del('dist/**/*');
+    setTimeout(function () {
+        done();
+    }, 1000);
 });
 
 // TypeScript compile
@@ -32,32 +36,11 @@ gulp.task('compile', function (done) {
         //.pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(appProd));
-        resolve();
+
+        setTimeout(function () {
+            resolve();
+        }, 10000);
     });
-
-    //return gulp
-    //  .src('app/**/*.ts')
-    //  .pipe(sourcemaps.init())
-    //  .pipe(typescript(tscConfig.compilerOptions))
-    //  .pipe(concat('scripts.js'))
-    //  .pipe(gulp.dest('dist/app'))
-    //  .pipe(rename('main.min.js'))
-    //  .pipe(uglify())
-    //    
-    //  .pipe(sourcemaps.write('.'))
-    //  .pipe(gulp.dest('dist/app'));
-
-
-    
-    //done();
-
-    //var tsResult = gulp.src("app/**/*.ts")
-    /*.pipe(sourcemaps.init())
-    .pipe(tsProject());
-    return tsResult.js
-        .pipe(uglify())
-        .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest('dist/app'));*/
 });
 
 gulp.task('bundle', function (done) {
@@ -120,7 +103,7 @@ gulp.task('watch', function () {
     done();
 });
 
-gulp.task('build', gulp.series('compile', 'bundle', 'copy:assets'));
+gulp.task('build', gulp.series('clean','compile', 'bundle', 'copy:assets', 'copy:libs'));
 gulp.task('realtime', gulp.series('build', 'watch'));
 gulp.task('default', gulp.series('compile'));
 gulp.task('ts', gulp.series('compile','bundle'))
