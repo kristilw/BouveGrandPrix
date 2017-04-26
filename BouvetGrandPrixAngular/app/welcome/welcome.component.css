@@ -318,7 +318,7 @@ and (orientation : portrait)
         padding-bottom: 27px;
         padding-left: 0px;
         padding-top: 20px;
-        max-width: 650px;
+        max-width: 530px;
         margin: 0 auto;
         display: block;
     }
@@ -355,7 +355,7 @@ and (orientation : portrait)
         text-align: center;		
         width: 100%;		
         padding: 0px; padding-bottom: 27px; padding-left: 0px; padding-top: 21px;		
-        max-width: 650px;		
+        max-width: 530px;		
         margin: 0 auto;		
         display: block;		
     }		
@@ -390,7 +390,7 @@ and (orientation : portrait)
         text-align: center;		
         width: 100%;		
         padding: 0px; padding-bottom: 28px; padding-left: 0px; padding-top: 22px;		
-        max-width: 650px;		
+        max-width: 570px;		
         margin: 0 auto;		
         display: block;		
     }		
@@ -422,7 +422,7 @@ and (orientation : portrait)
         text-align: center;		
         width: 100%;		
         padding: 0px; padding-bottom: 35px; padding-left: 0px; padding-top: 24px;		
-        max-width: 650px;		
+        max-width: 590px;		
         margin: 0 auto;		
         display: block;		
     }		
