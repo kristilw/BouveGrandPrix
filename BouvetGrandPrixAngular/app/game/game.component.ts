@@ -82,8 +82,6 @@ export class GameComponent {
         return check;
     }
 
-
-
     ngOnInit() {
         this.isTouchDevice = this.mobileAndTabletcheck();
 
